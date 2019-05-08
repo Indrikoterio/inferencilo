@@ -1,0 +1,43 @@
+./clear
+
+javac TestConstant.java
+java TestConstant
+
+javac TestBackChaining.java
+java TestBackChaining
+
+javac TestOr.java
+java TestOr
+
+javac TestNot.java
+java TestNot
+
+javac TestCut.java
+java TestCut
+
+javac TestUnify.java
+java TestUnify
+
+javac TestFunctor.java
+java TestFunctor
+
+javac TestErrorCheck.java
+java TestErrorCheck
+
+javac TestList.java
+java TestList
+
+javac TestParse.java
+java TestParse
+
+javac TestAppend.java
+java TestAppend
+
+javac TestReplaceTerm1.java
+java TestReplaceTerm1
+
+javac TestFunction.java
+java TestFunction
+
+javac TestConjunctionList.java
+java TestConjunctionList
