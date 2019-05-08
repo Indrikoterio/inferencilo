@@ -415,7 +415,7 @@ public class PList implements Unifiable {
       boolean hasPipe = thisList.isTailVar();
       Unifiable term = thisList.getHead();
       Unifiable newTerm = null;
-      if (term == null) return null;
+      if (term == null) return this;  // Must be empty list.
 
       while (term != null) {
          newTerm = (Unifiable)term.replaceVariables(ss);
