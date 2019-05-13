@@ -42,7 +42,7 @@ public class Anon implements Unifiable {
     * @param   substitution set
     * @return  new expression, without variables
     */
-   public Expression replaceVariables(SubstitutionSet s) {
+   public Expression replaceVariables(SubstitutionSet ss) {
       return this;
    }
 
