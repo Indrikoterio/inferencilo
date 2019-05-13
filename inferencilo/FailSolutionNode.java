@@ -7,11 +7,11 @@
 
 package inferencilo;
 
-public class FailSolutionNode extends AbstractSolutionNode {
+public class FailSolutionNode extends SolutionNode {
 
    public FailSolutionNode(Fail goal, KnowledgeBase kb,
                            SubstitutionSet parentSolution,
-                           AbstractSolutionNode parentNode) {
+                           SolutionNode parentNode) {
       super(goal, kb, parentSolution, parentNode);
    }
 
