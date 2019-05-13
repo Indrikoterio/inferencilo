@@ -10,7 +10,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class Fail extends AbstractOperator implements Goal {
+public class Fail extends Operator implements Goal {
 
    public Fail() { }
 
@@ -25,7 +25,7 @@ public class Fail extends AbstractOperator implements Goal {
    }
 
    // getCopy, to avoid cloning.
-   public AbstractOperator getCopy() {
+   public Operator getCopy() {
       return new Fail();
    };
 
