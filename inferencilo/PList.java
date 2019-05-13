@@ -4,6 +4,8 @@
  * Represents a Prolog list. Eg.:
  *     [a, b, c], [X, Y, Z], [X, Y | Z]
  *
+ * It's called PList to avoid confusion with a Java List.
+ *
  * Note: Prolog Lists are recursive structures.
  * [a, b, c] is a representation of [a [b [c]]]
  *
@@ -57,6 +59,12 @@ public class PList implements Unifiable {
     *
     * The parameter hasPipe is true for lists such as [a, b, c | $T]
     *
+    * Note: It may seem logical to add a fact to a list using this
+    * constructor, that is: new_plist = new PList(term, old_plist).
+    * This does not work. It creates a new list with two terms.
+    * To add a term to an existing list, use the built-in predicate
+    * JoinHeadTail: new_plist = new JoinHeadTail(term, old_plist).
+    *
     * @param   hasPipe t/f
     * @param   array of unifiable arguments.
     */
@@ -82,6 +90,12 @@ public class PList implements Unifiable {
     * Makes a Prolog list, eg: [a, b, c]
     *
     * The parameter hasPipe is true for lists such as [a, b, c | $T]
+    *
+    * Note: It may seem logical to add a fact to a list using this
+    * constructor, that is: new_plist = new PList(term, old_plist).
+    * This does not work. It creates a new list with two terms.
+    * To add a term to an existing list, use the built-in predicate
+    * JoinHeadTail. (new_plist = new JoinHeadTail(term, old_plist)).
     *
     * @param   hasPipe t/f
     * @param   list of unifiable arguments.
