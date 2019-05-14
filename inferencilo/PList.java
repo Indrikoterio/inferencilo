@@ -32,7 +32,7 @@ public class PList implements Unifiable {
 
    /* About isTailVar:
       It is necessary to distinguish between [$A, $B]  and  [$A | $B].
-      If the last item in a list (tall == null) is a variable, it can
+      If the last item in a list (tail == null) is a variable, it can
       be an ordinary variable or a 'tailVariable', as in the latter list
       above. A tail variable will unify with the the tail of another list.
       An ordinary variable will not; it only unifies with one term from
@@ -311,7 +311,7 @@ public class PList implements Unifiable {
 
 
    /**
-    * joinHT
+    * joinHeadTail
     *
     * This static method is used to join a head term with a tail (PList).
     * The constructor PList(boolean isTailVar, Unifiable h, PList t) cannot
@@ -322,7 +322,7 @@ public class PList implements Unifiable {
     * @param  tail (PList)
     * @return list of unifiable terms
     */
-   public static List<Unifiable> joinHT(Unifiable head, PList tail) {
+   public static List<Unifiable> joinHeadTail(Unifiable head, PList tail) {
       List<Unifiable> outList = new ArrayList<Unifiable>();
       outList.add(head);
       PList plist = tail;
