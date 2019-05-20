@@ -50,7 +50,7 @@ public class BuiltIn3 extends BuiltInPredicateIHT {
       PList inList = castPList(arguments[0], ss);
       if (inList == null) return null;
 
-      Constant head = castConstant(inList.getHead());
+      Constant head = castConstant(inList.getHead(), ss);
       newHead = new Constant("" + head);
       newTail = inList.getTail();
       return newHead;
