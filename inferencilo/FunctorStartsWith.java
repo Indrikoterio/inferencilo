@@ -43,7 +43,7 @@ public class FunctorStartsWith extends Compare {
     */
    public Unifiable evaluate(SubstitutionSet ss) {
       if (arguments.length < 2) return null;
-      Constant c1 = castConstant(arguments[0]);
+      Constant c1 = castConstant(arguments[0], ss);
       if (c1 == null) return null;
       Complex c2 = getGroundComplex(arguments[1], ss);
       if (c2 == null) return null;

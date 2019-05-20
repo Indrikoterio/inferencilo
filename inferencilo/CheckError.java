@@ -83,7 +83,7 @@ public class CheckError extends BuiltInPredicate {
       if (errorList.count() >= Global.maxErrors) return null;
 
       // Create a new error list with the new error message.
-      Constant newError = castConstant(getTerm(1));
+      Constant newError = castConstant(getTerm(1), ss);
       if (newError == null) return null;
 
       List<Unifiable> listOfErrors = PList.joinHeadTail(newError, errorList);

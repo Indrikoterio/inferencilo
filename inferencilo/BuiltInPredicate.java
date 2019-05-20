@@ -154,16 +154,25 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
     * castConstant
     *
     * If the given unifiable is an instance of Constant, cast it
-    * as Constant and return it. Otherwise return null. This
-    * function is useful for subclasses.
+    * as Constant and return it.
     *
     * @param  Unifiable term
+    * @param  Substitution Set
     * @return Constant term or null
     */
-   public Constant castConstant(Unifiable term) {
-      if (!(term instanceof Constant)) return null;
-      return (Constant)term;
+   public Constant castConstant(Unifiable term, SubstitutionSet ss) {
+      if (term instanceof Constant) return (Constant)term;
+      Unifiable outTerm = null;
+      if (term instanceof Variable) {
+         if (ss.isGround((Variable)term)) {
+            outTerm = ss.getGroundTerm((Variable)term);
+         }
+         else return null;
+      }
+      if (outTerm instanceof Constant) return (Constant)outTerm;
+      return null;
    }
+
 
    /**
     * castComplex
