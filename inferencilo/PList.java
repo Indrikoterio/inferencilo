@@ -257,7 +257,7 @@ public class PList implements Unifiable {
    }
 
 
-   /*
+   /**
     * spaceString
     *
     * Produces a string of list elements separated by spaces.
@@ -265,7 +265,7 @@ public class PList implements Unifiable {
     *
     * @return  space separated string
     */
-   private String spaceString() {
+   public String spaceString() {
       if (term == null) return "";
       String str = "" + term;
       PList theTail = tail;
