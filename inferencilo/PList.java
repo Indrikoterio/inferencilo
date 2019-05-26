@@ -218,15 +218,16 @@ public class PList implements Unifiable {
    }  // make
 
 
-   /**
-    * toString
+   /*
+    * commaString
     *
-    * A Prolog list looks like this:
-    *    [a, b, c]  [$H | $T]  [a, b | $T]
+    * Produces a string of list elements separated by commas.
+    * If the last list element is a tail variable, replace
+    * the comma with a pipe |.
+    *
+    * @return  comma separated string
     */
-   public String toString() {
-
-      if (term == null) return "[]";
+   private String commaString() {
       String str = "" + term;
       PList theTail = tail;
       while (theTail != null) {
@@ -238,7 +239,43 @@ public class PList implements Unifiable {
          else { str += ", " + term; }
          theTail = theTail.getTail();
       }
+      return str;
+   }
+
+   /**
+    * toString
+    *
+    * A Prolog style list looks like this:
+    *    [a, b, c]  [$H | $T]  [a, b | $T]
+    *
+    * @return  print form of list
+    */
+   public String toString() {
+      if (term == null) return "[]";
+      String str = commaString();
       return "[" + str + "]";
+   }
+
+
+   /*
+    * spaceString
+    *
+    * Produces a string of list elements separated by spaces.
+    * This method is useful for printing error messages.
+    *
+    * @return  space separated string
+    */
+   private String spaceString() {
+      if (term == null) return "";
+      String str = "" + term;
+      PList theTail = tail;
+      while (theTail != null) {
+         Unifiable term = theTail.getHead();
+         if (term == null) break;
+         str += " " + term;
+         theTail = theTail.getTail();
+      }
+      return str;
    }
 
 
