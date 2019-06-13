@@ -79,13 +79,20 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
       if (message != null && message.length() > 0) {
          System.out.print(message + " ");
       }
+      boolean first = true;
       for (Unifiable term : arguments) {
          if (term instanceof Variable) {
             if (ss.isGround((Variable)term)) {
                term = ss.getGroundTerm((Variable)term);
             }
          }
-         System.out.println("term " + num + ": " + term);
+         if (first) {
+            first = false;
+            System.out.println("" + term);
+         }
+         else {
+            System.out.println(", " + term);
+         }
          num++;
       }
       return Anon.anon;   // not needed
