@@ -88,13 +88,14 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
          }
          if (first) {
             first = false;
-            System.out.println("" + term);
+            System.out.print("" + term);
          }
          else {
-            System.out.println(", " + term);
+            System.out.print(", " + term);
          }
          num++;
       }
+      System.out.print("\n");
       return Anon.anon;   // not needed
    }
 
