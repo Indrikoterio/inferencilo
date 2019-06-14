@@ -171,6 +171,8 @@ public class Complex implements Unifiable, Goal {
     */
    public String functor() { return functor; }
 
+   public void setFunctor(String f) { functor = f; }
+
    public Unifiable getTerm(int index) { return terms[index]; }
 
    public void setTerms(Unifiable[] terms) { this.terms = terms; }
