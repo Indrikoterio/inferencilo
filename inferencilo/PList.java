@@ -419,6 +419,7 @@ public class PList implements Unifiable {
                if (thisTerm == null && otherTerm == null) return newSS;
                if (thisTerm == null || otherTerm == null) return null;
                newSS = thisTerm.unify(otherTerm, newSS);
+               if (newSS == null) return null;
             }
             thisList = thisList.getTail();
             otherList = otherList.getTail();
