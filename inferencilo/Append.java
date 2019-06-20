@@ -94,7 +94,17 @@ public class Append extends BuiltInPredicate implements Unifiable, Goal {
             if (ss.isGround((Variable)term)) {
                term = ss.getGroundTerm((Variable)term);
             }
-            else return null;
+            // Long explanation: In a list of words (and punctuation), some terms
+            // are optional. For example, a modifier may consist of an adverb and
+            // an adjective, or just an adjective. For a Prolog predicate which
+            // collects adverbs, it is useful to return an adverb or a term which
+            // can be ignored. I chose Anon (= anonymous variable) for this.
+            // Anon works well when passed as a term to a rule, but as a return
+            // item, it will not be unified with the variable which corresponds
+            // to it. The output variable does not bind to Anon. (Maybe it should.)
+            // Such unbound variables were causing Append to abort, so I'm commenting
+            // out the following 'return'. Maybe there is a better solution to this.
+            //else return null;
          }
 
          if (term instanceof Constant) {
