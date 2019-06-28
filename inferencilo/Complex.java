@@ -237,6 +237,7 @@ public class Complex implements Unifiable, Goal {
       }
 
       else if (other instanceof Variable) return other.unify(this, ss);
+      else if (other instanceof Anon) return ss;
       return null;
    }
 
