@@ -245,4 +245,57 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
       return null;
    }
 
+
+   /*
+    * displayString
+    *
+    * If the given term is a Constant, return its string value,
+    * If the given term is a Complex term, return the string value of the first term.
+    * If it is a PList, iterate through the list to produce a readable string.
+    * (Commas should have no space in front.)
+    *
+    * @param   term
+    * @param   substitution set
+    * @return  string representation
+    */
+   public String displayString(Unifiable term, SubstitutionSet ss) {
+
+      if (term instanceof Variable) {
+         if (ss.isGround((Variable)term)) {
+            Unifiable t = ss.getGroundTerm((Variable)term);
+            return displayString(t, ss);
+         }
+         else return "";
+      }
+
+      if (term instanceof Constant) return "" + term;
+      if (term instanceof Complex) {
+         Complex t = (Complex)term;
+         if (t.length() < 2) return "";
+         return displayString(t.getTerm(1), ss);
+      }
+      if (term instanceof PList) {
+
+         PList plist = (PList)term;
+
+         StringBuilder sb = new StringBuilder("");
+         Unifiable head = plist.getHead();
+         if (head == null) return "";
+         sb.append(displayString(head, ss));  // recursion
+
+         PList theTail = plist.getTail();
+         while (theTail != null) {
+            head = theTail.getHead();
+            if (head == null) break;
+            String str = displayString(head, ss);
+            if (str.equals(",")) sb.append(str);
+            else sb.append(" " + str);
+            theTail = theTail.getTail();
+         }
+         return sb.toString();
+      }
+      return "";
+   }
+
+
 }
