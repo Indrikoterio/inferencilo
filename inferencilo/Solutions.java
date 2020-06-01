@@ -68,7 +68,7 @@ public class Solutions {
     * About the argument index: It may be useful to look at only one of the
     * arguments of the result. For example, if the original goal is
     * mother(Liza, $X), and the resulting complex term is mother(Liza, Jocelyn),
-    * then we only really need to look at the secont argument, Jocelyn.
+    * then we only really need to look at the second argument, Jocelyn.
     * This can be extracted as so: result.getTerm(2). If an index of 0 is
     * given, the expected result will be compared to the entire result term.
     *
