@@ -14,7 +14,7 @@ import java.util.*;
 public class Variable implements Unifiable {
 
    private String name = null;
-   private static int nextId = 0;
+   private static int nextId = 1;
    private int id;
 
    /**
