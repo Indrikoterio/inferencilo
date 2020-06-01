@@ -3,6 +3,7 @@
  *
  * A predicate calculus expression.
  *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -41,9 +42,9 @@ public interface Expression {
     *    grandparent($X, $Y) = parent($X, $Z), parent($Z, $Y).
     *    parent($X, $Y) :- father($X, $Y).
     *    parent($X, $Y) :- mother($X, $Y).
-    * When searching for a solution, the first parent/2 rule will be called
-    * twice. When called a second time, the $X must be unique, different from
-    * the variable which was bound in the first call.
+    * When searching for a solution, the first parent/2 rule will be called twice.
+    * When called a second time, the $X must be unique, different from the
+    * variable which was bound in the first call.
     * Every time a rule is fetched from the knowledge base, the variables must
     * be recreated (standarized).
     * A variable is uniquely identified by its print name and id number.
