@@ -2,9 +2,9 @@
  * TestConstant
  *
  * The Constant class stores a string value; it is instantiated as: new Constant("red").
- * As a convenience, the Constant class has a make() method, which concatenates
- * parameters (Unifiable terms). Thus, Constant.make(one, [two, three], X) should be
- * equivalent to new Constant("one two three four").
+ * As a convenience, the Constant class has a concat() method, which concatenates
+ * parameters (Unifiable terms). Thus, Constant.concat(one, [two, three], X) should be
+ * equivalent to: new Constant("one two three four").
  *
  * @authro  Klivo
  * @version 1.0
@@ -33,9 +33,9 @@ public class TestConstant {
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex(test_constant, out), new And( new Unify(out, new Constant("red")))),
-         new Rule(new Complex(test_constant, out), new And( new Unify(out, Constant.make(null, red, green, blue)))),
+         new Rule(new Complex(test_constant, out), new And( new Unify(out, Constant.concat(null, red, green, blue)))),
          new Rule(new Complex(test_constant, out),
-                                new And( new Unify(out, Constant.make(null, red, comma, green, comma, blue))))
+                                new And(new Unify(out, Constant.concat(null, red, comma, green, comma, blue))))
       );
 
 
