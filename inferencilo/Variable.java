@@ -3,7 +3,7 @@
  *
  * A logical variable, which can be bound or unbound.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -14,7 +14,7 @@ import java.util.*;
 public class Variable implements Unifiable {
 
    private String name = null;
-   private static int nextId = 1;
+   private static int nextId = 0;
    private int id;
 
    /**
@@ -33,7 +33,7 @@ public class Variable implements Unifiable {
    /**
     * copy constructor
     *
-    * Creates a Variable with the same name the one given,
+    * Creates a Variable with the same name as the one given,
     * but having a different ID.
     *
     * @param variable to copy
@@ -43,8 +43,21 @@ public class Variable implements Unifiable {
       this.name = v.name();
    }
 
+   /**
+    * toString
+    *
+    * Produces a string representation by combining name + _ + ID.
+    * For example: $X_237
+    *
+    * @return  string representation
+    */
    public String toString() { return name + "_" + id; }
 
+   /**
+    * name
+    *
+    * @return  name of variable
+    */
    public String name() { return name; }
 
 
@@ -112,4 +125,4 @@ public class Variable implements Unifiable {
       return newVar;
    }
 
-}
+}  // Variable
