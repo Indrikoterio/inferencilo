@@ -12,7 +12,7 @@
  *
  * Reference: http://www.cs.toronto.edu/~hojjat/384w09/Lectures/Prolog_Intro.pdf
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -26,6 +26,7 @@ public class Constant implements Unifiable {
    // For detecting numbers.
    private static Pattern numberPattern = Pattern.compile("[+-]?\\d+(\\.\\d+)?");
 
+   // The internal representation.
    private String value = null;
 
    /**
