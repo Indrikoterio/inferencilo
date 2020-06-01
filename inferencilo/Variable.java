@@ -84,7 +84,6 @@ public class Variable implements Unifiable {
     * replaceVariables
     *
     * Replace bound variables with their bindings.
-    * Nothing to do here.
     *
     * @param substitution set
     * @param expression
