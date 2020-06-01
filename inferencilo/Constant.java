@@ -1,14 +1,13 @@
 /**
  * Constant
  *
- * In Prolog, an 'atom' is a sequence of letters and digits which starts with a lower case letter:
- * For example: blue, happy, suspect3
- * An atom is a constant symbol. Integers and floating point numbers are also constants.
+ * In Prolog, an 'atom' is a constant symbol. It is represented by sequence of letters and
+ * digits which start with a lower case letter. For example: blue, happy, suspect3
  *
- * In this inference engine, a Constant holds an internal String. Integers and floats can be
- * represented internally as Strings. Arithmetic functions which operate on these Constants
- * must convert their internal strings into a numbers (if possible), execute their functions,
- * and convert the result back to a Constants.
+ * In this inference engine, there is no distinction between atoms, strings, and numbers.
+ * These are represented by the Constant class, which holds an internal String. Arithmetic
+ * functions which operate on these Constants must convert their internal strings into
+ * numbers (if possible), execute their functions, and convert the result back to a Constants.
  *
  * Reference: http://www.cs.toronto.edu/~hojjat/384w09/Lectures/Prolog_Intro.pdf
  *
