@@ -2,7 +2,8 @@
  * TestConstant
  *
  * This class tests the Constant class.
- * Constant stores a string value; it is instantiated as: new Constant("red").
+ * Constant stores a string value, which may represent a number.
+ * It is instantiated as: new Constant("red").
  *
  * @author  Klivo
  * @version 1.0
@@ -31,8 +32,8 @@ public class TestConstant {
       /*
         Prolog equivalent:
                 test_constant(Out) :- Out = red.
-                test_constant(Out) :- Out = 1.0, 1 = 1.0.
-                test_constant(ok) :- 1 = 1.0.
+                test_constant(bad) :- 1 = 2.
+                test_constant(ok) :- 1 = 1.0000.
        */
 
       KnowledgeBase kb = new KnowledgeBase(
