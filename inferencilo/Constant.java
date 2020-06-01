@@ -24,9 +24,10 @@ import java.util.regex.*;
 public class Constant implements Unifiable {
 
    // For detecting numbers.
-   private static Pattern numberPattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+   private static Pattern numberPattern = Pattern.compile("[+-]?\\d+(\\.\\d+)?");
 
    private String value = null;
+
    /**
     * constructor
     *
@@ -36,26 +37,40 @@ public class Constant implements Unifiable {
 
    /**
     * toString
-    *
     */
    public String toString() { return value; }
 
    /*
-    * makeDouble
+    * isNumber
     *
-    * Makes a double floating point number from a string.
+    * Use regex to determine whether a String represents a number.
+    * Valid numbers can have a decimal point and/or a sign.
+    * Eg. 1, 2, 3.14159, -42, +21
+    *
+    * @param  string to convert
+    * @return  true if number, false otherwise
+    */
+   private boolean isNumber(String str) {
+      return numberPattern.matcher(str).matches();
+   }
+
+
+   /*
+    * convertDouble
+    *
+    * Convert the string value into a double floating point, if possible.
+    * (Returns 0.0 if not.)
     *
     * @param   number as string
-    * @return   number as double
+    * @return   number as double float
     */
-   private double makeDouble(String strNumber) {
+   private double convertDouble(String str) {
       try {
-         double d = Double.parseDouble(strNumber);
-         return d;
+         return Double.parseDouble(str);
       } catch (NumberFormatException nfe) {
          return 0.0;
       }
-   }  // makeDouble
+   }  // convertDouble
 
 
    /**
@@ -78,17 +93,15 @@ public class Constant implements Unifiable {
       if (this == other) return ss;
       if (other instanceof Variable) return other.unify(this, ss);
       if (other instanceof Anon) return ss;
+      if (!(other instanceof Constant)) return null;
       String strThis = "" + this;
       String strThat = "" + other;
       if (strThis.equals(strThat)) return ss;
       // Check for number strings, because 1 unifies with 1.0 .
-      if (numberPattern.matcher(strThis).matches() &&
-           numberPattern.matcher(strThat).matches()) {
-           double thisFloat = makeDouble(strThis);
-           double thatFloat = makeDouble(strThat);
-           if (thisFloat == thatFloat) return ss;
+      if (isNumber(strThis) && isNumber(strThat)) {
+           if (convertDouble(strThis) == convertDouble(strThat)) return ss;
       }
-      return null;
+      return null;   // No unification.
    }
 
 
