@@ -99,4 +99,4 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
       return Anon.anon;   // not needed
    }
 
-}
+}  // Print
