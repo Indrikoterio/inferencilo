@@ -1,8 +1,17 @@
 /**
  * Constant
  *
- * According to some source, a constant is a Prolog atom or number.
- * At present, in this implementation, a constant is an atom.
+ * In Prolog, an 'atom' is a sequence of letters and digits which starts with a lower case letter:
+ * For example: blue, happy, suspect3
+ * An atom is a constant symbol. Integers and floating point numbers are also constants.
+ *
+ * In this inference engine, a Constant holds an internal String. Integers and floats can be
+ * represented internally as Strings. Arithmetic functions which operate on these Constants
+ * must convert their internal strings into a numbers (if possible), execute their functions,
+ * and convert the result back to a Constant.
+ *
+ * Reference:
+ *     http://www.cs.toronto.edu/~hojjat/384w09/Lectures/Prolog_Intro.pdf
  *
  * @author  Klivo
  * @version 1.0
@@ -25,16 +34,16 @@ public class Constant implements Unifiable {
 
 
   /**
-   * make
+   * concat
    *
-   * This static method concatenates an array of unifiable terms to
-   * produce a Constant. Strings are concatenated and separated
-   * by a space, except for commas, which have no spaces in front.
+   * This static method concatenates unifiable terms to produce a Constant.
+   * Strings are concatenated and separated by a space, except for commas,
+   * which have no spaces in front.
    *
    * Thus, if we have,
-   *   Constant i = new Constant('I');
-   *   Constant comma = new Constant(',');
-   *   Constant robot = new Constant('Robot');
+   *   Constant i = new Constant("I");
+   *   Constant comma = new Constant(",");
+   *   Constant robot = new Constant("Robot");
    * then
    *    Constant.make(ss, i, comma, robot)
    * is equivalent to
@@ -44,7 +53,7 @@ public class Constant implements Unifiable {
    * @param   unifiable terms
    * @return  Constant or null
    */
-   public static Constant make(SubstitutionSet ss, Unifiable... arr) {
+   public static Constant concat(SubstitutionSet ss, Unifiable... arr) {
 
       if (arr.length < 1) return null;
 
@@ -90,7 +99,6 @@ public class Constant implements Unifiable {
             }
          }
       }
-
       return new Constant(sb.toString());
    }
 
@@ -137,10 +145,17 @@ public class Constant implements Unifiable {
    /**
     * standardizeVariablesApart
     *
-    * Refer to class Expression for full comments.
+    * When a rule is fetched from the knowledge base, the variable terms must be
+    * made distinct. (Eg. $X becomes $X_442.) Constants are exactly the same every
+    * time a rule is fetched, so this function simply returns this class.
+    *
+    * Refer to class Expression for fuller comments.
+    *
+    * @param  prev - previously standardized variables (not used)
+    * @return  this constant
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> prev) {
       return this;
    }
 
-}
+}  // Constant
