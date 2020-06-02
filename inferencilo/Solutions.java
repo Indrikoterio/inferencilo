@@ -85,6 +85,12 @@ public class Solutions {
       SubstitutionSet solution = root.nextSolution();
       int count = 0;
 
+      // Check for goals without solutions.
+      if (solution == null && expected.length == 0) {
+         System.out.println("✓");
+         return;
+      }
+
       while (solution != null) {
 
          Complex result = (Complex)goal.replaceVariables(solution);
@@ -104,8 +110,9 @@ public class Solutions {
          }
 
          if (!strResult.equals(expected[count])) {
-            System.out.print("       Unexpected!! goal: " + goal);
-            System.out.println("  result: " + strResult + "    expected: " + expected[count]);
+            System.out.print("   Unexpected!! goal: " + goal);
+            System.out.println("  result: " + strResult +
+                               "    expected: " + expected[count]);
          }
          else {
             System.out.print("✓");
@@ -120,6 +127,7 @@ public class Solutions {
       }
 
       System.out.print("\n");
+
    }  // verifyAll
 
 
