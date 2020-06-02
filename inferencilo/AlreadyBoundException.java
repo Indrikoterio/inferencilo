@@ -3,8 +3,8 @@
  *
  * SubstitutionSet error: Tried to bind a bound variable.
  *
+ * @author Cleve (Klivo) Lendon
  * @version 1.0
- * @author Klivo
  */
 
 package inferencilo;
