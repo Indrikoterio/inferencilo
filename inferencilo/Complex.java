@@ -13,7 +13,7 @@
  * with a $ sign: owner($X, house)
  * This is to allow for upper case constants: owner(John, house).
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
