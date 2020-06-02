@@ -3,7 +3,7 @@
  *
  * Test the unify predicate ($X = $Y).
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
