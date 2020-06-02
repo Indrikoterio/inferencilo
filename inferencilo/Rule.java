@@ -131,7 +131,7 @@ public class Rule implements Expression {
    /**
     * standardizeVariablesApart()
     *
-    * Refer to class Expression for full comments.
+    * Refer to Expression interface for full comments.
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
 
