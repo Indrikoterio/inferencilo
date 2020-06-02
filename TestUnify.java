@@ -47,7 +47,7 @@ public class TestUnify {
 
       );
 
-      System.out.print("Test Unify: ");
+      System.out.print("Test Unify success: ");
 
       /*
       Prolog equivalent of unify_goal rule:
