@@ -5,7 +5,7 @@
  * Note: A constant can begin with a capital letter.
  *       A variable must be prefixed with '$'.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -45,8 +45,7 @@ public class TestBackChaining {
                               "ancestor(Charles, Audrey)"};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
-
    }
-}
+} // TestBackChaining
 
 
