@@ -303,8 +303,7 @@ public class Complex implements Unifiable, Goal {
    public SolutionNode getSolver(KnowledgeBase knowledge,
                                  SubstitutionSet parentSolution,
                                  SolutionNode parentNode) {
-      return new ComplexSolutionNode(this, knowledge,
-                                     parentSolution, parentNode);
+      return new ComplexSolutionNode(this, knowledge, parentSolution, parentNode);
    }
 
 }
