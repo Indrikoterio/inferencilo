@@ -46,7 +46,7 @@ public interface Expression {
     * When called a second time, the $X must be unique, different from the
     * variable which was bound in the first call.
     * Every time a rule is fetched from the knowledge base, the variables must
-    * be recreated (standarized).
+    * be recreated (standardized).
     * A variable is uniquely identified by its print name and id number.
     * For example, the $X for the first call might become '$X_22', and the $X
     * in the second call might become '$X_23', etc.
