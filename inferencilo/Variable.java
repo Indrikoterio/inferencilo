@@ -118,7 +118,7 @@ public class Variable implements Unifiable {
    /**
     * standardizeVariablesApart()
     *
-    * Refer to class Expression for full comments.
+    * Refer to Expression interface for full comments.
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
       // Check if the expression already has a substitute variable.
