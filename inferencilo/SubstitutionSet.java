@@ -3,7 +3,7 @@
  *
  * A dictionary (hash) of bindings of logic Variables.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -37,8 +37,8 @@ public class SubstitutionSet {
     * Binds a variable to an expression.
     * The variable becomes the key the binding dictionary (hash).
     *
-    * @param  variable
-    * @param  unifiable expression
+    * @param  Variable
+    * @param  Unifiable expression
     * @throws AlreadyBoundException
     */
    public void add(Variable v, Unifiable e) throws AlreadyBoundException {
