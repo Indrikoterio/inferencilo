@@ -31,7 +31,7 @@ public class TestUnify {
                   new Complex("job(programmer, $Z)"),
                   new Complex("job($Y, janitor)")
                ),
-               new Unify(Var.get("$W"), Var.get("$X")),
+               new Unify(VarCache.get("$W"), VarCache.get("$X")),
                new Complex("job($W)")
             )
          ),
@@ -39,9 +39,9 @@ public class TestUnify {
          new Rule(
             new Complex("second_goal($Y)"),
             new And(
-               new Unify(Var.get("$X"), up),
-               new Unify(Var.get("$Y"), down),
-               new Unify(Var.get("$X"), Var.get("$Y"))
+               new Unify(VarCache.get("$X"), up),
+               new Unify(VarCache.get("$Y"), down),
+               new Unify(VarCache.get("$X"), VarCache.get("$Y"))
             )
          )
 
