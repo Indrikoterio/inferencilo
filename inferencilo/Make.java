@@ -4,7 +4,7 @@
  * Factory for generating Unifiable terms from strings.
  * Use thusly:  Make.term("[1, 2, 3]")
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
