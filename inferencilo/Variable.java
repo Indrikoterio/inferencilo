@@ -108,8 +108,7 @@ public class Variable implements Unifiable {
     */
    public Expression replaceVariables(SubstitutionSet ss) {
       if (ss.isBound(this)) {
-         Expression s2 = ss.getBinding(this).replaceVariables(ss);
-         return s2;
+         return ss.getBinding(this).replaceVariables(ss);
       }
       else return this;
    }
