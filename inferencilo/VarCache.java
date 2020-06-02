@@ -1,10 +1,21 @@
 /**
- * Var  (A cache of logic Variables)
+ * VarCache
  *
- * This class is a hashmap of logic Variables. Variables are keyed by
- * the variable name, eg. $X, $Y.
+ * This class is a cache of logic Variables.
  *
- * @author  Klivo
+ * Why is this necessary? Consider this rule:
+ *
+ * grandfather($X, $Y) :- father($X, $Z), father($Z, $Y).
+ *
+ * The complex terms for 'father' can be implemented in Java as:
+ *    new Complex("father($X, $Z)")
+ * and
+ *    new Complex("father($Z, $Y)")
+ * The class Complex will create the variable $Z in the first
+ * instantiation, and save it in VarCache. The second instantiation
+ * must use the same Variable. It gets this from VarCache.
+ *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -12,20 +23,20 @@ package inferencilo;
 
 import java.util.*;
 
-public class Var {
+public class VarCache {
 
    private static HashMap<String, Variable> variables = new HashMap<>();
 
    /**
     * get  (= set)
     *
-    * Gets a logic Variable from the 'variables' cache. If the Variable is
-    * not found in the hash, create it, store it and return it.
+    * Gets a logic Variable from the 'variables' cache. If the Variable
+    * is not found in the cache, create it, store it and return it.
     *
     * This function is equivalent to set().
     *
-    * @param variable as string
-    * @return  Variable object.
+    * @param  variable as string
+    * @return Variable object.
     */
    public static Variable get(String str) {
       Variable v = variables.get(str);
@@ -41,7 +52,7 @@ public class Var {
     * showEntries
     *
     * This method is for debugging purposes.
-    * It outputs all keys in the cache hashmap.
+    * It outputs all entries in the variable cache.
     */
    public static void showEntries() {
       System.out.println("---------- Variable Cache ----------");
@@ -51,4 +62,5 @@ public class Var {
       }
       System.out.println("------------------------------------");
    }
-}
+
+}  // VarCache
