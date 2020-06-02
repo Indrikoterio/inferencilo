@@ -21,7 +21,7 @@
  *
  *  Out = noun_phrase(the blue sky)
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
