@@ -80,8 +80,7 @@ public class TestUnify {
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
-
    }
-}
+} // TestUnify
 
 
