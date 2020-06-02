@@ -3,6 +3,11 @@
  *
  * A logical variable, which can be bound or unbound.
  *
+ * Prolog variables are strings which begin with a capital letter, eg. X, Y, Noun.
+ * In this inference engine, a Variable begins with a dollar sign and a letter:
+ * $X, $Y, $Noun. This was done so that Constants which begin with a capital
+ * letter do not have to be put inside quote marks. (Harold, instead of "Harold".)
+ *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
@@ -46,7 +51,7 @@ public class Variable implements Unifiable {
    /**
     * toString
     *
-    * Produces a string representation by combining name + _ + ID.
+    * Produces a string representation by combining name and ID.
     * For example: $X_237
     *
     * @return  string representation
@@ -58,22 +63,22 @@ public class Variable implements Unifiable {
     *
     * @return  name of variable
     */
-   public String name() { return name; }
+   protected String name() { return name; }
 
 
    /**
     * unify
     *
-    * Unify this variable with another unifiable expression.
-    * See class Unifiable for details.
+    * Unifies this variable with another unifiable expression.
+    * See Unifiable interface for details.
     *
-    * @param  other unifiable
+    * @param  other unifiable term
     * @param  substitution set
-    * @return new substitution set
+    * @return  new substitution set
     */
    public SubstitutionSet unify(Unifiable other, SubstitutionSet ss) {
 
-      if (this == other) return ss; // Variable unifies with itself.
+      if (this == other) return ss; // A variable unifies with itself.
 
       // The unify method of a function evaluates the function,
       // so if the other expression is a function, call its unify method.
@@ -123,6 +128,6 @@ public class Variable implements Unifiable {
          newVars.put(this, newVar);
       }
       return newVar;
-   }
+   }  // standardizeVariablesApart
 
 }  // Variable
