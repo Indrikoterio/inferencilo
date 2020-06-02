@@ -7,11 +7,11 @@
  * This class represents a complex term, which consists of
  * a functor plus one or more arguments (unifiable terms).
  * Format:  functor(argument1, argument2)
- * Example: owner(john, house), owner(X, house)
+ * Example: owns(john, house), owns($X, house)
  *
  * Also note: In this inference engine, a variable is defined
  * with a $ sign: owner($X, house)
- * This is to allow for upper case constants: owner(John, house).
+ * This is to allow for upper case constants: owns(John, house).
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -25,19 +25,6 @@ public class Complex implements Unifiable, Goal {
 
    private Unifiable[] terms;
    private String functor;
-
-   /**
-    * constructor
-    *
-    * @param  functor name as constant
-    * @param  unifiable arguments
-    */
-   public Complex(Constant functor, Unifiable... args) {
-      this.terms = new Unifiable[args.length + 1];
-      this.functor = "" + functor;
-      terms[0] = functor;
-      System.arraycopy(args, 0, terms, 1, args.length);
-   }
 
    /**
     * constructor
@@ -75,7 +62,7 @@ public class Complex implements Unifiable, Goal {
          return;
       }
 
-      if (parenthesis1 < 1 || parenthesis2 < parenthesis1 + 1) {
+      if (parenthesis1 < 1 || parenthesis2 < parenthesis1) {
          System.out.println("Oh no! Invalid complex term: " + s);
       }
 
@@ -108,8 +95,7 @@ public class Complex implements Unifiable, Goal {
             String term = arguments.substring(startIndex, argLength);
             Make.addTerm(term, terms, termIndex++);
       }
-
-   }
+   } // constructor
 
 
    /**
@@ -129,7 +115,7 @@ public class Complex implements Unifiable, Goal {
     * Produces the Prolog form for readability.
     * Eg. "boss(carl, jim)"
     *
-    * @return  String in Prolog format.
+    * @return  Prolog format (String).
     */
    public String toString() {
 
@@ -150,14 +136,22 @@ public class Complex implements Unifiable, Goal {
    }
 
    /**
-    * length = number of terms
+    * length
+    *
+    * Returns the number of terms, including the functor.
+    *
+    * @return number of terms
     */
    public int length() { return terms.length; }
 
+
    /**
     * arity
+    *
     * terms = [functor, term1, term2, term3]
     * Arity = number of terms - 1
+    *
+    * @return  arity
     */
    public int arity() { return terms.length - 1; }
 
@@ -171,12 +165,23 @@ public class Complex implements Unifiable, Goal {
     */
    public String functor() { return functor; }
 
-   public void setFunctor(String f) { functor = f; }
-
+   /**
+    * getTerm
+    *
+    * Returns a term according to index.
+    *
+    * @param  index into terms
+    * @return a unifiable term
+    */
    public Unifiable getTerm(int index) { return terms[index]; }
 
-   public void setTerms(Unifiable[] terms) { this.terms = terms; }
-
+   /**
+    * getTerms
+    *
+    * Returns all terms as an array of Unifiable.
+    *
+    * @return array of terms
+    */
    public Unifiable[] getTerms() { return terms; }
 
    /**
