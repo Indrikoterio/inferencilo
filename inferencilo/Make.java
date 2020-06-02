@@ -75,7 +75,7 @@ public class Make {
             terms[index] = Anon.anon;
          }
          else {
-            terms[index] = Var.get(strTerm);
+            terms[index] = VarCache.get(strTerm);
          }
       }
       else if (isComplex(strTerm)) {
@@ -142,7 +142,7 @@ public class Make {
       // Return a variable.
       if (s.startsWith("$") && len > 1) {
          if (s.charAt(1) == '_') return Anon.anon;
-         else return Var.get(s);
+         else return VarCache.get(s);
       }
 
       // Escape for commas: \,
