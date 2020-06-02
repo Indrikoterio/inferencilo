@@ -17,9 +17,9 @@ public class Var {
    private static HashMap<String, Variable> variables = new HashMap<>();
 
    /**
-    * get
+    * get  (= set)
     *
-    * Gets a logic Variable from the 'variables' hashmap. If the Variable is
+    * Gets a logic Variable from the 'variables' cache. If the Variable is
     * not found in the hash, create it, store it and return it.
     *
     * This function is equivalent to set().
@@ -34,6 +34,21 @@ public class Var {
          variables.put(str, v);
       }
       return v;
-   }
+   } // get
 
+
+   /**
+    * showEntries
+    *
+    * This method is for debugging purposes.
+    * It outputs all keys in the cache hashmap.
+    */
+   public static void showEntries() {
+      System.out.println("---------- Variable Cache ----------");
+      for (String key : variables.keySet()) {
+         Variable v = variables.get(key);
+         System.out.println("" + v);
+      }
+      System.out.println("------------------------------------");
+   }
 }
