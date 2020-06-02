@@ -3,6 +3,9 @@
 javac TestConstant.java
 java TestConstant
 
+javac TestUnify.java
+java TestUnify
+
 javac TestBackChaining.java
 java TestBackChaining
 
@@ -14,9 +17,6 @@ java TestNot
 
 javac TestCut.java
 java TestCut
-
-javac TestUnify.java
-java TestUnify
 
 javac TestFunctor.java
 java TestFunctor
