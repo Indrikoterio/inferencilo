@@ -5,7 +5,7 @@
  *
  * Useful reference: https://swish.swi-prolog.org/
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -71,7 +71,7 @@ public class TestParse {
       kb.addRule(r3);
 
       System.out.print("Test Parse: ");
-      Complex goal = new Complex(new Constant("convert_words"), plist, Var.get("$X"));
+      Complex goal = new Complex(new Constant("convert_words"), plist, VarCache.get("$X"));
 
       try {
          String[] expected = {
@@ -82,7 +82,7 @@ public class TestParse {
          Solutions.verifyAll(goal, kb, expected, 2);
       } catch (TimeOverrunException tox) { }
 
-      //Complex goal = new Complex(new Constant("quicktest"), Var.get("$X"), plist);
+      //Complex goal = new Complex(new Constant("quicktest"), VarCache.get("$X"), plist);
       //Complex goal = new Complex(new Constant("list_test"), PList.make("[a | $F]"));
 
 /*
