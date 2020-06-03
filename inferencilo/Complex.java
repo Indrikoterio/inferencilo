@@ -80,7 +80,7 @@ public class Complex implements Unifiable, Goal {
       int argLength = arguments.length();
 
       terms = new Unifiable[Make.countArguments(arguments) + 1];
-      functor = str.substring(0, parenthesis1);
+      functor = s.substring(0, parenthesis1);
       terms[0] = new Constant(functor);
 
       int startIndex = 0;
