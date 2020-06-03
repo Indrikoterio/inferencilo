@@ -70,7 +70,7 @@ public class Make {
     * @return  true or false
     */
    private static boolean isNot(String str) {
-      String s + str.trim().toLower();
+      String s = str.trim().toLowerCase();
       if (s.startsWith("not(")) return true;
       return false;
    }
@@ -243,7 +243,14 @@ public class Make {
     * @param  operand list
     */
    private static void addOperand(String subgoal, ArrayList<Goal> operands) {
-      if (subgoal.indexOf('=') > 0) {
+      if (isNot(subgoal)) {   // detect 'Not' operator
+         // Trim the not() operand away.
+         subgoal = subgoal.substring(4);
+         int len = subgoal.length();
+         subgoal = subgoal.substring(0, len - 1);
+         operands.add(new Not(subgoal));
+      }
+      else if (subgoal.indexOf('=') > 0) {
          operands.add(new Unify(subgoal));
       }
       else {
