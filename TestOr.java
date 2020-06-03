@@ -3,7 +3,7 @@
  *
  * Tests the inference engine.
  *
- * @author   Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -12,7 +12,7 @@ import inferencilo.*;
 
 public class TestOr {
 
-   public static void main(String[] args) {         // Set up the knowledge base.
+   public static void main(String[] args) {    // Set up the knowledge base.
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("father(George, Frank)")),
@@ -55,12 +55,13 @@ public class TestOr {
       try {
          Complex goal = new Complex("relative($X, Marcus)");
          String[] expected = {
-            "relative(George, Marcus)", "relative(George, Marcus)", "relative(Frank, Marcus)", "relative(Maria, Marcus)"
+            "relative(George, Marcus)", "relative(George, Marcus)",
+            "relative(Frank, Marcus)", "relative(Maria, Marcus)"
          };
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
    }
-}
+}  // TestOr
 
 
