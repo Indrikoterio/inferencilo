@@ -124,6 +124,7 @@ public class Solutions {
 
       if (count != expected.length) {
          System.out.println(">>>>>>>> Not enough solutions.");
+         System.out.println("count = " + count + "  expected = " + expected.length);
       }
 
       System.out.print("\n");
