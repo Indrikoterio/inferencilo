@@ -17,9 +17,17 @@ public class NotSolutionNode extends SolutionNode {
    private Goal operand;
    private SubstitutionSet parentSolution;
 
+   /**
+    * constructor
+    *
+    * @param  goal
+    * @param  knowledge base
+    * @param  parent solution
+    * @param  parent node
+    */
    public NotSolutionNode(Not goal, KnowledgeBase kb,
-                         SubstitutionSet parentSolution,
-                         SolutionNode parentNode) {
+                          SubstitutionSet parentSolution,
+                          SolutionNode parentNode) {
       super(goal, kb, parentSolution, parentNode);
       operand = goal.getOperand();
       solutionNode = operand.getSolver(kb, parentSolution, this);
@@ -37,7 +45,9 @@ public class NotSolutionNode extends SolutionNode {
       if (parentSolution == null) return null;
 
       if (operand instanceof Complex) {
+
          Unifiable[] terms = ((Complex)operand).getTerms();
+
          for (Unifiable term : terms) {
             if (term instanceof Variable) {
                if (!parentSolution.isGround((Variable)term)) {
@@ -60,4 +70,4 @@ public class NotSolutionNode extends SolutionNode {
       }
    }
 
-}
+}  // NotSolutionNode
