@@ -244,11 +244,11 @@ public class Make {
     */
    private static void addOperand(String subgoal, ArrayList<Goal> operands) {
       if (isNot(subgoal)) {   // detect 'Not' operator
-         // Trim the not() operand away.
+         // Trim the not() away to get the operand.
          subgoal = subgoal.substring(4);
          int len = subgoal.length();
          subgoal = subgoal.substring(0, len - 1);
-         operands.add(new Not(subgoal));
+         operands.add(new Not((Goal)Make.term(subgoal)));
       }
       else if (subgoal.indexOf('=') > 0) {
          operands.add(new Unify(subgoal));
