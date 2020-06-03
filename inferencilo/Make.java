@@ -197,12 +197,49 @@ public class Make {
     *
     * @param  string form
     * @return And operator
-    * @throws InvalidConjunctionException
     */
-   public static Operator and(String str) {
+   public static And and(String str) {
+      return new And(getOperands(str, ',', ";\"\\<>#@"));
+   }
+
+   /**
+    * or
+    *
+    * A factory method to produce a logical Or operator from a string.
+    * In Prolog, logical Or is represented by a semicolon in the body of
+    * a rule. Eg. "father(richard, X); mother(mary, X)"
+    *
+    * @param  string form
+    * @return And operator
+    */
+   public static Or or(String str) {
+      return new Or(getOperands(str, ';', ",\"\\<>#@"));
+   }
+
+
+   /*
+    * getOperands
+    *
+    * Collects operands for a logical operator from a string.
+    * In Prolog, the logical operator And is represented by a comma,
+    * and logical Or is represented by a semicolon in the body of
+    * a rule. Eg.
+    *    "article('The'), adj(A), noun(N), verb(V)"   (And)
+    *    "father(richard, X); mother(mary, X)"   (Or)
+    *
+    * This method will parse the string to collect operands, which
+    * are then used to create the operator (And/Or).
+    *
+    * @param  string form
+    * @param  separator (char)
+    * @param  invalid characters (String)
+    * @return operands (goals)
+    * @throws InvalidOperatorException
+    */
+   private static ArrayList<Goal> getOperands(String str, char separator, String invalid) {
 
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidConjunctionException(s);
+      if (s.length() < 1) throw new InvalidOperatorException(s);
       ArrayList<Goal> operands = new ArrayList<Goal>();
 
       int startIndex = 0;
@@ -218,8 +255,8 @@ public class Make {
          else if (ch == ')') roundDepth--;
          else if (ch == '\\') i++;   // For comma escapes, eg. \,
          // Can't allow Or operator (;) here.
-         else if (ch == ';') throw new InvalidConjunctionException(s);
-         else if (ch == ',' && roundDepth == 0 && squareDepth == 0) {
+         else if (invalid.indexOf(ch) > -1) throw new InvalidOperatorException(s);
+         else if (ch == separator && roundDepth == 0 && squareDepth == 0) {
             String subgoal = s.substring(startIndex, i);
             operands.add(new Complex(subgoal));
             startIndex = i + 1;
@@ -232,9 +269,8 @@ public class Make {
 
       // For debugging.
       //for (Goal g : operands) System.out.println(g);
+      return operands;
 
-      return new And(operands);
-
-   } // and
+   } // getOperands
 
 } // Make
