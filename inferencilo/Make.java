@@ -230,6 +230,9 @@ public class Make {
          operands.add(new Complex(subgoal));
       }
 
+      // For debugging.
+      //for (Goal g : operands) System.out.println(g);
+
       return new And(operands);
 
    } // and
