@@ -43,7 +43,7 @@ public class TestAndOr {
          )
       );
 
-      System.out.print("Test Or: ");
+      System.out.print("Test And/Or: ");
 
       try {
          // Define goal and root of search space.
