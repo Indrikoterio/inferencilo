@@ -6,7 +6,7 @@
  * Reference:
  * http://www.dai.ed.ac.uk/groups/ssp/bookpages/quickprolog/node12.html
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -24,6 +24,11 @@ public class UnifySolutionNode extends SolutionNode {
       uni = goal;
    }
 
+   /**
+    * nextSolution
+    *
+    * @return  new substitution set
+    */
    public SubstitutionSet nextSolution() {
 
       if (noBackChaining()) { return null; }
