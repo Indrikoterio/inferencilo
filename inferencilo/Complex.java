@@ -36,7 +36,7 @@ public class Complex implements Unifiable, Goal {
     */
    public Complex(Unifiable... args) throws InvalidFunctorException {
       if (!(args[0] instanceof Constant)) {
-         throw new InvalidFunctorException();
+         throw new InvalidFunctorException("" + args[0]);
       }
       terms = args;
       functor = "" + terms[0];
@@ -57,9 +57,9 @@ public class Complex implements Unifiable, Goal {
    public Complex(String str) throws InvalidFunctorException {
 
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidFunctorException();
+      if (s.length() < 1) throw new InvalidFunctorException(s);
       char first = s.charAt(0);
-      if (first == '$') throw new InvalidFunctorException();
+      if (first == '$') throw new InvalidFunctorException(s);
 
       int parenthesis1 = s.indexOf('(');
       int parenthesis2 = s.lastIndexOf(')');
@@ -89,21 +89,21 @@ public class Complex implements Unifiable, Goal {
       int termIndex = 1;
 
       for (int i = startIndex; i < argLength; i++) {
-            char ch = arguments.charAt(i);
-            if (ch == '[') squareDepth++;
-            else if (ch == ']') squareDepth--;
-            else if (ch == '(') roundDepth++;
-            else if (ch == ')') roundDepth--;
-            else if (ch == '\\') i++;   // For comma escapes, eg. \,
-            else if (ch == ',' && roundDepth == 0 && squareDepth == 0) {
-               String term = arguments.substring(startIndex, i);
-               Make.addTerm(term, terms, termIndex++);
-               startIndex = i + 1;
-            }
-      }
-      if (argLength - startIndex > 1) {
-            String term = arguments.substring(startIndex, argLength);
+         char ch = arguments.charAt(i);
+         if (ch == '[') squareDepth++;
+         else if (ch == ']') squareDepth--;
+         else if (ch == '(') roundDepth++;
+         else if (ch == ')') roundDepth--;
+         else if (ch == '\\') i++;   // For comma escapes, eg. \,
+         else if (ch == ',' && roundDepth == 0 && squareDepth == 0) {
+            String term = arguments.substring(startIndex, i);
             Make.addTerm(term, terms, termIndex++);
+            startIndex = i + 1;
+         }
+      }
+      if (argLength - startIndex > 0) {
+         String term = arguments.substring(startIndex, argLength);
+         Make.addTerm(term, terms, termIndex++);
       }
    } // constructor
 
