@@ -3,14 +3,17 @@
 javac TestConstant.java
 java TestConstant
 
+javac TestAndOr.java
+java TestAndOr
+
+javac TestMake.java
+java TestMake
+
 javac TestUnify.java
 java TestUnify
 
 javac TestBackChaining.java
 java TestBackChaining
-
-javac TestAndOr.java
-java TestAndOr
 
 javac TestNot.java
 java TestNot
