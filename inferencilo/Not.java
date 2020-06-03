@@ -1,12 +1,13 @@
 /**
  * Not
  *
- * Defines logical 'Not' operator.
- * This operator only accepts one operand. Eg. not(father(X, Y))
+ * In Prolog, the operator Not means 'currently not provable'.
+ * This operator only accepts one operand. Eg. not(father(jonathan, _))
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
+
 
 package inferencilo;
 
@@ -21,7 +22,7 @@ public class Not extends Operator implements Goal {
     */
    public Not(Goal... operands) {
       super(operands);
-      //if (operands.length != 1) throw new TooManyOperandsException();
+      if (operands.length != 1) throw new TooManyOperandsException();
    }
 
    /**
@@ -31,7 +32,7 @@ public class Not extends Operator implements Goal {
     */
    public Not(ArrayList<Goal> operands) {
       super(operands);
-      //if (operands.size() != 1) throw new TooManyOperandsException();
+      if (operands.size() != 1) throw new TooManyOperandsException();
    }
 
    /**
