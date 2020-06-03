@@ -35,10 +35,10 @@ public class Unify extends Operator implements Goal {
     * The string parameter is parsed. For example, the input
     * "$X = $Y" is used to construct two variables: $X and $Y.
     *
-    * @param string
+    * @param terms  ($X = $Y)
     */
-   public Unify(String str) {
-      String[] arguments = str.split("=");
+   public Unify(String terms) {
+      String[] arguments = terms.split("=");
       if (arguments.length == 2) {
          term1 = Make.term(arguments[0]);
          term2 = Make.term(arguments[1]);
