@@ -61,11 +61,11 @@ public class TestParse {
                          );
       Rule r3 = new Rule("convert_words([$H | $T], [$H | $T2])",
                             new And(
+                               //new Not(new Unify(VarCache.get("$H"), new Complex("word(after)"))),
                                new Not(new Unify("$H = word(after)")),
                                new Complex("convert_words($T, $T2)")
                             )
                          );
-
       kb.addRule(r1);
       kb.addRule(r2);
       kb.addRule(r3);
