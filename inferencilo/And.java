@@ -1,8 +1,9 @@
 /**
  * And
  *
- * Defines logical 'And' operator.
+ * Defines a logical 'And' operator (Conjunction).
  *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -12,17 +13,39 @@ import java.util.*;
 
 public class And extends Operator implements Goal {
 
+   /**
+    * constructor
+    *
+    * @param  operands
+    */
    public And(Goal... operands) {
       super(operands);
    }
 
+   /**
+    * constructor
+    *
+    * @param  array of operands
+    */
    public And(ArrayList<Goal> operands) {
       super(operands);
    }
 
+
+   /**
+    * getSolver
+    *
+    * Returns a solution node for this predicate.
+    * This method satisfies the goal interface.
+    *
+    * @param  knowledge base
+    * @param  parent solution set
+    * @param  parent solution node
+    * @return solution node
+    */
    public SolutionNode getSolver(KnowledgeBase knowledge,
-                                         SubstitutionSet parentSolution,
-                                         SolutionNode parentNode) {
+                                 SubstitutionSet parentSolution,
+                                 SolutionNode parentNode) {
       return new AndSolutionNode(this, knowledge, parentSolution, parentNode);
 
    }
@@ -37,6 +60,11 @@ public class And extends Operator implements Goal {
       return new And(al);
    };
 
+   /**
+    * toString
+    *
+    * @return string representation
+    */
    public String toString() {
       return " AND " + operandString();
    }
