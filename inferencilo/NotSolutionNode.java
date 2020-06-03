@@ -3,7 +3,7 @@
  *
  * Note: A Not only works if there are no unbound variables.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -21,7 +21,7 @@ public class NotSolutionNode extends SolutionNode {
                          SubstitutionSet parentSolution,
                          SolutionNode parentNode) {
       super(goal, kb, parentSolution, parentNode);
-      operand = goal.getFirstOperand();
+      operand = goal.getOperand();
       solutionNode = operand.getSolver(kb, parentSolution, this);
       this.parentSolution = parentSolution;
    }
