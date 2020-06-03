@@ -9,8 +9,8 @@ java TestUnify
 javac TestBackChaining.java
 java TestBackChaining
 
-javac TestOr.java
-java TestOr
+javac TestAndOr.java
+java TestAndOr
 
 javac TestNot.java
 java TestNot

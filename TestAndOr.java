@@ -1,7 +1,7 @@
 /**
- * TestOr
+ * TestAndOr
  *
- * Tests the inference engine.
+ * Tests the And and Or operators of the inference engine.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -10,7 +10,7 @@
 import java.util.*;
 import inferencilo.*;
 
-public class TestOr {
+public class TestAndOr {
 
    public static void main(String[] args) {    // Set up the knowledge base.
 
@@ -48,11 +48,10 @@ public class TestOr {
          )
       );
 
-      // Define goal and root of search space.
-
       System.out.print("Test Or: ");
 
       try {
+         // Define goal and root of search space.
          Complex goal = new Complex("relative($X, Marcus)");
          String[] expected = {
             "relative(George, Marcus)", "relative(George, Marcus)",
@@ -62,6 +61,4 @@ public class TestOr {
       } catch (TimeOverrunException tox) { }
 
    }
-}  // TestOr
-
-
+}  // TestAndOr
