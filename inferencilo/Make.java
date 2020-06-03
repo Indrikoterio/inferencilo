@@ -199,7 +199,7 @@ public class Make {
     * @return And operator
     */
    public static And and(String str) {
-      return new And(getOperands(str, ',', ";\"\\<>#@"));
+      return new And(getOperands(str, ',', ";\"<>#@"));
    }
 
    /**
@@ -213,7 +213,7 @@ public class Make {
     * @return And operator
     */
    public static Or or(String str) {
-      return new Or(getOperands(str, ';', ",\"\\<>#@"));
+      return new Or(getOperands(str, ';', ",\"<>#@"));
    }
 
 
@@ -254,8 +254,10 @@ public class Make {
          else if (ch == '(') roundDepth++;
          else if (ch == ')') roundDepth--;
          else if (ch == '\\') i++;   // For comma escapes, eg. \,
-         // Can't allow Or operator (;) here.
-         else if (invalid.indexOf(ch) > -1) throw new InvalidOperatorException(s);
+         // Check for invalid chars between goals.
+         else if (roundDepth == 0 &&
+                  squareDepth == 0 && invalid.indexOf(ch) > -1)
+                  throw new InvalidOperatorException(s);
          else if (ch == separator && roundDepth == 0 && squareDepth == 0) {
             String subgoal = s.substring(startIndex, i);
             operands.add(new Complex(subgoal));
