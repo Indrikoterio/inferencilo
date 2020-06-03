@@ -60,8 +60,8 @@ public class Unify extends Operator implements Goal {
     * @return solution node
     */
    public SolutionNode getSolver(KnowledgeBase knowledge,
-                                         SubstitutionSet parentSolution,
-                                         SolutionNode parentNode) {
+                                 SubstitutionSet parentSolution,
+                                 SolutionNode parentNode) {
       return new UnifySolutionNode(this, knowledge, parentSolution, parentNode);
    }
 
