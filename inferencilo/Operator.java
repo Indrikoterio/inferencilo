@@ -4,7 +4,7 @@
  * Base class for 'and', 'or', 'not', etc.
  * Defines methods for accessing the operands of operators.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -176,4 +176,4 @@ public abstract class Operator implements Goal {
       return result;
    }
 
-}
+} // Operator
