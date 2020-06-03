@@ -218,6 +218,26 @@ public class Make {
 
 
    /*
+    * addOperand
+    *
+    * This function examines a string which represents an operand
+    * (subgoal), creates its corresponding object, then adds it
+    * to the list of operands.
+    *
+    * @param  operand (String)
+    * @param  operand list
+    */
+   private static void addOperand(String subgoal, ArrayList<Goal> operands) {
+      if (subgoal.indexOf('=') > 0) {
+         operands.add(new Unify(subgoal));
+      }
+      else {
+         operands.add(new Complex(subgoal));
+      }
+   } // addOperand
+
+
+   /*
     * getOperands
     *
     * Collects operands for a logical operator from a string.
@@ -260,13 +280,13 @@ public class Make {
                   throw new InvalidOperatorException(s);
          else if (ch == separator && roundDepth == 0 && squareDepth == 0) {
             String subgoal = s.substring(startIndex, i);
-            operands.add(new Complex(subgoal));
+            addOperand(subgoal, operands);
             startIndex = i + 1;
          }
       }
       if (s.length() - startIndex > 0) {
          String subgoal = s.substring(startIndex, s.length());
-         operands.add(new Complex(subgoal));
+         addOperand(subgoal, operands);
       }
 
       // For debugging.
