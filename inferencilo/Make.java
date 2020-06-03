@@ -60,6 +60,21 @@ public class Make {
       return false;
    }
 
+   /*
+    * isNot
+    *
+    * Determines whether the string represents the not operator.
+    * Eg.:  not(father(albert, $X))
+    *
+    * @param   string representation of 'not'
+    * @return  true or false
+    */
+   private static boolean isNot(String str) {
+      String s + str.trim().toLower();
+      if (s.startsWith("not(")) return true;
+      return false;
+   }
+
 
    /**
     * addTerm
