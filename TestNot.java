@@ -43,8 +43,8 @@ public class TestNot {
          String[] expected = { "Richard" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
-
    }
-}
+
+} // TestNot
 
 
