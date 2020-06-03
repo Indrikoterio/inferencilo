@@ -11,8 +11,13 @@ package inferencilo;
 
 public class InvalidFunctorException extends RuntimeException {
 
-   public InvalidFunctorException() {
-      super("Invalid functor: Functor must be a Constant.");
+   /**
+    * constructor
+    *
+    * @param  string which caused exception
+    */
+   public InvalidFunctorException(String str) {
+      super("Invalid functor: " + str);
    }
 
 }  // InvalidFunctorException
