@@ -12,8 +12,9 @@ import inferencilo.*;
 
 public class TestAndOr {
 
-   public static void main(String[] args) {    // Set up the knowledge base.
+   public static void main(String[] args) {
 
+      // Set up the knowledge base.
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("father(George, Frank)")),
          new Rule(new Complex("father(George, Sam)")),
@@ -59,6 +60,6 @@ public class TestAndOr {
          };
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
-
    }
+
 }  // TestAndOr
