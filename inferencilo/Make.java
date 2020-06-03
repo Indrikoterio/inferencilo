@@ -1,14 +1,18 @@
 /**
  * Make
  *
- * Factory for generating Unifiable terms from strings.
- * Use thusly:  Make.term("[1, 2, 3]")
+ * Factory for generating Unifiable terms and operands from strings.
+ * Use thusly:
+ *    Make.term("[1, 2, 3]")
+ *    Make.and("mother($X, $Z), mother($Z, $Y)")
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
 package inferencilo;
+
+import java.util.ArrayList;
 
 public class Make {
 
@@ -57,7 +61,7 @@ public class Make {
    }
 
 
-   /*
+   /**
     * addTerm
     *
     * Takes a string representation of a term (constant, variable, list, complex term),
@@ -89,7 +93,7 @@ public class Make {
       }
    }
 
-   /*
+   /**
     * countArguments
     *
     * @param list of comma separated arguments, eg. noun, conj, noun
@@ -124,13 +128,14 @@ public class Make {
    }
 
 
-   /*
+   /**
     * term
     *
     * A factory method to produce a unifiable term from a string.
     *
-    * @param  string representing term, eg.: "noun", "$X", "[1, 2, 3]"
-    * @return   Unifiable object, Constant, Variable, PList etc.
+    * @param   string representing term, eg.: "noun", "$X", "[1, 2, 3]"
+    * @return  Unifiable object, Constant, Variable, PList etc.
+    * @throws  InvalidComplexTermException, InvalidListException
     */
    public static Unifiable term(String str) {
 
@@ -158,19 +163,14 @@ public class Make {
       int bracket2 = s.lastIndexOf("]");
 
       // Complex term, eg:   sentence(subject, verb, object)
-      if (parenthesis1 == 0) {
-         System.out.println("Looks like a bad complex term: " + s);
-         return null;
-      }
+      if (parenthesis1 == 0) throw new InvalidComplexTermException(s);
+
       // Consider:  functor(a, b, [1,2,3]) vs. [a, b, c(1,2,3), d]
       else if (parenthesis1 > 0 && (bracket1 == -1 || parenthesis1 < bracket1)) {
          if (parenthesis2 > parenthesis1) {  // if OK.
             return new Complex(s);
          }
-         else {
-            System.out.println("Nope, bad complex term: " + s);
-            return null;
-         }
+         else throw new InvalidComplexTermException(s);
       }  // Complex terms
 
       // List (PList), eg:   [a, b, c]
@@ -178,12 +178,60 @@ public class Make {
          if (bracket2 > bracket1) {
             return PList.make(s);
          }
-         System.out.println("Ooops, bad list: " + s);
-         return null;
+         throw new InvalidListException(s);
       }  // List
 
       return new Constant(s);
 
    }  // term()
 
-}
+
+   /**
+    * and
+    *
+    * A factory method to produce a logical And operator from a string.
+    * In Prolog, logical And is represented by a comma in the body of
+    * a rule. Eg. "article('The'), adj(A), noun(N), verb(V)"
+    *
+    * Note: I don't intend to make a full parser at this time. Maybe later.
+    *
+    * @param  string form
+    * @return And operator
+    * @throws InvalidConjunctionException
+    */
+   public static Operator and(String str) {
+
+      String s = str.trim();
+      if (s.length() < 1) throw new InvalidConjunctionException(s);
+      ArrayList<Goal> operands = new ArrayList<Goal>();
+
+      int startIndex = 0;
+      int roundDepth = 0;   // depth of round parenthesis (())
+      int squareDepth = 0;   // depth of square brackets [[]]
+
+      // Find comma, if there is one.
+      for (int i = startIndex; i < s.length(); i++) {
+         char ch = s.charAt(i);
+         if (ch == '[') squareDepth++;
+         else if (ch == ']') squareDepth--;
+         else if (ch == '(') roundDepth++;
+         else if (ch == ')') roundDepth--;
+         else if (ch == '\\') i++;   // For comma escapes, eg. \,
+         // Can't allow Or operator (;) here.
+         else if (ch == ';') throw new InvalidConjunctionException(s);
+         else if (ch == ',' && roundDepth == 0 && squareDepth == 0) {
+            String subgoal = s.substring(startIndex, i);
+            operands.add(new Complex(subgoal));
+            startIndex = i + 1;
+         }
+      }
+      if (s.length() - startIndex > 0) {
+         String subgoal = s.substring(startIndex, s.length());
+         operands.add(new Complex(subgoal));
+      }
+
+      return new And(operands);
+
+   } // and
+
+} // Make
