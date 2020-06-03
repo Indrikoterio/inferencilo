@@ -40,11 +40,6 @@ public class TestAndOr {
          new Rule(
             new Complex("grandfather($X, $Y)"),
             new And(new Complex("father($X, $Z)"), new Complex("parent($Z, $Y)"))
-         ),
-         // Again!
-         new Rule(
-            new Complex("grandfather($X, $Y)"),
-            new And(new Complex("father($X, $Z)"), new Complex("parent($Z, $Y)"))
          )
       );
 
@@ -54,8 +49,8 @@ public class TestAndOr {
          // Define goal and root of search space.
          Complex goal = new Complex("relative($X, Marcus)");
          String[] expected = {
-            "relative(George, Marcus)", "relative(George, Marcus)",
-            "relative(Frank, Marcus)", "relative(Maria, Marcus)"
+            "relative(George, Marcus)", "relative(Frank, Marcus)",
+            "relative(Maria, Marcus)"
          };
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
