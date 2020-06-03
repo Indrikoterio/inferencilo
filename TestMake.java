@@ -20,6 +20,8 @@ public class TestMake {
 
       // Set up the knowledge base.
       KnowledgeBase kb = new KnowledgeBase(
+         new Rule(new Complex("song(Cache ta joie)")),
+         new Rule(new Complex("song(Fade to Grey)")),
          new Rule(new Complex("father(George, Frank)")),
          new Rule(new Complex("father(George, Sam)")),
          new Rule(new Complex("mother(Gina, Frank)")),
@@ -47,6 +49,11 @@ public class TestMake {
             new Complex("grandfather($X, $Y)"),
             Make.and("father($X, $Z), parent($Z, $Y)")
             //new And(new Complex("father($X, $Z)"), new Complex("parent($Z, $Y)"))
+         ),
+         new Rule(
+            new Complex("get_song($X)"),
+            Make.and("song($Y), $Y = $X")
+            //new And(new Complex("song($Y)"), new Unify("$Y = $X"))
          )
       );
 
@@ -61,6 +68,15 @@ public class TestMake {
             "relative(Maria, Marcus)"
          };
          Solutions.verifyAll(goal, kb, expected, 0);
+      } catch (TimeOverrunException tox) { }
+
+      System.out.print("Test Make2: ");
+
+      try {
+         // Define goal and root of search space.
+         Complex goal = new Complex("get_song($X)");
+         String[] expected = { "Cache ta joie", "Fade to Grey" };
+         Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
    }
 
