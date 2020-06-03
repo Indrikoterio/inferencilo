@@ -15,24 +15,26 @@ import java.util.*;
 
 public class Not extends Operator implements Goal {
 
-   /**
-    * constructor
-    *
-    * @param  array of goals
-    */
+   private String errorMessage = "Not operator takes only 1 operand.";
+
+    /**
+     * constructor
+     *
+     * @param  array of goals
+     */
    public Not(Goal... operands) {
       super(operands);
-      if (operands.length != 1) throw new TooManyOperandsException();
+      if (operands.length != 1) throw new InvalidOperandException(errorMessage);
    }
 
-   /**
-    * constructor
-    *
-    * @param  arraylist of goals
-    */
+    /**
+     * constructor
+     *
+     * @param  arraylist of goals
+     */
    public Not(ArrayList<Goal> operands) {
       super(operands);
-      if (operands.size() != 1) throw new TooManyOperandsException();
+      if (operands.size() != 1) throw new InvalidOperandException(errorMessage);
    }
 
    /**
@@ -46,8 +48,8 @@ public class Not extends Operator implements Goal {
     * @return solution node
     */
    public SolutionNode getSolver(KnowledgeBase knowledge,
-                                         SubstitutionSet parentSolution,
-                                         SolutionNode parentNode) {
+                                 SubstitutionSet parentSolution,
+                                 SolutionNode parentNode) {
       return new NotSolutionNode(this, knowledge,
                                  parentSolution, parentNode);
    }
@@ -58,12 +60,24 @@ public class Not extends Operator implements Goal {
     *
     * @return copy of this operator
     */
-   public Operator getCopy() {
-      ArrayList<Goal> al = new ArrayList<Goal>();
-      al.add(operands.get(0));
-      return new Not(al);
-   };
+    public Operator getCopy() {
+       return new Not(operands.get(0));
+    };
 
+
+   /**
+    * toString
+    *
+    * @return printable string
+    */
    public String toString() { return " NOT " + operandString(); }
 
-}
+
+   /**
+    * getOperand
+    *
+    * @return operand
+    */
+   public Goal getOperand() { return getFirstOperand(); }
+
+} // Not
