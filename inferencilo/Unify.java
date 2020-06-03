@@ -85,6 +85,11 @@ public class Unify extends Operator implements Goal {
       return new Unify(term1, term2);
    }
 
+   /**
+    * toString
+    *
+    * @return printable string
+    */
    public String toString() { return "" + term1 + " = " + term2; }
 
 }
