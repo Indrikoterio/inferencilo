@@ -49,7 +49,8 @@ public class TestAndOr {
          // Define goal and root of search space.
          Complex goal = new Complex("relative($X, Marcus)");
          String[] expected = {
-            "relative(George, Marcus)", "relative(Frank, Marcus)",
+            "relative(George, Marcus)",
+            "relative(Frank, Marcus)",
             "relative(Maria, Marcus)"
          };
          Solutions.verifyAll(goal, kb, expected, 0);
