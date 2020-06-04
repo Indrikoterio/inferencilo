@@ -232,31 +232,46 @@ public class Make {
    }
 
 
-   /*
+   /**
     * addOperand
     *
-    * This function examines a string which represents an operand
-    * (subgoal), creates its corresponding object, then adds it
-    * to the list of operands.
+    * This function creates a subgoal from a string, then adds
+    * it to the list of operands.
     *
-    * @param  operand (String)
+    * @param  subgoal as string
     * @param  operand list
     */
-   private static void addOperand(String subgoal, ArrayList<Goal> operands) {
-      if (isNot(subgoal)) {   // detect 'Not' operator
+   private static void addOperand(String str, ArrayList<Goal> operands) {
+      Goal subgoal = subgoal(str);
+      if (subgoal != null) operands.add(subgoal);
+   } // addOperand
+
+
+   /**
+    * subgoal
+    *
+    * This function accepts a string which represents a subgoal,
+    * and creates its corresponding object.
+    *
+    * @param  subgoal as String
+    * @param  subgoal as Goal object
+    */
+   public static Goal subgoal(String subgoal) {
+      String s = subgoal.trim();
+      if (isNot(s)) {   // detect 'Not' operator
          // Trim the not() away to get the operand.
-         subgoal = subgoal.substring(4);
-         int len = subgoal.length();
-         subgoal = subgoal.substring(0, len - 1);
-         operands.add(new Not((Goal)Make.term(subgoal)));
+         s = subgoal.substring(4);
+         int len = s.length();
+         s = s.substring(0, len - 1);
+         return new Not((Goal)Make.term(s));
       }
-      else if (subgoal.indexOf('=') > 0) {
-         operands.add(new Unify(subgoal));
+      else if (s.indexOf('=') > 0) {
+         return new Unify(s);
       }
       else {
-         operands.add(new Complex(subgoal));
+         return new Complex(s);
       }
-   } // addOperand
+   } // subgoal
 
 
    /*
