@@ -72,6 +72,22 @@ public class Rule implements Expression {
    }
 
    /**
+    * constructor
+    *
+    * A rule consists of a head term and a tail term.
+    * This construct takes two strings, and converts
+    * them into a rule head and a body goal.
+    *
+    * @param  head (String)
+    * @param  body (String)
+    */
+   public Rule(String str, String body) {
+      this.head = new Complex(str);
+      Tokenizer tok = Tokenizer.getTokenizer();
+      this.body = tok.generateGoal(body);
+   }
+
+   /**
     * getHead
     *
     * @return head term (Complex)
