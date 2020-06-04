@@ -9,7 +9,7 @@
  * a goal.
  *
  * The method replaceVariables() is called when a solution
- * is found. It replaces bound Variables with there Constants
+ * is found. It replaces bound Variables with their Constants
  * in order to display results.
  *
  * @author  Cleve (Klivo) Lendon
