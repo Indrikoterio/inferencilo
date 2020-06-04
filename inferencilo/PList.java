@@ -4,7 +4,7 @@
  * Represents a Prolog list. Eg.:
  *     [a, b, c], [X, Y, Z], [X, Y | Z]
  *
- * It's called PList to avoid confusion with a Java List.
+ * It's called PList to avoid confusion with Java Lists.
  *
  * Note: Prolog Lists are recursive structures.
  * [a, b, c] is a representation of [a [b [c]]]
