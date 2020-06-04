@@ -259,7 +259,8 @@ public class Complex implements Unifiable, Goal {
    /**
     * replaceVariables
     *
-    * Refer to Expression for full comments.
+    * Replaces bound Variables with their Constants in order to
+    * display results.
     *
     * @param   substitution set
     * @return  new expression, without variables
@@ -275,7 +276,10 @@ public class Complex implements Unifiable, Goal {
    /**
     * standardizeVariablesApart()
     *
-    * Refer to Expression interface for full comments.
+    * Creates unique variables when the inference engine tries to solve a goal.
+    *
+    * @param   hash table previously standardized variables
+    * @return  expression with standardized variables
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
       Unifiable[] newTerms = new Unifiable[terms.length];
