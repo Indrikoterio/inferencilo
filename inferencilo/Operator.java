@@ -1,8 +1,8 @@
 /**
  * Operator
  *
- * Base class for 'and', 'or', 'not', etc.
- * Defines methods for accessing the operands of operators.
+ * Base class for And, Or, Not operators, etc.
+ * Defines methods for accessing the operands.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -14,12 +14,12 @@ import java.util.*;
 
 public abstract class Operator implements Goal {
 
-   protected ArrayList<Goal> operands;
+   private ArrayList<Goal> operands;
 
    /**
     * constructor
     *
-    * @param operands
+    * @param list of operands
     */
    public Operator(Goal... operands) {
       this.operands = new ArrayList<Goal>(Arrays.asList(operands));
@@ -28,7 +28,7 @@ public abstract class Operator implements Goal {
    /**
     * constructor
     *
-    * @param arraylist of operands
+    * @param list of operands
     */
    public Operator(ArrayList<Goal> operands) {
       this.operands = operands;
@@ -41,38 +41,10 @@ public abstract class Operator implements Goal {
     */
    abstract public Operator getCopy();
 
-
-   /**
-    * setOperands
-    *
-    * @param  array list of operands
-    */
-   public void setOperands(ArrayList<Goal> operands) {
-      this.operands = operands;
-   }
-
-   /**
-    * getOperands
-    *
-    * @return  array list of operands
-    */
-   public ArrayList<Goal> getOperands() {
-      return operands;
-   }
-
-   /**
-    * operandCount
-    *
-    * @return number of operands
-    */
-   public int operandCount() {
-      return operands.size();
-   }
-
    /**
     * getOperand
     *
-    * For getting a specific operand.
+    * Gets a specific operand.
     *
     * @param  index of operand
     * @return operand (Goal)
@@ -82,9 +54,18 @@ public abstract class Operator implements Goal {
    }
 
    /**
+    * getOperands
+    *
+    * @return all operands
+    */
+   public ArrayList<Goal> getOperands() {
+      return operands;
+   }
+
+   /**
     * getFirstOperand
     *
-    * For getting the first operand (= head operand).
+    * Gets the first operand (head operand).
     *
     * @return operand (Goal)
     */
@@ -95,8 +76,8 @@ public abstract class Operator implements Goal {
    /**
     * getOperatorTail
     *
-    * Gets a new operator which contains the current operands
-    * except the first. In other words, the tail.
+    * Gets a copy of the operator, containing the current
+    * operands except the first. In other words, the tail.
     *
     * @return new operator
     */
@@ -114,11 +95,13 @@ public abstract class Operator implements Goal {
     * operator (including all operands), then it calls this method
     * to remove the head operand, thus leaving the tail.
     */
-    protected void removeHead() { operands.remove(0); }
+    private void removeHead() { operands.remove(0); }
 
 
    /**
-    * isEmpty - True if no operands.
+    * isEmpty
+    *
+    * Returns true if there are no operands.
     *
     * @return  t/f
     */
@@ -136,10 +119,10 @@ public abstract class Operator implements Goal {
     */
    public Expression replaceVariables(SubstitutionSet s) {
       ArrayList<Goal> newOperands = new ArrayList<Goal>();
-      for (int i = 0; i < operandCount(); i++)
+      for (int i = 0; i < operands.size(); i++)
          newOperands.add((Goal) getOperand(i).replaceVariables(s));
       Operator copy = getCopy();
-      copy.setOperands(newOperands);
+      copy.operands = newOperands;
       return copy;
    }
 
@@ -153,25 +136,27 @@ public abstract class Operator implements Goal {
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
       ArrayList<Goal> newOperands = new ArrayList<Goal>();
-      for (int i = 0; i < operandCount(); i++) {
+      for (int i = 0; i < operands.size(); i++) {
          // recursive
          newOperands.add((Goal)getOperand(i).standardizeVariablesApart(newVars));
       }
       Operator copy = getCopy();
-      copy.setOperands(newOperands);
+      copy.operands = newOperands;
       return copy;
    }
 
    /**
-    * operandString - for debugging purposes
+    * operandString
     *
-    * @param operand (String)
+    * Creates a string for debugging purposes
+    *
+    * @return operand string
     */
    public String operandString() {
       String result = "";
       for (int i = 0; i < operands.size(); i++) {
          result = result + getOperand(i).toString();
-         if (i < operandCount() - 1) result += ", ";
+         if (i < operands.size() - 1) result += ", ";
       }
       return result;
    }
