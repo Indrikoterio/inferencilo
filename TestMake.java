@@ -30,15 +30,8 @@ public class TestMake {
          new Rule("father(Frank, Marcus)"),
          new Rule("parent($X, $Y)", "father($X, $Y); mother($X, $Y)"),
          new Rule("relative($X, $Y)", "grandfather($X, $Y); father($X, $Y); mother($X, $Y)"),
-         new Rule(
-            new Complex("grandfather($X, $Y)"),
-            Make.and("father($X, $Z), parent($Z, $Y)")
-         ),
-         new Rule(
-            new Complex("get_song($X)"),
-            Make.and("song($Y), $Y = $X")
-            //new And(new Complex("song($Y)"), new Unify("$Y = $X"))
-         )
+         new Rule("grandfather($X, $Y)", "father($X, $Z), parent($Z, $Y)"),
+         new Rule("get_song($X)", "song($Y), $Y = $X")
       );
 
       System.out.print("Test Make: ");
