@@ -56,12 +56,14 @@ public class And extends Operator implements Goal {
     * @return copy of this operator
     */
    public Operator getCopy() {
-      ArrayList<Goal> al = new ArrayList<Goal>(operands);
-      return new And(al);
+      ArrayList<Goal> operands = new ArrayList<Goal>(getOperands());
+      return new And(operands);
    };
 
    /**
     * toString
+    *
+    * For debugging purposes.
     *
     * @return string representation
     */
