@@ -1,7 +1,7 @@
 /**
  * Or
  *
- * Defines logical 'Or' operator.
+ * Defines a logical 'Or' operator.
  *
  * @author  Klivo
  * @version 1.0
@@ -13,17 +13,38 @@ import java.util.*;
 
 public class Or extends Operator implements Goal {
 
+   /**
+    * constructor
+    *
+    * @param  list operands
+    */
    public Or(Goal... operands) {
       super(operands);
    }
 
+   /**
+    * constructor
+    *
+    * @param  list operands
+    */
    public Or(ArrayList<Goal> operands) {
       super(operands);
    }
 
+   /**
+    * getSolver
+    *
+    * Returns a solution node for this predicate.
+    * This method satisfies the goal interface.
+    *
+    * @param  knowledge base
+    * @param  parent solution set
+    * @param  parent solution node
+    * @return solution node
+    */
    public SolutionNode getSolver(KnowledgeBase knowledge,
-                                         SubstitutionSet parentSolution,
-                                         SolutionNode parentNode) {
+                                 SubstitutionSet parentSolution,
+                                 SolutionNode parentNode) {
       return new OrSolutionNode(this, knowledge,
                                 parentSolution, parentNode);
    }
