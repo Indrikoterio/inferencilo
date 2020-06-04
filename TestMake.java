@@ -2,7 +2,7 @@
  * TestMake
  *
  * This test is similar to TestAndOr. The difference is that instead of
- * using class constructors to define a logical operand, the factory methods
+ * using class constructors to define logical operands, the factory methods
  * in the Make class are used. Thus, instead of:
  *   new And(new Complex("father($X, $Z)"), new Complex("parent($Z, $Y)"))
  * this test uses:
