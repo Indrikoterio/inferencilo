@@ -20,35 +20,19 @@ public class TestMake {
 
       // Set up the knowledge base.
       KnowledgeBase kb = new KnowledgeBase(
-         new Rule(new Complex("song(Cache ta joie)")),
-         new Rule(new Complex("song(Fade to Grey)")),
-         new Rule(new Complex("father(George, Frank)")),
-         new Rule(new Complex("father(George, Sam)")),
-         new Rule(new Complex("mother(Gina, Frank)")),
-         new Rule(new Complex("mother(Gina, Sam)")),
-         new Rule(new Complex("mother(Maria, Marcus)")),
-         new Rule(new Complex("father(Frank, Marcus)")),
-         new Rule(
-            new Complex("parent($X, $Y)"),
-            Make.or("father($X, $Y); mother($X, $Y)")
-            //new Or(
-            //   new Complex("father($X, $Y)"),
-            //   new Complex("mother($X, $Y)")
-            //)
-         ),
-         new Rule(
-            new Complex("relative($X, $Y)"),
-            Make.or("grandfather($X, $Y); father($X, $Y); mother($X, $Y)")
-            //new Or(
-            //   new Complex("grandfather($X, $Y)"),
-            //   new Complex("father($X, $Y)"),
-            //   new Complex("mother($X, $Y)")
-            //)
-         ),
+         new Rule("song(Cache ta joie)"),
+         new Rule("song(Fade to Grey)"),
+         new Rule("father(George, Frank)"),
+         new Rule("father(George, Sam)"),
+         new Rule("mother(Gina, Frank)"),
+         new Rule("mother(Gina, Sam)"),
+         new Rule("mother(Maria, Marcus)"),
+         new Rule("father(Frank, Marcus)"),
+         new Rule("parent($X, $Y)", "father($X, $Y); mother($X, $Y)"),
+         new Rule("relative($X, $Y)", "grandfather($X, $Y); father($X, $Y); mother($X, $Y)"),
          new Rule(
             new Complex("grandfather($X, $Y)"),
             Make.and("father($X, $Z), parent($Z, $Y)")
-            //new And(new Complex("father($X, $Z)"), new Complex("parent($Z, $Y)"))
          ),
          new Rule(
             new Complex("get_song($X)"),
