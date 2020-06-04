@@ -6,7 +6,7 @@
  *
  * Useful reference: https://swish.swi-prolog.org/
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
