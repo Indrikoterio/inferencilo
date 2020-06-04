@@ -1,8 +1,9 @@
 /**
  * Not
  *
- * In Prolog, the operator Not means 'currently not provable'.
- * This operator only accepts one operand. Eg. not(father(jonathan, _))
+ * In Prolog, the Not operator means 'currently not provable'.
+ * Many Prolog implementations use \+ for this operator.
+ * 'Not' only allows one operand. Eg. not(father(jonathan, _))
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -20,7 +21,7 @@ public class Not extends Operator implements Goal {
     /**
      * constructor
      *
-     * @param  array of goals
+     * @param  list of operands
      */
    public Not(Goal... operands) {
       super(operands);
@@ -30,7 +31,7 @@ public class Not extends Operator implements Goal {
     /**
      * constructor
      *
-     * @param  arraylist of goals
+     * @param  list of operands
      */
    public Not(ArrayList<Goal> operands) {
       super(operands);
@@ -68,6 +69,8 @@ public class Not extends Operator implements Goal {
    /**
     * toString
     *
+    * For debugging purposes.
+    *
     * @return printable string
     */
    public String toString() { return " NOT " + operandString(); }
@@ -75,6 +78,8 @@ public class Not extends Operator implements Goal {
 
    /**
     * getOperand
+    *
+    * The Not operator only allows one operand.
     *
     * @return operand
     */
