@@ -61,7 +61,7 @@ public class Not extends Operator implements Goal {
     * @return copy of this operator
     */
     public Operator getCopy() {
-       return new Not(operands.get(0));
+       return new Not(getFirstOperand());
     };
 
 
