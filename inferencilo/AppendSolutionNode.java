@@ -4,7 +4,7 @@
  * Solution Node for the built-in predicate Append.
  * Unify the resulting PList with the output argument.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -55,5 +55,4 @@ public class AppendSolutionNode extends SolutionNode {
 
       return lastTerm.unify(resultPList, getParentSolution());
    }
-
 }
