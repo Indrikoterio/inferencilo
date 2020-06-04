@@ -34,11 +34,17 @@ public class Or extends Operator implements Goal {
     * @return copy of this operator
     */
    public Operator getCopy() {
-      ArrayList<Goal> al = new ArrayList<Goal>();
-      for (Goal g : operands) { al.add(g); }
-      return new Or(al);
+      ArrayList<Goal> operands = new ArrayList<Goal>(getOperands());
+      return new Or(operands);
    };
 
+   /**
+    * toString
+    *
+    * For debugging purposes.
+    *
+    * @return string representation
+    */
    public String toString() {
       return " OR " + operandString();
    }
