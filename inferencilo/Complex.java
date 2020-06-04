@@ -306,4 +306,4 @@ public class Complex implements Unifiable, Goal {
       return new ComplexSolutionNode(this, knowledge, parentSolution, parentNode);
    }
 
-}
+}  // Complex
