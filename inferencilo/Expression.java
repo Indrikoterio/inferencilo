@@ -1,7 +1,16 @@
 /**
  * Expression
  *
- * A predicate calculus expression.
+ * This interface defines a predicate calculus expression.
+ * It is the basis of unifiable objects.
+ *
+ * The method standardizeVariablesApart() creates unique
+ * variables every time the inference engine tries to solve
+ * a goal.
+ *
+ * The method replaceVariables() is called when a solution
+ * is found. It replaces bound Variables with there Constants
+ * in order to display results.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -16,8 +25,8 @@ public interface Expression {
    /**
     * replaceVariables - explanation here
     *
-    * Note: In this inference engine, variables begin with a $. Eg. $X.
-    * Constants can start with an upper case or a lower case letter.
+    * Note: In this inference engine, variables begin with a a dollar sign.
+    * Eg. $X. Constants can start with an upper case or a lower case letter.
     *
     * When the inference engine has found a solution to a query, in order
     * to display the solution in a useable manner, it is necessary to
