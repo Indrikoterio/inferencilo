@@ -73,6 +73,8 @@ public class Tokenizer {
     * tokenize
     *
     * Divide the given string into a series of tokens.
+    * Note: Parentheses can be part of a complex term: likes(Charles, Gina)
+    * or used to group terms: (father($_, $X); mother($_, $X))
     *
     * @param  str
     */
@@ -94,6 +96,9 @@ public class Tokenizer {
       // Find a separator (comma, semicolon), if there is one.
       char previous = '#'; // random
       for (int i = startIndex; i < s.length(); i++) {
+         // Get top of stack.
+         top = NONE;
+         if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
          char ch = s.charAt(i);
          if (ch == '\\') i++;   // For comma escapes, eg. \,
          else if (ch == '(') {
@@ -103,14 +108,17 @@ public class Tokenizer {
             else {
                stkParenth.push(GROUP);
                tokens.add(new Token("("));
+               startIndex = i + 1;
             }
          }
          else if (ch == ')') {
-            if (stkParenth.size() < 1)
-               throw new UnmatchedParenthesesException();
+            if (top == NONE) throw new UnmatchedParenthesesException();
             top = (Integer)stkParenth.pop();
             if (top == GROUP) {
+               String subgoal = s.substring(startIndex, i);
+               tokens.add(new Token(subgoal));
                tokens.add(new Token(")"));
+               startIndex = i + 1;
             }
             else if (top != COMPLEX) {
                throw new UnmatchedParenthesesException();
@@ -120,16 +128,13 @@ public class Tokenizer {
             stkParenth.push(PLIST);
          }
          else if (ch == ']') {
-            if (stkParenth.size() < 1)
-               throw new UnmatchedBracketsException();
+            if (top == NONE) throw new UnmatchedBracketsException();
             top = (Integer)stkParenth.pop();
             if (top != PLIST) {
                throw new UnmatchedBracketsException();
             }
          }
          else {
-            top = NONE;
-            if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
             // If not inside complex term or Prolog list...
             if (top != COMPLEX && top != PLIST) {
                if (invalid.indexOf(ch) > -1)
@@ -163,40 +168,6 @@ public class Tokenizer {
    } // tokenize
 
 
-   /*
-    * noSemicolons
-    *
-    * Returns true if there are no semicolon tokens in the list of tokens.
-    * Semicolon represents logical Or.
-    *
-    * @param  tokens
-    * @return  t/f
-    */
-   private boolean noSemicolons(ArrayList<Token> tokens) {
-      for (Token token : tokens) {
-         if (token.type() == TokenType.SEMICOLON) return false;
-      }
-      return true;
-   }
-
-   /*
-    * countTerms
-    *
-    * Returns the number of TERMs in the token list.
-    * COMMAs and SEMICOLONs are not counted.
-    *
-    * @param  token list
-    * @return count
-    */
-   private int countTerms(ArrayList<Token> tokens) {
-      int count = 0;
-      for (Token token : tokens) {
-         if (token.type() == TokenType.TERM) count++;
-      }
-      return count;
-   }
-
-
    /**
     * generateGoal
     *
@@ -211,72 +182,238 @@ public class Tokenizer {
     */
    public Goal generateGoal(String str) {
       tokenize(str);
-      return generateGoal(tokens);
+      //showTokens();
+      Token baseToken = groupTokens(tokens, 0);
+      groupAndTokens(baseToken);
+      groupOrTokens(baseToken);
+      return generateGoal(baseToken);
    }
+
+
+   /*
+    * groupTokens
+    *
+    * This method collects tokens within parentheses into groups.
+    * It converts a flat array of tokens into a tree of tokens.
+    *
+    * For example, this:   TERM TERM ( TERM  TERM )
+    * becomes:
+    *         GROUP
+    *           |
+    *    TERM TERM GROUP
+    *                |
+    *            TERM TERM
+    *
+    * There is a precedence order in Prolog subgoals.
+    * From highest to lowest.
+    *
+    *    groups (...)  -> GROUP
+    *    conjunction , -> AND
+    *    disjunction ; -> OR
+    *
+    * @param  flat array of tokens
+    * @param  starting index
+    * @return tree of tokens
+    */
+   private Token groupTokens(final ArrayList<Token> tokens, int index) {
+
+      ArrayList<Token> newTokens = new ArrayList<Token>();
+
+      for (; index < tokens.size(); index++) {
+
+         Token token = tokens.get(index);
+         TokenType type = token.type();
+
+         if (type == TokenType.LPAREN) {
+            index++;
+            // Make a GROUP token.
+            Token t = groupTokens(tokens, index);
+            newTokens.add(t);
+            // Skip passed tokens already processed.
+            index += t.size() + 1;  // +1 for right parenthesis
+         }
+         else if (type == TokenType.RPAREN) {
+            // Add all remaining tokens to the list.
+            return new Token(newTokens, TokenType.GROUP);
+         }
+         else {
+            newTokens.add(token);
+         }
+      }
+
+      return new Token(newTokens, TokenType.GROUP);
+
+   } // groupTokens
+
+
+   /*
+    * groupAndTokens
+    *
+    * Groups tokens which are separated by commas. (Prolog And)
+    *
+    * @param  token tree
+    */
+   private void groupAndTokens(Token token) {
+
+      ArrayList<Token> children = token.getChildren();
+      ArrayList<Token> newChildren = new ArrayList<Token>();
+      ArrayList<Token> andList = new ArrayList<Token>();
+
+      for (Token t : children) {
+
+         TokenType type = t.type();
+
+         if (type == TokenType.TERM) {
+            andList.add(t);
+         }
+         else if (type == TokenType.COMMA) {
+            // Nothing to do.
+         }
+         else if (type == TokenType.SEMICOLON) {
+            // Must be end of comma separated list.
+            int size = andList.size();
+            if (size == 1) newChildren.add(andList.get(0));
+            else newChildren.add(new Token(andList, TokenType.AND));
+            newChildren.add(t);
+            andList.clear();
+         }
+         else if (type == TokenType.GROUP) {
+            groupAndTokens(t);
+            andList.add(t);
+         }
+      } // for
+
+      int size = andList.size();
+      if (size == 1) newChildren.add(andList.get(0));
+      else if (size > 1) newChildren.add(new Token(andList, TokenType.AND));
+
+      token.setChildren(newChildren);
+
+   } // groupAndTokens
+
+
+   /*
+    * groupOrTokens
+    *
+    * Groups tokens which are separated by semicolons. (Prolog Or)
+    *
+    * @param  token tree
+    */
+   private void groupOrTokens(Token token) {
+
+      ArrayList<Token> children = token.getChildren();
+      ArrayList<Token> newChildren = new ArrayList<Token>();
+      ArrayList<Token> orList = new ArrayList<Token>();
+
+      for (Token t : children) {
+
+         TokenType type = t.type();
+
+         if (type == TokenType.TERM || type == TokenType.AND) {
+            orList.add(t);
+         }
+         else if (type == TokenType.SEMICOLON) {
+            // Nothing to do.
+         }
+         else if (type == TokenType.GROUP) {
+            groupOrTokens(t);
+            orList.add(t);
+         }
+      } // for
+
+      int size = orList.size();
+      if (size == 1) newChildren.add(orList.get(0));
+      else if (size > 1) newChildren.add(new Token(orList, TokenType.OR));
+
+      token.setChildren(newChildren);
+
+   } // groupOrTokens
+
 
    /*
     * generateGoal
     *
-    * Generates a goal from the tokens in the given token list.
+    * Generates a goal from the token tree.
     *
-    * @param  list of tokens
-    * @return operator
+    * @param  base of token tree
+    * @return goal
     */
-   private Goal generateGoal(ArrayList<Token> tokens) {
-      if (countTerms(tokens) == 1) {
-         Token token = tokens.get(0);
-         if (token.type() == TokenType.TERM) {
-            return Make.subgoal(token.token());
-         }
+   private Goal generateGoal(Token token) {
+
+      ArrayList<Token> children;
+      ArrayList<Goal> operands;
+
+      TokenType type = token.type();
+
+      if (type == TokenType.TERM) {
+         return Make.subgoal(token.token());
       }
-      // If there are no semicolons in the list, generate an And operator.
-      else if (noSemicolons(tokens)) {
-         ArrayList<Goal> operands = new ArrayList<Goal>();
-         for (Token token : tokens) {
-            if (token.type() == TokenType.TERM) {
-               operands.add(Make.subgoal(token.token()));
+
+      if (type == TokenType.AND) {
+         operands = new ArrayList<Goal>();
+         children = token.getChildren();
+         for (Token t : children) {
+            TokenType type2 = t.type();
+            if (type2 == TokenType.TERM) {
+               operands.add(Make.subgoal(t.token()));
+            }
+            else if (type2 == TokenType.GROUP) {
+               operands.add(generateGoal(t));
             }
          }
          return new And(operands);
       }
-      // If there are semicolons in the list, generate an Or operator.
-      else {
-         // Make an array of array lists.
-         ArrayList<ArrayList<Token>> lists = new ArrayList<ArrayList<Token>>();
-         ArrayList<Token> tokenList = new ArrayList<Token>();
-         for (Token token : tokens) {
-            if (token.type() != TokenType.SEMICOLON) {
-               tokenList.add(token);
+
+      if (type == TokenType.OR) {
+         // Get operands and create an OR goal.
+         operands = new ArrayList<Goal>();
+         children = token.getChildren();
+         for (Token t : children) {
+            TokenType type2 = t.type();
+            if (type2 == TokenType.TERM) {
+               operands.add(Make.subgoal(t.token()));
             }
-            else {
-               lists.add(tokenList);
-               tokenList = new ArrayList<Token>();
+            else if (type2 == TokenType.GROUP) {
+               operands.add(generateGoal(t));
             }
-         }
-         lists.add(tokenList);
-         ArrayList<Goal> operands = new ArrayList<Goal>();
-         for (ArrayList<Token> list : lists) {
-            operands.add(generateGoal(list));
          }
          return new Or(operands);
       }
+
+      if (type == TokenType.GROUP) {
+         if (token.size() != 1) {
+            throw new FatalParsingException("Each GROUP should have 1 child.");
+         }
+         Token childToken = (Token)token.getChildren().get(0);
+         return generateGoal(childToken);
+      }
+
       return null;
 
    } // generateGoal()
 
+
    /**
     * showTokens
     *
-    * For debugging purposes.
+    * For debugging purposes. Outputs a flat list of tokens
+    * in a readable format.
     */
    public void showTokens() {
       boolean first = true;
       for (Token token : tokens) {
          if (!first) System.out.print(" ");
          first = false;
-         System.out.print(token.type().name());
+         TokenType type = token.type();
+         if (type == TokenType.TERM) {
+            System.out.print(token.token());
+         }
+         else {
+            System.out.print(token.type().name());
+         }
       }
-   } //showTokens
+      System.out.print("\n");
+   } // showTokens
 
 }  // Tokenizer
 
