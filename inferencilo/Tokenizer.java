@@ -196,13 +196,13 @@ public class Tokenizer {
     * This method collects tokens within parentheses into groups.
     * It converts a flat array of tokens into a tree of tokens.
     *
-    * For example, this:   TERM TERM ( TERM  TERM )
+    * For example, this:   SUBGOAL SUBGOAL ( SUBGOAL  SUBGOAL )
     * becomes:
-    *         GROUP
-    *           |
-    *    TERM TERM GROUP
-    *                |
-    *            TERM TERM
+    *          GROUP
+    *            |
+    * SUBGOAL SUBGOAL GROUP
+    *                   |
+    *            SUBGOAL SUBGOAL
     *
     * There is a precedence order in Prolog subgoals.
     * From highest to lowest.
@@ -263,7 +263,7 @@ public class Tokenizer {
 
          TokenType type = t.type();
 
-         if (type == TokenType.TERM) {
+         if (type == TokenType.SUBGOAL) {
             andList.add(t);
          }
          else if (type == TokenType.COMMA) {
@@ -309,7 +309,7 @@ public class Tokenizer {
 
          TokenType type = t.type();
 
-         if (type == TokenType.TERM || type == TokenType.AND) {
+         if (type == TokenType.SUBGOAL || type == TokenType.AND) {
             orList.add(t);
          }
          else if (type == TokenType.SEMICOLON) {
@@ -345,7 +345,7 @@ public class Tokenizer {
 
       TokenType type = token.type();
 
-      if (type == TokenType.TERM) {
+      if (type == TokenType.SUBGOAL) {
          return Make.subgoal(token.token());
       }
 
@@ -354,7 +354,7 @@ public class Tokenizer {
          children = token.getChildren();
          for (Token t : children) {
             TokenType type2 = t.type();
-            if (type2 == TokenType.TERM) {
+            if (type2 == TokenType.SUBGOAL) {
                operands.add(Make.subgoal(t.token()));
             }
             else if (type2 == TokenType.GROUP) {
@@ -370,7 +370,7 @@ public class Tokenizer {
          children = token.getChildren();
          for (Token t : children) {
             TokenType type2 = t.type();
-            if (type2 == TokenType.TERM) {
+            if (type2 == TokenType.SUBGOAL) {
                operands.add(Make.subgoal(t.token()));
             }
             else if (type2 == TokenType.GROUP) {
@@ -393,6 +393,7 @@ public class Tokenizer {
    } // generateGoal()
 
 
+
    /**
     * showTokens
     *
@@ -405,7 +406,7 @@ public class Tokenizer {
          if (!first) System.out.print(" ");
          first = false;
          TokenType type = token.type();
-         if (type == TokenType.TERM) {
+         if (type == TokenType.SUBGOAL) {
             System.out.print(token.token());
          }
          else {
