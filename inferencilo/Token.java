@@ -5,7 +5,7 @@
  *
  * Each token represents a node in a tree of tokens.
  *
- * A token 'leaf' can be: TERM, COMMA, SEMICOLON, LPAREN, RPAREN.
+ * A token 'leaf' can be: SUBGOAL, COMMA, SEMICOLON, LPAREN, RPAREN.
  * If the token is a parent node, its type will be: GROUP, AND, OR.
  *   
  * @author  Cleve (Klivo) Lendon
@@ -36,7 +36,7 @@ public class Token {
       else if (t.equals(";")) type = TokenType.SEMICOLON;
       else if (t.equals("(")) type = TokenType.LPAREN;
       else if (t.equals(")")) type = TokenType.RPAREN;
-      else type = TokenType.TERM;
+      else type = TokenType.SUBGOAL;
    }
 
    /**
@@ -96,7 +96,7 @@ public class Token {
     *
     * For debugging purposes. Eg.
     *
-    *    TERM > sister(Janelle, Amanda)
+    *    SUBGOAL > sister(Janelle, Amanda)
     *
     * return printable string
     */
@@ -110,7 +110,7 @@ public class Token {
             s += child + " ";
          }
       }
-      else if (type == TokenType.TERM) {
+      else if (type == TokenType.SUBGOAL) {
          s += " > " + token;
       }
       else { }
