@@ -9,8 +9,10 @@
  * @version 1.0
  */
 
-import java.util.*;
 import inferencilo.*;
+
+import java.util.List;
+import java.util.ArrayList;
 
 public class TestParse {
 
