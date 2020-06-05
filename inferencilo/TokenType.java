@@ -1,9 +1,19 @@
 /**
  * TokenType
  *
- * For parsing the goal of a Prolog rule.
- * For the goal: father($X, $Z), parent($Z, $Y)
- * the token types will be: TERM, COMMA, TERM, LPAREN, RPAREN.
+ * For parsing the goals of a Prolog rule.
+ *
+ * For this goal: (mother($X, $Y); father($X, $Y))
+ * the token types would be: LPAREN TERM SEMICOLON TERM RPAREN.
+ *
+ * There is a precedence to Prolog subgoals. From highest to lowest.
+ *
+ *    groups (...)  -> GROUP
+ *    conjunction , -> AND
+ *    disjunction ; -> OR
+ *
+ * (I think.) Because of this, it is necessary to build a tree
+ * of tokens. Some tokens will function as a parent node.
  *   
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -12,7 +22,8 @@
 package inferencilo;
 
 public enum TokenType {
-   TERM, COMMA, SEMICOLON, LPAREN, RPAREN;
+   TERM, COMMA, SEMICOLON, LPAREN, RPAREN,
+   GROUP, AND, OR;
 }  // TokenType
 
 
