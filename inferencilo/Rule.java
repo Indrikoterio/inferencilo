@@ -29,18 +29,38 @@ public class Rule implements Expression {
       this(head, null);
    }
 
+
    /**
     * constructor
     *
-    * For rules without a body (ie. facts).
-    * Create a fact from a string representation.
-    * For example: genre(jazz).
+    * Create a fact or rule from a string representation.
     *
-    * @param  head (String)
+    * For example:
+    *    genre(jazz).
+    *    parent($X, $Y) :- father($X, $Y); mother($X, $Y).
+    *
+    * @param  fact or rule
     */
    public Rule(String str) {
-      this(new Complex(str), null);
-   }
+      String s = str.trim();
+      if (s.endsWith(".")) {
+         int len = s.length();
+         s = s.substring(0, len - 1);
+      }
+      int index = str.indexOf(":-");
+      if (index > -1) {
+         String head = str.substring(0, index);
+         String body = str.substring(index + 2);
+         this.head = new Complex(head);
+         Tokenizer tok = Tokenizer.getTokenizer();
+         this.body = tok.generateGoal(body);
+      }
+      else {
+         this.head = new Complex(str);
+         this.body = null;
+      }
+   } // constructor
+
 
    /**
     * constructor
@@ -71,21 +91,6 @@ public class Rule implements Expression {
       this.body = body;
    }
 
-   /**
-    * constructor
-    *
-    * A rule consists of a head term and a tail term.
-    * This construct takes two strings, and converts
-    * them into a rule head and a body goal.
-    *
-    * @param  head (String)
-    * @param  body (String)
-    */
-   public Rule(String str, String body) {
-      this.head = new Complex(str);
-      Tokenizer tok = Tokenizer.getTokenizer();
-      this.body = tok.generateGoal(body);
-   }
 
    /**
     * getHead
