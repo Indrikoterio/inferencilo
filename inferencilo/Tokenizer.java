@@ -1,8 +1,12 @@
 /**
  * Tokenizer
  *
- * For parsing the goal of a Prolog rule.
- * This class is a singleton. Use getTokenizer() to instantiate.
+ * For parsing Prolog-ish rules.
+ *
+ * This class is a singleton. Use getTokenizer() to instantiate:
+ *
+ *   Tokenizer tok = Tokenizer.getTokenizer();
+ *   Goal goal = tok.generateGoal(body);
  *   
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -10,12 +14,21 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Stack;
 
 public class Tokenizer {
 
    private ArrayList<Token> tokens;
+   private Stack<Integer> stkParenth;  // Parentheses and brackets.
    private static Tokenizer tokenizer;
+
+   // Define parentheses and braces.
+   // (prof(Thompson, 5849238); prof(Hamilton, 5849238)), $X = [$H, $T].
+   private final static int NONE = 0;
+   private final static int GROUP = 1;   // (...)
+   private final static int PLIST = 2;   // [...]
+   private final static int COMPLEX = 3; // prof(...)
 
    /*
     * constructor
@@ -23,6 +36,7 @@ public class Tokenizer {
    private Tokenizer() {
       //System.out.println("Instantiating Tokenizer");
       tokens = new ArrayList<Token>();
+      stkParenth = new Stack<Integer>();
    }
 
    /**
@@ -37,6 +51,24 @@ public class Tokenizer {
       return tokenizer;
    }
 
+   /*
+    * functorChar
+    *
+    * Determines whether the given character is valid in a functor.
+    * Eg.: functor_22($X, $Y)
+    *
+    * @param character
+    * @return t/f
+    */
+   private boolean functorChar(char ch) {
+      if (ch >= '0' && ch <= '9') return true;
+      if (ch >= 'a' && ch <= 'z') return true;
+      if (ch >= 'A' && ch <= 'Z') return true;
+      if (ch == '_') return true;
+      return false;
+   }
+
+
    /**
     * tokenize
     *
@@ -48,40 +80,81 @@ public class Tokenizer {
 
    private void tokenize(String str) {
 
+      Integer top;  // top of parenthesis stack
+
       //System.out.println("tokenize");
       tokens.clear();
+      stkParenth.clear();
 
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidOperatorException(s);
+      if (s.length() < 1) throw new InvalidExpressionException(s);
 
       int startIndex = 0;
-      int roundDepth = 0;   // depth of round parenthesis (())
-      int squareDepth = 0;   // depth of square brackets [[]]
 
       // Find a separator (comma, semicolon), if there is one.
+      char previous = '#'; // random
       for (int i = startIndex; i < s.length(); i++) {
          char ch = s.charAt(i);
-         if (ch == '[') squareDepth++;
-         else if (ch == ']') squareDepth--;
-         else if (ch == '(') roundDepth++;
-         else if (ch == ')') roundDepth--;
-         else if (ch == '\\') i++;   // For comma escapes, eg. \,
-         else if (roundDepth == 0 && squareDepth == 0) {
-            if (invalid.indexOf(ch) > -1) throw new InvalidOperatorException(s);
-            if (ch == ',') {
-               String subgoal = s.substring(startIndex, i).trim();
-               tokens.add(new Token(subgoal));
-               tokens.add(new Token(","));
-               startIndex = i + 1;
+         if (ch == '\\') i++;   // For comma escapes, eg. \,
+         else if (ch == '(') {
+            if (functorChar(previous)) {
+               stkParenth.push(COMPLEX);
             }
-            if (ch == ';') {
-               String subgoal = s.substring(startIndex, i).trim();
-               tokens.add(new Token(subgoal));
-               tokens.add(new Token(";"));
-               startIndex = i + 1;
+            else {
+               stkParenth.push(GROUP);
+               tokens.add(new Token("("));
             }
          }
+         else if (ch == ')') {
+            if (stkParenth.size() < 1)
+               throw new UnmatchedParenthesesException();
+            top = (Integer)stkParenth.pop();
+            if (top == GROUP) {
+               tokens.add(new Token(")"));
+            }
+            else if (top != COMPLEX) {
+               throw new UnmatchedParenthesesException();
+            }
+         }
+         else if (ch == '[') {
+            stkParenth.push(PLIST);
+         }
+         else if (ch == ']') {
+            if (stkParenth.size() < 1)
+               throw new UnmatchedBracketsException();
+            top = (Integer)stkParenth.pop();
+            if (top != PLIST) {
+               throw new UnmatchedBracketsException();
+            }
+         }
+         else {
+            top = NONE;
+            if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
+            // If not inside complex term or Prolog list...
+            if (top != COMPLEX && top != PLIST) {
+               if (invalid.indexOf(ch) > -1)
+                  throw new InvalidExpressionException("Invalid character");
+               if (ch == ',') {
+                  String subgoal = s.substring(startIndex, i);
+                  tokens.add(new Token(subgoal));
+                  tokens.add(new Token(","));
+                  startIndex = i + 1;
+               }
+               if (ch == ';') {
+                  String subgoal = s.substring(startIndex, i);
+                  tokens.add(new Token(subgoal));
+                  tokens.add(new Token(";"));
+                  startIndex = i + 1;
+               }
+            }
+         }
+         previous = ch;
       }
+      if (stkParenth.size() > 0) {
+         top = (Integer)stkParenth.peek();
+         throw new UnmatchedParenthesesException();
+      }
+
       if (s.length() - startIndex > 0) {
          String subgoal = s.substring(startIndex, s.length());
          tokens.add(new Token(subgoal));
@@ -190,6 +263,20 @@ public class Tokenizer {
       return null;
 
    } // generateGoal()
+
+   /**
+    * showTokens
+    *
+    * For debugging purposes.
+    */
+   public void showTokens() {
+      boolean first = true;
+      for (Token token : tokens) {
+         if (!first) System.out.print(" ");
+         first = false;
+         System.out.print(token.type().name());
+      }
+   } //showTokens
 
 }  // Tokenizer
 
