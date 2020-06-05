@@ -17,6 +17,24 @@ import java.util.ArrayList;
 public class Make {
 
    /*
+    * isNot
+    *
+    * Determines whether the string represents the not operator.
+    * Eg.:  not(father(albert, $X))
+    *
+    * @param   string representation of 'not'
+    * @return  true or false
+    */
+   private static boolean isNot(String str) {
+      String s = str.trim().toLowerCase();
+      if (s.startsWith("not(")) {
+         if (s.endsWith(")"))  return true;
+         throw new FatalParsingException("Invalid: " + str);
+      }
+      return false;
+   }
+
+   /*
     * isList
     *
     * Determines whether the string represents a proper list. eg.:
@@ -34,8 +52,7 @@ public class Make {
       if (parenthesis1 != -1 && parenthesis1 < bracket1) return false;
       int bracket2 = str.lastIndexOf("]");
       if (bracket2 > bracket1) return true;
-      System.out.println("Ooops. Invalid list: " + str);
-      return false;
+      throw new FatalParsingException("Invalid: " + str);
    }
 
 
@@ -56,24 +73,9 @@ public class Make {
       if (bracket1 != -1 && bracket1 < parenthesis1) return false;
       int parenthesis2 = str.lastIndexOf(")");
       if (parenthesis2 > parenthesis1 + 1) return true;
-      System.out.println("Ooops. Invalid complex term: " + str);
-      return false;
+      throw new FatalParsingException("Invalid: " + str);
    }
 
-   /*
-    * isNot
-    *
-    * Determines whether the string represents the not operator.
-    * Eg.:  not(father(albert, $X))
-    *
-    * @param   string representation of 'not'
-    * @return  true or false
-    */
-   private static boolean isNot(String str) {
-      String s = str.trim().toLowerCase();
-      if (s.startsWith("not(")) return true;
-      return false;
-   }
 
 
    /**
@@ -202,6 +204,43 @@ public class Make {
 
 
    /**
+    * subgoal
+    *
+    * This function accepts a string which represents a subgoal,
+    * and creates its corresponding Goal object. At present, it
+    * recognizes complex terms, the Unify operator, and the
+    * Not operator. That is:
+    *    symptom(influenza, fever)
+    *    $X = $Y
+    *    not($X = $Y)
+    *
+    * @param  subgoal as String
+    * @param  subgoal as Goal object
+    */
+   public static Goal subgoal(String subgoal) {
+      String s = subgoal.trim();
+      if (isNot(s)) {   // detect 'Not' operator
+         // Trim the not() away to get the operand.
+         s = subgoal.substring(4);
+         int len = s.length();
+         s = s.substring(0, len - 1);
+         return new Not((Goal)term(s));
+      }
+      else if (s.indexOf('=') > 0) {
+         return new Unify(s);
+      }
+      else {
+         if (s.indexOf("(") < 0)
+            new FatalParsingException("Invalid complex term: " + s);
+         if (s.indexOf(")") < 0)
+            new FatalParsingException("Invalid complex term: " + s);
+         return new Complex(s);
+      }
+   } // subgoal
+
+
+
+   /**
     * and
     *
     * A factory method to produce a logical And operator from a string.
@@ -245,33 +284,6 @@ public class Make {
       Goal subgoal = subgoal(str);
       if (subgoal != null) operands.add(subgoal);
    } // addOperand
-
-
-   /**
-    * subgoal
-    *
-    * This function accepts a string which represents a subgoal,
-    * and creates its corresponding object.
-    *
-    * @param  subgoal as String
-    * @param  subgoal as Goal object
-    */
-   public static Goal subgoal(String subgoal) {
-      String s = subgoal.trim();
-      if (isNot(s)) {   // detect 'Not' operator
-         // Trim the not() away to get the operand.
-         s = subgoal.substring(4);
-         int len = s.length();
-         s = s.substring(0, len - 1);
-         return new Not((Goal)Make.term(s));
-      }
-      else if (s.indexOf('=') > 0) {
-         return new Unify(s);
-      }
-      else {
-         return new Complex(s);
-      }
-   } // subgoal
 
 
    /*
