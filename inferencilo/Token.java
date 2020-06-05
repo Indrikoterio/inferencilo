@@ -24,6 +24,8 @@ public class Token {
       this.token = t;
       if (t.equals(",")) type = TokenType.COMMA;
       else if (t.equals(";")) type = TokenType.SEMICOLON;
+      else if (t.equals("(")) type = TokenType.LPAREN;
+      else if (t.equals(")")) type = TokenType.RPAREN;
       else type = TokenType.TERM;
    }
 
