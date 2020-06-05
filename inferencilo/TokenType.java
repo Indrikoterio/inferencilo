@@ -4,7 +4,7 @@
  * For parsing the goals of a Prolog rule.
  *
  * For this goal: (mother($X, $Y); father($X, $Y))
- * the token types would be: LPAREN TERM SEMICOLON TERM RPAREN.
+ * the token types would be: LPAREN SUBGOAL SEMICOLON SUBGOAL RPAREN.
  *
  * There is a precedence to Prolog subgoals. From highest to lowest.
  *
@@ -22,7 +22,7 @@
 package inferencilo;
 
 public enum TokenType {
-   TERM, COMMA, SEMICOLON, LPAREN, RPAREN,
+   SUBGOAL, COMMA, SEMICOLON, LPAREN, RPAREN,
    GROUP, AND, OR;
 }  // TokenType
 
