@@ -29,7 +29,7 @@ public class TestMake {
          new Rule("mother(Maria, Marcus)"),
          new Rule("father(Frank, Marcus)"),
          new Rule("parent($X, $Y)", "father($X, $Y); mother($X, $Y)"),
-         new Rule("relative($X, $Y)", "grandfather($X, $Y); father($X, $Y); mother($X, $Y)"),
+         new Rule("relative($X, $Y)", "grandfather($X, $Y); (father($X, $Y); mother($X, $Y))"),
          new Rule("grandfather($X, $Y)", "father($X, $Z), parent($Z, $Y)"),
          new Rule("get_song($X)", "song($Y), $Y = $X")
       );
