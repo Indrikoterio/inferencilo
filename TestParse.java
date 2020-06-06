@@ -84,10 +84,7 @@ public class TestParse {
          Solutions.verifyAll(goal, kb, expected, 2);
       } catch (TimeOverrunException tox) { }
 
-      //Complex goal = new Complex(new Constant("quicktest"), VarCache.get("$X"), plist);
-      //Complex goal = new Complex(new Constant("list_test"), PList.make("[a | $F]"));
-
-/*
+/*    Left for reference.
       SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = root.nextSolution();
       while (solution != null) {
