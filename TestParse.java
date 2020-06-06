@@ -3,7 +3,12 @@
  *
  * Does some simple parsing tests.
  *
- * Useful reference: https://swish.swi-prolog.org/
+ * Hint: A Rule has a head and a body, separated by :- .
+ *    head(...) :- body(...).
+ * A Fact is a the same as a Rule without a body.
+ *    head(...).
+ *
+ * Useful tool: https://swish.swi-prolog.org/
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -19,8 +24,8 @@ public class TestParse {
    /*
     * convertToTerms
     *
-    * Converts a sentence (space separated string of symbols) into
-    * a Prolog list of terms.
+    * Converts a sentence (space separated string of symbols)
+    * into a Prolog list of terms.
     *
     * @param sentence (string)
     * @return Prolog list
