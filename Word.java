@@ -5,10 +5,10 @@
  * Prolog-ish terms: pronoun(We), auxiliary(will), verb(go), etc.
  * for testing purposes.
  *
- * Note: Unlike Prolog, constants can start with an upper or
- * lower case letter. Variables start with $, eg. $X.
+ * Note: Unlike Prolog, constants can start with an upper or lower
+ * case letter. Variables start with $, eg. $X.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -70,5 +70,7 @@ public class Word {
       }
 
       return c;
-   }
-}
+
+   } // makeTerm
+
+}  // Word
