@@ -1,12 +1,13 @@
 /**
  * Word
  *
- * This class converts a few words ('We', 'will', 'go'...) into
- * Prolog-ish terms: pronoun(We), auxiliary(will), verb(go), etc.
- * for testing purposes.
+ * This class converts words (We, will, go etc.) into Prolog-ish
+ * terms: pronoun(We), auxiliary(will), verb(go), etc. for testing
+ * purposes.
  *
- * Note: Unlike Prolog, constants can start with an upper or lower
- * case letter. Variables start with $, eg. $X.
+ * Note: Unlike Prolog, in this inference engine, constants can
+ * start with an upper or lower case letter. Variables start
+ * with a dollar sign, eg. $X.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -49,10 +50,10 @@ public class Word {
    /**
     * makeTerm
     *
-    * Creates a term for the given symbol.
+    * Creates a term for the given word.
     *
-    * @param  punctuation symbol (str)
-    * @return punctuation term, eg. semicolon(;)
+    * @param  word as string
+    * @return word term, eg. noun(Hovercraft)
     */
    public static Complex makeTerm(String str) {
 
