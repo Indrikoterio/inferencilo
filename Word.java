@@ -17,11 +17,34 @@ import inferencilo.*;
 
 public class Word {
 
-   public static Constant verb = new Constant("verb");
-   public static Constant adverb = new Constant("adverb");
-   public static Constant pronoun = new Constant("pronoun");
-   public static Constant auxiliary = new Constant("auxiliary");
-   public static Constant word = new Constant("word");
+   private final static String PRON = "pronoun";
+   private final static String AUX = "auxiliary";
+   private final static String COP = "copula";
+   private final static String VERB = "verb";
+   private final static String ADV = "adverb";
+   private final static String WORD = "word";
+
+   // HashMap: word / Part of Speech.
+   private static Map<String, String> wordPoS;
+   static {
+      wordPoS = new HashMap<>();
+      wordPoS.put("i", PRON);
+      wordPoS.put("you", PRON);
+      wordPoS.put("he", PRON);
+      wordPoS.put("she", PRON);
+      wordPoS.put("it", PRON);
+      wordPoS.put("we", PRON);
+      wordPoS.put("they", PRON);
+      wordPoS.put("will", AUX);
+      wordPoS.put("am", COP);
+      wordPoS.put("is", COP);
+      wordPoS.put("are", COP);
+      wordPoS.put("go", VERB);
+      wordPoS.put("went", VERB);
+      wordPoS.put("think", VERB);
+      wordPoS.put("here", ADV);
+      wordPoS.put("after", WORD);
+   }
 
    /**
     * makeTerm
@@ -33,43 +56,22 @@ public class Word {
     */
    public static Complex makeTerm(String str) {
 
-      Complex c = null;
-
       if (str.length() < 1) {
          System.out.println("Word: bad string.");
          return null;
       }
 
-      if (str.equals("We")) {
-         c = new Complex(pronoun, new Constant(str));
+      String s = str.toLowerCase();
+      String partOfSpeech = wordPoS.get(s);
+
+      if (partOfSpeech == null) {
+         System.out.println("Word: Unknown word.");
+         return null;
       }
 
-      else
-      if (str.equals("will")) {
-         c = new Complex(auxiliary, new Constant(str));
-      }
-
-      else
-      if (str.equals("are")) {
-         c = new Complex(verb, new Constant(str));
-      }
-
-      else
-      if (str.equals("go")) {
-         c = new Complex(verb, new Constant(str));
-      }
-
-      else
-      if (str.equals("here")) {
-         c = new Complex(adverb, new Constant(str));
-      }
-
-      else
-      if (str.equals("after")) {
-         c = new Complex(word, new Constant(str));
-      }
-
-      return c;
+      Constant word = new Constant(str);
+      Constant pos  = new Constant(partOfSpeech);
+      return new Complex(pos, word);
 
    } // makeTerm
 
