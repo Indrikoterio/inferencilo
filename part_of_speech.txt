@@ -1478,7 +1478,7 @@ acrostic JJ
 acrostics NNS
 acrylic NN
 acrylics NNS
-act NNP NN VB
+act NN VB
 acted VBN VBD
 acting VBG NN JJ
 actinides NNS
@@ -2719,7 +2719,7 @@ angles NNS
 angling VBG
 angora NNS
 angrier NN
-angriest JJT
+angriest JJS
 angrily RB
 angry JJ
 angst FW-NN
@@ -4579,7 +4579,7 @@ barefooted JJ
 barely RB QL
 bareness NN
 bares NNS VBZ
-barest JJT
+barest JJS
 bargain NN
 bargain-basement NN
 bargained VBN VBD
@@ -4848,7 +4848,7 @@ bears VBZ NNS
 bearskin NN
 bearskins NNS
 beast NN
-beastliest JJT
+beastliest JJS
 beastliness NN
 beastly RB
 beasts NNS
@@ -5212,8 +5212,8 @@ bespeaking VBG
 bespeaks VBZ
 bespectacled JJ
 bespoke NN
-best JJT NP RBT JJS QL VB
-best-known JJT
+best NP RBT JJS QL VB
+best-known JJS
 best-seller NN
 best-sellers NNS
 best-selling JJS JJ
@@ -5342,7 +5342,7 @@ bigamists NNS
 bigamous JJ
 bigamy NN
 bigger JJR
-biggest JJS JJT
+biggest JJS
 biggish NN
 bigheads NNS
 bigness NN
@@ -5518,7 +5518,7 @@ bits NNS
 bitten VBN
 bitter JJ
 bitter-sweet NN
-bitterest JJT
+bitterest JJS
 bitterly RB QL
 bittern NN
 bitterness NN
@@ -5554,7 +5554,7 @@ blackened VBN VBD
 blackening VBG NN
 blackens VBZ
 blacker NN
-blackest JJT
+blackest JJS
 blackguard NN
 blackhead NN
 blackheads NNS
@@ -5765,7 +5765,7 @@ bloodhound NN
 bloodhounds NNS
 bloodied VBN VBD
 bloodies NNS
-bloodiest JJT
+bloodiest JJS
 bloodily RB
 bloodless JJ
 bloodlessness NN
@@ -5966,7 +5966,7 @@ bogeyman NN
 bogeymen NNS
 bogeys NNS
 bogged VBN
-boggiest JJT
+boggiest JJS
 bogging VBG
 boggle NN
 boggled VBD
@@ -5989,7 +5989,7 @@ boisterous JJ
 boisterously RB
 bold JJ
 bolder JJR
-boldest JJT
+boldest JJS
 boldface NN
 boldly RB
 boldness NN
@@ -6045,11 +6045,11 @@ bongo NN
 bongos NNS
 bonhomie NN
 bonier NN
-boniest JJT
+boniest JJS
 bonnet NN
 bonnets NNS
 bonnie NP
-bonniest JJT
+bonniest JJS
 bonny NN
 bonus NN
 bonuses NNS
@@ -6386,7 +6386,7 @@ bravely RB
 braver JJR
 bravery NN
 braves NNS
-bravest JJT
+bravest JJS
 braving VBG
 bravo UH
 bravos NN
@@ -6545,7 +6545,7 @@ briefcase NN
 briefcases NNS
 briefed VBN
 briefer JJR NP
-briefest JJT
+briefest JJS
 briefing VBG NN
 briefings NNS
 briefly RB
@@ -6565,7 +6565,7 @@ brightened VBN VBD
 brightening VBG
 brightens VBZ
 brighter JJR
-brightest RBT JJT JJS
+brightest RBT JJS
 brightly RB QL
 brightness NN
 brilliance NN
@@ -6616,7 +6616,7 @@ broadened VBN VBD
 broadening VBG NN
 broadens VBZ
 broader JJR
-broadest JJT
+broadest JJS
 broadleaved VBN VBD
 broadly RB QL
 broadminded VBN VBD
@@ -7012,7 +7012,7 @@ bushy NN
 busied VBD
 busier JJR
 busies NNS
-busiest JJS JJT
+busiest JJS
 busily RB
 business NNP NN
 businesses NNS
@@ -7262,7 +7262,7 @@ calls VBZ NIL NNS
 calm NN VB JJ
 calmed VBN VBD
 calmer JJR
-calmest JJT
+calmest JJS
 calming VBG
 calmly RB
 calmness NN
@@ -7825,7 +7825,7 @@ catch NN VB
 catch-all NN
 catcher NN
 catches NNS VBZ
-catchiest JJT
+catchiest JJS
 catching VBG NN
 catchment NN
 catchphrase NN
@@ -8413,7 +8413,7 @@ cheerful JJ
 cheerfully RB
 cheerfulness NN
 cheerier NN
-cheeriest JJT
+cheeriest JJS
 cheerily RB
 cheering VBG
 cheerleader NN
@@ -8616,7 +8616,7 @@ chocolate NN JJ
 chocolates NNS
 choice NN JJ
 choices NNS
-choicest JJT
+choicest JJS
 choir NN
 choirboy NN
 choirboys NNS
@@ -8964,7 +8964,7 @@ classicism NN
 classicist NP
 classicists NNS
 classics NNS
-classiest JJT
+classiest JJS
 classifiable JJ
 classification NN
 classifications NNS
@@ -9179,7 +9179,7 @@ closeness NN
 closer RBR JJR
 closers NNS
 closes VBZ
-closest JJT
+closest JJS
 closet NN
 closeted VBN
 closets NNS
@@ -9248,7 +9248,7 @@ clumping VBG
 clumps NNS
 clumpy NN
 clumsier NN
-clumsiest JJT
+clumsiest JJS
 clumsily RB
 clumsiness NN
 clumsy JJ
@@ -9527,7 +9527,7 @@ cold-bloodedly RB
 cold-hearted VBN VBD
 cold-shouldering VBG
 colder JJR
-coldest JJT
+coldest JJS
 coldish NN
 coldly RB
 coldness NN
@@ -9857,7 +9857,7 @@ common-sense NN JJ
 commonality NN
 commoner JJR
 commoners NNS
-commonest JJT
+commonest JJS
 commonly RB
 commonness NN
 commonplace NN JJ
@@ -11106,7 +11106,7 @@ coolants NNS
 cooled VBN VBD
 cooler NN JJR
 coolers NNS
-coolest JJT
+coolest JJS
 coolies NNS
 cooling VBG NN
 coolly RB
@@ -11384,7 +11384,7 @@ costing VBG NN
 costings NNS
 costless JJ
 costlier JJR
-costliest JJT
+costliest JJS
 costliness NN
 costly JJ
 costs NNS VBZ
@@ -11642,7 +11642,7 @@ cradles NNS
 cradling VBG
 craft NN VB NP
 crafted VBN VBD
-craftiest JJT
+craftiest JJS
 craftily RB
 craftiness NN
 crafting VBG
@@ -11696,7 +11696,7 @@ crashing VBG
 crashingly RB
 crass JJ
 crasser NN
-crassest JJT
+crassest JJS
 crassly RB
 crassness NN
 crate NN
@@ -11727,7 +11727,7 @@ craze NN
 crazed VBN
 crazes NNS
 crazier NN
-craziest JJT
+craziest JJS
 crazily RB
 craziness NN
 crazy JJ
@@ -11886,7 +11886,7 @@ crisis NN NIL
 crisp NN JJ
 crisper NN
 crispier NN
-crispiest JJT
+crispiest JJS
 crispiness NN
 crisply RB
 crispness NN
@@ -12056,7 +12056,7 @@ crude JJ
 crudely RB
 crudeness NN
 cruder NN
-crudest JJT
+crudest JJS
 crudities NNS
 crudity NN
 cruel JJ
@@ -12182,7 +12182,7 @@ cuddle NN
 cuddled VBN VBD
 cuddles NNS
 cuddlier NN
-cuddliest JJT
+cuddliest JJS
 cuddliness NN
 cuddling VBG
 cuddly RB
@@ -12399,7 +12399,7 @@ cutaneous JJ
 cutback NN
 cutbacks NNS
 cute JJ
-cutest JJT
+cutest JJS
 cuticle NN
 cuticles NNS
 cutlass NN
@@ -12596,7 +12596,7 @@ darkened VBN VBD
 darkening VBG
 darkens VBZ
 darker JJR
-darkest JJT
+darkest JJS
 darkish NN
 darkly RB
 darkness NN
@@ -12695,7 +12695,7 @@ deadened VBN VBD
 deadening VBG
 deadens VBZ
 deadheads NNS
-deadliest JJT
+deadliest JJS
 deadline NN
 deadlines NNS
 deadlock NN
@@ -12729,7 +12729,7 @@ deanery NN
 deans NNS
 dear UH NN JJ
 dearer JJR
-dearest JJT
+dearest JJS
 dearly RB
 dearness NN
 dears NNS
@@ -13054,7 +13054,7 @@ deepened VBN VBD
 deepening VBG NN
 deepens VBZ
 deeper RBR JJR
-deepest RBT JJT
+deepest RBT JJS
 deepish NN
 deeply RB QL
 deepness NN
@@ -13532,7 +13532,7 @@ dense JJ
 densely RB
 denseness NN
 denser NN
-densest JJT
+densest JJS
 densities NNS
 density NN
 dent NN NP
@@ -15901,7 +15901,7 @@ dreams NNS VBZ
 dreamt VBD
 dreamy JJ
 drear NN
-dreariest JJT
+dreariest JJS
 drearily RB
 dreariness NN
 dreary JJ
@@ -15935,7 +15935,7 @@ dried VBN VBD
 drier NN JJR
 driers NNS
 dries VBZ
-driest JJT
+driest JJS
 drift NN VB
 drifted VBN VBD
 drifter NN
@@ -16122,7 +16122,7 @@ dullard NN
 dullards NNS
 dulled VBN VBD
 duller JJR
-dullest JJT
+dullest JJS
 dulling VBG
 dullness NN
 dulls VBZ
@@ -16291,7 +16291,7 @@ earful NN
 earl NN NP
 earldom NN
 earlier RBR RB JJR
-earliest JJS JJT
+earliest JJS
 earlobe NN
 earlobes NNS
 earls NNS
@@ -16350,7 +16350,7 @@ easement NN
 easements NNS
 eases VBZ
 easier RBR JJR
-easiest JJT
+easiest JJS
 easily RB QL
 easiness NN
 easing VBG
@@ -16654,7 +16654,7 @@ elderberry NN
 elderflower NN
 elderly JJ
 elders NNS NNPS
-eldest JJT
+eldest JJS
 elect VB
 electability NN
 elected VBN VBD
@@ -17041,7 +17041,7 @@ empress NN
 emptied VBN VBD
 emptier JJR
 empties VBZ
-emptiest JJT
+emptiest JJS
 emptily RB
 emptiness NN
 empty JJ
@@ -18877,7 +18877,7 @@ faint VB JJ
 faint-hearted VBN VBD
 fainted VBN
 fainter NN
-faintest JJT
+faintest JJS
 fainthearted VBN VBD
 fainting VBG
 faintly RB
@@ -18887,7 +18887,7 @@ fair NNP NN RB JJ
 fair-minded VBN VBD
 fair-weather NN
 fairer NN
-fairest JJT
+fairest JJS
 fairground NN
 fairgrounds NNS
 fairies NNS
@@ -18991,7 +18991,7 @@ fancied VBD
 fancier JJR
 fanciers NNS
 fancies VBZ
-fanciest JJT
+fanciest JJS
 fanciful JJ
 fancifully RB
 fancy NN VB JJ
@@ -19056,7 +19056,7 @@ farmyards NNS
 farrago NN
 farseeing VBG
 farther RBR QL
-farthest RBT JJT
+farthest RBT JJS
 farthing VBG
 farthings NNS
 fascia NN
@@ -19087,7 +19087,7 @@ fastening VBG NN
 fastenings NNS
 fastens VBZ
 faster RBR JJR
-fastest RBT JJT JJS
+fastest RBT JJS
 fastidious JJ
 fastidiously RB
 fastidiousness NN
@@ -19488,7 +19488,7 @@ fierce JJ
 fiercely RB
 fierceness NN
 fiercer NN
-fiercest JJT
+fiercest JJS
 fierily RB
 fiery JJ
 fiesta NN
@@ -19579,7 +19579,7 @@ filtering VBG NN
 filters VBZ NNS
 filth NN
 filthier NN
-filthiest JJT
+filthiest JJS
 filthily RB
 filthiness NN
 filthy JJ
@@ -19633,7 +19633,7 @@ finer JJR
 finery NN
 fines NNS
 finesse NN
-finest JJS JJT
+finest JJS
 finger NN
 finger-plate NN
 fingered VBD
@@ -19777,7 +19777,7 @@ fits VBZ NNS
 fitted VBN VBD
 fitter NN
 fitters NNS
-fittest JJT
+fittest JJS
 fitting VBG NN JJ
 fittingly RB
 fittings NNS
@@ -19845,7 +19845,7 @@ flak NN
 flake VB
 flaked VBN VBD
 flakes NNS
-flakiest JJT
+flakiest JJS
 flaking VBG
 flaky JJ
 flam NN
@@ -20013,7 +20013,7 @@ flightpath NN
 flights NNS
 flighty NN
 flimsier NN
-flimsiest JJT
+flimsiest JJS
 flimsily RB
 flimsiness NN
 flimsy JJ
@@ -20256,7 +20256,7 @@ foetuses NNS
 fog NN
 fogey NN
 fogged VBN
-foggiest JJT
+foggiest JJS
 foggy JJ
 foghorn NN
 fogs NNS
@@ -20706,7 +20706,7 @@ foul-up NN
 foul-ups NNS
 fouled VBD
 fouler NN
-foulest JJT
+foulest JJS
 fouling NN VBG
 foully RB
 foulness NN
@@ -20788,7 +20788,7 @@ fragrances NNS
 fragrant JJ
 frail JJ
 frailer NN
-frailest JJT
+frailest JJS
 frailly RB
 frailties NNS
 frailty NN
@@ -20808,7 +20808,7 @@ francophone NN
 francs NNS
 frank NNP NN JJ NP
 franked VBN VBD
-frankest JJT
+frankest JJS
 frankfurter NN NP
 frankincense NN
 franking VBG
@@ -20872,7 +20872,7 @@ freemasonry NN
 freemen NNS
 freer JJR
 frees VBZ
-freest JJT
+freest JJS
 freestyle NN
 freeway NN
 freewheeling VBG
@@ -20943,7 +20943,7 @@ friendless JJ
 friendlessness NN
 friendlier JJR
 friendlies NNS
-friendliest JJT
+friendliest JJS
 friendlily RB
 friendliness NN
 friendly JJ
@@ -21113,7 +21113,7 @@ full-timers NNS
 fullback NN
 fuller NP JJR
 fullers NNS
-fullest JJT
+fullest JJS
 fulling VBG
 fullish JJ
 fullness NN
@@ -21188,7 +21188,7 @@ funnelling VBG
 funnels NNS
 funnier JJR
 funnies NNS
-funniest JJT
+funniest JJS
 funnily RB
 funny NNP RB JJ
 fur NN IN
@@ -21249,7 +21249,7 @@ fuss NN VB
 fussed VBN VBD
 fusses NNS VBZ
 fussier NN
-fussiest JJT
+fussiest JJS
 fussily RB
 fussiness NN
 fussing VBG
@@ -21269,7 +21269,7 @@ futurists NNS
 futurologists NNS
 fuzz NN
 fuzzier NN
-fuzziest JJT
+fuzziest JJS
 fuzzily RB
 fuzziness NN
 fuzzy JJ
@@ -21528,7 +21528,7 @@ gathers VBZ
 gating VBG
 gauche JJ
 gaucheness NN
-gaudiest JJT
+gaudiest JJS
 gaudily RB
 gaudiness NN
 gaudy JJ
@@ -22006,7 +22006,7 @@ globule NN
 globules NNS
 gloom NN
 gloomier NN
-gloomiest JJT
+gloomiest JJS
 gloomily RB
 gloominess NN
 gloomy JJ
@@ -22027,7 +22027,7 @@ glossary NN
 glossed VBN
 glosses NNS
 glossier NN
-glossiest JJT
+glossiest JJS
 glossily RB
 glossing VBG
 glossy JJ
@@ -22217,7 +22217,7 @@ gorgeousness NN
 gorges NNS
 gorging VBG
 gorier NN
-goriest JJT
+goriest JJS
 gorilla NN
 gorillas NNS
 gormless JJ
@@ -22443,7 +22443,7 @@ graven JJ
 graver JJR
 graves NNS NP
 graveside NN
-gravest JJT
+gravest JJS
 gravestone NN
 gravestones NNS
 graveyard NN
@@ -22485,14 +22485,14 @@ great-uncle NN
 greatcoat NN
 greatcoats NNS
 greater JJR
-greatest JJS JJT
+greatest JJS
 greatly RB
 greatness NN
 greats NNS
 grebe NN
 grebes NNS
 greed NN
-greediest JJT
+greediest JJS
 greedily RB
 greediness NN
 greedy JJ
@@ -22500,7 +22500,7 @@ green NNP NN NP JJ
 green-eyed VBN VBD
 greener NN
 greenery NN
-greenest JJT
+greenest JJS
 greenfield NP
 greenfly RB
 greengages NNS
@@ -22568,7 +22568,7 @@ grimaced VBD
 grimaces NNS VBZ
 grimacing VBG
 grime NN
-grimiest JJT
+grimiest JJS
 grimly RB
 grimmer JJR
 grimmest NN
@@ -22617,7 +22617,7 @@ grocer NN
 groceries NNS
 grocers NNS
 grocery NN
-groggiest JJT
+groggiest JJS
 groggily RB
 groggy JJ
 groin NN
@@ -23198,7 +23198,7 @@ handsome JJ
 handsomely RB
 handsomeness NN
 handsomer JJR
-handsomest JJT
+handsomest JJS
 handstand NN
 handstands NNS
 handwriting NN
@@ -23238,7 +23238,7 @@ happening VBG NN
 happenings NNS
 happens VBZ
 happier JJR
-happiest JJT
+happiest JJS
 happily RB
 happiness NN
 happy NP JJ
@@ -23286,12 +23286,12 @@ hardeners NNS
 hardening VBG
 hardens VBZ
 harder RBR JJR
-hardest RBT JJT
+hardest RBT JJS
 hardhearted VBN VBD
 hardheartedly RB
 hardheartedness NN
 hardier NN
-hardiest JJT
+hardiest JJS
 hardily RB
 hardiness NN
 hardline NN
@@ -23431,7 +23431,7 @@ hats NNS
 hatstands NNS
 hatter NN
 haughtier NN
-haughtiest JJT
+haughtiest JJS
 haughtily RB
 haughtiness NN
 haughty JJ
@@ -23486,7 +23486,7 @@ hazel NN
 hazelnut NN
 hazelnuts NNS
 hazier NN
-haziest JJT
+haziest JJS
 hazily RB
 hazy JJ
 he PPS PRP NIL
@@ -23563,7 +23563,7 @@ heals VBZ
 health NNP NN
 healthful JJ
 healthier JJR
-healthiest JJT
+healthiest JJS
 healthily RB
 healthiness NN
 healths NNS
@@ -23605,7 +23605,7 @@ heartfelt JJ
 hearth NN
 hearthrug NN
 hearths NNS
-heartiest JJT
+heartiest JJS
 heartily RB
 heartiness NN
 heartland NN
@@ -23648,7 +23648,7 @@ heaves VBZ
 heavier RBR JJR
 heavier-than-air NN
 heavies NNS
-heaviest JJT
+heaviest JJS
 heavily RB QL
 heaviness NN
 heaving VBG NN
@@ -23983,7 +23983,7 @@ high-spirited JJ
 high-street NN
 high-strung NN
 higher RBR JJR
-highest RBT JJT JJS
+highest RBT JJS
 highish NN
 highland NN
 highlander NN
@@ -24038,7 +24038,7 @@ hinder NN
 hindered VBN VBD
 hindering VBG
 hinders VBZ
-hindmost JJT
+hindmost JJS
 hindquarters NNS
 hindrance NN
 hindrances NNS
@@ -24190,7 +24190,7 @@ holidaymaker NN
 holidaymakers NNS
 holidays NNS
 holier NN
-holiest JJT
+holiest JJS
 holiness NN
 holing VBG
 holistic JJ
@@ -24506,7 +24506,7 @@ hotpot NN
 hotspot NN
 hotspots NNS
 hotter JJR
-hottest JJS JJT
+hottest JJS
 hound NN
 hounded VBN VBD
 hounding VBG
@@ -27770,7 +27770,7 @@ jokily RB
 joking VBG
 jokingly RB
 jollier NN
-jolliest JJT
+jolliest JJS
 jollily RB
 jollity NN
 jolly JJ
@@ -27871,7 +27871,7 @@ jugular NN
 juice NN
 juices NNS
 juicier NN
-juiciest JJT
+juiciest JJS
 juiciness NN
 juicy JJ
 jukebox NN
@@ -27975,7 +27975,7 @@ keeling VBG
 keels NNS VBZ
 keen JJ
 keener NN
-keenest JJT
+keenest JJS
 keening VBG NN
 keenly RB QL
 keenness NN
@@ -28102,12 +28102,12 @@ kind-heartedness NN
 kinder JJR
 kindergarten NN
 kindergartens NNS
-kindest JJT
+kindest JJS
 kindle VB
 kindled VBN
 kindles NNS
 kindlier NN
-kindliest JJT
+kindliest JJS
 kindliness NN
 kindling VBG
 kindly RB JJ
@@ -28511,7 +28511,7 @@ largely RB QL
 largeness NN
 larger JJR
 largesse NN
-largest JJS JJT
+largest JJS
 largish JJ
 largo NN
 largos NN
@@ -28568,7 +28568,7 @@ lateral JJ
 lateralisation NN
 lateralization NN
 laterally RB
-latest JJS JJT
+latest JJS
 latex NN
 lath NN
 lathe NN
@@ -28680,7 +28680,7 @@ layperson NN
 lays VBZ NNS
 laze VB
 lazed VBN VBD
-laziest JJT
+laziest JJS
 lazily RB
 laziness NN
 lazing VBG
@@ -28923,7 +28923,7 @@ lengthened VBN VBD
 lengthening VBG
 lengthens VBZ
 lengthier NN
-lengthiest JJT
+lengthiest JJS
 lengthily RB
 lengths NNS
 lengthways NNS
@@ -29196,7 +29196,7 @@ lightening VBG
 lightens VBZ
 lighter NN JJR
 lighters NNS
-lightest JJT
+lightest JJS
 lighthouse NNP
 lighthouses NNS
 lighting VBG NN
@@ -29215,7 +29215,7 @@ likeability NN
 likeable JJ
 liked VBN VBD
 likelier NN
-likeliest JJT
+likeliest JJS
 likelihood NN
 likely RB JJ
 liken VB
@@ -29445,7 +29445,7 @@ littering VBG
 litters VBZ NNS
 little NP JJ NNP RB AP QL
 littleness NN
-littlest JJT
+littlest JJS
 littoral JJ
 liturgical JJ
 liturgies NNS
@@ -29454,7 +29454,7 @@ live JJ VB
 lived VBN VBD
 lived-in NN
 livelier JJR
-liveliest JJT
+liveliest JJS
 livelihood NN
 livelihoods NNS
 liveliness NN
@@ -29592,7 +29592,7 @@ lodging VBG NN
 lodgings NNS
 loft NN
 loftier NN
-loftiest JJT
+loftiest JJS
 loftily RB
 loftiness NN
 lofts NNS
@@ -29638,7 +29638,7 @@ lollipop NN
 lollipops NNS
 lone JJ
 lonelier JJR
-loneliest JJT
+loneliest JJS
 loneliness NN
 lonely JJ
 loner NN
@@ -29673,7 +29673,7 @@ longboat NN
 longbow NN
 longed VBN VBD
 longer RBR RB JJR
-longest JJS JJT
+longest JJS
 longevity NN
 longhand NN
 longhouse NN
@@ -29725,7 +29725,7 @@ loosenness NN
 loosens VBZ
 looser NN
 looses NNS VBZ
-loosest JJT
+loosest JJS
 loosing VBG
 loot NN
 looted VBN VBD
@@ -29778,7 +29778,7 @@ lotus NN
 loud RB JJ
 loud-mouthed VBN VBD
 louder RBR JJR
-loudest RBT JJT JJS
+loudest RBT JJS
 loudhailer NN
 loudly RB
 loudness NN
@@ -29810,7 +29810,7 @@ loved VBN VBD
 loveless NP
 lovelier NN
 lovelies NNS
-loveliest JJS JJT
+loveliest JJS
 loveliness NN
 lovelorn JJ
 lovely JJ
@@ -29838,12 +29838,12 @@ lower-class NN
 lowered VBN VBD
 lowering VBG NN
 lowers VBZ NNS
-lowest JJS JJT
+lowest JJS
 lowing VBG
 lowish JJ
 lowland NN
 lowlands NNS
-lowliest JJT
+lowliest JJS
 lowliness NN
 lowly JJ
 lowness NN
@@ -29869,7 +29869,7 @@ lucidity NN
 lucidly RB
 luck NN
 luckier JJR
-luckiest JJT
+luckiest JJS
 luckily RB
 luckless JJ
 lucky JJ
@@ -30391,7 +30391,7 @@ manipulative JJ
 manipulator NN
 manipulators NNS
 mankind NN
-manliest JJT
+manliest JJS
 manliness NN
 manly JJ
 manna NN
@@ -30848,7 +30848,7 @@ meandering VBG
 meanderings NNS
 meanders NNS
 meaner NN
-meanest JJT
+meanest JJS
 meaning NN VBG
 meaningful JJ
 meaningfully RB
@@ -30959,7 +30959,7 @@ mediums NNS
 medley NN
 meek JJ NP
 meeker NP
-meekest JJT
+meekest JJS
 meekly RB
 meekness NN
 meet NN VB
@@ -31112,7 +31112,7 @@ mercury NNP NN NP
 mercy NN
 mere JJ
 merely RB QL
-merest JJT
+merest JJS
 meretricious JJ
 merge VB
 merged VBN VBD
@@ -31138,7 +31138,7 @@ mermaids NNS
 mermen NNS
 meromorphic JJ
 merrier NN
-merriest JJT
+merriest JJS
 merrily RB
 merriment NN
 merry JJ
@@ -31172,7 +31172,7 @@ messenger NN
 messengers NNS
 messes NNS
 messier NN
-messiest JJT
+messiest JJS
 messily RB
 messiness NN
 messing VBG
@@ -31377,7 +31377,7 @@ midwives NNS
 mien NN
 might NN MD
 mightier NN
-mightiest JJT
+mightiest JJS
 mightily RB
 mights NNS
 mighty QL JJ
@@ -32351,7 +32351,7 @@ monumental JJ
 monumentally RB
 monuments NNS
 mood NN
-moodiest JJT
+moodiest JJS
 moodily RB
 moodiness NN
 moods NNS
@@ -32798,7 +32798,7 @@ murderously RB
 murders NNS
 murk NN
 murkier NN
-murkiest JJT
+murkiest JJS
 murky JJ
 murmur NN VB
 murmured VBD
@@ -33026,7 +33026,7 @@ nasalizing VBG
 nasally RB
 nascent JJ
 nastier JJR
-nastiest JJT
+nastiest JJS
 nastily RB
 nastiness NN
 nasturtium NN
@@ -33081,7 +33081,7 @@ nature NNP NN
 natures NNS
 naturist NN
 naught PN
-naughtiest JJT
+naughtiest JJS
 naughtily RB
 naughtiness NN
 naughty JJ
@@ -33120,7 +33120,7 @@ near-sighted VBN VBD
 nearby RB JJ
 neared VBD
 nearer IN RBR JJR
-nearest RBT IN JJT
+nearest RBT IN JJS
 nearing VBG
 nearly RB QL
 nearness NN
@@ -33131,7 +33131,7 @@ neaten NNS
 neatening VBG
 neatens NNS
 neater NN
-neatest JJT
+neatest JJS
 neatly RB
 neatness NN
 nebula NN
@@ -33349,7 +33349,7 @@ newborn JJ
 newcomer NN
 newcomers NNS
 newer JJR
-newest JJS JJT
+newest JJS
 newfangled VBN VBD
 newish JJ
 newly RB JJ
@@ -33395,7 +33395,7 @@ nice RB NP JJ
 nicely RB
 niceness NN
 nicer JJR
-nicest JJT
+nicest JJS
 niceties NNS
 nicety NN
 niche NN
@@ -33508,7 +33508,7 @@ noblemen NNS
 nobleness NN
 nobler JJR
 nobles NNS
-noblest JJT
+noblest JJS
 nobly RB
 nobodies NNS
 nobody PN NN
@@ -33535,7 +33535,7 @@ noiseless JJ
 noiselessly RB
 noises NNS
 noisier JJR
-noisiest JJT
+noisiest JJS
 noisily RB
 noisiness NN
 noisome NN
@@ -34355,7 +34355,7 @@ old-timers NNS
 old-world NN
 olden JJ
 older JJR
-oldest JJS JJT
+oldest JJS
 oldish JJ
 oldness NN
 oleanders NNS
@@ -35511,7 +35511,7 @@ paleontologists NNS
 paleontology NN
 paler NN
 pales NNS
-palest JJT
+palest JJS
 palette NN
 palettes NNS
 palimpsest NN
@@ -37359,7 +37359,7 @@ plain NN RB QL JJ
 plain-clothes NNS
 plain-spoken JJ
 plainer NN
-plainest JJT
+plainest JJS
 plainly RB QL
 plainness NN
 plains NNS NNP NNPS
@@ -37591,7 +37591,7 @@ ploys NNS
 pluck NN VB
 plucked VBD
 plucker NN
-pluckiest JJT
+pluckiest JJS
 plucking VBG
 plucks NNS VBZ
 plucky NN
@@ -37943,7 +37943,7 @@ poop NN
 poor NNP NN JJ
 poor-spirited VBN VBD
 poorer JJR
-poorest JJT
+poorest JJS
 poorly RB QL
 poorness NN
 pop NNP NN NP VB
@@ -38719,7 +38719,7 @@ pretreated VBN VBD
 pretreatment NN
 pretreatments NNS
 prettier JJR
-prettiest JJT
+prettiest JJS
 prettily RB
 prettiness NN
 pretty NP JJ NNP RB QL
@@ -39052,7 +39052,7 @@ proforma NN
 proformas NN
 profound JJ
 profounder NN
-profoundest JJT
+profoundest JJS
 profoundly RB QL
 profundity NN
 profuse JJ
@@ -39422,7 +39422,7 @@ protuberance NN
 protuberances NNS
 proud JJ
 prouder JJR
-proudest JJT
+proudest JJS
 proudly RB
 provable JJ
 provably RB
@@ -39758,7 +39758,7 @@ puree NN
 purely RB QL
 pureness NN
 purer NN
-purest JJT
+purest JJS
 purgative JJ
 purgatorial NN
 purgatory NN NP
@@ -40054,7 +40054,7 @@ queen NNP NN
 queenly RB
 queens NNS NP
 queer JJ
-queerest JJT
+queerest JJS
 queerly RB
 quell NP VB
 quelled VBN VBD
@@ -40107,7 +40107,7 @@ quickened VBN VBD
 quickening VBG
 quickens VBZ
 quicker RBR JJR
-quickest JJT
+quickest JJS
 quicklime NN
 quickly RB
 quickness NN
@@ -40341,7 +40341,7 @@ rainfall NN
 rainforest NN
 rainforests NNS
 rainier NP
-rainiest JJT
+rainiest JJS
 raining VBG
 rainless JJ
 rains NNS VBZ
@@ -40427,7 +40427,7 @@ rangy JJ
 rank NN JJ
 ranked VBN VBD
 ranker NN
-rankest JJT
+rankest JJS
 ranking VBG NN
 rankings NNS
 rankle NN
@@ -40707,7 +40707,7 @@ readership NN
 readied VBN VBD
 readier NN
 readies NNS
-readiest JJT
+readiest JJS
 readily RB QL
 readiness NN
 reading VBG NN NP
@@ -41998,7 +41998,7 @@ remote JJ
 remotely RB
 remoteness NN
 remoter JJR
-remotest JJT
+remotest JJS
 remount NN
 remounted VBN VBD
 remounts NNS
@@ -43095,7 +43095,7 @@ rice-paper NN
 rich NN NP JJ
 richer JJR
 riches NNS
-richest JJT
+richest JJS
 richly RB QL
 richness NN
 rick NNP
@@ -43261,7 +43261,7 @@ risings NNS
 risk NN VB
 risked VBN VBD
 riskier JJR
-riskiest JJT
+riskiest JJS
 riskiness NN
 risking VBG
 risks NNS
@@ -43516,7 +43516,7 @@ roughened VBN VBD
 roughening VBG
 roughens VBZ
 rougher JJR
-roughest JJT
+roughest JJS
 roughing VBG
 roughly RB QL
 roughness NN
@@ -43704,7 +43704,7 @@ runner-up NN
 runners NNS
 runners-up NN
 runnier NN
-runniest JJT
+runniest JJS
 running VBG NN
 runny NN
 runs NNS VBZ
@@ -43822,7 +43822,7 @@ safely RB
 safeness NN
 safer JJR
 safes NNS
-safest JJT
+safest JJS
 safeties NNS
 safety NNP NN
 saffron NN
@@ -43975,7 +43975,7 @@ sandcastles NNS
 sanded VBN VBD
 sander NN
 sandier NN
-sandiest JJT
+sandiest JJS
 sanding VBG
 sandman NP
 sandpaper NN
@@ -43993,7 +43993,7 @@ sandy JJ
 sane JJ
 sanely RB
 saner JJR
-sanest JJT
+sanest JJS
 sang FW-NN VBD
 sangria NNS
 sanguine NN
@@ -44095,7 +44095,7 @@ saucer NN
 saucers NNS
 sauces NNS
 saucier NN
-sauciest JJT
+sauciest JJS
 saucily RB
 sauciness NN
 saucy JJ
@@ -44213,7 +44213,7 @@ scans NNS VBZ
 scansion NN
 scant JJ
 scantier NN
-scantiest JJT
+scantiest JJS
 scantily RB
 scantiness NN
 scanty JJ
@@ -44811,7 +44811,7 @@ seed VBN NN
 seedbed NN
 seeded VBN VBD
 seedier NN
-seediest JJT
+seediest JJS
 seediness NN
 seeding VBG
 seedless JJ
@@ -45363,7 +45363,7 @@ sex-starved VBN VBD
 sexed VBN VBD
 sexes NNS
 sexier NN
-sexiest JJT
+sexiest JJS
 sexily RB
 sexiness NN
 sexing VBG
@@ -45387,7 +45387,7 @@ sexuality NN
 sexually RB
 sexy JJ
 shabbier NN
-shabbiest JJT
+shabbiest JJS
 shabbily RB
 shabbiness NN
 shabby JJ
@@ -45413,7 +45413,7 @@ shaft NN
 shafting VBG
 shafts NNS
 shag NN
-shaggiest JJT
+shaggiest JJS
 shaggy JJ
 shakable JJ
 shake NN VB
@@ -45424,7 +45424,7 @@ shaker NN
 shakers NNS
 shakes VBZ NNS
 shakier NN
-shakiest JJT
+shakiest JJS
 shakily RB
 shaking VBG NN
 shaky JJ
@@ -45501,7 +45501,7 @@ sharpening VBG NN
 sharpenness NN
 sharpens VBZ
 sharper JJR
-sharpest JJT
+sharpest JJS
 sharply RB QL
 sharpness NN
 sharps NN
@@ -45763,7 +45763,7 @@ shortened VBN VBD
 shortening VBG
 shortens VBZ
 shorter NP JJR
-shortest JJT
+shortest JJS
 shortfall NN
 shortfalls NNS
 shorthand NN
@@ -45838,7 +45838,7 @@ shreds NNS
 shrew NN
 shrewd JJ
 shrewder NN
-shrewdest JJT
+shrewdest JJS
 shrewdly RB
 shrewdness NN
 shrews NNS
@@ -45942,7 +45942,7 @@ sickest NN
 sickle NN
 sickle-cell NN
 sickles NNS
-sickliest JJT
+sickliest JJS
 sickly JJ
 sickness NN
 sicknesses NNS
@@ -46081,7 +46081,7 @@ silkworms NNS
 silky JJ
 sill NN
 sillier NN
-silliest JJT
+silliest JJS
 silliness NN
 sills NNS
 silly JJ
@@ -46119,7 +46119,7 @@ simpers NNS
 simple JJ
 simple-minded JJ
 simpler JJR
-simplest JJT
+simplest JJS
 simpleton NN
 simpletons NNS
 simplex NP
@@ -46153,7 +46153,7 @@ sin NN VB
 since IN RB CS
 sincere JJ
 sincerely RB
-sincerest JJT
+sincerest JJS
 sincerity NN
 sine NN FW-IN
 sinecure NN
@@ -46327,7 +46327,7 @@ sketchbooks NNS
 sketched VBN VBD
 sketches NNS VBZ
 sketchier NN
-sketchiest JJT
+sketchiest JJS
 sketchily RB
 sketching VBG
 sketchpad NN
@@ -46534,7 +46534,7 @@ sleep NN VB
 sleeper NN
 sleepers NNS
 sleepier NN
-sleepiest JJT
+sleepiest JJS
 sleepily RB
 sleepiness NN
 sleeping VBG NN
@@ -46588,7 +46588,7 @@ sliding VBG
 slight NN JJ
 slighted VBN VBD
 slighter JJR
-slightest JJT
+slightest JJS
 slighting VBG
 slightingly RB
 slightly RB QL
@@ -46684,7 +46684,7 @@ slowcoaches NNS
 slowdown NN
 slowed VBN VBD
 slower RBR JJR
-slowest JJT
+slowest JJS
 slowing VBG NN
 slowish NN
 slowly RB
@@ -46740,7 +46740,7 @@ small-mindedness NN
 small-scale NN
 small-town NN
 smaller JJR
-smallest JJS JJT
+smallest JJS
 smallholder NN
 smallholders NNS
 smallholding VBG
@@ -46825,7 +46825,7 @@ smooth VB JJ
 smooth-tongued VBN VBD
 smoothed VBN VBD
 smoother JJR
-smoothest JJT
+smoothest JJS
 smoothing VBG
 smoothly RB
 smoothness NN
@@ -46898,7 +46898,7 @@ sneak NN VB
 sneaked VBN VBD
 sneakers NNS
 sneakier NN
-sneakiest JJT
+sneakiest JJS
 sneakily RB
 sneaking VBG
 sneaks VBZ
@@ -47122,7 +47122,7 @@ softeners NNS
 softening VBG NN
 softens VBZ
 softer JJR
-softest JJT
+softest JJS
 softly RB QL
 softly-softly RB
 softness NN
@@ -47327,7 +47327,7 @@ sores NNS
 sorority NN
 sorrel NN JJ
 sorrier NN
-sorriest JJT
+sorriest JJS
 sorrow NN
 sorrowed VBN VBD
 sorrowful NN
@@ -47631,7 +47631,7 @@ speedboat NN
 speedboats NNS
 speeded VBD
 speedier NN
-speediest JJT
+speediest JJS
 speedily RB
 speeding VBG
 speedometer NN
@@ -48313,7 +48313,7 @@ state-of-the-art NN
 stated VBN VBD
 statehood NN
 stateless JJ
-stateliest JJT
+stateliest JJS
 stateliness NN
 stately JJ
 statement NN
@@ -48359,7 +48359,7 @@ statutes NNS
 statutorily RB
 statutory JJ
 staunch JJ
-staunchest JJT
+staunchest JJS
 staunching VBG
 staunchly RB
 staunchness NN
@@ -48378,7 +48378,7 @@ steadfastly RB
 steadfastness NN
 steadied VBD
 steadier JJR
-steadiest JJT
+steadiest JJS
 steadily RB
 steadiness NN
 steady RB VB JJ
@@ -48423,7 +48423,7 @@ steepened VBN VBD
 steepening VBG
 steepens NNS
 steeper JJR
-steepest JJT
+steepest JJS
 steeping VBG
 steeple NN
 steeplechase NN
@@ -48522,7 +48522,7 @@ stews NNS
 stick NN VB
 sticker NN
 stickers NNS
-stickiest JJT
+stickiest JJS
 stickiness NN
 sticking VBG
 stickleback NN
@@ -48800,7 +48800,7 @@ strangely RB QL
 strangeness NN
 stranger NN JJR
 strangers NNS
-strangest JJT
+strangest JJS
 strangle NN
 strangled VBN VBD
 stranglehold NN
@@ -48899,7 +48899,7 @@ striations NNS
 stricken VBN
 strict JJ
 stricter NN
-strictest JJT
+strictest JJS
 strictly RB QL
 strictness NN
 stricture NN
@@ -48965,7 +48965,7 @@ strong RB NP JJ
 strong-minded VBN VBD
 strongbow NN
 stronger JJR
-strongest JJS JJT
+strongest JJS
 stronghold NN
 strongholds NNS
 strongish NN
@@ -49079,14 +49079,14 @@ stupendous JJ
 stupendously RB
 stupid JJ
 stupider NN
-stupidest JJT
+stupidest JJS
 stupidities NNS
 stupidity NN
 stupidly RB
 stupor NN
 stupors NNS
 sturdier NN
-sturdiest JJT
+sturdiest JJS
 sturdily RB
 sturdy JJ
 sturgeon NN
@@ -49605,7 +49605,7 @@ sunlight NN
 sunlit NN
 sunned VBN VBD
 sunnier NN
-sunniest JJT
+sunniest JJS
 sunning VBG
 sunny NP JJ
 sunrise NN
@@ -49828,7 +49828,7 @@ surges NNS VBZ
 surgical JJ
 surgically RB
 surging VBG
-surliest JJT
+surliest JJS
 surlily RB
 surly JJ
 surmise VB
@@ -50017,7 +50017,7 @@ sweeteners NNS
 sweetening VBG
 sweetens VBZ
 sweeter JJR
-sweetest JJT
+sweetest JJS
 sweetheart NN
 sweethearts NNS
 sweetish JJ
@@ -50040,7 +50040,7 @@ swerves NNS VBZ
 swerving VBG
 swift NN JJ NP
 swifter NN
-swiftest JJT
+swiftest JJS
 swiftly RB
 swiftness NN
 swifts NNS
@@ -50327,7 +50327,7 @@ taciturn NN
 tack NN
 tacked VBN VBD
 tackier NN
-tackiest JJT
+tackiest JJS
 tackiness NN
 tacking VBG
 tackle NN VB
@@ -50576,7 +50576,7 @@ tastelessness NN
 taster NN
 tastes NNS VBZ
 tastier NN
-tastiest JJT
+tastiest JJS
 tasting VBG
 tastings NNS
 tasty JJ
@@ -51031,7 +51031,7 @@ testicle NN
 testicles NNS
 testicular JJ
 testier NN
-testiest JJT
+testiest JJS
 testified VBN VBD
 testifies VBZ
 testify VB
@@ -51225,7 +51225,7 @@ thickened VBN VBD
 thickening VBG
 thickens VBZ
 thicker JJR
-thickest JJT
+thickest JJS
 thicket NN
 thickets NNS
 thickly RB
@@ -51304,7 +51304,7 @@ thorax NN
 thorium NN
 thorn NN
 thornier NN
-thorniest JJT
+thorniest JJS
 thorns NNS
 thorny JJ
 thorough JJ
@@ -51516,7 +51516,7 @@ tides NNS
 tidied VBD
 tidier NN
 tidies NNS
-tidiest JJT
+tidiest JJS
 tidily RB
 tidiness NN
 tiding VBG
@@ -51543,7 +51543,7 @@ tightened VBN VBD
 tightening VBG NN
 tightens VBZ
 tighter RBR
-tightest JJT
+tightest JJS
 tightly RB QL
 tightly-knit NN
 tightness NN
@@ -51636,7 +51636,7 @@ tingles NNS
 tingling VBG
 tingly RB
 tinier NN
-tiniest JJT
+tiniest JJS
 tinker VB
 tinkered VBN VBD
 tinkering VBG NN
@@ -51647,7 +51647,7 @@ tinkling VBG
 tinkly RB
 tinned VBN VBD
 tinnier NN
-tinniest JJT
+tinniest JJS
 tinnily RB
 tinnitus NN
 tinny NN
@@ -52016,7 +52016,7 @@ tough JJ
 toughen NN
 toughened VBN VBD
 tougher RBR JJR
-toughest JJT
+toughest JJS
 toughness NN
 toupee NN
 tour FW-NN NN VB
@@ -52521,7 +52521,7 @@ trenched VBN VBD
 trenches NNS
 trenching VBG
 trend NN
-trendiest JJT
+trendiest JJS
 trendiness NN
 trends NNS
 trendy NN
@@ -52576,7 +52576,7 @@ trick NN
 tricked VBN
 trickery NN
 trickier NN
-trickiest JJT
+trickiest JJS
 trickily RB
 tricking VBG
 trickle NN
@@ -52782,7 +52782,7 @@ true NN RB JJ
 true-blue NN
 true-born JJ
 truer JJR
-truest JJT
+truest JJS
 truffle NN
 truffles NNS
 truism NN
@@ -53175,7 +53175,7 @@ udder NN
 udders NNS
 ugh UH
 uglier JJR
-ugliest JJT
+ugliest JJS
 uglification NN
 ugliness NN
 ugly JJ
@@ -53221,31 +53221,31 @@ unabashedly RB
 unabated JJ
 unable JJ
 unabridged JJ
-unabsorbed VBN VBD
+unabsorbed JJ
 unacceptability NN
 unacceptable JJ
 unacceptably RB
-unaccepted VBN VBD
+unaccepted JJ
 unaccommodating VBG
 unaccompanied JJ
 unaccountability NN
 unaccountable JJ
 unaccountably RB QL
-unaccounted VBN VBD
+unaccounted JJ
 unaccustomed JJ
 unachievable JJ
 unacknowledged JJ
 unacquainted JJ
-unactivated VBN VBD
-unadapted VBN VBD
+unactivated JJ
+unadapted JJ
 unadaptive JJ
 unaddressable JJ
-unaddressed VBN VBD
+unaddressed JJ
 unadjusted JJ
 unadorned JJ
 unadulterated JJ
 unadventurous JJ
-unadvertised VBN VBD
+unadvertised JJ
 unaesthetic JJ
 unaffected JJ
 unaffectedly RB
@@ -53253,82 +53253,82 @@ unaffiliated JJ
 unaffordable JJ
 unafraid JJ
 unaided JJ
-unaligned VBN VBD
-unallocated VBN VBD
+unaligned JJ
+unallocated JJ
 unalloyed JJ
 unalterable JJ
 unalterably RB
-unaltered VBN VBD
+unaltered JJ
 unambiguity NN
 unambiguous JJ
 unambiguously RB
 unambitious JJ
-unamended VBN VBD
+unamended JJ
 unamused JJ
 unanimity NN
 unanimous JJ
 unanimously RB
-unannotated VBN VBD
+unannotated JJ
 unannounced JJ
 unanswerable JJ
 unanswered JJ
 unanticipated JJ
 unappealing VBG
-unappeased VBN VBD
+unappeased JJ
 unappetising VBG
 unappetizing VBG
 unappreciated JJ
 unappreciative JJ
 unapproachable JJ
-unapproved VBN VBD
-unarchived VBN VBD
+unapproved JJ
+unarchived JJ VBN VBD
 unarguable JJ
 unarguably RB
 unarmed JJ
-unaroused VBN VBD
-unashamed VBN VBD
+unaroused JJ
+unashamed JJ
 unashamedly RB
 unasked JJ
 unassailable JJ
-unassailed VBN VBD
+unassailed JJ
 unassertive JJ
-unassigned VBN VBD
+unassigned JJ
 unassisted JJ
-unassociated VBN VBD
-unassuaged VBN VBD
+unassociated JJ
+unassuaged JJ
 unassuming VBG
 unattached JJ
 unattainable JJ
 unattainably RB
-unattained VBN VBD
+unattained JJ
 unattended JJ
-unattenuated VBN VBD
+unattenuated JJ
 unattractive JJ
 unattractiveness NN
 unattributable JJ
-unattributed VBN VBD
-unaudited VBN VBD
-unauthenticated VBN VBD
-unauthorised VBN VBD
+unattributed JJ
+unaudited JJ
+unauthenticated JJ
+unauthorised JJ
 unauthorized JJ
 unavailability NN
 unavailable JJ
 unavailing JJ
-unavenged VBN VBD
+unavenged JJ
 unavoidable JJ
 unavoidably RB QL
-unawakened VBN VBD
+unawakened JJ
 unaware JJ
 unawares NNS
 unbalance NN
 unbalanced VBN
 unbalances NNS
 unbalancing VBG
-unbanned VBN VBD
+unbanned JJ
 unbanning VBG
-unbaptised VBN VBD
-unbaptized VBN VBD
-unbarred VBN VBD
+unbaptised JJ
+unbaptized JJ
+unbarred JJ
 unbearable JJ
 unbearably RB QL
 unbeatable JJ
@@ -53340,69 +53340,69 @@ unbelief NN
 unbelievability NN
 unbelievable JJ
 unbelievably RB
-unbelieved VBN VBD
+unbelieved JJ
 unbeliever NN
 unbelievers NNS
 unbelieving JJ
 unbending VBG
-unbiased VBN VBD
+unbiased JJ
 unbiasedly RB
-unbiassed VBN VBD
+unbiassed JJ
 unbiassedly RB
 unbidden JJ
-unbleached VBN VBD
+unbleached JJ
 unblemished JJ
 unblinking VBG
 unblinkingly RB
 unblock NN
-unblocked VBN VBD
+unblocked JJ VBN VBD
 unblocking VBG
-unbloodied VBN VBD
-unboiled VBN VBD
+unbloodied JJ
+unboiled JJ
 unbolt NN
-unbolted VBN VBD
-unbooked VBN VBD
+unbolted JJ VBN VBD
+unbooked JJ
 unborn JJ
 unbound VBN
 unbounded JJ
-unbowed VBN VBD
-unbraced VBN VBD
-unbracketed VBN VBD
-unbranded VBN VBD
+unbowed JJ
+unbraced JJ
+unbracketed JJ VBN VBD
+unbranded JJ
 unbreakability NN
 unbreakable JJ
 unbridgeable JJ
-unbridged VBN VBD
+unbridged JJ
 unbridled VBN
 unbroken JJ
-unbruised VBN VBD
+unbruised JJ
 unbuckle NN
-unbuckled VBN VBD
-unbundled VBN VBD
+unbuckled JJ VBN VBD
+unbundled JJ VBN VBD
 unburden JJ
 unburdened VBN
 unburdening VBG
-unburied VBN VBD
+unburied JJ
 unburned JJ
 unburnt JJ
 unbutton NN
-unbuttoned VBN VBD
+unbuttoned JJ VBN VBD
 unbuttoning VBG
-uncalibrated VBN VBD
+uncalibrated JJ VBN VBD
 uncalled JJ
 uncalled-for JJ
-uncancelled VBN VBD
+uncancelled JJ
 uncannily RB
 uncanny JJ
-uncapped VBN VBD
-uncared VBN VBD
+uncapped JJ VBN VBD
+uncared JJ
 uncaring VBG
-uncased VBN VBD
-uncatalogued VBN VBD
+uncased JJ
+uncatalogued JJ
 unceasing JJ
 unceasingly RB
-uncelebrated VBN VBD
-uncensored VBN VBD
+uncelebrated JJ
+uncensored JJ
 unceremonious JJ
 unceremoniously RB
 uncertain JJ
@@ -53410,14 +53410,14 @@ uncertainly RB
 uncertainties NNS
 uncertainty NN
 unchain NN
-unchained VBN VBD
+unchained JJ VBN VBD
 unchaining VBG
 unchallengeable JJ
 unchallenged JJ
 unchangeable JJ
 unchanged JJ
 unchanging JJ
-unchaperoned VBN VBD
+unchaperoned JJ
 uncharacteristic JJ
 uncharacteristically RB
 uncharged JJ
@@ -53427,43 +53427,43 @@ uncharitably RB
 uncharted JJ
 uncheckable JJ
 unchecked JJ
-unchristened VBN VBD
+unchristened JJ
 unchristian JJ
-unchronicled VBN VBD
-uncircumcised VBN VBD
-uncircumcized VBN VBD
+unchronicled JJ
+uncircumcised JJ
+uncircumcized JJ
 uncivil JJ
-uncivilised VBN VBD
-uncivilized VBN VBD
+uncivilised JJ
+uncivilized JJ
 unclaimed JJ
-unclasped VBN VBD
+unclasped JJ VBN VBD
 unclasping VBG
 unclassifiable JJ
-unclassified VBN VBD
+unclassified JJ
 uncle NN NP
 unclean JJ
 uncleanliness NN
 uncleanly RB
 unclear JJ
-uncleared VBN VBD
+uncleared JJ
 unclench NN
 unclenched VBN
 uncles NNS
 unclimbable JJ
-unclimbed VBN VBD
+unclimbed JJ
 unclog NN
-unclosed VBN VBD
-unclothed VBN VBD
+unclosed JJ
+unclothed JJ
 unclouded JJ
 uncluttered JJ
 uncoil NN
-uncoiled VBN VBD
+uncoiled JJ
 uncoiling VBG
 uncoils NNS
-uncollated VBN VBD
-uncollected VBN VBD
-uncollimated VBN VBD
-uncombed VBN VBD
+uncollated JJ
+uncollected JJ
+uncollimated JJ
+uncombed JJ
 uncomely RB
 uncomfortable JJ
 uncomfortableness NN
@@ -53477,12 +53477,12 @@ uncompetitiveness NN
 uncompilable JJ
 uncomplaining JJ
 uncomplainingly RB
-uncompleted VBN VBD
-uncomplicated VBN VBD
+uncompleted JJ
+uncomplicated JJ
 uncomplimentary JJ
 uncomprehending VBG
 uncomprehendingly RB
-uncompressed VBN VBD
+uncompressed JJ
 uncompromisable JJ
 uncompromising JJ
 uncompromisingly RB
@@ -53491,29 +53491,29 @@ unconcerned JJ
 unconcernedly RB
 unconditional JJ
 unconditionally RB
-unconfined VBN VBD
-unconfirmed VBN VBD
-unconfused VBN VBD
+unconfined JJ
+unconfirmed JJ
+unconfused JJ
 uncongenial JJ
 unconnected JJ
 unconquerable JJ
-unconquered VBN VBD
+unconquered JJ
 unconscionable JJ
 unconscionably RB
 unconscious NN JJ
 unconsciously RB
 unconsciousness NN
-unconsecrated VBN VBD
-unconsidered VBN VBD
-unconsoled VBN VBD
+unconsecrated JJ
+unconsidered JJ
+unconsoled JJ
 unconstitutional JJ
 unconstitutionally RB
-unconstrained VBN VBD
-unconsumed VBN VBD
+unconstrained JJ
+unconsumed JJ
 uncontainable JJ
-uncontaminated VBN VBD
+uncontaminated JJ
 uncontentious JJ
-uncontested VBN VBD
+uncontested JJ
 uncontrollable JJ
 uncontrollably RB
 uncontrolled JJ
@@ -53521,24 +53521,24 @@ uncontroversial JJ
 uncontroversially RB
 unconventional JJ
 unconventionally RB
-unconverted VBN VBD
-unconvinced VBN VBD
+unconverted JJ
+unconvinced JJ
 unconvincing NN JJ
 unconvincingly RB
-uncooked VBN VBD
+uncooked JJ
 uncooperative JJ
-uncoordinated VBN VBD
-uncorked VBN VBD
+uncoordinated JJ
+uncorked JJ VBN VBD
 uncorrectable JJ
-uncorrected VBN VBD
-uncorrelated VBN VBD
-uncorroborated VBN VBD
-uncorrupted VBN VBD
+uncorrected JJ
+uncorrelated JJ
+uncorroborated JJ
+uncorrupted JJ
 uncountable JJ
 uncountably RB
 uncounted JJ
 uncouple JJ
-uncoupled VBN VBD
+uncoupled JJ VBN VBD
 uncouth NN
 uncouthness NN
 uncover VB
@@ -53546,38 +53546,38 @@ uncovered VBN
 uncovering VBG
 uncovers VBZ
 uncrackable JJ
-uncreased VBN VBD
-uncreated VBN VBD
+uncreased JJ
+uncreated JJ
 uncreative JJ
-uncredited VBN VBD
+uncredited JJ
 uncritical JJ
 uncritically RB
 uncross NN
 uncrossable JJ
-uncrossed VBN VBD
-uncrowded VBN VBD
-uncrowned VBN VBD
+uncrossed JJ VBN VBD
+uncrowded JJ
+uncrowned JJ
 uncrushable JJ
 unction NN
 unctuous JJ
 unctuously RB
-uncultivated VBN VBD
-uncultured VBN VBD
+uncultivated JJ
+uncultured JJ
 uncurled VBD
 uncut NN
 undamaged JJ
-undated VBN VBD
+undated JJ
 undaunted JJ
 undead NN
-undeceived VBN VBD
+undeceived JJ
 undecidability NN
 undecidable JJ
-undecided VBN VBD
+undecided JJ
 undeclared JJ
 undecorated JJ
-undefeated VBN VBD
-undefended VBN VBD
-undefiled VBN VBD
+undefeated JJ
+undefended JJ
+undefiled JJ
 undefinable JJ
 undefined JJ
 undeliverable JJ
@@ -53590,7 +53590,7 @@ undeniable JJ
 undeniably RB
 under IN RB JJ
 under-age NN
-under-represented VBN VBD
+under-represented JJ
 under-secretaries NNS
 under-sheriff JJ
 underachievement NN
@@ -53603,7 +53603,7 @@ underclothes NNS
 underclothing VBG
 undercoat NN
 undercoating VBG
-undercooked VBN VBD
+undercooked JJ VBN VBD
 undercover JJ
 undercurrent NN
 undercurrents NNS
@@ -53622,14 +53622,14 @@ underestimated VBN
 underestimates NNS
 underestimating VBG
 underestimation NN
-underexploited VBN VBD
-underfed VBN VBD
+underexploited JJ VBN VBD
+underfed JJ VBN VBD
 underfloor NN
 underflow JJ
 underfoot RB
 underframe NN
 underfund NN
-underfunded VBN VBD
+underfunded JJ VBN VBD
 underfunding VBG
 undergarment NN
 undergarments NNS
@@ -53657,15 +53657,15 @@ underling NN
 underlings NNS
 underlining VBG
 underlinings NNS
-underloaded VBN VBD
+underloaded JJ VBN VBD
 underlying VBG JJ
-undermanned VBN VBD
+undermanned JJ VBN VBD
 undermine VB
 undermined VBN
 undermines NNS
 undermining VBG
 underneath IN RB
-undernourished VBN VBD
+undernourished JJ
 undernourishment NN
 underpaid JJ
 underpants NNS
@@ -53681,33 +53681,33 @@ underpins VBZ
 underplay NN
 underplayed VBN
 underplays NNS
-underpopulated VBN VBD
+underpopulated JJ
 underpopulation NN
-underpowered VBN VBD
+underpowered JJ
 underpricing VBG
 underprivileged JJ
 underrate VB
 underrated VBN
 underscore VB
-underscored VBN VBD
+underscored JJ VBN VBD
 underscores NNS
 underscoring VBG
 undersea JJ
-undersealed VBN VBD
+undersealed JJ
 undersell NN
 undershirt NN
 undershoot NN
 underside NN
 undersides NNS
-undersigned VBN VBD
+undersigned JJ VBN VBD
 undersized JJ
 undersold JJ
 underspecification NN
-underspecified VBN VBD
+underspecified JJ
 underspend NN
 underspending VBG
 underspent NN
-understaffed VBN VBD
+understaffed JJ
 understand VB
 understandability NN
 understandable JJ
@@ -53721,7 +53721,7 @@ understated VBN
 understatement NN
 understates VBZ
 understating VBG
-understocked VBN VBD
+understocked JJ
 understood VBN VBD
 understorey NN
 understory NN
@@ -53738,13 +53738,13 @@ undertone NN
 undertones NNS
 undertook VBD
 undertow NN
-underused VBN VBD
+underused JJ
 underusing VBG
-underutilised VBN VBD
-underutilized VBN VBD
+underutilised JJ VBN VBD
+underutilized JJ VBN VBD
 undervaluation NN
 undervalue JJ
-undervalued VBN VBD
+undervalued JJ
 undervalues NNS
 undervaluing VBG
 underwater RB JJ
@@ -53766,49 +53766,49 @@ undesirability NN
 undesirable JJ
 undesirables NNS
 undesirably RB
-undesired VBN VBD
+undesired JJ
 undetectability NN
 undetectable JJ
 undetectably RB
 undetected JJ
 undetermined JJ
-undeterred VBN VBD
-undetonated VBN VBD
+undeterred JJ
+undetonated JJ
 undeveloped JJ
 undiagnosable JJ
-undiagnosed VBN VBD
+undiagnosed JJ
 undid VBD
 undifferentiated JJ
 undigested JJ
-undignified VBN VBD
+undignified JJ
 undiluted JJ
 undiminished JJ
 undiplomatic JJ
-undirected VBN VBD
+undirected JJ
 undiscerning VBG
 undisciplined JJ
 undisclosed JJ
-undiscovered VBN VBD
-undiscriminated VBN VBD
+undiscovered JJ
+undiscriminated JJ
 undiscriminating VBG
 undisguised JJ
 undisguisedly RB
 undismayed JJ
-undisplayed VBN VBD
+undisplayed JJ
 undisputed JJ
-undissipated VBN VBD
+undissipated JJ
 undistinguished JJ
-undistorted VBN VBD
-undistributed VBN VBD
+undistorted JJ
+undistributed JJ
 undisturbed JJ
 undivided JJ
 undo VB
-undocumented VBN VBD
+undocumented JJ
 undoes NNS
 undoing VBG NN
-undomesticated VBN VBD
+undomesticated JJ
 undone VBN
-undoubted VBN VBD
+undoubted JJ
 undoubtedly RB
 undress NN
 undressed VBD
@@ -53827,12 +53827,12 @@ unduly RB QL
 undying JJ
 unearned JJ
 unearth VB
-unearthed VBN VBD
+unearthed JJ VBN VBD
 unearthing VBG
 unearthly RB
 unease NN
 uneasier NN
-uneasiest JJT
+uneasiest JJS
 uneasily RB
 uneasiness NN
 uneasy JJ
@@ -53841,24 +53841,24 @@ uneaten JJ
 uneconomic JJ
 uneconomical JJ
 unedifying VBG
-unedited VBN VBD
+unedited JJ
 uneducated JJ
 unelectable JJ
-unelected VBN VBD
+unelected JJ
 unemotional JJ
 unemotionally RB
 unemployable JJ
 unemployed JJ
 unemployment NN
-unencrypted VBN VBD
-unencumbered VBN VBD
+unencrypted JJ
+unencumbered JJ
 unending JJ
 unendurable JJ
 unenforceable JJ
-unengaged VBN VBD
-unenlightened VBN VBD
+unengaged JJ
+unenlightened JJ
 unenlightening VBG
-unentered VBN VBD
+unentered JJ
 unenthusiastic JJ
 unenthusiastically RB
 unenviable JJ
@@ -53870,11 +53870,11 @@ unequivocally RB QL
 unergonomic JJ
 unerring JJ
 unerringly RB
-unescorted VBN VBD
-unestablished VBN VBD
+unescorted JJ
+unestablished JJ
 unethical JJ
 unethically RB
-unevaluated VBN VBD
+unevaluated JJ
 uneven JJ
 unevenly RB
 unevenness NN
@@ -53884,20 +53884,20 @@ unexacting VBG
 unexamined JJ
 unexceptionable JJ
 unexceptional JJ
-unexcited VBN VBD
+unexcited JJ
 unexciting VBG
-unexpanded VBN VBD
+unexpanded JJ
 unexpected JJ
 unexpectedly RB
 unexpectedness NN
-unexpired VBN VBD
+unexpired JJ
 unexplainable JJ
 unexplained JJ
-unexploded VBN VBD
-unexploited VBN VBD
+unexploded JJ
+unexploited JJ
 unexplored JJ
-unexpressed VBN VBD
-unexpurgated VBN VBD
+unexpressed JJ
+unexpurgated JJ
 unfailing JJ
 unfailingly RB QL
 unfair JJ
@@ -53915,18 +53915,18 @@ unfasten JJ
 unfastened VBD
 unfastening VBG
 unfathomable JJ
-unfathomed VBN VBD
-unfatigued VBN VBD
+unfathomed JJ
+unfatigued JJ
 unfavourable JJ
 unfavourably RB
-unfavoured VBN VBD
+unfavoured JJ
 unfeasible JJ
 unfeasibly RB
-unfed VBN VBD
+unfed JJ
 unfeeling VBG
 unfeelingly RB
 unfenced JJ
-unfertilised VBN VBD
+unfertilised JJ
 unfertilized JJ
 unfetchable JJ
 unfettered JJ
@@ -53938,16 +53938,16 @@ unfitness NN
 unfixed JJ
 unflagging JJ
 unflattering JJ
-unfledged VBN VBD
+unfledged JJ
 unflinching VBG
 unflinchingly RB
 unfocused JJ
-unfocussed VBN VBD
+unfocussed JJ VBN VBD
 unfold VB
-unfolded VBN VBD
+unfolded JJ VBN VBD
 unfolding VBG
 unfolds VBZ
-unforced VBN VBD
+unforced JJ
 unfordable JJ
 unforeseeable JJ
 unforeseen JJ
@@ -53962,9 +53962,9 @@ unfortunately RB
 unfortunates NNS
 unfounded JJ
 unfreezing VBG
-unfrequented VBN VBD
+unfrequented JJ
 unfriendlier NN
-unfriendliest JJT
+unfriendliest JJS
 unfriendliness NN
 unfriendly JJ
 unfrozen VBN
@@ -53977,13 +53977,13 @@ unfurl NN
 unfurled VBN
 unfurling VBG
 unfurls NNS
-unfurnished VBN VBD
+unfurnished JJ
 unfussy JJ
 ungainly JJ
 ungenerous JJ
 ungenerously RB
 ungentlemanly RB
-ungerminated VBN VBD
+ungerminated JJ
 unglamorous JJ
 unglazed JJ
 ungodliness NN
@@ -53996,20 +53996,20 @@ ungraciously RB
 ungrammatical JJ
 ungrateful JJ
 ungratefully RB
-ungrounded VBN VBD
-unguarded VBN VBD
+ungrounded JJ
+unguarded JJ
 unguessable JJ
 ungulates NNS
-unhampered VBN VBD
+unhampered JJ
 unhand NN
 unhappier NN
-unhappiest JJT
+unhappiest JJS
 unhappily RB QL
 unhappiness NN
 unhappy JJ
-unharmed VBN VBD
+unharmed JJ
 unhealthier NN
-unhealthiest JJT
+unhealthiest JJS
 unhealthily RB
 unhealthy JJ
 unheard JJ
@@ -54018,23 +54018,23 @@ unheated JJ
 unheeded JJ
 unhelpful JJ
 unhelpfully RB
-unheralded VBN VBD
+unheralded JJ
 unheroic NN
 unhesitating VBG
 unhesitatingly RB
 unhidden JJ
-unhindered VBN VBD
+unhindered JJ
 unhinge NN
 unhinged VBN
 unholy RB
-unhonoured VBN VBD
-unhooked VBN VBD
-unhoped VBN VBD
+unhonoured JJ
+unhooked JJ VBN VBD
+unhoped JJ
 unhurried JJ
 unhurriedly RB
 unhurt JJ
 unhygienic JJ
-unhyphenated VBN VBD
+unhyphenated JJ
 unicameral JJ
 unicellular JJ
 unicorn JJ
@@ -54063,40 +54063,40 @@ unilateral JJ
 unilateralism NN
 unilateralist NN
 unilaterally RB
-unillustrated VBN VBD
+unillustrated JJ
 unimaginable JJ
 unimaginably RB
 unimaginative JJ
 unimaginatively RB
-unimagined VBN VBD
+unimagined JJ
 unimpaired JJ
 unimpeachable JJ
 unimpeded JJ
 unimplementable JJ
-unimplemented VBN VBD
+unimplemented JJ
 unimportance NN
 unimportant JJ
 unimpressed JJ
 unimpressive JJ
 unimproved JJ
-unincorporated VBN VBD
-uninfected VBN VBD
+unincorporated JJ
+uninfected JJ
 uninfluenced JJ
 uninformative JJ
 uninformatively RB
-uninformed VBN VBD
+uninformed JJ
 uninhabitable JJ
-uninhabited VBN VBD
+uninhabited JJ
 uninhibited JJ
 uninhibitedly RB
-uninitialised VBN VBD
-uninitialized VBN VBD
+uninitialised JJ
+uninitialized JJ
 uninitiated JJ
 uninjured JJ
-uninspired VBN VBD
+uninspired JJ
 uninspiring VBG
-uninsulated VBN VBD
-uninsured VBN VBD
+uninsulated JJ
+uninsured JJ
 unintellectual JJ
 unintelligent NN
 unintelligible JJ
@@ -54107,11 +54107,11 @@ uninterested JJ
 uninterestedly RB
 uninteresting JJ
 uninterpretable JJ
-uninterpreted VBN VBD
+uninterpreted JJ
 uninterrupted JJ
 uninterruptedly RB
 unintuitive JJ
-uninvented VBN VBD
+uninvented JJ
 uninvited JJ
 uninviting VBG
 uninvolved JJ
@@ -54130,11 +54130,11 @@ uniquely RB
 uniqueness NN
 unisex NN
 unison NN
-unissued VBN VBD
+unissued JJ
 unit NN
 unitary JJ
 unite VB
-united VBN VBD NNP
+united JJ VBN VBD
 unites VBZ
 unities NNS
 uniting VBG
@@ -54150,9 +54150,9 @@ universes NNS
 universities NNS
 university NNP NN
 unjam NN
-unjammed VBN VBD
+unjammed JJ VBN VBD
 unjamming VBG
-unjaundiced VBN VBD
+unjaundiced JJ
 unjust JJ
 unjustifiable JJ
 unjustifiably RB
@@ -54170,7 +54170,7 @@ unknowing JJ
 unknowingly RB
 unknown NN JJ
 unknowns NNS
-unlabelled VBN VBD
+unlabelled JJ
 unlace NN
 unlaced VBD
 unlacing VBG
@@ -54181,11 +54181,11 @@ unlatching VBG
 unlawful JJ
 unlawfully RB
 unlawfulness NN
-unleaded VBN VBD
+unleaded JJ
 unlearn NN
-unlearned VBN VBD
+unlearned JJ
 unleash VB
-unleashed VBN VBD
+unleashed JJ VBN VBD
 unleashes NNS
 unleashing VBG
 unleavened JJ
@@ -54193,7 +54193,7 @@ unless IN CS
 unlicensed JJ
 unlike IN JJ
 unlikeable JJ
-unlikeliest JJT
+unlikeliest JJS
 unlikelihood NN
 unlikeliness NN
 unlikely JJ
@@ -54201,35 +54201,35 @@ unlimited JJ
 unlined JJ
 unlink NN
 unlinked VBN
-unlisted VBN VBD
+unlisted JJ
 unlit NN
 unload VB
 unloaded VBN JJ
 unloading VBG
 unloads VBZ
 unlock VB
-unlocked VBN VBD
+unlocked JJ VBN VBD
 unlocking VBG
 unlocks VBZ
 unlooked-for JJ
 unloose JJ
 unlovable JJ
-unloved VBN VBD
+unloved JJ
 unlovely JJ
 unloving VBG
 unluckier NN
-unluckiest JJT
+unluckiest JJS
 unluckily RB
 unlucky JJ
 unmade NN
 unmagnified JJ
 unmaintainable JJ
-unmaintained VBN VBD
+unmaintained JJ
 unmanageable JJ
 unmanageably QL
-unmanned VBN VBD
+unmanned JJ
 unmannerly RB
-unmapped VBN VBD
+unmapped JJ
 unmarked JJ
 unmarried JJ
 unmask NN
@@ -54238,18 +54238,18 @@ unmasks NNS
 unmatchable JJ
 unmatched JJ
 unmeasurable JJ
-unmechanised VBN VBD
+unmechanised JJ
 unmeetable JJ
 unmelodious JJ
 unmemorable JJ
-unmemorised VBN VBD
-unmemorized VBN VBD
+unmemorised JJ
+unmemorized JJ
 unmentionable JJ
 unmentionables NNS
-unmentioned VBN VBD
+unmentioned JJ
 unmerciful JJ
 unmercifully RB
-unmerited VBN VBD
+unmerited JJ
 unmet NN
 unmindful JJ
 unmissable JJ
@@ -54257,22 +54257,22 @@ unmistakable JJ
 unmistakably RB
 unmistakeable JJ
 unmistakeably RB
-unmitigated VBN VBD
+unmitigated JJ
 unmixed JJ
 unmnemonic JJ
 unmodifiable JJ
 unmodified JJ
 unmolested JJ
-unmonitored VBN VBD
+unmonitored JJ
 unmotivated JJ
-unmounted VBN VBD
+unmounted JJ VBN VBD
 unmovable JJ
 unmoved JJ
 unmoving VBG
 unmusical JJ
 unmusically RB
-unmutilated VBN VBD
-unmuzzled VBN VBD
+unmutilated JJ
+unmuzzled JJ VBN VBD
 unnamed JJ
 unnatural JJ
 unnaturally RB
@@ -54291,8 +54291,8 @@ unobjectionable JJ
 unobliging VBG
 unobservable JJ
 unobservant JJ
-unobserved VBN VBD
-unobstructed VBN VBD
+unobserved JJ
+unobstructed JJ
 unobtainable JJ
 unobtrusive JJ
 unobtrusively RB QL
@@ -54300,101 +54300,101 @@ unoccupied JJ
 unofficial JJ
 unofficially RB
 unopened JJ
-unopposed VBN VBD
-unoptimised VBN VBD
-unoptimized VBN VBD
-unordered VBN VBD
-unorganised VBN VBD
-unorganized VBN VBD
+unopposed JJ
+unoptimised JJ
+unoptimized JJ
+unordered JJ
+unorganised JJ
+unorganized JJ
 unoriginal JJ
 unoriginality NN
 unorthodox JJ
 unorthodoxy JJ
-unowned VBN VBD
+unowned JJ
 unpack VB
-unpacked VBN VBD
+unpacked JJ VBN VBD
 unpackers NNS
 unpacking VBG
 unpacks NNS
 unpaid JJ
-unpainted VBN VBD
+unpainted JJ
 unpaired JJ
 unpalatable JJ
 unparalleled JJ
 unpardonable JJ
-unparodied VBN VBD
-unpasted VBN VBD
-unpasteurised VBN VBD
-unpasteurized VBN VBD
+unparodied JJ
+unpasted JJ
+unpasteurised JJ
+unpasteurized JJ
 unpatriotic JJ
 unpaved JJ
-unpeeled VBN VBD
+unpeeled JJ
 unperceived JJ
-unpersonalised VBN VBD
-unpersonalized VBN VBD
-unpersuaded VBN VBD
+unpersonalised JJ
+unpersonalized JJ
+unpersuaded JJ
 unpersuasive JJ
-unperturbed VBN VBD
+unperturbed JJ
 unphysical JJ
 unpick JJ
-unpicked VBN VBD
+unpicked JJ
 unpicking VBG
-unplaced VBN VBD
-unplanned VBN VBD
+unplaced JJ
+unplanned JJ
 unplayability NN
 unplayable JJ
 unpleasant JJ
 unpleasantly RB
 unpleasantness NN
 unpleasing VBG
-unploughed VBN VBD
+unploughed JJ
 unplug NN
-unplugged VBN VBD
+unplugged JJ
 unplugging VBG
 unpoetical JJ
-unpolished VBN VBD
-unpolluted VBN VBD
+unpolished JJ
+unpolluted JJ
 unpopular JJ
 unpopularity NN
-unpopulated VBN VBD
+unpopulated JJ
 unportable JJ
 unpractical JJ
-unpractised VBN VBD
+unpractised JJ
 unprecedented JJ
 unprecedentedly RB
 unpredictability NN
 unpredictable JJ
 unpredictably RB
-unpredicted VBN VBD
-unprejudiced VBN VBD
+unpredicted JJ
+unprejudiced JJ
 unpremeditated JJ
 unprepared JJ
 unprepossessing VBG
-unpressurised VBN VBD
+unpressurised JJ
 unpretending VBG
 unpretentious JJ
-unprincipled VBN VBD
+unprincipled JJ
 unprintable JJ
-unprinted VBN VBD
-unprivileged VBN VBD
+unprinted JJ
+unprivileged JJ
 unproblematic JJ
-unprocessed VBN VBD
+unprocessed JJ
 unproductive JJ
 unprofessional JJ
 unprofitable JJ
 unprofitableness NN
 unprofitably RB
 unpromising JJ
-unprompted VBN VBD
+unprompted JJ
 unpronounceable JJ
-unpronounced VBN VBD
+unpronounced JJ
 unprotected JJ
 unprovable JJ
 unproved JJ
 unproven JJ
-unprovoked VBN VBD
-unpublicised VBN VBD
-unpublicized VBN VBD
+unprovoked JJ
+unpublicised JJ
+unpublicized JJ
 unpublishable JJ
 unpublished JJ
 unpunctual JJ
@@ -54402,30 +54402,30 @@ unpunctuality NN
 unpunished JJ
 unqualified JJ
 unquantifiable JJ
-unquantified VBN VBD
+unquantified JJ
 unquenchable JJ
 unquestionable JJ
 unquestionably RB
-unquestioned VBN VBD
+unquestioned JJ
 unquestioning VBG
 unquestioningly RB
 unquiet JJ
 unquote NN
-unquoted VBN VBD
+unquoted JJ
 unraisable JJ
 unravel VB
-unravelled VBN VBD
+unravelled JJ VBN VBD
 unravelling VBG
 unravels NNS
 unreachable JJ
-unreached VBN VBD
+unreached JJ
 unread JJ
 unreadability NN
 unreadable JJ
 unready JJ
 unreal JJ
 unrealisable JJ
-unrealised VBN VBD
+unrealised JJ
 unrealistic JJ
 unrealistically RB
 unreality NN
@@ -54434,34 +54434,34 @@ unrealized JJ
 unreasonable JJ
 unreasonableness NN
 unreasonably QL
-unreasoned VBN VBD
+unreasoned JJ
 unreasoning JJ
-unreceived VBN VBD
+unreceived JJ
 unreceptive JJ
 unrecognisable JJ
 unrecognisably RB
-unrecognised VBN VBD
+unrecognised JJ
 unrecognizable JJ
 unrecognized JJ
-unrecommended VBN VBD
-unreconciled VBN VBD
+unrecommended JJ
+unreconciled JJ
 unreconstructed JJ
-unrecorded VBN VBD
+unrecorded JJ
 unrecoverable JJ
 unredeemed JJ
-unreduced VBN VBD
-unrefereed VBN VBD
-unreferenced VBN VBD
+unreduced JJ
+unrefereed JJ
+unreferenced JJ
 unreferencing VBG
-unrefined VBN VBD
-unreflected VBN VBD
-unreformed VBN VBD
-unrefreshed VBN VBD
-unrefrigerated VBN VBD
-unregarded VBN VBD
+unrefined JJ
+unreflected JJ
+unreformed JJ
+unrefreshed JJ
+unrefrigerated JJ
+unregarded JJ
 unregenerate NN
-unregistered VBN VBD
-unregulated VBN VBD
+unregistered JJ
+unregulated JJ
 unrelated JJ
 unreleasable JJ
 unreleased JJ
@@ -54472,23 +54472,23 @@ unreliable JJ
 unreliably RB
 unrelieved JJ
 unremarkable JJ
-unremarked VBN VBD
+unremarked JJ
 unremitting JJ
 unremittingly RB
 unrepairable JJ
 unrepeatability NN
 unrepeatable JJ
-unrepeated VBN VBD
+unrepeated JJ
 unrepentant JJ
 unrepentantly RB
-unreported VBN VBD
+unreported JJ
 unrepresentable JJ
 unrepresentative JJ
-unrepresented VBN VBD
+unrepresented JJ
 unreproducible JJ
-unrequested VBN VBD
+unrequested JJ
 unrequited JJ
-unreserved VBN VBD
+unreserved JJ
 unreservedly RB
 unresisting VBG
 unresistingly RB
@@ -54496,25 +54496,25 @@ unresolvable JJ
 unresolved JJ
 unresponsive JJ
 unrest NN
-unrestrained VBN VBD
+unrestrained JJ
 unrestricted JJ
-unrevealed VBN VBD
-unrevised VBN VBD
-unrewarded VBN VBD
+unrevealed JJ
+unrevised JJ
+unrewarded JJ
 unrewarding JJ
 unriddle JJ
 unrighteous JJ
 unrighteously RB
 unrighteousness NN
 unripe JJ
-unrivalled VBN VBD
+unrivalled JJ
 unroll NN
 unrolled VBN
 unrolling VBG
 unromantic JJ
 unruffled JJ
 unruly JJ
-unsaddled VBN VBD
+unsaddled JJ
 unsafe JJ
 unsafely RB
 unsafeness NN
@@ -54526,24 +54526,24 @@ unsatisfactorily RB
 unsatisfactoriness NN
 unsatisfactory JJ
 unsatisfiable JJ
-unsatisfied VBN VBD
+unsatisfied JJ
 unsatisfying VBG
 unsaturated JJ
 unsavory JJ
 unsavoury NN
-unscaled VBN VBD
+unscaled JJ
 unscathed JJ
-unscheduled VBN VBD
+unscheduled JJ
 unscientific JJ
 unscramble VB
-unscrambled VBN VBD
+unscrambled JJ
 unscrambles NNS
 unscrambling VBG
-unscratched VBN VBD
+unscratched JJ
 unscrew VB
 unscrewed VBD
 unscrewing VBG
-unscripted VBN VBD
+unscripted JJ
 unscrupulous JJ
 unseal NN
 unsealable JJ
@@ -54553,16 +54553,16 @@ unsearchable JJ
 unseasonable JJ
 unseasonably RB
 unseasonal JJ
-unseat NN
-unseated VBN VBD
+unseat VB
+unseated JJ VBN VBD
 unseaworthiness NN
 unsecured JJ
-unseeded VBN VBD
+unseeded JJ
 unseeing VBG
 unseeingly RB
 unseemly JJ
 unseen JJ
-unselected VBN VBD
+unselected JJ
 unselfconscious JJ
 unselfconsciously RB
 unselfish JJ
@@ -54572,38 +54572,38 @@ unsellable JJ
 unsent NN
 unsentimental JJ
 unserviceable JJ
-unserviced VBN VBD
+unserviced JJ
 unset NN
 unsettle JJ
 unsettled VBN
 unsettling VBG JJ
-unshackled VBN VBD
-unshaded VBN VBD
+unshackled JJ VBN VBD
+unshaded JJ
 unshakable JJ
 unshakeable JJ
 unshaken JJ
 unsharable JJ
-unshared VBN VBD
+unshared JJ
 unshaven JJ
-unsheathed VBN VBD
+unsheathed JJ VBN VBD
 unshielded JJ
 unshod NN
 unshorn JJ
 unshrinking VBG
-unsighted VBN VBD
+unsighted JJ
 unsightly JJ
 unsigned JJ
-unsimplified VBN VBD
+unsimplified JJ
 unsinkable JJ
 unskilful JJ
 unskilled JJ
 unskillful JJ
-unsliced VBN VBD
+unsliced JJ
 unsmiling JJ
 unsmilingly RB
 unsociable JJ
 unsocial JJ
-unsoiled VBN VBD
+unsoiled JJ
 unsold JJ
 unsolder VB
 unsolicited JJ
@@ -54611,52 +54611,52 @@ unsolvable JJ
 unsolved JJ
 unsophisticated JJ
 unsophistication NN
-unsorted VBN VBD
+unsorted JJ
 unsought JJ
 unsound NN
 unsoundly RB
 unsoundness NN
-unspanned VBN VBD
+unspanned JJ
 unspeakable JJ
 unspeakably RB
 unspecific JJ
 unspecified JJ
 unspectacular JJ
 unspent NN
-unspoiled VBN VBD
+unspoiled JJ
 unspoilt JJ
 unspoken JJ
 unsporting VBG
 unstable JJ
 unstack NN
-unstacked VBN VBD
+unstacked JJ
 unstacking VBG
 unstained JJ
-unstamped VBN VBD
-unstated VBN VBD
+unstamped JJ
+unstated JJ
 unsteadily RB
 unsteadiness NN
 unsteady JJ
-unsterilised VBN VBD
-unsterilized VBN VBD
+unsterilised JJ
+unsterilized JJ
 unsticking VBG
-unstimulated VBN VBD
+unstimulated JJ
 unstinting JJ
 unstintingly RB
-unstirred VBN VBD
+unstirred JJ
 unstoppable JJ
 unstoppably RB
-unstopped VBN VBD
+unstopped JJ
 unstressed JJ
 unstretchable JJ
 unstructured JJ
 unstuck JJ
-unsubdued VBN VBD
-unsubsidised VBN VBD
-unsubsidized VBN VBD
+unsubdued JJ
+unsubsidised JJ
+unsubsidized JJ
 unsubstantial JJ
-unsubstantiated VBN VBD
-unsubstituted VBN VBD
+unsubstantiated JJ
+unsubstituted JJ
 unsubtle JJ
 unsubtly RB
 unsuccessful JJ
@@ -54666,52 +54666,52 @@ unsuitable JJ
 unsuitableness NN
 unsuitably RB
 unsuited JJ
-unsullied VBN VBD
+unsullied JJ
 unsung JJ
-unsupervised VBN VBD
+unsupervised JJ
 unsupportable JJ
 unsupported JJ
-unsuppressed VBN VBD
+unsuppressed JJ
 unsure JJ
 unsureness NN
-unsurfaced VBN VBD
+unsurfaced JJ
 unsurpassed JJ
-unsurprised VBN VBD
+unsurprised JJ
 unsurprising VBG
 unsurprisingly RB
 unsurvivable JJ
-unsuspected VBN VBD
+unsuspected JJ
 unsuspecting JJ
 unsustainable JJ
 unswappable JJ
-unsweetened VBN VBD
+unsweetened JJ
 unswerving VBG
 unswervingly RB
 unsympathetic JJ
 unsympathetically RB
 unsystematic JJ
 untactful JJ
-untagged VBN VBD
-untainted VBN VBD
-untalented VBN VBD
-untamed VBN VBD
+untagged JJ
+untainted JJ
+untalented JJ
+untamed JJ
 untangle NN
-untangled VBN VBD
+untangled JJ
 untangling VBG
-untapped VBN VBD
-untarnished VBN VBD
-untasted VBN VBD
-untaxed VBN VBD
+untapped JJ
+untarnished JJ
+untasted JJ
+untaxed JJ
 untaxing VBG
-untempered VBN VBD
+untempered JJ
 untenability NN
 untenable JJ
-untended VBN VBD
-unterminated VBN VBD
+untended JJ
+unterminated JJ
 untestable JJ
-untested VBN VBD
-untethered VBN VBD
-untextured VBN VBD
+untested JJ
+untethered JJ
+untextured JJ
 unthankful JJ
 unthankfulness NN
 unthinkable JJ
@@ -54720,7 +54720,7 @@ unthinking JJ
 unthinkingly RB
 unthoughtful JJ
 untidier NN
-untidiest JJT
+untidiest JJS
 untidily RB
 untidiness NN
 untidy JJ
@@ -54730,7 +54730,7 @@ unties NNS
 until IN CS
 untimely JJ
 untiring VBG
-untitled VBN VBD
+untitled JJ
 unto IN
 untold JJ
 untouchable JJ
@@ -54739,30 +54739,30 @@ untouched JJ
 untoward JJ
 untraceable JJ
 untrained JJ
-untrammelled VBN VBD
-untransformed VBN VBD
+untrammelled JJ
+untransformed JJ
 untranslatable JJ
-untranslated VBN VBD
+untranslated JJ
 untransportable JJ
 untrappable JJ
 untreatable JJ
 untreated JJ
-untried VBN VBD
+untried JJ
 untrodden JJ
-untroubled VBN VBD
+untroubled JJ
 untrue JJ
-untrusted VBN VBD
+untrusted JJ
 untrustworthy JJ
 untruth NN
 untruthful JJ
 untruthfully RB
 untruths NNS
-unturned VBN VBD
-untutored VBN VBD
+unturned JJ
+untutored JJ
 untwist NN
-untwisted VBN VBD
+untwisted JJ VBN VBD
 untying VBG
-untyped VBN VBD
+untyped JJ
 untypical JJ
 untypically RB
 unusable JJ
@@ -54772,39 +54772,39 @@ unusual JJ
 unusually RB QL
 unutterable JJ
 unutterably RB
-unvalidated VBN VBD
-unvanquished VBN VBD
-unvarnished VBN VBD
+unvalidated JJ
+unvanquished JJ
+unvarnished JJ
 unvarying JJ
 unvaryingly RB
 unveil VB
-unveiled VBN VBD
+unveiled JJ VBN VBD
 unveiling VBG
 unveils NNS
 unventilated JJ
 unverifiable JJ
-unverified VBN VBD
-unversed VBN VBD
+unverified JJ
+unversed JJ
 unvisitable JJ
-unvisited VBN VBD
-unvoiced VBN VBD
-unwalled VBN VBD
+unvisited JJ
+unvoiced JJ
+unwalled JJ
 unwanted JJ
 unwarily RB
-unwarned VBN VBD
+unwarned JJ
 unwarrantable JJ
 unwarrantably RB
 unwarranted JJ
 unwary JJ
 unwashed JJ
 unwatchable JJ
-unwatched VBN VBD
+unwatched JJ
 unwavering VBG
 unwaveringly RB
-unwearied VBN VBD
+unwearied JJ
 unwed JJ
 unwedge NN
-unweighted VBN VBD
+unweighted JJ
 unwelcome JJ
 unwelcoming VBG
 unwell NN
@@ -54826,19 +54826,19 @@ unworkability NN
 unworkable JJ
 unworldly RB
 unworn JJ
-unworried VBN VBD
+unworried JJ
 unworthily RB
 unworthiness NN
 unworthy JJ
 unwound NN
 unwounded JJ
 unwrap NN
-unwrapped VBN VBD
+unwrapped JJ VBN VBD
 unwrapping VBG
 unwritten JJ
 unyielding JJ
 unzip NN
-unzipped VBN VBD
+unzipped JJ VBN VBD
 unzipping VBG
 unzips NNS
 up IN RB RP
@@ -55105,7 +55105,7 @@ vague JJ
 vaguely RB QL
 vagueness NN
 vaguer NN
-vaguest JJT
+vaguest JJS
 vain JJ
 vainer NN
 vainest NN
@@ -56062,7 +56062,7 @@ warhead NN
 warheads NNS
 warhorse NN
 warhorses NNS
-wariest JJT
+wariest JJS
 warily RB
 wariness NN
 waring VBG
@@ -56290,7 +56290,7 @@ weakened VBN VBD
 weakening VBG NN
 weakens VBZ
 weaker JJR
-weakest JJT
+weakest JJS
 weakish NN
 weakling VBG
 weaklings NNS
@@ -56300,7 +56300,7 @@ weaknesses NNS
 weal NN
 wealth NN
 wealthier NN
-wealthiest JJT
+wealthiest JJS
 wealthy JJ
 wean NN
 weaned VBN
@@ -56316,7 +56316,7 @@ wearer NN
 wearers NNS
 wearied VBD
 wearies NNS
-weariest JJT
+weariest JJS
 wearily RB
 weariness NN
 wearing VBG
@@ -56393,7 +56393,7 @@ weighs VBZ
 weight NN
 weighted VBN VBD
 weightier NN
-weightiest JJT
+weightiest JJS
 weightily RB
 weighting NN
 weightings NNS
@@ -56774,7 +56774,7 @@ widens VBZ
 wider JJR
 wides NNS
 widespread RB JJ
-widest JJT
+widest JJS
 widgeon NN
 widow NN
 widowed VBN
@@ -56810,7 +56810,7 @@ wildebeest JJS
 wilder NNP NP
 wilderness NN
 wildernesses NNS
-wildest JJT
+wildest JJS
 wildfire NN
 wildfires NNS
 wildfowl NN
@@ -56865,7 +56865,7 @@ winder NN
 windfall NN
 windfalls NNS
 windier NN
-windiest JJT
+windiest JJS
 windily RB
 winding VBG
 winding-sheet NN
@@ -56956,7 +56956,7 @@ wisdom NN
 wise NP JJ
 wisely RB
 wiser JJR
-wisest JJT
+wisest JJS
 wish NN VB
 wish-list NN
 wishbone NN
@@ -57016,7 +57016,7 @@ wittering VBG
 witticism NN
 witticisms NNS
 wittier NN
-wittiest JJT
+wittiest JJS
 wittily RB
 wittiness NN
 wittingly RB
@@ -57235,12 +57235,12 @@ worshipper NN
 worshippers NNS
 worshipping VBG
 worships NNS VBZ
-worst JJS JJT
+worst JJS
 worsted NN
 worth NN IN NP JJ
 worthier NN
 worthies NNS
-worthiest JJT
+worthiest JJS
 worthily RB
 worthiness NN
 worthless JJ
@@ -57495,7 +57495,7 @@ you-know-what NN
 you-know-who NN
 young NNP NN NP JJ
 younger NP JJR
-youngest JJT
+youngest JJS
 youngish JJ
 youngster NN
 youngsters NNS
@@ -57510,7 +57510,7 @@ youths NNS NNP NN$
 yttrium NN
 yuan NN
 yucca NN
-zaniest JJT
+zaniest JJS
 zany NN
 zapping VBG
 zeal NN
