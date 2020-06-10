@@ -79,7 +79,6 @@ public class Tokenizer {
     * @param  str
     */
    private static String invalid = "\"<>#@"; // Invalid between terms.
-
    private void tokenize(String str) {
 
       Integer top;  // top of parenthesis stack
