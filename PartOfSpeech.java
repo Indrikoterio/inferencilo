@@ -90,6 +90,12 @@ class PartOfSpeech {
    private static Constant singular  = new Constant("singular"); // table, mouse
    // 'plural' defined above.
 
+   // For adjectives
+   private static Constant positive  = new Constant("positive");        // good
+   private static Constant comparative  = new Constant("comparative");  // better
+   private static Constant superlative  = new Constant("superlative");  // best
+
+
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
 
@@ -238,6 +244,32 @@ class PartOfSpeech {
 
 
    /*
+    * makeAdjectiveFact
+    *
+    * This method creates an adjective fact, eg. adjective(happy).
+    *
+    * @param  word
+    * @param  pos code
+    * @return fact
+    */
+   private static Rule makeAdjectiveFact(String word, String code) {
+      if (code.equals("JJ")) {
+         Complex term = new Complex(adjective, new Constant(word), positive);
+         return new Rule(term);
+      }
+      else if (code.equals("JJR")) {
+         Complex term = new Complex(adjective, new Constant(word), comparative);
+         return new Rule(term);
+      }
+      else if (code.equals("JJS")) {
+         Complex term = new Complex(adjective, new Constant(word), superlative);
+         return new Rule(term);
+      }
+      return null;
+   } // makeAdjectiveFact
+
+
+   /*
     * makeFact
     *
     * This method takes an English word and produces a Fact
@@ -255,6 +287,8 @@ class PartOfSpeech {
          if (pos.startsWith("VB")) newRule = makeVerbFact(word, pos);
          else
          if (pos.startsWith("NN")) newRule = makeNounFact(word, pos);
+         else
+         if (pos.startsWith("JJ")) newRule = makeAdjectiveFact(word, pos);
          if (newRule != null) rules.add(newRule);
       }
       return rules;
