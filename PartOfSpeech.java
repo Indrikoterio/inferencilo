@@ -11,6 +11,7 @@
  * Treebank tagset. There is a reference here:
  * https://sites.google.com/site/partofspeechhelp/home
  *
+ * ABN pre-quantifier (half, all)
  * AP post-determiner (many, several, next)
  * AT article (a, the, no)
  * CC coordinating conjunction
@@ -28,6 +29,7 @@
  * NNS noun plural ‘desks’
  * NNP proper noun, singular ‘Harrison’
  * NNPS proper noun, plural ‘Americans’
+ * OD ordinal numeral (first, 2nd)
  * PDT predeterminer ‘all the kids’
  * POS possessive ending parent‘s
  * PRP personal pronoun I, he, she
