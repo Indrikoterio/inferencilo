@@ -965,7 +965,7 @@ Zealanders NNS
 Zimbabwe NN
 Zimbabwean JJ
 Zimbabweans NNS
-a NN NP JJ NNP LS FW-IN AT DT IN
+a FW-IN AT DT
 aardvark NN
 aardvarks NNS
 aback RB
@@ -2581,7 +2581,7 @@ amusements NNS
 amuses VBZ
 amusing JJ
 amusingly RB QL
-an DT CC AT
+an DT AT
 anabolic NN
 anachronism NN
 anachronisms NNS
@@ -18042,7 +18042,7 @@ everlasting JJ
 everlastingly RB
 everliving VBG
 evermore NN
-every DT AT
+every DT
 everybody PN NN
 everyday JJ
 everyman NN
@@ -19724,7 +19724,7 @@ firmness NN
 firms NNS
 firmware NN
 firs NNS
-first JJ NNP RB CD OD
+first JJ NNP RB OD
 first-aid NN
 first-born NP
 first-borns NNS
@@ -33491,7 +33491,7 @@ nitrogenous JJ
 nitroglycerine NN
 nitrous JJ
 nits NNS
-no UH RB AT QL DT
+no UH RB QL DT
 no-ball JJ
 no-balled VBN VBD
 no-balls NNS
@@ -51099,7 +51099,7 @@ thaumaturge NN
 thaw NN VB
 thawed VBN
 thawing VBG
-the JJ NNP AT CD DT
+the AT DT
 theater NN
 theaters NNS
 theatre FW-NN NN
@@ -56495,10 +56495,10 @@ welterweight NN
 welts NNS
 wench NN
 wenches NNS
-wend NN
+wend VB
 wended VBN VBD
 wending VBG
-wends NNS
+wends VBZ
 went VBD
 wept VBN VBD
 were VBD BED
@@ -56600,8 +56600,9 @@ wherever WRB
 wherewith WRB
 wherewithal JJ
 wherry NN
-whet NN
+whet NN VB
 whether IN CS
+whets VBZ
 whetstones NNS
 whetted VBN
 whetting VBG
