@@ -235,7 +235,7 @@ Curzon NN
 Cyprus NN
 Czech NN
 Czechia NN
-Czechs NN
+Czechs NNS
 Côté NN
 DNA NN
 Dakota NN
@@ -248,7 +248,7 @@ Darwinian JJ
 Darwinism NN
 December NNP
 Delaware NN
-Delawarean NN
+Delawarean JJ
 Delawareans NNS
 Denmark NN
 Detroit NNP
@@ -687,7 +687,7 @@ Oregon NN
 Oregonian JJ
 Oregonians NNS
 Ottawa NN
-Ottawan NN
+Ottawan JJ
 Ottawans NNS
 Pakistan NN
 Pakistani NN
@@ -755,7 +755,7 @@ Sahrawi NN
 Sahrawian JJ
 Sahrawis NN
 Salvador NN
-Salvadoran NN
+Salvadoran JJ
 Salvadorans NNS
 Samoa NN
 Samoan NN
@@ -834,7 +834,7 @@ Taiwanese JJ
 Tajik NN
 Tajikistan NN
 Tajiks NN
-Tamil NN
+Tamil NN JJ
 Tanzania NN
 Tanzanian JJ
 Tanzanians NNS
@@ -1037,7 +1037,7 @@ abilities NNS
 ability NN
 abiogenesis NN
 abject JJ
-abjectly QL
+abjectly RB QL
 abjure NN
 abjured VBN VBD
 ablate NN
@@ -1059,7 +1059,7 @@ abnegations NNS
 abnormal JJ
 abnormalities NNS
 abnormality NN
-abnormally QL
+abnormally RB QL
 aboard IN RB
 abode NN
 abodes NNS
@@ -1195,7 +1195,7 @@ absurdly RB
 abundance NN
 abundances NNS
 abundant JJ
-abundantly QL
+abundantly RB QL
 abuse NN VB
 abused VBN
 abuser NN
@@ -1533,7 +1533,7 @@ adage NN
 adages NNS
 adagio NN
 adamant JJ
-adamantly QL
+adamantly RB QL
 adapt VB
 adaptability NN
 adaptable JJ
@@ -1745,7 +1745,7 @@ adulterous JJ
 adultery NN
 adulthood NN
 adults NNS
-adumbrate NN
+adumbrate VB
 adumbrated VBN VBD
 adumbrating VBG
 advance NNP NN JJ VB
@@ -2223,7 +2223,7 @@ alkaloids NNS
 all ABN NNP RB PDT QL DT
 all-clear JJ
 all-day JJ
-all-embracing VBG
+all-embracing JJ
 all-important JJ
 all-in NN
 all-in-one NN
@@ -3049,7 +3049,7 @@ apotheosis NN
 appal NN
 appalled VBN
 appalling JJ
-appallingly QL
+appallingly RB QL
 apparatchik NN
 apparatchiks NNS
 apparatus NN
@@ -3765,7 +3765,7 @@ astronauts NNS
 astronomer NN
 astronomers NNS
 astronomical JJ
-astronomically QL
+astronomically RB QL
 astronomy NN
 astrophysical JJ
 astrophysicist NN
@@ -3836,7 +3836,7 @@ atop IN RB
 atrial JJ
 atrium NN
 atrocious JJ
-atrociously QL
+atrociously RB QL
 atrocities NNS
 atrocity NN
 atrophied VBN
@@ -6204,7 +6204,7 @@ bottom-up NN
 bottomed VBN VBD
 bottoming VBG
 bottomless JJ
-bottommost NN
+bottommost JJ
 bottoms NNS
 botulism NN
 boudoir NN
@@ -7450,7 +7450,7 @@ cap NN VB NP
 capabilities NNS
 capability NN
 capable JJ
-capably QL
+capably RB QL
 capacious JJ
 capacitance NN
 capacities NNS
@@ -8307,7 +8307,7 @@ charmed VBN VBD
 charmer NN
 charmers NNS
 charming JJ
-charmingly QL
+charmingly RB QL
 charmless JJ
 charms NNS
 charred VBN
@@ -8690,7 +8690,7 @@ chromosomal NN
 chromosome NN
 chromosomes NNS
 chronic JJ
-chronically QL
+chronically RB QL
 chronicle NN
 chronicled VBN
 chronicler NN
@@ -12738,7 +12738,7 @@ death NN
 death-watch NN
 deathbed NN
 deathless JJ
-deathly QL
+deathly RB QL
 deaths NNS
 debacle NN
 debar NN
@@ -13601,7 +13601,7 @@ depleted VBN
 depleting VBG
 depletion NN
 deplorable JJ
-deplorably QL
+deplorably RB QL
 deplore VB
 deplored VBD
 deplores VBZ
@@ -14656,7 +14656,7 @@ discomforts NNS
 disconcert VB
 disconcerted VBN VBD
 disconcerting JJ
-disconcertingly QL
+disconcertingly RB QL
 disconcerts NNS
 disconnect VB
 disconnected VBN
@@ -15287,7 +15287,7 @@ distinct JJ
 distinction NN
 distinctions NNS
 distinctive JJ
-distinctively QL
+distinctively RB QL
 distinctiveness NN
 distinctly RB QL
 distinctness NN
@@ -16251,7 +16251,7 @@ dyke NP
 dykes NNS
 dynamic NN JJ
 dynamical JJ
-dynamically QL
+dynamically RB QL
 dynamics NNS NNP
 dynamism NN
 dynamite NN
@@ -16863,7 +16863,7 @@ embarrass NN
 embarrassed VBN VBD
 embarrasses NNS
 embarrassing VBG JJ
-embarrassingly QL
+embarrassingly RB QL
 embarrassment NN
 embarrassments NNS
 embassies NNS
@@ -18733,7 +18733,7 @@ exudes NNS
 exuding VBG
 exult NN
 exultant NN
-exultantly QL
+exultantly RB QL
 exultation NN
 exulted VBN VBD
 exulting VBG
@@ -19922,7 +19922,7 @@ flatterer NN
 flatterers NNS
 flatteries NNS
 flattering VBG
-flatteringly QL
+flatteringly RB QL
 flatters VBZ
 flattery NN
 flattish JJ
@@ -20596,7 +20596,7 @@ formerly RB
 formers NNS
 formic JJ
 formidable FW-JJ JJ
-formidably QL
+formidably RB QL
 forming VBG
 formless JJ
 formlessness NN
@@ -21044,7 +21044,7 @@ frozen VBN
 fructose NN
 frugal NN
 frugality NN
-frugally QL
+frugally RB QL
 fruit NN
 fruitcake NN
 fruitcakes NNS
@@ -22212,7 +22212,7 @@ gores NNS
 gorge NN
 gorged VBN VBD
 gorgeous JJ
-gorgeously QL
+gorgeously RB QL
 gorgeousness NN
 gorges NNS
 gorging VBG
@@ -22421,7 +22421,7 @@ gratified VBN VBD
 gratifies VBZ
 gratify VB
 gratifying VBG JJ
-gratifyingly QL
+gratifyingly RB QL
 grating NN
 gratings NNS
 gratis RB
@@ -24653,7 +24653,7 @@ humiliate VB
 humiliated VBN VBD
 humiliates VBZ
 humiliating VBG JJ
-humiliatingly QL
+humiliatingly RB QL
 humiliation NN
 humiliations NNS
 humility NN
@@ -25196,7 +25196,7 @@ immature JJ
 immaturely RB
 immaturity NN
 immeasurable JJ
-immeasurably QL
+immeasurably RB QL
 immediacy NN
 immediate JJ
 immediately RB QL
@@ -25471,7 +25471,7 @@ impositions NNS
 impossibilities NNS
 impossibility NN
 impossible JJ
-impossibly QL
+impossibly RB QL
 imposter NN
 imposters NNS
 impostor NN
@@ -25496,7 +25496,7 @@ impractically RB
 imprecation NN
 imprecations NNS
 imprecise JJ
-imprecisely QL
+imprecisely RB QL
 impreciseness NN
 imprecision NN
 impregnable JJ
@@ -25869,7 +25869,7 @@ incumbent JJ
 incumbents NNS
 incur VB
 incurable JJ
-incurably QL
+incurably RB QL
 incurred VBN VBD
 incurring VBG
 incurs VBZ
@@ -25893,7 +25893,7 @@ indefinable JJ
 indefinite NN JJ
 indefinitely RB
 indelible JJ
-indelibly QL
+indelibly RB QL
 indelicacy NN
 indelicate JJ
 indemnified VBN VBD
@@ -25977,7 +25977,7 @@ indispose NN
 indisposed VBN
 indisposition NN
 indisputable JJ
-indisputably QL
+indisputably RB QL
 indissoluble JJ
 indissolubly RB
 indistinct JJ
@@ -26134,7 +26134,7 @@ inexplicable JJ
 inexplicably RB
 inexpressibility NN
 inexpressible JJ
-inexpressibly QL
+inexpressibly RB QL
 inextensible JJ
 inextinguishable JJ
 inextricable JJ
@@ -26211,7 +26211,7 @@ infiltrators NNS
 infinite NN JJ
 infinitely RB QL
 infinitesimal JJ
-infinitesimally QL
+infinitesimally RB QL
 infinitesimals NNS
 infinities NNS
 infinitive NN
@@ -26506,7 +26506,7 @@ inoperable JJ
 inoperative JJ
 inopportune JJ
 inordinate NN
-inordinately QL
+inordinately RB QL
 inorganic JJ
 input NN
 inputs NNS
@@ -27146,7 +27146,7 @@ intrepidly RB
 intricacies NNS
 intricacy NN
 intricate JJ
-intricately QL
+intricately RB QL
 intrigue NN
 intrigued VBN
 intrigues NNS
@@ -27387,7 +27387,7 @@ irreconcilable JJ
 irrecoverable JJ
 irrecoverably RB
 irredeemable JJ
-irredeemably QL
+irredeemably RB QL
 irreducibility NN
 irreducible JJ
 irreducibly RB
@@ -27429,7 +27429,7 @@ irreverent JJ
 irreverently RB
 irreversibility NN
 irreversible JJ
-irreversibly QL
+irreversibly RB QL
 irrevocable JJ
 irrevocably RB
 irrigate VB
@@ -30195,7 +30195,7 @@ maisonette NN
 maisonettes NNS
 maize VB
 majestic JJ
-majestically QL
+majestically RB QL
 majesties NNS
 majesty NN
 major NN NP JJ NNP VB
@@ -31001,7 +31001,7 @@ mellower NN
 mellowing VBG
 mellows NNS
 melodic JJ
-melodically QL
+melodically RB QL
 melodies NNS
 melodious JJ
 melodiously RB
@@ -33795,7 +33795,7 @@ notionally RB
 notions NNS
 notoriety NN
 notorious JJ
-notoriously QL
+notoriously RB QL
 notwithstanding IN RB
 nougat NN
 nought NN
@@ -34960,7 +34960,7 @@ outspokenly RB
 outspokenness NN
 outspread VBN
 outstanding JJ
-outstandingly QL
+outstandingly RB QL
 outstation NN
 outstations NNS
 outstayed VBN VBD
@@ -35144,7 +35144,7 @@ overlooking VBG
 overlooks VBZ
 overlord NN
 overlords NPS
-overly QL
+overly RB QL
 overlying VBG
 overmanning VBG
 overmatching VBG
@@ -37513,7 +37513,7 @@ pleaser NN
 pleasers NNS
 pleases VBZ
 pleasing JJ
-pleasingly QL
+pleasingly RB QL
 pleasurable JJ
 pleasurably RB
 pleasure NN VB
@@ -38409,7 +38409,7 @@ precluded VBD
 precludes VBZ
 precluding VBG
 precocious JJ
-precociously QL
+precociously RB QL
 precociousness NN
 precocity NN
 precognition NN
@@ -39705,7 +39705,7 @@ pundit NN
 pundits NNS
 pungency NN
 pungent JJ
-pungently QL
+pungently RB QL
 punish VB
 punishable JJ
 punished VBN VBD
@@ -44252,7 +44252,7 @@ scarves NNS
 scathe NN
 scathed VBN VBD
 scathing VBG
-scathingly QL
+scathingly RB QL
 scatological JJ
 scatter NN VB
 scattered VBN VBD
@@ -45509,7 +45509,7 @@ shatter VB
 shatter-proof NN
 shattered VBN VBD
 shattering VBG
-shatteringly QL
+shatteringly RB QL
 shatters VBZ
 shave VB
 shaved VBN VBD
@@ -45682,7 +45682,7 @@ shocked VBN VBD
 shocker NN
 shockers NNS
 shocking VBG JJ
-shockingly QL
+shockingly RB QL
 shocks NNS VBZ
 shod VBN
 shoddily RB
@@ -50456,7 +50456,7 @@ tangents NNS
 tangerine NN
 tangerines NNS
 tangible JJ
-tangibly QL
+tangibly RB QL
 tangle NN VB
 tangled VBN VBD
 tangles NNS VBZ
@@ -50851,7 +50851,7 @@ temptations NNS
 tempted VBN VBD
 tempter NN
 tempting VBG
-temptingly QL
+temptingly RB QL
 temptress NN
 tempts VBZ
 ten CD NP
@@ -53470,7 +53470,7 @@ uncomfortableness NN
 uncomfortably RB QL
 uncommitted JJ
 uncommon JJ
-uncommonly QL
+uncommonly RB QL
 uncommunicative JJ
 uncompetitive JJ
 uncompetitiveness NN
@@ -54226,7 +54226,7 @@ unmagnified JJ
 unmaintainable JJ
 unmaintained JJ
 unmanageable JJ
-unmanageably QL
+unmanageably RB QL
 unmanned JJ
 unmannerly RB
 unmapped JJ
@@ -54433,7 +54433,7 @@ unrealizable JJ
 unrealized JJ
 unreasonable JJ
 unreasonableness NN
-unreasonably QL
+unreasonably RB QL
 unreasoned JJ
 unreasoning JJ
 unreceived JJ
@@ -55057,7 +55057,7 @@ utterances NNS
 uttered VBN VBD
 uttering VBG
 utterly RB QL
-uttermost NN
+uttermost RB
 utters VBZ
 uvular JJ
 vacancies NNS
@@ -57080,7 +57080,7 @@ wonderland NP
 wonderment NN
 wonders VBZ NNS
 wondrous JJ
-wondrously QL
+wondrously RB QL
 wont JJ
 woo VB
 wood NNP NN NP
