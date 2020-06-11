@@ -99,7 +99,10 @@ class PartOfSpeech {
    private static Constant comparative  = new Constant("comparative");  // better
    private static Constant superlative  = new Constant("superlative");  // best
 
-   // For article
+   // For adjectives
+   private static Constant adverb = new Constant("adverb");  // happily
+
+   // For articles
    private static Constant article = new Constant("article");       // the, a, an
    private static Constant definite = new Constant("definite");     // the
    private static Constant indefinite = new Constant("indefinite"); // a, an
@@ -298,6 +301,20 @@ class PartOfSpeech {
       return null;
    } // makeArticleFact
 
+   /*
+    * makeAdverbFact
+    *
+    * This method creates facts for adverbs, eg. adverb(happily).
+    *
+    * @param  word
+    * @return fact
+    */
+   private static Rule makeAdverbFact(String word) {
+      Complex term = new Complex(adverb, new Constant(word));
+      if (term != null) return new Rule(term);
+      return null;
+   } // makeAdverbFact
+
 
    /*
     * makeFact
@@ -321,6 +338,7 @@ class PartOfSpeech {
          if (pos.startsWith("JJ")) newRule = makeAdjectiveFact(word, pos);
          else
          if (pos.equals("AT")) newRule = makeArticleFact(word);
+         if (pos.equals("RB")) newRule = makeAdverbFact(word);
          if (newRule != null) rules.add(newRule);
       }
       return rules;
@@ -354,7 +372,7 @@ class PartOfSpeech {
 
    public static void main(String[] args) {
       String[] words = {"suspect", "saw", "dance", "dancing",
-                        "The", "A", "an"};
+                        "The", "A", "an", "happily"};
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
       List<Rule> rules = makeFacts(words);
       ListIterator<Rule> ruleIterator = rules.listIterator();
