@@ -11,6 +11,8 @@
  * Treebank tagset. There is a reference here:
  * https://sites.google.com/site/partofspeechhelp/home
  *
+ * AP post-determiner (many, several, next)
+ * AT article (a, the, no)
  * CC coordinating conjunction
  * CD cardinal digit
  * DT determiner
@@ -30,6 +32,8 @@
  * POS possessive ending parent‘s
  * PRP personal pronoun I, he, she
  * PRP$ possessive pronoun my, his, hers
+ * QL qualifier (very, fairly)
+ * QLP post-qualifier (enough, indeed)
  * RB adverb very, silently,
  * RBR adverb, comparative better
  * RBS adverb, superlative best
