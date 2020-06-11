@@ -965,7 +965,7 @@ Zealanders NNS
 Zimbabwe NN
 Zimbabwean JJ
 Zimbabweans NNS
-a NN NP JJ NNP LS FW-IN AT DT IN NIL
+a NN NP JJ NNP LS FW-IN AT DT IN
 aardvark NN
 aardvarks NNS
 aback RB
@@ -1092,7 +1092,7 @@ abound VB
 abounded VBD
 abounding VBG
 abounds VBZ
-about NIL IN RB RP
+about IN RB RP
 above IN RB JJ
 abraded VBN VBD
 abrasion NN
@@ -2518,7 +2518,7 @@ amoeba NN
 amoebae NN
 amoebic NN
 amok NN
-among IN NIL
+among IN
 amongst IN
 amoral JJ
 amorality NN
@@ -2581,7 +2581,7 @@ amusements NNS
 amuses VBZ
 amusing JJ
 amusingly RB QL
-an DT CC NIL AT
+an DT CC AT
 anabolic NN
 anachronism NN
 anachronisms NNS
@@ -2676,7 +2676,7 @@ ancient NNP NN JJ
 anciently RB
 ancients NNS
 ancillary JJ
-and NN JJ NNP IN NIL CC
+and NN JJ NNP IN CC
 andante NN
 androgynous JJ
 android NN
@@ -3519,7 +3519,7 @@ artlessly RB
 artlessness NN
 arts NNS
 artwork NN
-as RB QL CS IN NIL
+as RB QL CS IN
 asbestos NN
 asbestosis NN
 ascend VB
@@ -3852,7 +3852,7 @@ attaches VBZ
 attaching VBG
 attachment NN
 attachments NNS
-attack NN NIL VB
+attack NN VB
 attacked VBN VBD
 attacker NN
 attackers NNS
@@ -4801,7 +4801,7 @@ bazaar NN
 bazaars NNS
 bazooka NN
 bazookas NN
-be UH BE NIL VB
+be UH BE VB
 beach NNP NN NP
 beachcomber NN
 beached VBN VBD
@@ -4975,7 +4975,7 @@ befit NN
 befits VBZ
 befitted VBN VBD
 befitting VBG
-before NIL IN RB CS
+before IN RB CS
 beforehand RB
 befriend NN
 befriended VBN VBD
@@ -5057,7 +5057,7 @@ behove NN
 behoved VBN VBD
 behoves NNS
 beige NNP JJ
-being NN VBG NIL BEG
+being NN VBG BEG
 beings NNS
 bejewelled VBN VBD
 belabour NN
@@ -7096,7 +7096,7 @@ buzzers NNS
 buzzes NNS
 buzzing VBG
 buzzwords NNS
-by RP IN RB NIL
+by RP IN RB
 by-election NN
 by-elections NNS
 by-product NN
@@ -7258,7 +7258,7 @@ callously RB
 callousness NN
 callow NN
 callowness NN
-calls VBZ NIL NNS
+calls VBZ NNS
 calm NN VB JJ
 calmed VBN VBD
 calmer JJR
@@ -7326,7 +7326,7 @@ campus NN
 campuses NNS
 cams NNS
 camshaft NN
-can NN MD NIL VB
+can NN MD VB
 can't MD*
 can-opener NN
 canal NN
@@ -9784,7 +9784,7 @@ commemorating VBG
 commemoration NN
 commemorations NNS
 commemorative JJ
-commence NIL VB
+commence VB
 commenced VBN VBD
 commencement NN
 commences VBZ
@@ -9837,7 +9837,7 @@ commissioning VBG
 commissions NNS
 commit JJ VB
 commitment NN
-commitments NNS NIL
+commitments NNS
 commits VBZ
 committal NN
 committed VBN VBD
@@ -10740,7 +10740,7 @@ construct VB
 constructable JJ
 constructed VBN VBD
 constructing VBG
-construction NN NIL
+construction NN
 constructional JJ
 constructions NNS
 constructive JJ
@@ -11882,7 +11882,7 @@ cripples NNS
 crippling VBG
 cripplingly RB
 crises NNS
-crisis NN NIL
+crisis NN
 crisp NN JJ
 crisper NN
 crispier NN
@@ -13853,7 +13853,7 @@ despatching VBG
 desperado NN
 desperadoes NNS
 desperate JJ
-desperately NIL RB QL
+desperately RB QL
 desperation NN
 despicable JJ
 despicably RB
@@ -14032,7 +14032,7 @@ developed VBN VBD
 developer NN
 developers NNS
 developing VBG
-development NNP NN NIL
+development NNP NN
 developmental JJ
 developmentally RB
 developments NNS
@@ -17445,7 +17445,7 @@ entangler NN
 entangles NNS
 entangling VBG
 enter VB
-entered VBN VBD NIL
+entered VBN VBD
 entering VBG
 enterprise NNP NN
 enterprises NNS
@@ -18016,7 +18016,7 @@ evasive JJ
 evasively RB
 evasiveness NN
 eve NN NP
-even JJ RB QL VB NIL
+even JJ RB QL VB
 even-handed JJ
 evening NN
 evenings NNS
@@ -18151,7 +18151,7 @@ excavation NN
 excavations NNS
 excavator NN
 excavators NNS
-exceed NIL VB
+exceed VB
 exceeded VBN VBD
 exceeding VBG
 exceedingly RB QL
@@ -18441,7 +18441,7 @@ expendable JJ
 expended VBN VBD
 expending VBG
 expenditure NN
-expenditures NNS NIL
+expenditures NNS
 expends VBZ
 expense NN
 expenses NNS
@@ -18898,7 +18898,7 @@ fairness NN
 fairs NNS
 fairway NN
 fairways NNS
-fairy NN NIL
+fairy NN
 fairytale NN
 faith NN NP
 faithful NNS NN JJ
@@ -20901,7 +20901,7 @@ frequented VBD
 frequenting VBG
 frequently RB
 frequents VBZ
-fresco NN NIL
+fresco NN
 frescoes NNS
 frescos NNS
 fresh JJ
@@ -20947,7 +20947,7 @@ friendliest JJS
 friendlily RB
 friendliness NN
 friendly JJ
-friends NNS NNPS NIL
+friends NNS NNPS
 friendship NN
 friendships NNS
 fries NNS
@@ -21373,7 +21373,7 @@ gamekeeper NN
 gamekeepers NNS
 gamely RB
 gamers NNS
-games NNS NIL
+games NNS
 gamesmanship NN
 gamesmen NNS
 gametes NNS
@@ -21872,7 +21872,7 @@ girths NNS
 gist NN
 give NN VB
 give-away JJ
-given VBN NIL
+given VBN
 giver NN
 givers NNS
 gives VBZ
@@ -22953,7 +22953,7 @@ hackney NN
 hackneyed JJ
 hacks NNS
 hacksaw NN
-had HVN HVD VBN VBD NIL
+had HVN HVD VBN VBD
 haddock NN
 haddocks NNS
 hadron NN
@@ -23389,7 +23389,7 @@ harvester NP
 harvesters NNS
 harvesting VBG NN
 harvests NNS
-has VBZ HVZ NIL VB
+has VBZ HVZ VB
 hash NN
 hashed VBN VBD
 hashes NNS
@@ -23489,7 +23489,7 @@ hazier NN
 haziest JJS
 hazily RB
 hazy JJ
-he PPS PRP NIL
+he PPS PRP
 he'd PPS+MD PPS+HVD
 he'll PPS+MD
 he's PPS+HVZ PPS+BEZ
@@ -24068,7 +24068,7 @@ hires VBZ
 hiring VBG
 hirsute NN
 hirsuteness NN
-his PRP$ PP$$ NIL PP$
+his PRP$ PP$$ PP$
 hiss NN NP
 hissed VBD
 hisses NNS
@@ -25038,7 +25038,7 @@ idols NNS
 idyll NN
 idyllic JJ
 idyllically RB
-if NIL IN CS JJ
+if IN CS JJ
 ifs NN
 igloo NN
 igloos NN
@@ -25583,7 +25583,7 @@ impute VB
 imputed VBN
 imputes VBZ
 imputing VBG
-in NN NNP RB FW-IN RP IN NIL
+in NN NNP RB FW-IN RP IN
 in-car NN
 in-depth NN
 in-flight NN
@@ -27111,7 +27111,7 @@ intimidates VBZ
 intimidating VBG
 intimidation NN
 intimidatory NN
-into IN NIL
+into IN
 intolerable JJ
 intolerably RB
 intolerance NN
@@ -27450,7 +27450,7 @@ irritatingly RB
 irritation NN
 irritations NNS
 irruption NN
-is BEZ VBZ NIL
+is BEZ VBZ
 island NNP NN
 islander NN
 islanders NNS
@@ -28602,10 +28602,10 @@ laughingly RB
 laughs NNS VBZ
 laughter NN
 launch NN VB
-launched VBN VBD NIL
+launched VBN VBD
 launcher NN
 launchers NNS
-launches VBZ NIL
+launches VBZ
 launching VBG NN
 launder NN
 laundered VBN
@@ -30071,7 +30071,7 @@ maddeningly RB
 maddens VBZ
 madder NN
 maddest JJS
-made VBN VBD NIL
+made VBN VBD
 made-up NN
 mademoiselle FW-NN
 madhouse NN
@@ -30454,7 +30454,7 @@ manures NNS
 manuring VBG
 manuscript NN
 manuscripts NNS
-many JJ ABN AP QL NIL
+many JJ ABN AP QL
 map NN VB
 maple NN
 mappable JJ
@@ -30812,7 +30812,7 @@ maximizes VBZ
 maximizing VBG
 maxims NNS
 maximum NN JJ
-may NNP MD NIL NP
+may NNP MD NP
 maybe RB
 mayflies NNS
 mayfly RB
@@ -30873,7 +30873,7 @@ measureless JJ
 measurement NN
 measurements NNS
 measures NNS VBZ
-measuring VBG NIL
+measuring VBG
 meat NN
 meataxe NN
 meatballs NNS
@@ -31600,7 +31600,7 @@ ministered VBD
 ministerial JJ
 ministerially RB
 ministering VBG
-ministers NNS NIL
+ministers NNS
 ministration NN
 ministrations NNS
 ministries NNS
@@ -32415,7 +32415,7 @@ morbid JJ
 morbidity NN
 morbidly RB
 mordant NN
-more NP JJR JJ RBR AP QL NIL
+more NP JJR JJ RBR AP QL
 moreover RB JJR
 mores NNS
 morgue NN
@@ -32851,7 +32851,7 @@ musky NN
 muslin NN
 mussel NN
 mussels NNS
-must NN MD NIL
+must NN MD
 mustache NN
 mustaches NNS
 mustang NP
@@ -33224,7 +33224,7 @@ negotiator NN
 negotiators NNS
 neigh JJ
 neighbor NN
-neighborhood NN NIL
+neighborhood NN
 neighborhoods NNS
 neighboring VBG
 neighborliness NN
@@ -34021,7 +34021,7 @@ obligated VBN VBD
 obligates VBZ
 obligating VBG
 obligation NN
-obligations NNS NIL
+obligations NNS
 obligatorily RB
 obligatory NN
 oblige NN
@@ -34238,7 +34238,7 @@ oedema NN
 oesophagus NN
 oestrogen NN
 oeuvre NN
-of IN NIL
+of IN
 off IN RB RP JJ
 off-air NN
 off-centre NN
@@ -34398,7 +34398,7 @@ omniscience NN
 omniscient JJ
 omnivores NNS
 omnivorous JJ
-on NNP RB RP IN NIL
+on NNP RB RP IN
 on-board NN
 on-line NN
 on-off NN
@@ -34601,7 +34601,7 @@ opulence NN
 opulent JJ
 opus NNP NN
 opuses NNS
-or NIL CC
+or CC
 oracle NN
 oracles NNS
 oracular NN
@@ -35556,7 +35556,7 @@ pamper VB
 pampered VBN
 pampering VBG
 pampers VBZ
-pamphlet NN NIL
+pamphlet NN
 pamphleteer NN
 pamphleteers NNS
 pamphlets NNS
@@ -35861,7 +35861,7 @@ parsnips NNS
 parson NN
 parsonage NN
 parsons NP
-part NN NIL VB
+part NN VB
 part-song JJ
 part-time RB JJ
 part-timer NN
@@ -39070,7 +39070,7 @@ prognosticates VBZ
 prognosticating VBG
 prognostication NN
 prognostications NNS
-program NNP NN NIL VB
+program NNP NN VB
 programmable JJ
 programmatic JJ
 programme NN
@@ -44178,7 +44178,7 @@ scald VB
 scalded VBN
 scalding VBG
 scalds VBZ
-scale NN NIL VB
+scale NN VB
 scaled VBN
 scalene NN
 scales NNS VBZ
@@ -50395,7 +50395,7 @@ takeovers NNS
 taker NN
 takers NNS
 takes VBZ
-taking NIL VBG NN
+taking VBG NN
 takings NNS
 talc NN
 talcum NN
@@ -50404,7 +50404,7 @@ talent NN
 talented JJ
 talentless JJ
 talents NNS
-tales NNS NIL
+tales NNS
 talisman NN
 talismans NNS
 talk NN VB
@@ -51088,7 +51088,7 @@ thanklessly RB
 thanks NNS
 thanksgiving NN
 thanksgivings NNS
-that WPS WPO RB WDT NIL QL DT IN CS
+that WPS WPO RB WDT QL DT IN CS
 that's WPS+HVZ DT+BEZ WPS+BEZ
 thatch NN
 thatched VBN VBD
@@ -51099,7 +51099,7 @@ thaumaturge NN
 thaw NN VB
 thawed VBN
 thawing VBG
-the JJ NNP AT CD DT NIL
+the JJ NNP AT CD DT
 theater NN
 theaters NNS
 theatre FW-NN NN
@@ -51110,13 +51110,13 @@ theatricals NNS
 thee PPS PPO
 theft NN
 thefts NNS
-their PRP$ NIL PP$
+their PRP$ PP$
 theirs PP$$
 theism NN
 theist NN
 theistic JJ
 theists NNS
-them NIL PRP DTS PPO
+them PRP DTS PPO
 themas NN
 thematic JJ
 thematically RB
@@ -51124,7 +51124,7 @@ theme NN
 themed VBN VBD
 themes NNS
 themselves PRP PPLS
-then JJ RB CS RN NIL
+then JJ RB CS RN
 thence RB
 thenceforth RB
 thenceforward NN
@@ -51229,7 +51229,7 @@ thickest JJS
 thicket NN
 thickets NNS
 thickly RB
-thickness NN NIL
+thickness NN
 thicknesses NNS
 thief NN
 thieve NN
@@ -51364,7 +51364,7 @@ three-pronged VBN VBD
 three-quarter NN
 three-quarters NNS
 three-way JJ
-threefold NIL JJ
+threefold JJ
 threepence NN
 threepenny NN
 threes NNS
@@ -51476,7 +51476,7 @@ thunderstorm NN
 thunderstorms NNS
 thunderstruck NN
 thundery NN
-thus NIL RB QL
+thus RB QL
 thwack NN
 thwart NN VB
 thwarted VBN
@@ -51718,7 +51718,7 @@ tittering VBG
 titters NNS
 tittle-tattle JJ
 titular JJ
-to JJ TO NPS QL IN NIL
+to JJ TO NPS QL IN
 to-do NN
 toad NN
 toadies NNS
@@ -52305,7 +52305,7 @@ transitivity NN
 transitory NN
 transits NNS
 translatable JJ
-translate NIL VB
+translate VB
 translated VBN VBD
 translates VBZ
 translating VBG
@@ -52842,7 +52842,7 @@ truthfulness NN
 truths NNS
 try NN VB
 try-out NN
-trying VBG NIL JJ
+trying VBG JJ
 tsar NP
 tsarist NN
 tsars NNS
@@ -53101,7 +53101,7 @@ two-sided VBN VBD
 two-step JJ
 two-tone NN
 two-way JJ
-twofold RB NIL JJ
+twofold RB JJ
 twopence NN
 twos NNS
 twosome NN
@@ -56606,7 +56606,7 @@ whetstones NNS
 whetted VBN
 whetting VBG
 whey NN
-which IN NIL WDT
+which IN WDT
 whichever WDT
 whiff NN
 whiffs NNS
@@ -56727,7 +56727,7 @@ wholesomely RB
 wholesomeness NN
 wholewheat NN
 wholly RB QL
-whom WPO NIL WP
+whom WPO WP
 whomever NN
 whomsoever NN
 whoop NN
@@ -57415,7 +57415,7 @@ yawns NNS VBZ
 yaws NNS
 ye PPSS PPO AT
 yea RB
-year NN NIL
+year NN
 year-end NN JJ
 year-round JJ
 yearbook NN
@@ -57429,7 +57429,7 @@ yearning NN
 yearningly RB
 yearnings NNS
 yearns VBZ
-years NNS NIL
+years NNS
 yeast NN
 yeasts NNS
 yeasty NN
