@@ -30833,7 +30833,7 @@ meadows NNS
 meager JJ
 meagerly RB
 meagerness NN
-meagre NN
+meagre JJ
 meagreness NN
 meal NN
 meals NNS
@@ -35551,7 +35551,7 @@ palsied VBN VBD
 palsy NN
 paltriness NN
 paltry JJ
-paludal NN
+paludal JJ
 pamper VB
 pampered VBN
 pampering VBG
@@ -37832,7 +37832,7 @@ pollution NN
 pollutions NNS
 polo NN
 polo-neck NN
-polonaises VBZ
+polonaises NNS
 polonium NN
 poltergeist NN
 poltergeists NNS
@@ -40101,7 +40101,7 @@ quibbles VBZ
 quibbling VBG
 quiche NN
 quick NN RB JJ
-quick-witted VBN VBD
+quick-witted JJ
 quicken VB
 quickened VBN VBD
 quickening VBG
@@ -57413,7 +57413,7 @@ yawning VBG
 yawningly RB
 yawns NNS VBZ
 yaws NNS
-ye PPSS PPO AT
+ye PPSS PPO
 yea RB
 year NN
 year-end NN JJ
