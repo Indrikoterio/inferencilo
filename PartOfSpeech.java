@@ -85,22 +85,24 @@ class PartOfSpeech {
    private static Constant passive  = new Constant("passive");
 
    // Person, for verbs.
-   private static Constant first  = new Constant("first");   // I am
-   private static Constant second  = new Constant("second"); // Thou art
-   private static Constant third  = new Constant("third");   // it is
-   private static Constant not_third  = new Constant("not_third");   // you see
-   private static Constant plural  = new Constant("plural"); // we, you, they are
-   private static Constant all  = new Constant("all"); // I, we, she, they saw
+   private static Constant first_sing  = new Constant("first_sing");   // I am
+   private static Constant second_sing  = new Constant("second_sing"); // Thou art
+   private static Constant third_sing  = new Constant("third_sing");   // it is
+   private static Constant base  = new Constant("base");   // you see
 
    // Plurality for nouns.
-   private static Constant singular  = new Constant("singular"); // table, mouse
-   // 'plural' defined above.
+   private static Constant singular = new Constant("singular"); // table, mouse
+   private static Constant plural   = new Constant("plural"); // tables, mice
 
    // For adjectives
    private static Constant positive  = new Constant("positive");        // good
    private static Constant comparative  = new Constant("comparative");  // better
    private static Constant superlative  = new Constant("superlative");  // best
 
+   // For article
+   private static Constant article = new Constant("article");       // the, a, an
+   private static Constant definite = new Constant("definite");     // the
+   private static Constant indefinite = new Constant("indefinite"); // a, an
 
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
@@ -209,13 +211,13 @@ class PartOfSpeech {
    private static Rule makeVerbFact(String word, String code) {
       Complex term = null;
       if (code.equals("VB")) {
-         term = new Complex(verb, new Constant(word), present, not_third);
+         term = new Complex(verb, new Constant(word), present, base);
       }
       else if (code.equals("VBZ")) {
-         term = new Complex(verb, new Constant(word), present, third);
+         term = new Complex(verb, new Constant(word), present, third_sing);
       }
       else if (code.equals("VBD")) {
-         term = new Complex(verb, new Constant(word), past, all);
+         term = new Complex(verb, new Constant(word), past, base);
       }
       else if (code.equals("VBG")) {
          term = new Complex(participle, new Constant(word), active);
@@ -227,6 +229,7 @@ class PartOfSpeech {
       return null;
    } // makeVerbFact
 
+
    /*
     * makeNounFact
     *
@@ -237,14 +240,14 @@ class PartOfSpeech {
     * @return fact
     */
    private static Rule makeNounFact(String word, String code) {
+      Complex term = null;
       if (code.equals("NN")) {
-         Complex term = new Complex(noun, new Constant(word), singular);
-         return new Rule(term);
+         term = new Complex(noun, new Constant(word), singular);
       }
       else if (code.equals("NNS")) {
-         Complex term = new Complex(noun, new Constant(word), plural);
-         return new Rule(term);
+         term = new Complex(noun, new Constant(word), plural);
       }
+      if (term != null) return new Rule(term);
       return null;
    } // makeNounFact
 
@@ -259,20 +262,41 @@ class PartOfSpeech {
     * @return fact
     */
    private static Rule makeAdjectiveFact(String word, String code) {
+      Complex term = null;
       if (code.equals("JJ")) {
-         Complex term = new Complex(adjective, new Constant(word), positive);
-         return new Rule(term);
+         term = new Complex(adjective, new Constant(word), positive);
       }
       else if (code.equals("JJR")) {
-         Complex term = new Complex(adjective, new Constant(word), comparative);
-         return new Rule(term);
+         term = new Complex(adjective, new Constant(word), comparative);
       }
       else if (code.equals("JJS")) {
-         Complex term = new Complex(adjective, new Constant(word), superlative);
-         return new Rule(term);
+         term = new Complex(adjective, new Constant(word), superlative);
       }
+      if (term != null) return new Rule(term);
       return null;
    } // makeAdjectiveFact
+
+
+   /*
+    * makeArticleFact
+    *
+    * This method creates facts for articles, eg. article(the, definite).
+    *
+    * @param  word
+    * @return fact
+    */
+   private static Rule makeArticleFact(String word) {
+      Complex term;
+      String wordLower = word.toLowerCase();
+      if (wordLower.equals("the")) {
+         term = new Complex(article, new Constant(word), definite);
+      }
+      else {
+         term = new Complex(article, new Constant(word), indefinite);
+      }
+      if (term != null) return new Rule(term);
+      return null;
+   } // makeArticleFact
 
 
    /*
@@ -295,6 +319,8 @@ class PartOfSpeech {
          if (pos.startsWith("NN")) newRule = makeNounFact(word, pos);
          else
          if (pos.startsWith("JJ")) newRule = makeAdjectiveFact(word, pos);
+         else
+         if (pos.equals("AT")) newRule = makeArticleFact(word);
          if (newRule != null) rules.add(newRule);
       }
       return rules;
@@ -312,7 +338,7 @@ class PartOfSpeech {
     *
     *     pronoun(We).
     *     auxiliary(will).
-    *     verb(visit, present, not_third).
+    *     verb(visit, present, not_3rd_sing).
     *
     * Note: A Fact is just a Rule without a body.
     *
@@ -327,7 +353,8 @@ class PartOfSpeech {
 
 
    public static void main(String[] args) {
-      String[] words = {"suspect", "saw", "dance", "dancing"};
+      String[] words = {"suspect", "saw", "dance", "dancing",
+                        "The", "A", "an"};
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
       List<Rule> rules = makeFacts(words);
       ListIterator<Rule> ruleIterator = rules.listIterator();
