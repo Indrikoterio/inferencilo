@@ -1,5 +1,5 @@
-Afghan NNP
-Afghanistan NNP
+Afghan NN JJ
+Afghanistan NN
 Afghans NNS
 Africa NNP
 African JJ
@@ -8,13 +8,13 @@ Alabama NN
 Alabamian JJ
 Alabamians NNS
 Alaska NN
-Alaskan NN
+Alaskan NN JJ
 Alaskans NNS
 Alban NN
 Albania NNP
 Albanian JJ
 Albanians NNS
-Albertan NN
+Albertan NN JJ
 Albertans NNS
 Algeria NNS
 Algerian JJ
@@ -25,22 +25,22 @@ Americans NNS
 Americas NN
 Amharic JJ
 Andorra NN
-Andorran NN
+Andorran NN JJ
 Andorrans NNS
 Andreassen NNP
 Angeles NNP
 Angola NNP
-Angolan NN
+Angolan NN JJ
 Angolans NNS
 Anguilla NN
-Anguillan NN
+Anguillan NN JJ
 Anguillans NNS
 Antarctic JJ
 Antarctica NNP
 Antigua NN
-Antiguan NN
+Antiguan NN JJ
 Antiguans NNS
-Antillean NN
+Antillean NN JJ
 Antilleans NNS
 Antilles NNS
 April NNP
@@ -55,16 +55,16 @@ Argentina NNP
 Argentine NN
 Argentines NNS
 Arizona NN
-Arizonan NN
+Arizonan NN JJ
 Arizonans NNS
-Arkansan NNP
+Arkansan NN JJ
 Arkansans NNS
 Arkansas NNS
 Armenia NNP
 Armenian JJ
 Armenians NNS
 Aruba NNP
-Aruban NN
+Aruban NN JJ
 Arubans NNS
 Asia NN
 Asian JJ
@@ -76,9 +76,9 @@ Australians NNS
 Austria NNS
 Austrian JJ
 Austrians NNS
-Azerbaijan NN
+Azerbaijan NN JJ
 Azerbaijani NN
-Azerbaijanis NN
+Azerbaijanis NNS
 Baghdad NN
 Bahamas NNS
 Bahamian JJ
@@ -95,7 +95,7 @@ Barbadian JJ
 Barbadians NNS
 Barbados NNS
 Barbuda NNP
-Barbudan NN
+Barbudan NN JJ
 Barbudans NNS
 Beijing VBG
 Belarus NN
@@ -105,7 +105,7 @@ Belgian JJ
 Belgians NNS
 Belgium NN
 Belize VB
-Belizean NN
+Belizean NN JJ
 Belizeans NNS
 Benin NN
 Beninese JJ
@@ -114,9 +114,9 @@ Berlin NNP
 Bermuda NNP
 Bermudian JJ
 Bermudians NNS
-Bhutan NNP
+Bhutan NN
 Bhutanese JJ
-Bissauan NN
+Bissauan NN JJ
 Bissauans NNS
 Bolivia NN
 Bolivian JJ
@@ -176,13 +176,13 @@ Canada NNP
 Canadian JJ
 Canadians NNS
 Cardiff NN
-Caribbean NN
+Caribbean NN JJ
 Carolinian JJ
 Carolinians NNS
 Cayman NN
-Caymanian JJ
+Caymanian NN JJ
 Caymanians NNS
-Cesarean NN
+Cesarean NN JJ
 Cesareans NNS
 Cesarian JJ
 Cesarians NNS
@@ -193,7 +193,7 @@ Channel NNS
 Charlottetown NN
 Chichester NN
 Chile NN
-Chilean NN
+Chilean NN JJ
 Chileans NNS
 Chilton NN
 China NNP
@@ -206,13 +206,13 @@ Cocos NN
 Colombia NNP
 Colombian JJ
 Colombians NNS
-Coloradan NN
+Coloradan NN JJ
 Coloradans NNS
 Colorado NN
 Columbia NNP
 Columbian JJ
 Columbians NNS
-Comoran NN
+Comoran NN JJ
 Comorans NNS
 Comoros NNS
 Congo NN
@@ -229,7 +229,7 @@ Croatia NN
 Croats NNS
 Crocker NN
 Cuba NNP
-Cuban NN
+Cuban NN JJ
 Cubans NNS
 Curzon NN
 Cyprus NN
@@ -239,7 +239,7 @@ Czechs NNS
 Côté NN
 DNA NN
 Dakota NN
-Dakotan NN
+Dakotan NN JJ
 Dakotans NNS
 Dane NN
 Danes NNS
@@ -287,7 +287,7 @@ Equa-toguinean JJ
 Equa-toguineans NNS
 Equatorial JJ
 Eritrea NN
-Eritrean NN
+Eritrean NN JJ
 Eritreans NNS
 Esperantist NN
 Esperantists NNS
@@ -339,7 +339,7 @@ Gedding VBG
 Georgia NN
 Georgian JJ
 Georgians NNS
-German NN
+German NN JJ
 Germans NNS
 Germany NNP
 Ghana NNP
@@ -365,14 +365,14 @@ Guam NN
 Guamanian JJ
 Guamanians NNS
 Guatemala NN
-Guatemalan NN
+Guatemalan NN JJ
 Guatemalans NNS
 Guernsey NN
 Guiana NNP
 Guianese JJ
 Guinea NN
 Guinea-bissau NN
-Guinean NN
+Guinean NN JJ
 Guineans NNS
 Guyana NNP
 Guyanese JJ
@@ -395,7 +395,7 @@ Hinduism NN
 Hindus NN
 Holland NN
 Hollywood NNP
-Honduran NN
+Honduran NN JJ
 Hondurans NNS
 Honduras NNS
 Hong NNP
@@ -409,10 +409,10 @@ Iceland NN
 Icelander NN
 Icelanders NNS
 Idaho NNP
-Idahoan NN
+Idahoan NN JJ
 Idahoans NNS
 Illinois NNP
-Illinoisan NNP
+Illinoisan NN JJ
 Illinoisans NNS
 India NNP
 Indian JJ
@@ -422,7 +422,7 @@ Indonesia NN
 Indonesian JJ
 Indonesians NNS
 Iowa NNP
-Iowan NNP
+Iowan NN JJ
 Iowans NNS
 Iran NN
 Iranian JJ
@@ -452,27 +452,27 @@ January NNP
 Japan NNP
 Japanese JJ
 Java NN
-Javan NN
+Javan NN JJ
 Jew NN
 Jewish JJ
 Jews NNS
 Jordan NN
-Jordanian JJ
+Jordanian NN JJ
 Jordanians NNS
 July RB
 June NNP
 Kampuchea NNP
-Kansan NNP
+Kansan NN JJ
 Kansans NNS
 Kansas NNS
-Kazakhstan NNP
-Kazakhstani NNP
-Kazakhstanis NNP
-Kentuckian JJ
+Kazakhstan NN
+Kazakhstani NN
+Kazakhstanis NNS
+Kentuckian NN JJ
 Kentuckians NNS
 Kentucky NNP
 Kenya NNP
-Kenyan NNP
+Kenyan NN JJ
 Kenyans NNS
 Khmer NNP
 Kiribati NNP
@@ -488,7 +488,7 @@ Kuwaiti NNP
 Kuwaitis NN
 Kyrgyzstan NNP
 Lanka NN
-Lankan NN
+Lankan NN JJ
 Lankans NNS
 Lao NN
 Laos NN
@@ -552,7 +552,7 @@ Maltese JJ
 Manfield NN
 Manhattan NNP
 Manitoba NN
-Manitoban NN
+Manitoban NN JJ
 Manitobans NNS
 Manx NN
 Manxman NN
@@ -574,14 +574,14 @@ Mexican JJ
 Mexicans NNS
 Mexico NNP
 Michigan NNP
-Michiganian JJ
+Michiganian NN JJ
 Michiganians NNS
 Micronesia NN
 Micronesian JJ
 Micronesians NNS
 Middleton NN
 Minnesota NN
-Minnesotan NN
+Minnesotan NN JJ
 Minnesotans NNS
 Miquelon NN
 Mississippi NNP
@@ -591,7 +591,7 @@ Missouri NN
 Missourian JJ
 Missourians NNS
 Moldova NNP
-Moldovan NN
+Moldovan NN JJ
 Moldovans NNS
 Monacan JJ
 Monacans NNS
@@ -604,7 +604,7 @@ Mongolia NNS
 Mongolian JJ
 Mongolians NNS
 Montana NNP
-Montanan NN
+Montanan NN JJ
 Montanans NNS
 Montenegrin NN
 Montenegrins NNS
@@ -632,19 +632,19 @@ Namibian JJ
 Namibians NNS
 Nashville NNP
 Nauru NN
-Nauruan NN
+Nauruan NN JJ
 Nauruans NNS
 Neanderthal NN
 Neanderthals NNS
 Nebraska NN
-Nebraskan NN
+Nebraskan NN JJ
 Nebraskans NNS
 Nepal NN
 Nepalese JJ
 Neptune NN
 Netherlands NNS
 Nevada NN
-Nevadan NN
+Nevadan NN JJ
 Nevadans NNS
 Nevis NN
 Nevisian JJ
@@ -663,7 +663,7 @@ Nigerians NNS
 Nigerien NN
 Nigeriens NNS
 Nive JJ
-Nivean NN
+Nivean NN JJ
 Niveans NNS
 Norway RB
 Norwegian JJ
@@ -673,10 +673,10 @@ OK NN
 Oceania NN
 October NNP
 Ohio NN
-Ohioan NN
+Ohioan NN JJ
 Ohioans NNS
 Oklahoma NN
-Oklahoman NN
+Oklahoman NN JJ
 Oklahomans NNS
 Oman NN
 Omani NN
@@ -694,7 +694,7 @@ Pakistan NN
 Pakistani NN
 Pakistanis NN
 Palau NN
-Palauan NN
+Palauan NN JJ
 Palauans NNS
 Palestine NN
 Palestinian JJ
@@ -703,7 +703,7 @@ Panamanian JJ
 Panamanians NNS
 Papua NN
 Paraguay NN
-Paraguayan NN
+Paraguayan NN JJ
 Paraguayans NNS
 Pennsylvania NN
 Pennsylvanian JJ
@@ -746,7 +746,7 @@ Russia NN
 Russian JJ
 Russians NNS
 Rwanda NN
-Rwandan NN
+Rwandan NN JJ
 Rwandans NNS
 Sahara NN
 Sahraoi NN
@@ -759,13 +759,13 @@ Salvador NN
 Salvadoran JJ
 Salvadorans NNS
 Samoa NN
-Samoan NN
+Samoan NN JJ
 Samoans NNS
 Sampson NN
-San NNP
-Santa NNP
+San NN
+Santa NN
 Sao NN
-Saskatchewan NN
+Saskatchewan NN JJ
 Saskatchewanian JJ
 Saskatchewanians NNS
 Saturday NNP
@@ -793,7 +793,7 @@ Seychelles NNS
 Seychellois NN
 Shiite NN
 Singapore NNP
-Singaporean NN
+Singaporean NN JJ
 Singaporeans NNS
 Slovak NN
 Slovakia NN
@@ -830,20 +830,20 @@ Syria NNS
 Syrian JJ
 Syrians NNS
 TV NN
-Taiwan NNP
-Taiwanese JJ
+Taiwan NN
+Taiwanese NN JJ
 Tajik NN
-Tajikistan NN
+Tajikistan NN JJ
 Tajiks NN
 Tamil NN JJ
 Tanzania NN
 Tanzanian JJ
 Tanzanians NNS
-Tennessean NN
+Tennessean NN JJ
 Tennesseans NNS
 Tennessee NN
 Tennyson NN
-Texan NN
+Texan NN JJ
 Texans NNS
 Texas NNP
 Thai NN
@@ -857,13 +857,13 @@ Tobagonians NNS
 Togo NN
 Togolese JJ
 Tokelau NN
-Tokelauan NN
+Tokelauan NN JJ
 Tokelauans NNS
 Tome NN
-Tomean NN
+Tomean NN JJ
 Tomeans NNS
 Tonga NN
-Tongan NN
+Tongan NN JJ
 Tongans NNS
 Toronto NNP
 Torontonian JJ
@@ -884,11 +884,11 @@ Turkmenistan NN
 Turkmens NNS
 Turks NNS
 Tuvalu NN
-Tuvaluan NN
+Tuvaluan NN JJ
 Tuvaluans NNS
 USA NNP
 Uganda NN
-Ugandan NN
+Ugandan NN JJ
 Ugandans NNS
 Ukraine NN
 Ukrainian JJ
@@ -896,7 +896,7 @@ Ukrainians NNS
 Unicode NN
 Unix NN
 Uruguay NN
-Uruguayan NN
+Uruguayan NN JJ
 Uruguayans NNS
 Utah NN
 Utahn NN
@@ -908,10 +908,10 @@ Vanuatu NN
 Vatican JJ
 Vegas NN
 Venezuela NNP
-Venezuelan NN
+Venezuelan NN JJ
 Venezuelans NNS
 Verde NN
-Verdean NN
+Verdean NN JJ
 Verdeans NNS
 Vermont NN
 Vermonter NN
@@ -2002,7 +2002,7 @@ agitator NN
 agitators NNS
 agitprop NN
 aglow NN
-agnostic JJ
+agnostic NN JJ
 agnosticism NN
 agnostics NNS
 ago IN RB
