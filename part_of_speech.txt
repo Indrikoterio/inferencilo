@@ -2098,7 +2098,7 @@ airlifts NNS
 airline NN
 airliner NN
 airliners NNS
-airlines NNS NNPS
+airlines NNS
 airlock NN
 airlocks NNS
 airmail NN
@@ -2121,7 +2121,7 @@ airtight NN
 airtime NN
 airwaves NNS
 airway RB
-airways NNS NNPS
+airways NNS
 airworthiness NN
 airworthy NN
 airy JJ
@@ -2705,7 +2705,7 @@ anew RB
 angel NN
 angelic JJ
 angelica NN
-angels NNS NNPS
+angels NNS
 anger NN
 angered VBN VBD
 angering VBG
@@ -3065,7 +3065,7 @@ appeal NN VB
 appealed VBN VBD
 appealing VBG JJ
 appealingly RB
-appeals NNS VBZ NNPS
+appeals NNS VBZ
 appear VB
 appearance NN
 appearances NNS
@@ -3192,7 +3192,7 @@ appropriateness NN
 appropriates VBZ
 appropriating VBG
 appropriation NN
-appropriations NNS NNPS
+appropriations NNS
 approval NN
 approvals NNS
 approve VB
@@ -3491,7 +3491,7 @@ artichoke NN
 artichokes NNS
 article NNP NN
 articled VBN VBD
-articles NNS NNPS
+articles NNS
 articulacy NN
 articulate JJ VB
 articulated VBN VBD
@@ -3661,7 +3661,7 @@ assessments NNS
 assessor NN
 assessors NNS
 asset NN
-assets NNS NNPS
+assets NNS
 assiduity NN
 assiduous JJ
 assiduously RB
@@ -3693,7 +3693,7 @@ assists NNS
 assizes VBZ
 associate NN JJ VB
 associated VBN VBD
-associates NNS VBZ NNP NNPS
+associates NNS VBZ
 associateship NN
 associating VBG
 association NNP NN
@@ -5394,7 +5394,7 @@ billowing VBG
 billows NNS
 billowy NN
 billposters NNS
-bills NNS NNPS NPS
+bills NNS NPS
 bimodal NN
 bimonthly JJ
 bin NN
@@ -6520,7 +6520,7 @@ brickbats NNS
 bricked VBN VBD
 bricking VBG
 bricklayer NN
-bricklayers NNS NNPS
+bricklayers NNS
 bricklaying NN
 bricks NNS
 brickwork NN
@@ -6533,7 +6533,7 @@ bridesmaids NNS
 bridge NNP NN VB
 bridged VBN VBD
 bridgehead NN
-bridges NNS VBZ NNPS NP
+bridges NNS VBZ NP
 bridging VBG
 bridle NN
 bridled VBN VBD
@@ -6550,7 +6550,7 @@ briefest JJS
 briefing VBG NN
 briefings NNS
 briefly RB
-briefs NNS NNPS
+briefs NNS
 brier NN
 briers NNS
 brig NN
@@ -6684,7 +6684,7 @@ brother NN
 brother-in-law NN
 brotherhood NN
 brotherly JJ
-brothers NNS NNPS
+brothers NNS
 brothers-in-law NN
 broths NNS
 brought VBN VBD
@@ -6827,7 +6827,7 @@ build NN VB
 build-up NN
 build-ups NNS
 builder NN
-builders NNS NNPS
+builders NNS
 building NN VBG
 buildings NNS
 builds VBZ
@@ -8035,7 +8035,7 @@ centenary NN
 centennial NN
 center NNP NN JJ VB
 centered VBN VBD
-centers NNS VBZ NNPS
+centers NNS VBZ
 centigrade NP
 centime NN
 centimes NNS
@@ -8298,7 +8298,7 @@ charismatically RB
 charismatics NNS
 charitable JJ
 charitably RB
-charities NNS NNPS
+charities NNS
 charity NN
 charlady NN
 charlatan NN
@@ -9882,7 +9882,7 @@ communicated VBN VBD
 communicates VBZ
 communicating VBG NN
 communication NNP NN
-communications NNS NNP NNPS
+communications NNS
 communicative JJ
 communicativeness NN
 communicator NN
@@ -10799,7 +10799,7 @@ contain VB
 containable JJ
 contained VBN VBD
 container NN
-containers NNS NNPS
+containers NNS
 containing VBG
 containment NN
 contains VBZ
@@ -10909,7 +10909,7 @@ contraction NN
 contractions NNS
 contractor NN
 contractors NNS
-contracts NNS VBZ NNPS
+contracts NNS VBZ
 contractual JJ
 contractually RB
 contradict VB
@@ -11650,7 +11650,7 @@ crafting VBG
 crafts NNS
 craftsman NN
 craftsmanship NN
-craftsmen NNS NNPS
+craftsmen NNS
 craftspeople NN
 crafty JJ
 crag NN
@@ -12718,7 +12718,7 @@ deafest NN
 deafness NN
 deal NN VB
 dealer NN
-dealers NNS NNPS
+dealers NNS
 dealership NN
 dealerships NNS
 dealing VBG
@@ -13281,7 +13281,7 @@ delectable JJ
 delectation NN
 delegate NN VB
 delegated VBN VBD
-delegates NNS VBZ NNPS
+delegates NNS VBZ
 delegating VBG
 delegation NN
 delegations NNS
@@ -15555,7 +15555,7 @@ dolly NP
 dolomite NN
 dolorous JJ
 dolphin NNP NN
-dolphins NNS NNPS
+dolphins NNS
 dolt NN
 domain NN
 domains NNS
@@ -15607,7 +15607,7 @@ donor NN
 donors NNS
 dons NNS
 donut NN
-donuts NNPS
+donuts NNS
 doodle NN
 doodles NNS
 doodling VBG
@@ -16654,7 +16654,7 @@ elderberries NNS
 elderberry NN
 elderflower NN
 elderly JJ
-elders NNS NNPS
+elders NNS
 eldest JJS
 elect VB
 electability NN
@@ -17294,7 +17294,7 @@ engined VBN VBD
 engineer NN
 engineered VBN
 engineering VBG NN
-engineers NNS NNPS
+engineers NNS
 engines NNS
 engorge NN
 engorged VBN VBD
@@ -18812,7 +18812,7 @@ facilitation NN
 facilitative JJ
 facilitator NN
 facilitators NNS
-facilities NNS NNPS
+facilities NNS
 facility NN
 facing VBG
 facings NNS
@@ -20323,7 +20323,7 @@ fondue JJ
 font NN
 fonts NNS
 food NNP NN
-foods NNS NNP NNPS
+foods NNS
 foodstuff NN
 foodstuffs NNS
 fool NN JJ VB
@@ -20947,7 +20947,7 @@ friendliest JJS
 friendlily RB
 friendliness NN
 friendly JJ
-friends NNS NNPS
+friends NNS
 friendship NN
 friendships NNS
 fries NNS
@@ -21160,14 +21160,14 @@ fund-raising NN
 fundamental JJ
 fundamentalism NN
 fundamentalist NN JJ
-fundamentalists NNPS
+fundamentalists NNS
 fundamentally RB QL
 fundamentals NNS
 funded VBN JJ
 fundholders NNS
 fundholding VBG
 funding NNP VBG NN
-funds NNS NNPS
+funds NNS
 funeral NN JJ
 funerals NNS
 funerary JJ
@@ -21261,7 +21261,7 @@ futilely RB
 futility NN
 futon NN
 future NN JJ
-futures NNS NNP NNPS
+futures NNS
 futurism NN
 futurist NN
 futuristic JJ
@@ -21791,7 +21791,7 @@ ghouls NNS
 giant NNP NN JJ
 giantess NN
 giantkiller NN
-giants NNS NNP NNPS
+giants NNS
 gibber NN
 gibbered VBN VBD
 gibbering VBG
@@ -22312,7 +22312,7 @@ grails NNS
 grain NN
 grained VBN VBD
 graininess NN
-grains NNS NNPS
+grains NNS
 grainy NN
 gram NN NP
 grammar NN
@@ -24179,7 +24179,7 @@ holdalls NNS
 holder NN
 holders NNS
 holding NNP VBG NN
-holdings NNS NNP NNPS
+holdings NNS
 holds VBZ NNS
 hole NN VB NP
 holed VBD
@@ -26062,7 +26062,7 @@ industrialized VBN VBD
 industrializes VBZ
 industrializing VBG
 industrially RB
-industries NNS NNP NNPS
+industries NNS
 industrious JJ
 industriously RB
 industriousness NN
@@ -26487,7 +26487,7 @@ innovative JJ
 innovator NN
 innovators NNS
 innovatory NN
-inns NNS NNPS
+inns NNS
 innuendo NN
 innuendoes NNS
 innuendos NNS
@@ -26690,7 +26690,7 @@ instincts NNS
 instinctual JJ
 institute NNP NN VB
 instituted VBN VBD
-institutes NNS NNPS
+institutes NNS
 instituting VBG
 institution NNP NN
 institutional JJ
@@ -26723,7 +26723,7 @@ instrumentally RB
 instrumentals NNS
 instrumentation NN
 instrumented VBN VBD
-instruments NNS NNPS
+instruments NNS
 insubordinate JJ
 insubordination NN
 insubstantial JJ
@@ -27266,9 +27266,9 @@ investigatory NN
 investing VBG NN
 investiture NN
 investment NNP NN
-investments NNS NNPS
+investments NNS
 investor NNP NN
-investors NNS NNPS
+investors NNS
 invests VBZ
 inveterate JJ
 invidious JJ
@@ -27454,7 +27454,7 @@ is BEZ VBZ
 island NNP NN
 islander NN
 islanders NNS
-islands NNS NNPS
+islands NNS
 isle NN
 isles NNS
 islet NN
@@ -27496,7 +27496,7 @@ issue NN VB
 issued VBN VBD
 issuer NN
 issuers NNS
-issues NNS VBZ NNPS
+issues NNS VBZ
 issuing VBG
 isthmus NN
 it UH PPS PPO
@@ -27796,7 +27796,7 @@ journalistic JJ
 journalists NNS
 journalled VBN VBD
 journalling VBG
-journals NNS NNPS
+journals NNS
 journey NN VB
 journeyed VBD
 journeyer NN
@@ -28292,7 +28292,7 @@ labile JJ
 labor NNP NN VB
 labor-intensive JJ
 labor-saving JJ
-laboratories NNS NNPS
+laboratories NNS
 laboratory NN
 labored VBN VBD
 laborer NN
@@ -28380,7 +28380,7 @@ lairs NNS
 laissez-faire NN JJ
 laity NN
 lake NNP NN NP
-lakes NNS NNPS
+lakes NNS
 lakeside NN
 lamb NN
 lambasted VBN VBD
@@ -28646,7 +28646,7 @@ lawgiver NN
 lawgivers NNS
 lawless NNP JJ NP
 lawlessness NN
-lawmakers NNS NNPS
+lawmakers NNS
 lawn NN
 lawnmower NN
 lawnmowers NNS
@@ -28655,7 +28655,7 @@ laws NNS
 lawsuit NN
 lawsuits NNS
 lawyer NN
-lawyers NNS NNPS
+lawyers NNS
 lax JJ
 laxative NN
 laxatives NNS
@@ -29287,7 +29287,7 @@ linefeed VBN VBD
 linen NN
 liner NN NP
 liners NNS
-lines NNS VBZ NNP NNPS
+lines NNS VBZ
 linesman NN
 linesmen NNS
 linger VB
@@ -30038,7 +30038,7 @@ machine-guns NNS
 machine-readable JJ
 machined VBN VBD
 machinery NN
-machines NNS NNP NNPS
+machines NNS
 machining VBG
 machinist NN
 machinists NNS
@@ -30446,7 +30446,7 @@ manuals NNS
 manufacture NN VB
 manufactured VBN VBD
 manufacturer NN
-manufacturers NNS NNP NNPS
+manufacturers NNS
 manufactures VBZ
 manufacturing NNP VBG NN
 manure NN
@@ -30533,7 +30533,7 @@ marketer NN
 marketing VBG NN
 marketplace NN
 marketplaces NNS
-markets NNS VBZ NNPS
+markets NNS VBZ
 marking VBG NN
 markings NNS
 marks NNS VBZ
@@ -30725,7 +30725,7 @@ materialized VBN VBD
 materializes VBZ
 materializing VBG
 materially RB QL
-materials NNS NNPS
+materials NNS
 materiel NN
 maternal JJ
 maternally RB
@@ -31117,7 +31117,7 @@ meretricious JJ
 merge VB
 merged VBN VBD
 merger NN
-mergers NNS NNPS
+mergers NNS
 merges VBZ
 merging VBG NN
 meridian NNP
@@ -31198,7 +31198,7 @@ metallized VBN VBD
 metallurgical JJ
 metallurgist NN
 metallurgy NN
-metals NNS NNPS
+metals NNS
 metalwork NN
 metalworking NN
 metamorphic JJ
@@ -32303,7 +32303,7 @@ monophthongs NNS
 monoplane NN
 monopole NN
 monopoles NNS
-monopolies NNS NNPS
+monopolies NNS
 monopolise VB
 monopolised VBN VBD
 monopolises VBZ
@@ -32548,7 +32548,7 @@ motorize VB
 motorized VBN VBD
 motorizes VBZ
 motorizing VBG
-motors NNS NNPS
+motors NNS
 motorway NN
 motorways NNS
 mottled VBN
@@ -33055,7 +33055,7 @@ nationalizing VBG
 nationally RB
 nationals NNS
 nationhood NN
-nations NNS NNPS
+nations NNS
 nationwide NNP JJ
 native NN JJ
 natives NNS
@@ -33768,7 +33768,7 @@ noted VBN VBD
 notepad NN
 notepads NNS
 notepaper NN
-notes NNS VBZ NNPS
+notes NNS VBZ
 noteworthy JJ
 nothing PN NN
 nothingness NN
@@ -34498,7 +34498,7 @@ operating VBG NN
 operation NN
 operational JJ
 operationally RB
-operations NNS NNP NNPS
+operations NNS
 operative JJ
 operatives NNS
 operator NN
@@ -34594,7 +34594,7 @@ option NN
 optional JJ
 optionality NN
 optionally RB
-options NNS NNPS
+options NNS
 optoelectronic JJ
 opts NNS
 opulence NN
@@ -35917,7 +35917,7 @@ partly RB QL
 partner NN
 partnered VBN
 partnering VBG
-partners NNS NNP NNPS
+partners NNS
 partnership NNP NN
 partnerships NNS
 partook VBD
@@ -37059,7 +37059,7 @@ pictorially RB
 picture NN VB
 picture-writing VBG
 pictured VBN VBD
-pictures NNS VBZ NNP NNPS
+pictures NNS VBZ
 picturesque JJ
 picturesquely RB
 picturesqueness NN
@@ -37362,7 +37362,7 @@ plainer NN
 plainest JJS
 plainly RB QL
 plainness NN
-plains NNS NNP NNPS
+plains NNS
 plainsong NN
 plaint NN
 plaintiff NN
@@ -38495,7 +38495,7 @@ prefer VB
 preferable JJ
 preferably RB
 preference NN
-preferences NNS NNPS
+preferences NNS
 preferential JJ
 preferentially RB
 preferment NN
@@ -38989,11 +38989,11 @@ producible JJ
 producing VBG NN
 product NN
 production NN
-productions NNS NNPS
+productions NNS
 productive JJ
 productively RB
 productivity NN
-products NNS NNP NNPS
+products NNS
 profanation NN
 profane JJ
 profaned VBN VBD
@@ -39571,7 +39571,7 @@ public-spirited JJ
 publican JJ
 publicans NNS
 publication NN
-publications NNS NNP NNPS
+publications NNS
 publicise VB
 publicised VBN VBD
 publicises VBZ
@@ -40525,7 +40525,7 @@ rated VBN VBD
 ratepayer NN
 ratepayers NNS
 rater NN
-rates NNS VBZ NNPS
+rates NNS VBZ
 rather IN RB QL ABL
 ratification NN
 ratifications NNS
@@ -42558,7 +42558,7 @@ resourced VBN VBD
 resourceful JJ
 resourcefully RB
 resourcefulness NN
-resources NNS NNPS
+resources NNS
 resourcing VBG
 respecified VBN VBD
 respecify VB
@@ -44773,7 +44773,7 @@ securely RB
 secures VBZ
 securest NN
 securing VBG NN
-securities NNS NNP NNPS
+securities NNS
 security NNP NN
 sedan NN
 sedate JJ
@@ -45281,7 +45281,7 @@ serviceable JJ
 serviced VBN
 serviceman NN
 servicemen NNS
-services NNS VBZ NNPS
+services NNS VBZ
 servicing VBG NN
 serviette NN
 servile JJ
@@ -47421,7 +47421,7 @@ sows VBZ
 soy NN
 soya NN
 soybean NN
-soybeans NNS NNPS
+soybeans NNS
 spa NN
 space NN VB
 space-saving VBG
@@ -47939,7 +47939,7 @@ springbok NN
 springboks NNS
 springer NN
 springing VBG
-springs NNS VBZ NNP NNPS
+springs NNS VBZ
 springtime NN
 springy NN
 sprinkle NN VB
@@ -48318,7 +48318,7 @@ stateliness NN
 stately JJ
 statement NN
 statements NNS
-states NNS VBZ NNPS
+states NNS VBZ
 statesman NN
 statesmanlike JJ
 statesmanship NN
@@ -48720,7 +48720,7 @@ storekeeper NN
 storekeepers NNS
 storeroom NN
 storerooms NNS
-stores NNS NNP NNPS
+stores NNS
 storey NN
 storeys NNS
 stories NNS NNP
@@ -50282,7 +50282,7 @@ systematizes VBZ
 systematizing VBG
 systemic JJ
 systemically RB
-systems NNS NNP NNPS
+systems NNS
 systolic NN
 tab NN
 tabbed VBN VBD
@@ -52074,7 +52074,7 @@ toy NN
 toyed VBN VBD
 toying VBG
 toymaker NN
-toys NNS VBZ NNPS
+toys NNS VBZ
 toyshop NN
 tra-la NN
 trace NNP NN JJ VB
@@ -52423,7 +52423,7 @@ travails NNS
 travel NN VB
 traveled VBN VBD
 traveler NN
-travelers NNS NNPS
+travelers NNS
 traveling VBG
 travelled VBN VBD
 traveller NN
@@ -55041,7 +55041,7 @@ utilising VBG
 utilitarian JJ
 utilitarianism NN
 utilitarians NNS
-utilities NNS NNP NNPS
+utilities NNS
 utility NN
 utilization NN
 utilize VB
@@ -57181,7 +57181,7 @@ workplace NN
 workplaces NNS
 workroom NN
 workrooms NNS
-works NNS VBZ NNPS
+works NNS VBZ
 worksheet NN
 worksheets NNS
 workshop NN
@@ -57342,7 +57342,7 @@ write-offs NNS
 write-up NN
 write-ups NNS
 writer NN
-writers NNS NNPS
+writers NNS
 writes VBZ
 writeup NN
 writhe VB
