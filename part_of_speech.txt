@@ -399,10 +399,11 @@ Honduran NN
 Hondurans NNS
 Honduras NNS
 Hong NNP
-I'd NN
-I'll NN
-I'm NN
-I've NN
+I PPSS
+I'd PPSS+MD PPSS+HVD
+I'll PPSS+MD
+I'm PPSS+BEM
+I've PPSS+HV
 I-kiribat NN
 Iceland NN
 Icelander NN
@@ -2042,7 +2043,7 @@ agrochemicals NNS
 agronomist NN
 aground NN
 ague NN
-ah PPSS UH BER
+ah UH
 ahead RB
 ahem UH
 aid NN VB
@@ -16821,7 +16822,6 @@ eluted VBN
 elven RB
 elves NNS
 elvish JJ
-em PPO
 emaciate VB
 emaciated VBN VBD JJ
 emaciates VBZ
@@ -23489,7 +23489,7 @@ hazier NN
 haziest JJS
 hazily RB
 hazy JJ
-he PPS PRP
+he PPS
 he'd PPS+MD PPS+HVD
 he'll PPS+MD
 he's PPS+HVZ PPS+BEZ
@@ -23795,7 +23795,7 @@ heptagon NN
 heptagonal NN
 heptagons NNS
 heptane NN
-her PRP PRP$ PPO PP$
+her PRP$ PPO PP$
 herald NNP NN VB
 heralded VBN VBD
 heraldic NN
@@ -24031,7 +24031,7 @@ hillwalking VBG
 hilly RB
 hilt NN
 hilts NNS
-him PRP PPO
+him PPO
 himself PRP PPL
 hind JJ
 hinder NN
@@ -26018,7 +26018,7 @@ indolent JJ
 indolently RB
 indomitable JJ
 indoor JJ
-indoors RB
+indoors RB RN
 indrawn NN
 indubitable JJ
 indubitably RB
@@ -27499,7 +27499,7 @@ issuers NNS
 issues NNS VBZ NNPS
 issuing VBG
 isthmus NN
-it UH PPS PRP PPO
+it UH PPS PPO
 it's PPS+HVZ PPS+BEZ
 italic NN
 italicisation NN
@@ -30825,7 +30825,7 @@ mayors NNS
 maypole NN
 maze NN
 mazes NNS
-me FW-PPO PRP PPO
+me FW-PPO PPO
 mead NNP NP
 meadow NN JJ
 meadowland NN
@@ -45521,7 +45521,7 @@ shaving VBG
 shavings NNS
 shawl NN
 shawls NNS
-she PPS PRP
+she PPS
 she'd PPS+MD PPS+HVD
 she'll PPS+MD
 she's PPS+HVZ PPS+BEZ
@@ -51116,7 +51116,7 @@ theism NN
 theist NN
 theistic JJ
 theists NNS
-them PRP DTS PPO
+them PPO
 themas NN
 thematic JJ
 thematically RB
@@ -51213,7 +51213,7 @@ thesis NN
 thespian JJ
 thespians NNS
 theta NN
-they PPSS PRP
+they PPSS
 they'd PPSS+MD PPSS+HVD
 they'll PPSS+MD
 they're PPSS+BER
@@ -53199,7 +53199,7 @@ ultrasonic JJ
 ultrasonics NNS
 ultrasound NN
 ultraviolet JJ
-um UH PPO FW-RB
+um UH
 umbilical JJ
 umbra NN
 umbrae NN
@@ -54991,7 +54991,7 @@ urn NN NP
 urns NNS
 urologist NN
 ursine NN
-us NNP NN PRP PPO
+us NNP NN PPO
 usability NN
 usable JJ
 usage NN
@@ -56278,7 +56278,7 @@ wayside NN
 wayward JJ
 waywardly RB
 waywardness NN
-we PPSS PRP
+we PPSS
 we'd PPSS+MD PPSS+HVD
 we'll PPSS+MD
 we're PPSS+BER
@@ -56361,7 +56361,7 @@ wedges NNS
 wedging VBG
 wedlock NN
 weds NNS
-wee PPSS JJ NP
+wee JJ
 weed VB
 weeded VBN
 weeding VBG
@@ -57487,7 +57487,7 @@ yore NN PP$
 york NNP NP
 yorker NNP NP
 yorkers NNPS NPS
-you PPSS PRP PPO
+you PPSS PPO
 you'd PPSS+MD PPSS+HVD
 you'll PPSS+MD
 you're PPSS+BER PPSS+BER-N
