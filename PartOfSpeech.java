@@ -7,31 +7,42 @@
  * In addition, there are methods to create Fact objects which can be
  * analyzed by the inference engine Inferencilo.
  *
- * The part-of-speech tags inpart_of_speech.txt are from Penn State's
+ * The part-of-speech tags in part_of_speech.txt are from Penn State's
  * Treebank tagset. There is a reference here:
  * https://sites.google.com/site/partofspeechhelp/home
  *
  * ABN pre-quantifier (half, all)
  * AP post-determiner (many, several, next)
  * AT article (a, the, no)
+ * BE be
+ * BED were
+ * BEDZ was
+ * BEG being
+ * BEM am
+ * BEN been
+ * BER are, art
+ * BBB is
  * CC coordinating conjunction
  * CD cardinal digit
  * DT determiner
  * EX existential there (like: “there is” … think of it like “there exists”)
  * FW foreign word
  * IN preposition/subordinating conjunction
- * JJ adjective ‘big’
- * JJR adjective, comparative ‘bigger’
- * JJS adjective, superlative ‘biggest’
+ * JJ adjective 'big'
+ * JJR adjective, comparative 'bigger'
+ * JJS adjective, superlative 'biggest'
  * LS list marker 1)
  * MD modal could, will
- * NN noun, singular ‘desk’
- * NNS noun plural ‘desks’
- * NNP proper noun, singular ‘Harrison’
- * NNPS proper noun, plural ‘Americans’
+ * NN noun, singular 'desk'
+ * NNS noun plural 'desks'
+ * NNP proper noun, singular 'Harrison'
+ * NNPS proper noun, plural 'Americans'
  * OD ordinal numeral (first, 2nd)
- * PDT predeterminer ‘all the kids’
- * POS possessive ending parent‘s
+ * PDT predeterminer 'all the kids'
+ * PPO objective personal pronoun (me, him, it, them)
+ * PPS 3rd. singular nominative pronoun (he, she, it, one)
+ * PPSS other nominative personal pronoun (I, we, they, you)
+ * POS possessive ending parent's
  * PRP personal pronoun I, he, she
  * PRP$ possessive pronoun my, his, hers
  * QL qualifier (very, fairly)
@@ -41,7 +52,7 @@
  * RBS adverb, superlative best
  * RP particle give up
  * SYM symbol
- * TO to go ‘to‘ the store.
+ * TO to go 'to' the store.
  * UH interjection errrrrrrrm
  * VB verb, base form take
  * VBD verb, past tense took
@@ -73,8 +84,9 @@ class PartOfSpeech {
 
    private static Constant noun = new Constant("noun");
    private static Constant verb = new Constant("verb");
+   private static Constant pronoun = new Constant("pronoun");
+   private static Constant adjective = new Constant("adjective");
    private static Constant participle = new Constant("participle");
-   private static Constant adjective  = new Constant("adjective");
 
    // tenses
    private static Constant past  = new Constant("past");
@@ -94,18 +106,22 @@ class PartOfSpeech {
    private static Constant singular = new Constant("singular"); // table, mouse
    private static Constant plural   = new Constant("plural"); // tables, mice
 
-   // For adjectives
+   // For adjectives.
    private static Constant positive  = new Constant("positive");        // good
    private static Constant comparative  = new Constant("comparative");  // better
    private static Constant superlative  = new Constant("superlative");  // best
 
-   // For adjectives
+   // For adverbs.
    private static Constant adverb = new Constant("adverb");  // happily
 
-   // For articles
+   // For articles.
    private static Constant article = new Constant("article");       // the, a, an
    private static Constant definite = new Constant("definite");     // the
    private static Constant indefinite = new Constant("indefinite"); // a, an
+
+   // For pronouns.
+   private static Constant subject = new Constant("subject");  // subject
+   private static Constant object = new Constant("object");    // object
 
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
@@ -189,6 +205,24 @@ class PartOfSpeech {
    } // display
 
 
+   /*
+    * lowerCaseExceptI
+    *
+    * Make word lower case, except if it's the pronoun I.
+    *
+    * @param  word
+    * @return lower case word
+    */
+   private static String lowerCaseExceptI(String word) {
+      int length = word.length();
+      if (length > 0) {
+         if (word.equals("I")) return word;
+         if (word.startsWith("I'")) return word;
+      }
+      return word.toLowerCase();
+   } // lowerCaseExceptI
+
+
    /**
     * get
     *
@@ -200,6 +234,28 @@ class PartOfSpeech {
    public static String[] get(String word) {
       return wordPoS.get(word);
    } // get
+
+
+   /*
+    * makePronounFact
+    *
+    * This method creates a pronoun fact, eg. pronoun(they,...).
+    *
+    * @param  word
+    * @param  pos code
+    * @return fact
+    */
+   private static Rule makePronounFact(String word, String code) {
+      Complex term = null;
+      if (code.equals("PPSS")) {
+         term = new Complex(pronoun, new Constant(word), subject);
+      }
+      else if (code.equals("PPO")) {
+         term = new Complex(pronoun, new Constant(word), object);
+      }
+      if (term != null) return new Rule(term);
+      return null;
+   } // makePronounFact
 
 
    /*
@@ -249,6 +305,9 @@ class PartOfSpeech {
       }
       else if (code.equals("NNS")) {
          term = new Complex(noun, new Constant(word), plural);
+      }
+      else if (code.equals("NNP")) {
+         term = new Complex(noun, new Constant(word), singular);
       }
       if (term != null) return new Rule(term);
       return null;
@@ -301,6 +360,7 @@ class PartOfSpeech {
       return null;
    } // makeArticleFact
 
+
    /*
     * makeAdverbFact
     *
@@ -317,7 +377,7 @@ class PartOfSpeech {
 
 
    /*
-    * makeFact
+    * makeFacts
     *
     * This method takes an English word and produces a Fact
     * object, which can be analyzed by the inference engine.
@@ -325,28 +385,36 @@ class PartOfSpeech {
     * @param  word
     * @return fact
     */
-   private static List<Rule> makeFact(String word) {
-      String[] posData = get(word.toLowerCase());
-      if (posData.length < 1) return null;
-      List<Rule> rules = new ArrayList<Rule>();
-      for (String pos : posData) {
-         Rule newRule = null;
-         if (pos.startsWith("VB")) newRule = makeVerbFact(word, pos);
-         else
-         if (pos.startsWith("NN")) newRule = makeNounFact(word, pos);
-         else
-         if (pos.startsWith("JJ")) newRule = makeAdjectiveFact(word, pos);
-         else
-         if (pos.equals("AT")) newRule = makeArticleFact(word);
-         if (pos.equals("RB")) newRule = makeAdverbFact(word);
-         if (newRule != null) rules.add(newRule);
+   private static List<Rule> makeFacts(String word) {
+      String[] posData;
+      posData = get(word);
+      if (posData == null) {
+         String low = lowerCaseExceptI(word);
+         posData = get(low);
+         if (posData == null) return null; 
       }
-      return rules;
-   } // makeFact
+      if (posData.length < 1) return null;
+      List<Rule> facts = new ArrayList<Rule>();
+      for (String pos : posData) {
+         Rule newFact = null;
+         if (pos.startsWith("VB")) newFact = makeVerbFact(word, pos);
+         else
+         if (pos.startsWith("NN")) newFact = makeNounFact(word, pos);
+         else
+         if (pos.startsWith("PP")) newFact = makePronounFact(word, pos);
+         else
+         if (pos.startsWith("JJ")) newFact = makeAdjectiveFact(word, pos);
+         else
+         if (pos.equals("AT")) newFact = makeArticleFact(word);
+         if (pos.equals("RB")) newFact = makeAdverbFact(word);
+         if (newFact != null) facts.add(newFact);
+      }
+      return facts;
+   } // makeFacts
 
 
    /**
-    * makeFacts
+    * wordsToFacts
     *
     * This method takes an array of words, and creates a list
     * of facts which can be analyzed by the inference engine.
@@ -363,20 +431,26 @@ class PartOfSpeech {
     * @param  array of words
     * @return list of facts
     */
-   public static List<Rule> makeFacts(String[] words) {
+   public static List<Rule> wordsToFacts(String[] words) {
       List<Rule> facts = new ArrayList<Rule>();
-      for (String word : words) { facts.addAll(makeFact(word)); }
+      List<Rule> wordFacts;
+      for (String word : words) {
+         wordFacts = makeFacts(word);
+         if (wordFacts != null) {
+            facts.addAll(wordFacts);
+         }
+      }
       return facts;
-   } // makeFacts
+   } // wordsToFacts
 
 
    public static void main(String[] args) {
       String[] words = {"suspect", "saw", "dance", "dancing",
-                        "The", "A", "an", "happily"};
+                        "The", "A", "an", "happily", "Afghans", "I", "They"};
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
-      List<Rule> rules = makeFacts(words);
-      ListIterator<Rule> ruleIterator = rules.listIterator();
-      while (ruleIterator.hasNext()) { System.out.println(ruleIterator.next()); }
+      List<Rule> facts = wordsToFacts(words);
+      ListIterator<Rule> factIterator = facts.listIterator();
+      while (factIterator.hasNext()) { System.out.println(factIterator.next()); }
    }
 
 }  // PartOfSpeech
