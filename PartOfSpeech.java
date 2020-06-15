@@ -80,6 +80,7 @@ import java.util.*;
 class PartOfSpeech {
 
    private final static String FILENAME = "part_of_speech.txt";
+
    private static PartOfSpeech partOfSpeech;
 
    private static Constant noun = new Constant("noun");
@@ -125,6 +126,7 @@ class PartOfSpeech {
 
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
+
 
    /*
     * constructor
@@ -428,10 +430,10 @@ class PartOfSpeech {
     *
     * Note: A Fact is just a Rule without a body.
     *
-    * @param  array of words
+    * @param  list of words
     * @return list of facts
     */
-   public static List<Rule> wordsToFacts(String[] words) {
+   public static List<Rule> wordsToFacts(List<String> words) {
       List<Rule> facts = new ArrayList<Rule>();
       List<Rule> wordFacts;
       for (String word : words) {
@@ -444,9 +446,11 @@ class PartOfSpeech {
    } // wordsToFacts
 
 
+
    public static void main(String[] args) {
-      String[] words = {"suspect", "saw", "dance", "dancing",
-                        "The", "A", "an", "happily", "Afghans", "I", "They"};
+      String testString = "The ideal characteristic of artificial intelligence is its ability to rationalize.";
+      List<String> words = Sentence.getWords(testString);
+      for (String word : words) { System.out.println(word); }
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
       List<Rule> facts = wordsToFacts(words);
       ListIterator<Rule> factIterator = facts.listIterator();
