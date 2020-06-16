@@ -1051,7 +1051,7 @@ ablaze RB
 able JJ
 able-bodied VBN VBD
 abler JJR
-ablest NN
+ablest JJS
 ablution NN
 ablutions NNS
 ably RB
@@ -1189,7 +1189,7 @@ abstracts NNS
 abstruse NN
 abstrusely RB
 absurd JJ
-absurdest NN
+absurdest JJS
 absurdities NNS
 absurdity NN
 absurdly RB
@@ -1528,7 +1528,7 @@ acupuncturists NNS
 acute JJ
 acutely RB QL
 acuteness NN
-acutest NN
+acutest JJS
 acyclic NN
 adage NN
 adages NNS
@@ -2719,7 +2719,7 @@ anglers NNS
 angles NNS
 angling VBG
 angora NNS
-angrier NN
+angrier JJR
 angriest JJS
 angrily RB
 angry JJ
@@ -3214,7 +3214,8 @@ aprons NNS
 apropos JJ
 apse NN
 apt JJ
-aptest NN
+apter JJR
+aptest JJS
 aptitude NN
 aptitudes NNS
 aptly RB QL
@@ -4182,7 +4183,7 @@ awfully RB QL
 awfulness NN
 awhile RB
 awkward JJ
-awkwardest NN
+awkwardest JJS
 awkwardly RB
 awkwardness NN
 awl NN
@@ -4395,9 +4396,9 @@ balancing VBG NN
 balconies NNS
 balcony NN
 bald NP JJ
-balder NN
+balder JJR
 balderdash NN
-baldest NN
+baldest JJS
 balding JJ
 baldly RB
 baldness NN
@@ -4579,6 +4580,7 @@ barefoot RB JJ
 barefooted JJ
 barely RB QL
 bareness NN
+barer JJR
 bares NNS VBZ
 barest JJS
 bargain NN
@@ -4673,7 +4675,7 @@ basements NNS
 baseness NN
 baser JJR
 bases NNS VBZ
-basest NN
+basest JJS
 bash NN
 bashed VBN VBD
 bashes NNS
@@ -4849,6 +4851,7 @@ bears VBZ NNS
 bearskin NN
 bearskins NNS
 beast NN
+beastlier JJR
 beastliest JJS
 beastliness NN
 beastly RB
@@ -5213,7 +5216,7 @@ bespeaking VBG
 bespeaks VBZ
 bespectacled JJ
 bespoke NN
-best NP RBT JJS QL VB
+best RBT JJS QL VB
 best-known JJS
 best-seller NN
 best-sellers NNS
@@ -5554,7 +5557,7 @@ blacken VB
 blackened VBN VBD
 blackening VBG NN
 blackens VBZ
-blacker NN
+blacker JJR
 blackest JJS
 blackguard NN
 blackhead NN
@@ -5601,7 +5604,8 @@ blanched VBN
 blanching VBG
 blancmange NN
 bland JJ
-blandest NN
+blander JJR
+blandest JJS
 blandishments NNS
 blandly RB QL
 blandness NN
@@ -5651,8 +5655,8 @@ bleachers NNS
 bleaches NNS
 bleaching VBG
 bleak JJ
-bleaker NN
-bleakest NN
+bleaker JJR
+bleakest JJS
 bleakly RB
 bleakness NN
 blearily RB
@@ -5697,8 +5701,8 @@ blighting VBG
 blights NNS
 blind NN VB JJ
 blinded VBN
-blinder NN
-blindest NN
+blinder NN JJR
+blindest JJS
 blindfold NN
 blindfolded VBN
 blindfolds NNS
@@ -5765,6 +5769,7 @@ blooded VBN
 bloodhound NN
 bloodhounds NNS
 bloodied VBN VBD
+bloodier JJR
 bloodies NNS
 bloodiest JJS
 bloodily RB
@@ -5854,9 +5859,9 @@ blueish NN
 blueness NN
 blueprint NN
 blueprints NNS VBZ
-bluer NN
+bluer JJR
 blues NNS
-bluest NN
+bluest JJS
 bluesy NN
 bluff NN JJ
 bluffed VBN VBD
@@ -5872,7 +5877,7 @@ blunders NNS
 blunt NNP VB JJ
 blunted VBN
 blunter JJR
-bluntest NN
+bluntest JJS
 blunting VBG
 bluntly RB QL
 bluntness NN
@@ -5967,6 +5972,7 @@ bogeyman NN
 bogeymen NNS
 bogeys NNS
 bogged VBN
+boggier JJR
 boggiest JJS
 bogging VBG
 boggle NN
@@ -6045,11 +6051,12 @@ bonfires NNS
 bongo NN
 bongos NNS
 bonhomie NN
-bonier NN
+bonier JJR
 boniest JJS
 bonnet NN
 bonnets NNS
-bonnie NP
+bonnie NP JJ
+bonnier JJR
 bonniest JJS
 bonny NN
 bonus NN
@@ -6545,7 +6552,7 @@ brief NN VB JJ
 briefcase NN
 briefcases NNS
 briefed VBN
-briefer JJR NP
+briefer JJR
 briefest JJS
 briefing VBG NN
 briefings NNS
@@ -6591,7 +6598,7 @@ briny NN
 brio NN
 brisk JJ
 brisker JJR
-briskest NN
+briskest JJS
 briskly RB
 briskness NN
 bristle NN VB
@@ -7826,6 +7833,7 @@ catch NN VB
 catch-all NN
 catcher NN
 catches NNS VBZ
+catchier JJR
 catchiest JJS
 catching VBG NN
 catchment NN
@@ -8413,7 +8421,7 @@ cheered VBN VBD
 cheerful JJ
 cheerfully RB
 cheerfulness NN
-cheerier NN
+cheerier JJR
 cheeriest JJS
 cheerily RB
 cheering VBG
@@ -8617,6 +8625,7 @@ chocolate NN JJ
 chocolates NNS
 choice NN JJ
 choices NNS
+choicer JJR
 choicest JJS
 choir NN
 choirboy NN
@@ -8965,6 +8974,7 @@ classicism NN
 classicist NP
 classicists NNS
 classics NNS
+classier JJR
 classiest JJS
 classifiable JJ
 classification NN
@@ -9011,7 +9021,7 @@ clean-up NN JJ
 cleaned VBN VBD
 cleaner NN JJR
 cleaners NNS
-cleanest NN
+cleanest JJS
 cleaning VBG NN
 cleanliness NN
 cleanly RB
@@ -9031,7 +9041,7 @@ clearance NN
 clearances NNS
 cleared VBN VBD
 clearer JJR
-clearest NN
+clearest JJS
 clearing VBG NN
 clearings NNS
 clearly RB QL
@@ -9067,8 +9077,8 @@ clerk NN VB
 clerks NNS
 clever JJ
 clever-clever NN
-cleverer NN
-cleverest NN
+cleverer JJR
+cleverest JJS
 cleverly RB
 cleverness NN
 cliche NN
@@ -9248,7 +9258,7 @@ clumped VBN VBD
 clumping VBG
 clumps NNS
 clumpy NN
-clumsier NN
+clumsier JJR
 clumsiest JJS
 clumsily RB
 clumsiness NN
@@ -9331,8 +9341,8 @@ coarse JJ
 coarsely RB
 coarseness NN
 coarsens NNS
-coarser NN
-coarsest NN
+coarser JJR
+coarsest JJS
 coast NN
 coast-to-coast NN
 coastal JJ
@@ -11349,7 +11359,7 @@ cortisol NN
 coruscates NNS
 corvette NN
 corvettes NNS
-cosier NN
+cosier JJR
 cosily RB
 cosine NN
 cosines NNS
@@ -11696,7 +11706,7 @@ crashes NNS
 crashing VBG
 crashingly RB
 crass JJ
-crasser NN
+crasser JJR
 crassest JJS
 crassly RB
 crassness NN
@@ -11727,7 +11737,7 @@ crayons NNS
 craze NN
 crazed VBN
 crazes NNS
-crazier NN
+crazier JJR
 craziest JJS
 crazily RB
 craziness NN
@@ -11886,7 +11896,7 @@ crises NNS
 crisis NN
 crisp NN JJ
 crisper NN
-crispier NN
+crispier JJR
 crispiest JJS
 crispiness NN
 crisply RB
@@ -12056,13 +12066,13 @@ crucifying VBG
 crude JJ
 crudely RB
 crudeness NN
-cruder NN
+cruder JJR
 crudest JJS
 crudities NNS
 crudity NN
 cruel JJ
-crueller NN
-cruellest NN
+crueller JJR
+cruellest JJS
 cruelly RB
 cruelness NN
 cruelties NNS
@@ -12182,7 +12192,7 @@ cud NN
 cuddle NN
 cuddled VBN VBD
 cuddles NNS
-cuddlier NN
+cuddlier JJR
 cuddliest JJS
 cuddliness NN
 cuddling VBG
@@ -12400,6 +12410,7 @@ cutaneous JJ
 cutback NN
 cutbacks NNS
 cute JJ
+cuter JJR
 cutest JJS
 cuticle NN
 cuticles NNS
@@ -12495,8 +12506,8 @@ daemons NNS
 daffodil NN
 daffodils NNS
 daft NN
-dafter NN
-daftest NN
+dafter JJR
+daftest JJS
 daftness NN
 dagger NN
 daggers NNS
@@ -12547,9 +12558,9 @@ dampened VBN VBD
 dampening VBG
 dampenness NN
 dampens VBZ
-damper NN
+damper JJR
 dampers NNS
-dampest NN
+dampest JJS
 damping VBG
 damply RB
 damps NNS
@@ -12580,7 +12591,8 @@ dangled VBD
 dangles VBZ
 dangling VBG
 dank JJ
-dankest NN
+danker JJR
+dankest JJS
 dapper JJ
 dapple NN
 dappled VBN
@@ -12696,6 +12708,7 @@ deadened VBN VBD
 deadening VBG
 deadens VBZ
 deadheads NNS
+deadlier JJR
 deadliest JJS
 deadline NN
 deadlines NNS
@@ -12713,8 +12726,8 @@ deafened VBN VBD
 deafening VBG
 deafeningly RB
 deafens VBZ
-deafer NN
-deafest NN
+deafer JJR
+deafest JJS
 deafness NN
 deal NN VB
 dealer NN
@@ -13532,7 +13545,7 @@ dens NNS
 dense JJ
 densely RB
 denseness NN
-denser NN
+denser JJR
 densest JJS
 densities NNS
 density NN
@@ -14366,9 +14379,9 @@ diminutive JJ
 diminutives NNS
 dimly RB
 dimmed VBN VBD
-dimmer NN
+dimmer JJR
 dimmers NNS
-dimmest NN
+dimmest JJS
 dimming VBG
 dimness NN
 dimorphic JJ
@@ -14460,13 +14473,13 @@ directory NN
 directs VBZ
 direly RB
 direness NN
-direst NN
+direst JJS
 dirge NN
 dirges NNS
 dirigible JJ
 dirt NN
 dirtied VBN VBD
-dirtier NN
+dirtier JJR
 dirtiest JJS
 dirtily RB
 dirtiness NN
@@ -15135,8 +15148,8 @@ disqualifies VBZ
 disqualify VB
 disqualifying VBG
 disquiet NN
-disquieter NN
-disquietest NN
+disquieter JJR
+disquietest JJS
 disquieting JJ
 disquietly RB
 disquietness NN
@@ -15421,10 +15434,10 @@ divinations NNS
 divine NN JJ
 divined VBN VBD
 divinely RB
-diviner NN
+diviner JJR
 diviners NNS
 divines NNS
-divinest NN
+divinest JJS
 diving VBG NN
 divining VBG
 divinities NNS
@@ -15902,6 +15915,7 @@ dreams NNS VBZ
 dreamt VBD
 dreamy JJ
 drear NN
+drearier JJR
 dreariest JJS
 drearily RB
 dreariness NN
@@ -15982,9 +15996,9 @@ drizzles NNS
 drizzling VBG
 drizzly JJ
 droll NN
-droller NN
+droller JJR
 drollery NN
-drollest NN
+drollest JJS
 dromedaries NNS
 dromedary JJ
 drone NN
@@ -16130,8 +16144,8 @@ dulls VBZ
 dully RB
 duly RB
 dumb JJ
-dumber NN
-dumbest NN
+dumber JJR
+dumbest JJS
 dumbfound NN
 dumbfounded JJ
 dumbfounding VBG
@@ -16654,6 +16668,7 @@ elderberries NNS
 elderberry NN
 elderflower NN
 elderly JJ
+elder NN JJR
 elders NNS
 eldest JJS
 elect VB
@@ -18704,7 +18719,7 @@ extremal NN
 extreme NN JJ
 extremely RB QL
 extremes NNS
-extremest NN
+extremest JJS
 extremism NN
 extremist NN
 extremists NNS
@@ -18876,7 +18891,7 @@ failures NNS
 faint VB JJ
 faint-hearted VBN VBD
 fainted VBN
-fainter NN
+fainter JJR
 faintest JJS
 fainthearted VBN VBD
 fainting VBG
@@ -18886,7 +18901,7 @@ faints NNS
 fair NN RB JJ
 fair-minded VBN VBD
 fair-weather NN
-fairer NN
+fairer JJR
 fairest JJS
 fairground NN
 fairgrounds NNS
@@ -19055,7 +19070,7 @@ farmyard NN
 farmyards NNS
 farrago NN
 farseeing VBG
-farther RBR QL
+farther RBR QL JJR
 farthest RBT JJS
 farthing VBG
 farthings NNS
@@ -19136,7 +19151,7 @@ fattened VBN VBD
 fattening VBG
 fattens VBZ
 fatter JJR
-fattest NN
+fattest JJS
 fatty JJ
 fatuity NN
 fatuous JJ
@@ -19487,7 +19502,7 @@ fiends NNS
 fierce JJ
 fiercely RB
 fierceness NN
-fiercer NN
+fiercer JJR
 fiercest JJS
 fierily RB
 fiery JJ
@@ -19578,7 +19593,7 @@ filtered VBN VBD
 filtering VBG NN
 filters VBZ NNS
 filth NN
-filthier NN
+filthier JJR
 filthiest JJS
 filthily RB
 filthiness NN
@@ -19717,7 +19732,7 @@ firm NN JJ
 firmament NN
 firmed VBD
 firmer JJR
-firmest NN
+firmest JJS
 firming VBG
 firmly RB QL
 firmness NN
@@ -19775,7 +19790,7 @@ fitments NNS
 fitness NN
 fits VBZ NNS
 fitted VBN VBD
-fitter NN
+fitter JJR
 fitters NNS
 fittest JJS
 fitting VBG NN JJ
@@ -19845,6 +19860,7 @@ flak NN
 flake VB
 flaked VBN VBD
 flakes NNS
+flakier JJR
 flakiest JJS
 flaking VBG
 flaky JJ
@@ -20012,7 +20028,7 @@ flightless JJ
 flightpath NN
 flights NNS
 flighty NN
-flimsier NN
+flimsier JJR
 flimsiest JJS
 flimsily RB
 flimsiness NN
@@ -20256,6 +20272,7 @@ foetuses NNS
 fog NN
 fogey NN
 fogged VBN
+foggier JJR
 foggiest JJS
 foggy JJ
 foghorn NN
@@ -20705,7 +20722,7 @@ foul-mouthed VBN VBD
 foul-up NN
 foul-ups NNS
 fouled VBD
-fouler NN
+fouler JJR
 foulest JJS
 fouling NN VBG
 foully RB
@@ -20787,7 +20804,7 @@ fragrance NN
 fragrances NNS
 fragrant JJ
 frail JJ
-frailer NN
+frailer JJR
 frailest JJS
 frailly RB
 frailties NNS
@@ -20808,6 +20825,7 @@ francophone NN
 francs NNS
 frank NN JJ NP
 franked VBN VBD
+franker JJR
 frankest JJS
 frankfurter NN NP
 frankincense NN
@@ -20911,8 +20929,8 @@ freshened VBN
 freshener NN
 fresheners NNS
 freshening VBG
-fresher NN
-freshest NN
+fresher JJR
+freshest JJS
 freshly RB
 freshman NN
 freshmen NNS
@@ -21111,7 +21129,7 @@ full-time RB JJ
 full-timer NN
 full-timers NNS
 fullback NN
-fuller NP JJR
+fuller NN JJR
 fullers NNS
 fullest JJS
 fulling VBG
@@ -21227,8 +21245,9 @@ furtherance NN
 furthered VBN VBD
 furthering VBG
 furthermore RB
+further JJR
 furthers VBZ
-furthest NN
+furthest JJS
 furtive JJ
 furtively RB
 furtiveness NN
@@ -21248,7 +21267,7 @@ fusions NNS
 fuss NN VB
 fussed VBN VBD
 fusses NNS VBZ
-fussier NN
+fussier JJR
 fussiest JJS
 fussily RB
 fussiness NN
@@ -21268,7 +21287,7 @@ futuristic JJ
 futurists NNS
 futurologists NNS
 fuzz NN
-fuzzier NN
+fuzzier JJR
 fuzziest JJS
 fuzzily RB
 fuzziness NN
@@ -21528,6 +21547,7 @@ gathers VBZ
 gating VBG
 gauche JJ
 gaucheness NN
+gaudier JJR
 gaudiest JJS
 gaudily RB
 gaudiness NN
@@ -21657,7 +21677,8 @@ genotypes NNS
 genre NN
 genres NNS
 genteel JJ
-genteelest NN
+genteeler JJR
+genteelest JJS
 genteelly RB
 gentile NN JJ NP
 gentility NN
@@ -21668,7 +21689,7 @@ gentlemanly JJ
 gentlemen NNS
 gentleness NN
 gentler JJR
-gentlest NN
+gentlest JJS
 gently RB
 gentrification NN
 gentrified VBN VBD
@@ -21770,7 +21791,7 @@ getter NN
 getting VBG NN
 geyser NN
 geysers NNS
-ghastlier NN
+ghastlier JJR
 ghastliness NN
 ghastly JJ
 gherkin NN
@@ -22005,7 +22026,7 @@ globular NN
 globule NN
 globules NNS
 gloom NN
-gloomier NN
+gloomier JJR
 gloomiest JJS
 gloomily RB
 gloominess NN
@@ -22026,7 +22047,7 @@ glossaries NNS
 glossary NN
 glossed VBN
 glosses NNS
-glossier NN
+glossier JJR
 glossiest JJS
 glossily RB
 glossing VBG
@@ -22216,7 +22237,7 @@ gorgeously RB QL
 gorgeousness NN
 gorges NNS
 gorging VBG
-gorier NN
+gorier JJR
 goriest JJS
 gorilla NN
 gorillas NNS
@@ -22336,7 +22357,7 @@ granddaughters NNS
 grandee NN
 grandees NNS
 grander JJR
-grandest NN
+grandest JJS
 grandeur NN
 grandfather NN
 grandfathers NNS
@@ -22492,13 +22513,14 @@ greats NNS
 grebe NN
 grebes NNS
 greed NN
+greedier JJR
 greediest JJS
 greedily RB
 greediness NN
 greedy JJ
 green NN NP JJ
 green-eyed VBN VBD
-greener NN
+greener JJR 
 greenery NN
 greenest JJS
 greenfield NP
@@ -22568,10 +22590,11 @@ grimaced VBD
 grimaces NNS VBZ
 grimacing VBG
 grime NN
+grimier JJR
 grimiest JJS
 grimly RB
 grimmer JJR
-grimmest NN
+grimmest JJS
 grimness NN
 grimy NN
 grin NN VB
@@ -22617,6 +22640,7 @@ grocer NN
 groceries NNS
 grocers NNS
 grocery NN
+groggier JJR
 groggiest JJS
 groggily RB
 groggy JJ
@@ -22645,8 +22669,8 @@ gropingly RB
 gropings NNS
 gross NN JJ NP
 grossed VBN VBD
-grosser NN
-grossest NN
+grosser JJR
+grossest JJS
 grossly RB QL
 grossness NN
 grotesque JJ
@@ -22794,7 +22818,7 @@ guillotined VBN VBD
 guillotines NNS
 guillotining VBG
 guilt NN
-guiltier NN
+guiltier JJR
 guiltily RB
 guiltiness NN
 guiltless JJ
@@ -23290,7 +23314,7 @@ hardest RBT JJS
 hardhearted VBN VBD
 hardheartedly RB
 hardheartedness NN
-hardier NN
+hardier JJR
 hardiest JJS
 hardily RB
 hardiness NN
@@ -23378,7 +23402,7 @@ harry NNP VB NP
 harrying VBG
 harsh JJ
 harsher JJR
-harshest NN
+harshest JJS
 harshly RB
 harshness NN
 hart NP
@@ -23430,7 +23454,7 @@ hatreds NNS
 hats NNS
 hatstands NNS
 hatter NN
-haughtier NN
+haughtier JJR
 haughtiest JJS
 haughtily RB
 haughtiness NN
@@ -23485,7 +23509,7 @@ haze NN
 hazel NN
 hazelnut NN
 hazelnuts NNS
-hazier NN
+hazier JJR
 haziest JJS
 hazily RB
 hazy JJ
@@ -23510,7 +23534,7 @@ headers NNS
 headgear NN
 headhunted VBN VBD
 headhunters NNS
-headier NN
+headier JJR
 heading NN VBG
 headings NNS
 headlamp NN
@@ -23605,6 +23629,7 @@ heartfelt JJ
 hearth NN
 hearthrug NN
 hearths NNS
+heartier JJR
 heartiest JJS
 heartily RB
 heartiness NN
@@ -24019,7 +24044,7 @@ hilarious JJ
 hilariously RB
 hilarity NN
 hill NN NP
-hillier NN
+hillier JJR
 hillock NN
 hillocks NNS
 hills NNS
@@ -24189,7 +24214,7 @@ holidaying VBG
 holidaymaker NN
 holidaymakers NNS
 holidays NNS
-holier NN
+holier JJR
 holiest JJS
 holiness NN
 holing VBG
@@ -24632,9 +24657,9 @@ humans NNS
 humble VB JJ
 humbled VBN
 humbleness NN
-humbler NN
+humbler JJR
 humbles VBZ
-humblest NN
+humblest JJS
 humbling VBG
 humbly RB QL
 humbug NN
@@ -25017,9 +25042,10 @@ idiots NNS
 idle VB JJ
 idled VBD
 idleness NN
+idler JJR NN
 idlers NNS
 idles VBZ
-idlest NN
+idlest JJS
 idling VBG
 idly RB
 idol NN
@@ -27765,11 +27791,11 @@ joker NN
 jokers NNS
 jokes NNS VBZ
 jokey NN
-jokier NN
+jokier JJR
 jokily RB
 joking VBG
 jokingly RB
-jollier NN
+jollier JJR
 jolliest JJS
 jollily RB
 jollity NN
@@ -27870,7 +27896,7 @@ jugs NNS
 jugular NN
 juice NN
 juices NNS
-juicier NN
+juicier JJR
 juiciest JJS
 juiciness NN
 juicy JJ
@@ -27974,7 +28000,7 @@ keeled VBN VBD
 keeling VBG
 keels NNS VBZ
 keen JJ
-keener NN
+keener NN JJR
 keenest JJS
 keening VBG NN
 keenly RB QL
@@ -28106,7 +28132,7 @@ kindest JJS
 kindle VB
 kindled VBN
 kindles NNS
-kindlier NN
+kindlier JJR
 kindliest JJS
 kindliness NN
 kindling VBG
@@ -28244,7 +28270,7 @@ knolls NNS
 knot NN VB
 knots NNS
 knotted VBN VBD
-knottier NN
+knottier JJR
 knotting VBG
 knotty JJ
 know NN VB
@@ -28680,6 +28706,7 @@ layperson NN
 lays VBZ NNS
 laze VB
 lazed VBN VBD
+lazier JJR
 laziest JJS
 lazily RB
 laziness NN
@@ -28922,7 +28949,7 @@ lengthen VB
 lengthened VBN VBD
 lengthening VBG
 lengthens VBZ
-lengthier NN
+lengthier JJR
 lengthiest JJS
 lengthily RB
 lengths NNS
@@ -29214,7 +29241,7 @@ like-minded JJ
 likeability NN
 likeable JJ
 liked VBN VBD
-likelier NN
+likelier JJR
 likeliest JJS
 likelihood NN
 likely RB JJ
@@ -29445,6 +29472,7 @@ littering VBG
 litters VBZ NNS
 little NP JJ NNP RB AP QL
 littleness NN
+littler JJR
 littlest JJS
 littoral JJ
 liturgical JJ
@@ -29591,7 +29619,7 @@ lodges NNS
 lodging VBG NN
 lodgings NNS
 loft NN
-loftier NN
+loftier JJR
 loftiest JJS
 loftily RB
 loftiness NN
@@ -29723,7 +29751,7 @@ loosened VBN VBD
 loosening VBG
 loosenness NN
 loosens VBZ
-looser NN
+looser JJR
 looses NNS VBZ
 loosest JJS
 loosing VBG
@@ -29808,7 +29836,7 @@ loveable JJ
 lovebirds NNS
 loved VBN VBD
 loveless NP
-lovelier NN
+lovelier JJR
 lovelies NNS
 loveliest JJS
 loveliness NN
@@ -29832,7 +29860,7 @@ low-lying JJ
 low-pitched JJ
 low-profile NN
 low-spirited VBN VBD
-lower RBR JJR NP VB
+lower RBR JJR VB
 lower-case NN
 lower-class NN
 lowered VBN VBD
@@ -29843,6 +29871,7 @@ lowing VBG
 lowish JJ
 lowland NN
 lowlands NNS
+lowlier JJR
 lowliest JJS
 lowliness NN
 lowly JJ
@@ -29913,7 +29942,7 @@ luminous JJ
 luminously RB
 lump NN
 lumped VBN VBD
-lumpier NN
+lumpier JJR
 lumpiness NN
 lumping VBG
 lumps NNS
@@ -29964,7 +29993,7 @@ lurks VBZ
 luscious JJ
 lusciously RB
 lush JJ
-lusher NN
+lusher JJR
 lushest JJS
 lushness NN
 lust NN
@@ -30069,7 +30098,7 @@ maddened VBN VBD
 maddening VBG
 maddeningly RB
 maddens VBZ
-madder NN
+madder JJR
 maddest JJS
 made VBN VBD
 made-up NN
@@ -30391,6 +30420,7 @@ manipulative JJ
 manipulator NN
 manipulators NNS
 mankind NN
+manlier JJR
 manliest JJS
 manliness NN
 manly JJ
@@ -30847,7 +30877,7 @@ meandered VBD
 meandering VBG
 meanderings NNS
 meanders NNS
-meaner NN
+meaner JJR
 meanest JJS
 meaning NN VBG
 meaningful JJ
@@ -30877,7 +30907,7 @@ measuring VBG
 meat NN
 meataxe NN
 meatballs NNS
-meatier NN
+meatier JJR
 meats NNS
 meaty JJ
 mechanic NN
@@ -30958,7 +30988,7 @@ medium-sized JJ
 mediums NNS
 medley NN
 meek JJ NP
-meeker NP
+meeker JJR
 meekest JJS
 meekly RB
 meekness NN
@@ -31137,7 +31167,7 @@ mermaid NN
 mermaids NNS
 mermen NNS
 meromorphic JJ
-merrier NN
+merrier JJR
 merriest JJS
 merrily RB
 merriment NN
@@ -31171,7 +31201,7 @@ messed VBD
 messenger NN
 messengers NNS
 messes NNS
-messier NN
+messier JJR
 messiest JJS
 messily RB
 messiness NN
@@ -31376,7 +31406,7 @@ midwinter NN
 midwives NNS
 mien NN
 might NN MD
-mightier NN
+mightier JJR
 mightiest JJS
 mightily RB
 mights NNS
@@ -31633,6 +31663,7 @@ minuted VBN VBD
 minutely RB
 minuteness NN
 minutes NNS
+minuter JJR
 minutest JJS
 minutiae NNS
 minx NN
@@ -32351,6 +32382,7 @@ monumental JJ
 monumentally RB
 monuments NNS
 mood NN
+moodier JJR
 moodiest JJS
 moodily RB
 moodiness NN
@@ -32646,7 +32678,7 @@ mucous JJ
 mucus NN
 mud NN
 muddied VBN
-muddier NN
+muddier JJR
 muddies NNS
 muddle NN
 muddled VBN VBD
@@ -32676,7 +32708,7 @@ mug NN
 mugged VBN VBD
 mugger NN
 muggers NNS
-muggier NN
+muggier JJR
 mugging VBG
 muggings NNS
 muggy JJ
@@ -32797,7 +32829,7 @@ murderous JJ
 murderously RB
 murders NNS
 murk NN
-murkier NN
+murkier JJR
 murkiest JJS
 murky JJ
 murmur NN VB
@@ -33081,6 +33113,7 @@ nature NN
 natures NNS
 naturist NN
 naught PN
+naughtier JJR
 naughtiest JJS
 naughtily RB
 naughtiness NN
@@ -33130,7 +33163,7 @@ neat JJ
 neaten NNS
 neatening VBG
 neatens NNS
-neater NN
+neater JJR
 neatest JJS
 neatly RB
 neatness NN
@@ -33727,7 +33760,7 @@ nosegay NN
 nosegays NNS
 noses NNS
 nosey NN
-nosier NN
+nosier JJR
 nosily RB
 nosiness NN
 nosing VBG
@@ -33941,7 +33974,7 @@ nutritious JJ
 nutritive JJ
 nuts NNS JJ
 nutshell NN
-nuttier NN
+nuttier JJR
 nutty JJ
 nuzzled VBD
 nuzzles NNS
@@ -34061,7 +34094,7 @@ obscured VBN VBD
 obscurely RB
 obscurement NN
 obscureness NN
-obscurer NN
+obscurer JJR
 obscures VBZ
 obscurest JJS
 obscuring VBG
@@ -34211,7 +34244,7 @@ ocular JJ
 oculist NN
 oculists NNS
 odd JJ
-odder NN
+odder JJR
 oddest JJS
 oddities NNS
 oddity NN
@@ -34331,7 +34364,7 @@ oilcloth NN
 oiled VBN
 oilfield NN
 oilfields NNS
-oilier NN
+oilier JJR
 oiliness NN
 oiling VBG
 oilman NN
@@ -35509,7 +35542,7 @@ paleontological JJ
 paleontologist NN
 paleontologists NNS
 paleontology NN
-paler NN
+paler JJR
 pales NNS
 palest JJS
 palette NN
@@ -36791,7 +36824,7 @@ pets NNS
 petted VBN
 petticoat NN
 petticoats NNS
-pettier NN
+pettier JJR
 pettifoggers NNS
 pettifogging VBG
 pettiness NN
@@ -37358,7 +37391,7 @@ plaid NN
 plain NN RB QL JJ
 plain-clothes NNS
 plain-spoken JJ
-plainer NN
+plainer JJR
 plainest JJS
 plainly RB QL
 plainness NN
@@ -37501,8 +37534,8 @@ pleadings NNS
 pleads VBZ
 pleas NNS
 pleasant NN NP JJ
-pleasanter NN
-pleasantest NN
+pleasanter JJR
+pleasantest JJS
 pleasantly RB QL
 pleasantness NN
 pleasantries NNS
@@ -37591,6 +37624,7 @@ ploys NNS
 pluck NN VB
 plucked VBD
 plucker NN
+pluckier JJR
 pluckiest JJS
 plucking VBG
 plucks NNS VBZ
@@ -37783,9 +37817,9 @@ politburo NP
 polite JJ
 politely RB
 politeness NN
-politer NN
+politer JJR
 politesse NN
-politest NN
+politest JJS
 politic JJ
 political JJ
 politically RB
@@ -38759,7 +38793,7 @@ price NN VB NP
 priced VBN
 priceless JJ
 prices NNS
-pricier NN
+pricier JJR
 pricing VBG NN
 prick NN VB
 pricked VBN
@@ -39051,7 +39085,7 @@ profligately RB
 proforma NN
 proformas NN
 profound JJ
-profounder NN
+profounder JJR
 profoundest JJS
 profoundly RB QL
 profundity NN
@@ -39757,7 +39791,7 @@ pure-bred VBN VBD
 puree NN
 purely RB QL
 pureness NN
-purer NN
+purer JJR
 purest JJS
 purgative JJ
 purgatorial NN
@@ -40054,6 +40088,7 @@ queen NN
 queenly RB
 queens NNS NP
 queer JJ
+queerer JJR
 queerest JJS
 queerly RB
 quell NP VB
@@ -40124,7 +40159,7 @@ quietened VBN VBD
 quietening VBG
 quietens NNS
 quieter JJR
-quietest NN
+quietest JJS
 quietly RB
 quietness NN
 quietus NN
@@ -40220,7 +40255,7 @@ racialism NN
 racialist NN
 racialists NNS
 racially RB
-racier NN
+racier JJR
 racing VBG NN
 racism NN
 racist NN
@@ -40340,7 +40375,7 @@ rained VBN VBD
 rainfall NN
 rainforest NN
 rainforests NNS
-rainier NP
+rainier NP JJR
 rainiest JJS
 raining VBG
 rainless JJ
@@ -40426,7 +40461,7 @@ ranging VBG
 rangy JJ
 rank NN JJ
 ranked VBN VBD
-ranker NN
+ranker NN JJR
 rankest JJS
 ranking VBG NN
 rankings NNS
@@ -40490,7 +40525,7 @@ rarefy VB
 rarefying VBG
 rarely RB
 rarer JJR
-rarest NN
+rarest JJS
 raring JJ
 rarities NNS
 rarity NN
@@ -40498,10 +40533,10 @@ rascal NN
 rascally RB
 rascals NNS
 rash NN JJ
-rasher NN
+rasher NN JJR
 rashers NNS
 rashes NNS
-rashest NN
+rashest JJS
 rashly RB
 rashness NN
 rasp NN
@@ -40565,7 +40600,7 @@ ratios NNS
 ratite NN
 ratites NNS
 rats NNS
-rattier NN
+rattier JJR
 rattle NN
 rattled VBD
 rattles VBZ
@@ -40705,7 +40740,7 @@ reader NN
 readers NNS
 readership NN
 readied VBN VBD
-readier NN
+readier JJR
 readies NNS
 readiest JJS
 readily RB QL
@@ -41238,7 +41273,7 @@ reddened VBN VBD
 reddening VBG
 reddens VBZ
 redder JJR
-reddest NN
+reddest JJS
 reddish JJ
 redeclaration NN
 redecorate NN
@@ -43467,7 +43502,7 @@ roses NNS
 rosette NN
 rosettes NNS
 rosewood NN
-rosier NN
+rosier JJR
 rosily RB
 roster NN
 rostering VBG
@@ -43532,9 +43567,9 @@ roundabouts NNS
 rounded VBN VBD
 roundel NN
 roundels NNS
-rounder NN
+rounder NN JJR
 rounders NNS
-roundest NN
+roundest JJS
 roundhouse NN
 rounding VBG NN
 roundly RB QL
@@ -43561,7 +43596,7 @@ rover NN NP
 rovers NNS
 roving VBG
 row NN VB
-rowdier NN
+rowdier JJR
 rowdiness NN
 rowdy NN JJ
 rowed VBN
@@ -43611,8 +43646,8 @@ ruddy QL JJ
 rude JJ
 rudely RB
 rudeness NN
-ruder NN
-rudest NN
+ruder JJR
+rudest JJS
 rudimentary JJ
 rudiments NNS
 rue FW-NN NN
@@ -43703,7 +43738,7 @@ runner NN
 runner-up NN
 runners NNS
 runners-up NN
-runnier NN
+runnier JJR
 runniest JJS
 running VBG NN
 runny NN
@@ -43797,7 +43832,7 @@ saddened VBN VBD
 saddening VBG
 saddens VBZ
 sadder JJR
-saddest NN
+saddest JJS
 saddle NN VB
 saddlebag NN
 saddled VBN VBD
@@ -43835,7 +43870,7 @@ sagas NNS
 sage NN
 sagely RB
 sages NNS
-sagest NN
+sagest JJS
 sagged VBD
 sagging VBG
 sago NN
@@ -43974,7 +44009,7 @@ sandcastle NN
 sandcastles NNS
 sanded VBN VBD
 sander NN
-sandier NN
+sandier JJR
 sandiest JJS
 sanding VBG
 sandman NP
@@ -44094,7 +44129,7 @@ saucepans NNS
 saucer NN
 saucers NNS
 sauces NNS
-saucier NN
+saucier JJR
 sauciest JJS
 saucily RB
 sauciness NN
@@ -44212,7 +44247,7 @@ scanning VBG NN
 scans NNS VBZ
 scansion NN
 scant JJ
-scantier NN
+scantier JJR
 scantiest JJS
 scantily RB
 scantiness NN
@@ -44226,8 +44261,8 @@ scarab NN
 scarce JJ
 scarcely RB QL
 scarceness NN
-scarcer NN
-scarcest NN
+scarcer JJR
+scarcest JJS
 scarcities NNS
 scarcity NN
 scare NN VB
@@ -44551,7 +44586,7 @@ scrubbing VBG NN
 scrubby NN
 scrubs NNS VBZ
 scruff NN
-scruffier NN
+scruffier JJR
 scruffy NN
 scrum NN
 scrummage NN
@@ -44645,7 +44680,7 @@ seaman NN
 seamanship NN
 seamed VBN VBD
 seamen NNS
-seamier NN
+seamier JJR
 seamless JJ
 seamlessly RB
 seams NNS
@@ -44771,7 +44806,7 @@ secure JJ VB
 secured VBN VBD
 securely RB
 secures VBZ
-securest NN
+securest JJS
 securing VBG NN
 securities NNS
 security NN
@@ -44810,7 +44845,7 @@ see-through JJ
 seed VBN NN
 seedbed NN
 seeded VBN VBD
-seedier NN
+seedier JJR
 seediest JJS
 seediness NN
 seeding VBG
@@ -44829,7 +44864,7 @@ seem VB
 seemed VBN VBD
 seeming VBG JJ
 seemingly RB QL
-seemlier NN
+seemlier JJR
 seemly RB
 seems VBZ
 seen VBN
@@ -45343,8 +45378,8 @@ severance NN
 severe NP JJ
 severed VBN VBD
 severely RB QL
-severer NN
-severest NN
+severer JJR
+severest JJS
 severing VBG NN
 severity NN
 severs VBZ NP
@@ -45362,7 +45397,7 @@ sex-linked VBN VBD
 sex-starved VBN VBD
 sexed VBN VBD
 sexes NNS
-sexier NN
+sexier JJR
 sexiest JJS
 sexily RB
 sexiness NN
@@ -45386,7 +45421,7 @@ sexualities NNS
 sexuality NN
 sexually RB
 sexy JJ
-shabbier NN
+shabbier JJR
 shabbiest JJS
 shabbily RB
 shabbiness NN
@@ -45413,6 +45448,7 @@ shaft NN
 shafting VBG
 shafts NNS
 shag NN
+shaggier JJR
 shaggiest JJS
 shaggy JJ
 shakable JJ
@@ -45423,7 +45459,7 @@ shaken VBN
 shaker NN
 shakers NNS
 shakes VBZ NNS
-shakier NN
+shakier JJR
 shakiest JJS
 shakily RB
 shaking VBG NN
@@ -45434,7 +45470,7 @@ shallot NN
 shallots NNS
 shallow JJ
 shallower JJR
-shallowest NN
+shallowest JJS
 shallowly RB
 shallowness NN
 shallows NNS
@@ -45557,8 +45593,8 @@ sheepishness NN
 sheepskin NN
 sheer NP JJ
 sheered VBD
-sheerer NN
-sheerest NN
+sheerer NN JJR
+sheerest JJS
 sheerness NN
 sheet NN
 sheeted VBN
@@ -45625,7 +45661,7 @@ shines VBZ
 shiney NN
 shingle NN
 shingles NNS
-shinier NN
+shinier JJR
 shining VBG
 shinning VBG
 shins NNS
@@ -45837,7 +45873,7 @@ shredding VBG
 shreds NNS
 shrew NN
 shrewd JJ
-shrewder NN
+shrewder JJR
 shrewdest JJS
 shrewdly RB
 shrewdness NN
@@ -45851,7 +45887,8 @@ shrieks NNS VBZ
 shrift NN
 shrill JJ
 shrilled VBD
-shrillest NN
+shriller JJR
+shrillest JJS
 shrillness NN
 shrills NNS
 shrilly RB
@@ -45919,8 +45956,8 @@ shuttled VBD
 shuttles NNS
 shuttling VBG
 shy VB JJ
-shyer NN
-shyest NN
+shyer JJR
+shyest JJS
 shying VBG
 shyly RB
 shyness NN
@@ -45938,10 +45975,11 @@ sickening VBG
 sickeningly RB
 sickens VBZ
 sicker JJR
-sickest NN
+sickest JJS
 sickle NN
 sickle-cell NN
 sickles NNS
+sicklier JJR
 sickliest JJS
 sickly JJ
 sickness NN
@@ -46080,7 +46118,7 @@ silkworm NN
 silkworms NNS
 silky JJ
 sill NN
-sillier NN
+sillier JJR
 silliest JJS
 silliness NN
 sills NNS
@@ -46326,7 +46364,7 @@ sketchbook NN
 sketchbooks NNS
 sketched VBN VBD
 sketches NNS VBZ
-sketchier NN
+sketchier JJR
 sketchiest JJS
 sketchily RB
 sketching VBG
@@ -46444,9 +46482,9 @@ slackened VBN VBD
 slackening VBG
 slackenness NN
 slackens VBZ
-slacker NN
+slacker NN JJR
 slackers NNS
-slackest NN
+slackest JJS
 slackly RB
 slackness NN
 slacks NNS
@@ -46533,7 +46571,7 @@ sleekly RB
 sleep NN VB
 sleeper NN
 sleepers NNS
-sleepier NN
+sleepier JJR
 sleepiest JJS
 sleepily RB
 sleepiness NN
@@ -46557,7 +46595,8 @@ sleigh NN
 sleight NP
 sleights NNS
 slender JJ
-slenderest NN
+slenderer JJR
+slenderest JJS
 slenderly RB
 slenderness NN
 slept VBN VBD
@@ -46573,8 +46612,8 @@ slices NNS
 slicing VBG
 slick NN JJ
 slicked VBN VBD
-slicker NN
-slickest NN
+slicker NN JJR
+slickest JJS
 slickly RB
 slicks NNS
 slid VBD
@@ -46601,7 +46640,7 @@ slimline NN
 slimmed VBN VBD
 slimmer JJR
 slimmers NNS
-slimmest NN
+slimmest JJS
 slimming VBG
 slimness NN
 slims NNS
@@ -46654,7 +46693,7 @@ sloped VBN VBD
 slopes NNS
 sloping VBG
 slopped VBD
-sloppier NN
+sloppier JJR
 sloppily RB
 sloppiness NN
 slopping VBG
@@ -46753,7 +46792,7 @@ smart RB JJ
 smarted VBD
 smarten NN
 smarter JJR
-smartest NN
+smartest JJS
 smarting VBG
 smartly RB
 smartness NN
@@ -46813,7 +46852,7 @@ smokes VBZ
 smokescreen NN
 smokestack NN
 smokestacks NNS
-smokier NN
+smokier JJR
 smokiness NN
 smoking VBG NN
 smoky NP JJ
@@ -46874,7 +46913,7 @@ snap NN VB
 snap-fasteners NNS
 snapped VBN VBD
 snapper NN
-snappier NN
+snappier JJR
 snappily RB
 snapping VBG NN
 snappy JJ
@@ -46897,7 +46936,7 @@ snatching VBG
 sneak NN VB
 sneaked VBN VBD
 sneakers NNS
-sneakier NN
+sneakier JJR
 sneakiest JJS
 sneakily RB
 sneaking VBG
@@ -47128,7 +47167,7 @@ softly-softly RB
 softness NN
 software NN
 softwood NN
-soggier NN
+soggier JJR
 soggy JJ
 soi-disant JJ
 soil NN VB
@@ -47281,10 +47320,9 @@ sonorously RB
 sonorousness NN
 sons NNS
 sons-in-law NN
-sons-in-laws NN
 soon RB
-sooner RBR RB
-soonest NN
+sooner RBR JJR
+soonest JJS
 soonish NN
 soot NN
 soothe VB
@@ -47326,7 +47364,7 @@ soreness NN
 sores NNS
 sorority NN
 sorrel NN JJ
-sorrier NN
+sorrier JJR
 sorriest JJS
 sorrow NN
 sorrowed VBN VBD
@@ -47359,7 +47397,7 @@ souls NNS
 sound NN QL VB JJ
 sounded VBN VBD
 sounder NP JJR
-soundest NN
+soundest JJS
 sounding VBG JJ
 soundings NNS
 soundless JJ
@@ -47382,7 +47420,7 @@ sourceless JJ
 sources NNS
 sourcing VBG
 soured JJ
-sourest NN
+sourest JJS
 souring VBG
 sourly RB
 sourness NN
@@ -47493,8 +47531,8 @@ spars NNS
 sparse JJ
 sparsely RB
 sparseness NN
-sparser NN
-sparsest NN
+sparser JJR
+sparsest JJS
 sparsity NN
 spasm NN
 spasmodic NN
@@ -47630,7 +47668,7 @@ speed-ups NNS
 speedboat NN
 speedboats NNS
 speeded VBD
-speedier NN
+speedier JJR
 speediest JJS
 speedily RB
 speeding VBG
@@ -48274,8 +48312,8 @@ stargazers NNS
 stargazing VBG
 staring VBG
 stark NNP JJ QL NP
-starker NN
-starkest NN
+starker JJR
+starkest JJS
 starkly RB
 starkness NN
 starless JJ
@@ -48313,6 +48351,7 @@ state-of-the-art NN
 stated VBN VBD
 statehood NN
 stateless JJ
+statelier JJR
 stateliest JJS
 stateliness NN
 stately JJ
@@ -48359,6 +48398,7 @@ statutes NNS
 statutorily RB
 statutory JJ
 staunch JJ
+stauncher JJR
 staunchest JJS
 staunching VBG
 staunchly RB
@@ -48500,8 +48540,8 @@ sterilizes VBZ
 sterilizing VBG
 sterling NNP JJ NN NP
 stern NN NP JJ
-sterner NN
-sternest NN
+sterner JJR
+sternest JJS
 sternly RB
 sternness NN
 sterns NNS
@@ -48522,6 +48562,7 @@ stews NNS
 stick NN VB
 sticker NN
 stickers NNS
+stickier JJR
 stickiest JJS
 stickiness NN
 sticking VBG
@@ -48538,7 +48579,7 @@ stiffener NN
 stiffening VBG NN
 stiffens VBZ
 stiffer JJR
-stiffest NN
+stiffest JJS
 stiffly RB
 stiffness NN
 stifle VB
@@ -48587,7 +48628,7 @@ stimulus NN
 sting NN VB
 stinger NN
 stingers NNS
-stingier NN
+stingier JJR
 stinging VBG
 stingray NN
 stings NNS
@@ -48633,7 +48674,7 @@ stockbrokers NNS
 stockbroking VBG
 stocked VBN VBD
 stockholders NNS
-stockier NN
+stockier JJR
 stocking VBG
 stockinged VBN VBD
 stockings NNS
@@ -48741,8 +48782,8 @@ storyteller NN
 storytellers NNS
 storytelling VBG
 stout NP JJ
-stouter NN
-stoutest NN
+stouter JJR
+stoutest JJS
 stouthearted VBN VBD
 stoutly RB
 stoutness NN
@@ -48773,8 +48814,8 @@ straighten VB
 straightened VBN VBD
 straightening VBG
 straightens VBZ
-straighter NN
-straightest NN
+straighter JJR
+straightest JJS
 straightforward JJ
 straightforwardly RB
 straightforwardness NN
@@ -48898,7 +48939,7 @@ striation NN
 striations NNS
 stricken VBN
 strict JJ
-stricter NN
+stricter JJR
 strictest JJS
 strictly RB QL
 strictness NN
@@ -49078,14 +49119,14 @@ stupefyingly RB
 stupendous JJ
 stupendously RB
 stupid JJ
-stupider NN
+stupider JJR
 stupidest JJS
 stupidities NNS
 stupidity NN
 stupidly RB
 stupor NN
 stupors NNS
-sturdier NN
+sturdier JJR
 sturdiest JJS
 sturdily RB
 sturdy JJ
@@ -49194,8 +49235,9 @@ sublimation NN
 sublime NN JJ
 sublimed VBN
 sublimely RB
+sublimer JJR
 sublimes NNS
-sublimest NN
+sublimest JJS
 subliminal JJ
 subliminally RB
 sublimity NN
@@ -49326,7 +49368,7 @@ subtitles NNS
 subtitling VBG
 subtle JJ
 subtler JJR
-subtlest NN
+subtlest JJS
 subtleties NNS
 subtlety NN
 subtly RB QL
@@ -49604,7 +49646,7 @@ sunless JJ
 sunlight NN
 sunlit NN
 sunned VBN VBD
-sunnier NN
+sunnier JJR
 sunniest JJS
 sunning VBG
 sunny NP JJ
@@ -49798,8 +49840,8 @@ surd NN
 sure RB VB JJ
 surely RB QL
 sureness NN
-surer NN
-surest NN
+surer JJR
+surest JJS
 surety NN
 surf NN
 surface NN JJ
@@ -49828,6 +49870,7 @@ surges NNS VBZ
 surgical JJ
 surgically RB
 surging VBG
+surlier JJR
 surliest JJS
 surlily RB
 surly JJ
@@ -50039,7 +50082,7 @@ swerved VBD
 swerves NNS VBZ
 swerving VBG
 swift NN JJ NP
-swifter NN
+swifter JJR
 swiftest JJS
 swiftly RB
 swiftness NN
@@ -50326,7 +50369,7 @@ tacitly RB
 taciturn NN
 tack NN
 tacked VBN VBD
-tackier NN
+tackier JJR
 tackiest JJS
 tackiness NN
 tacking VBG
@@ -50418,7 +50461,7 @@ talks NNS VBZ
 tall JJ
 tallboy NN
 taller JJR
-tallest NN
+tallest JJS
 tallied VBN VBD
 tallies NNS
 tallness NN
@@ -50434,8 +50477,8 @@ tame VB JJ
 tamed VBN VBD
 tamely RB
 tameness NN
-tamer NN
-tamest NN
+tamer NN JJR
+tamest JJS
 taming VBG
 tamp VB
 tamped VBN VBD
@@ -50575,7 +50618,7 @@ tastelessly RB
 tastelessness NN
 taster NN
 tastes NNS VBZ
-tastier NN
+tastier JJR
 tastiest JJS
 tasting VBG
 tastings NNS
@@ -50598,8 +50641,8 @@ taunting VBG
 tauntingly RB
 taunts NNS
 taut RB JJ
-tauter NN
-tautest NN
+tauter JJR
+tautest JJS
 tautly RB
 tautness NN
 tautological JJ
@@ -50874,8 +50917,8 @@ tendentious JJ
 tendentiously RB
 tender NN VB JJ
 tendered VBN
-tenderer NN
-tenderest NN
+tenderer JJR
+tenderest JJS
 tendering VBG
 tenderly RB QL
 tenderness NN
@@ -50900,9 +50943,9 @@ tense NN JJ
 tensed VBD
 tensely RB
 tenseness NN
-tenser NN
+tenser JJR
 tenses NNS
-tensest NN
+tensest JJS
 tensile JJ
 tensing NP
 tension NN
@@ -51030,7 +51073,7 @@ testes NNS
 testicle NN
 testicles NNS
 testicular JJ
-testier NN
+testier JJR
 testiest JJS
 testified VBN VBD
 testifies VBZ
@@ -51261,7 +51304,7 @@ thinly RB
 thinned VBD
 thinner JJR
 thinness NN
-thinnest NN
+thinnest JJS
 thinning NN VBG
 thinnish NN
 thins VBZ
@@ -51303,7 +51346,7 @@ thoracic NN
 thorax NN
 thorium NN
 thorn NN
-thornier NN
+thornier JJR
 thorniest JJS
 thorns NNS
 thorny JJ
@@ -51514,7 +51557,7 @@ tide NN VB
 tideless JJ
 tides NNS
 tidied VBD
-tidier NN
+tidier JJR
 tidies NNS
 tidiest JJS
 tidily RB
@@ -51542,7 +51585,7 @@ tighten VB
 tightened VBN VBD
 tightening VBG NN
 tightens VBZ
-tighter RBR
+tighter RBR JJR
 tightest JJS
 tightly RB QL
 tightly-knit NN
@@ -51635,7 +51678,7 @@ tingled VBN VBD
 tingles NNS
 tingling VBG
 tingly RB
-tinier NN
+tinier JJR
 tiniest JJS
 tinker VB
 tinkered VBN VBD
@@ -51646,7 +51689,7 @@ tinkled VBD
 tinkling VBG
 tinkly RB
 tinned VBN VBD
-tinnier NN
+tinnier JJR
 tinniest JJS
 tinnily RB
 tinnitus NN
@@ -52521,6 +52564,7 @@ trenched VBN VBD
 trenches NNS
 trenching VBG
 trend NN
+trendier JJR
 trendiest JJS
 trendiness NN
 trends NNS
@@ -52575,7 +52619,7 @@ trice NN
 trick NN
 tricked VBN
 trickery NN
-trickier NN
+trickier JJR
 trickiest JJS
 trickily RB
 tricking VBG
@@ -53831,7 +53875,7 @@ unearthed JJ VBN VBD
 unearthing VBG
 unearthly RB
 unease NN
-uneasier NN
+uneasier JJR
 uneasiest JJS
 uneasily RB
 uneasiness NN
@@ -53963,7 +54007,7 @@ unfortunates NNS
 unfounded JJ
 unfreezing VBG
 unfrequented JJ
-unfriendlier NN
+unfriendlier JJR
 unfriendliest JJS
 unfriendliness NN
 unfriendly JJ
@@ -54002,13 +54046,13 @@ unguessable JJ
 ungulates NNS
 unhampered JJ
 unhand NN
-unhappier NN
+unhappier JJR
 unhappiest JJS
 unhappily RB QL
 unhappiness NN
 unhappy JJ
 unharmed JJ
-unhealthier NN
+unhealthier JJR
 unhealthiest JJS
 unhealthily RB
 unhealthy JJ
@@ -54161,7 +54205,8 @@ unjustly RB
 unjustness NN
 unkempt JJ
 unkind JJ
-unkindest NN
+unkinder JJR
+unkindest JJS
 unkindly RB
 unkindness NN
 unknightly RB
@@ -54217,7 +54262,7 @@ unlovable JJ
 unloved JJ
 unlovely JJ
 unloving VBG
-unluckier NN
+unluckier JJR
 unluckiest JJS
 unluckily RB
 unlucky JJ
@@ -54719,7 +54764,7 @@ unthinkably RB
 unthinking JJ
 unthinkingly RB
 unthoughtful JJ
-untidier NN
+untidier JJR
 untidiest JJS
 untidily RB
 untidiness NN
@@ -55104,11 +55149,11 @@ vagrants NNS
 vague JJ
 vaguely RB QL
 vagueness NN
-vaguer NN
+vaguer JJR
 vaguest JJS
 vain JJ
-vainer NN
-vainest NN
+vainer JJR
+vainest JJS
 vainglorious JJ
 vainglory NN
 vainly RB
@@ -55570,8 +55615,8 @@ vigour NN
 vile JJ
 vilely RB
 vileness NN
-viler NN
-vilest NN
+viler JJR
+vilest JJS
 vilification NN
 vilified VBN VBD
 vilify VB
@@ -56299,7 +56344,7 @@ weakness NN
 weaknesses NNS
 weal NN
 wealth NN
-wealthier NN
+wealthier JJR
 wealthiest JJS
 wealthy JJ
 wean NN
@@ -56315,6 +56360,7 @@ wearable JJ
 wearer NN
 wearers NNS
 wearied VBD
+wearier JJR
 wearies NNS
 weariest JJS
 wearily RB
@@ -56392,7 +56438,7 @@ weighing VBG
 weighs VBZ
 weight NN
 weighted VBN VBD
-weightier NN
+weightier JJR
 weightiest JJS
 weightily RB
 weighting NN
@@ -56407,7 +56453,7 @@ weights NNS VBZ
 weighty JJ
 weir NN
 weird JJ
-weirder NN
+weirder JJR
 weirdest JJS
 weirdly RB
 weirdness NN
@@ -56531,7 +56577,7 @@ wetsuit NN
 wetsuits NNS
 wettable JJ
 wetted VBN VBD
-wetter NP
+wetter JJR
 wettest JJS
 wetting VBG NN
 whack NN
@@ -56691,7 +56737,7 @@ whitener NN
 whiteness NN
 whitening VBG
 whitens VBZ
-whiter NN
+whiter JJR
 whites NNS
 whitest JJS
 whitewash NN
@@ -56749,7 +56795,7 @@ whosoever WPS
 why UH WRB
 wick NN NP
 wicked JJ
-wickeder NN
+wickeder JJR
 wickedest JJS
 wickedly RB
 wickedness NN
@@ -56808,7 +56854,7 @@ wildcard NN
 wildcat NN
 wildcats NNS
 wildebeest JJS
-wilder NNP NP
+wilder NNP JJR
 wilderness NN
 wildernesses NNS
 wildest JJS
@@ -56865,7 +56911,7 @@ winded VBN
 winder NN
 windfall NN
 windfalls NNS
-windier NN
+windier JJR
 windiest JJS
 windily RB
 winding VBG
@@ -57016,7 +57062,7 @@ witter NP
 wittering VBG
 witticism NN
 witticisms NNS
-wittier NN
+wittier JJR
 wittiest JJS
 wittily RB
 wittiness NN
@@ -57032,7 +57078,7 @@ wobble VB
 wobbled VBD
 wobbler NN
 wobbles VBZ
-wobblier NN
+wobblier JJR
 wobbling VBG
 wobbly JJ
 woe NN
@@ -57134,7 +57180,7 @@ word-perfect NN
 word-processing NN
 wordage NN
 worded VBN
-wordier NN
+wordier JJR
 wordiness NN
 wording NN VBG
 wordings NNS
@@ -57239,7 +57285,7 @@ worships NNS VBZ
 worst JJS
 worsted NN
 worth NN IN NP JJ
-worthier NN
+worthier JJR
 worthies NNS
 worthiest JJS
 worthily RB
