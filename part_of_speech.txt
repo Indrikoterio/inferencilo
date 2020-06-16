@@ -51718,7 +51718,7 @@ tittering VBG
 titters NNS
 tittle-tattle JJ
 titular JJ
-to JJ TO NPS QL IN
+to TO NPS QL IN
 to-do NN
 toad NN
 toadies NNS
