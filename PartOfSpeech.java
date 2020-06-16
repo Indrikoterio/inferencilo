@@ -1,8 +1,9 @@
 /**
  * PartOfSpeech
  *
- * This class reads in a list of words with part-of-speech data from
- * the file part_of_speech.txt, and creates a hashmap keyed by word.
+ * This class has static methods which read in a list of words with
+ * part-of-speech tags, and creates a hashmap keyed by word. The source
+ * file is part_of_speech.txt.
  *
  * In addition, there are methods to create Fact objects which can be
  * analyzed by the inference engine Inferencilo.
@@ -38,6 +39,7 @@
  * NNP proper noun, singular 'Harrison'
  * NNPS proper noun, plural 'Americans'
  * OD ordinal numeral (first, 2nd)
+ * NPS proper noun, plural Vikings
  * PDT predeterminer 'all the kids'
  * PPO objective personal pronoun (me, him, it, them)
  * PPS 3rd. singular nominative pronoun (he, she, it, one)
@@ -88,6 +90,7 @@ class PartOfSpeech {
    private static Constant pronoun = new Constant("pronoun");
    private static Constant adjective = new Constant("adjective");
    private static Constant participle = new Constant("participle");
+   private static Constant preposition = new Constant("preposition");
 
    // tenses
    private static Constant past  = new Constant("past");
@@ -379,6 +382,21 @@ class PartOfSpeech {
 
 
    /*
+    * makePrepositionFact
+    *
+    * This method creates facts for adverbs, eg. adverb(happily).
+    *
+    * @param  word
+    * @return fact
+    */
+   private static Rule makePrepositionFact(String word) {
+      Complex term = new Complex(preposition, new Constant(word));
+      if (term != null) return new Rule(term);
+      return null;
+   } // makePrepositionFact
+
+
+   /*
     * makeFacts
     *
     * This method takes an English word and produces a Fact
@@ -408,6 +426,7 @@ class PartOfSpeech {
          if (pos.startsWith("JJ")) newFact = makeAdjectiveFact(word, pos);
          else
          if (pos.equals("AT")) newFact = makeArticleFact(word);
+         if (pos.equals("IN")) newFact = makePrepositionFact(word);
          if (pos.equals("RB")) newFact = makeAdverbFact(word);
          if (newFact != null) facts.add(newFact);
       }
@@ -445,17 +464,6 @@ class PartOfSpeech {
       return facts;
    } // wordsToFacts
 
-
-
-   public static void main(String[] args) {
-      String testString = "The ideal characteristic of artificial intelligence is its ability to rationalize.";
-      List<String> words = Sentence.getWords(testString);
-      for (String word : words) { System.out.println(word); }
-      PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
-      List<Rule> facts = wordsToFacts(words);
-      ListIterator<Rule> factIterator = facts.listIterator();
-      while (factIterator.hasNext()) { System.out.println(factIterator.next()); }
-   }
 
 }  // PartOfSpeech
 
