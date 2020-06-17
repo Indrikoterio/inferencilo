@@ -85,12 +85,16 @@ class PartOfSpeech {
 
    private static PartOfSpeech partOfSpeech;
 
+   // Word functor. Use capitals to distinguish from the variable 'word'.
+   private static Constant WORD = new Constant("word");
+
    private static Constant noun = new Constant("noun");
    private static Constant verb = new Constant("verb");
    private static Constant pronoun = new Constant("pronoun");
    private static Constant adjective = new Constant("adjective");
    private static Constant participle = new Constant("participle");
    private static Constant preposition = new Constant("preposition");
+   private static Constant unknown = new Constant("unknown");
 
    // tenses
    private static Constant past  = new Constant("past");
@@ -242,118 +246,115 @@ class PartOfSpeech {
 
 
    /*
-    * makePronounFact
+    * makePronounTerm
     *
-    * This method creates a pronoun fact, eg. pronoun(they,...).
+    * This method creates a pronoun term, eg.
+    *       pronoun(they, subject).
     *
     * @param  word
-    * @param  pos code
-    * @return fact
+    * @param  part of speech tag
+    * @return term
     */
-   private static Rule makePronounFact(String word, String code) {
+   private static Complex makePronounTerm(String word, String tag) {
       Complex term = null;
-      if (code.equals("PPSS")) {
+      if (tag.equals("PPSS")) {
          term = new Complex(pronoun, new Constant(word), subject);
       }
-      else if (code.equals("PPO")) {
+      else if (tag.equals("PPO")) {
          term = new Complex(pronoun, new Constant(word), object);
       }
-      if (term != null) return new Rule(term);
-      return null;
-   } // makePronounFact
+      return term;
+   } // makePronounTerm
 
 
    /*
-    * makeVerbFact
+    * makeVerbTerm
     *
-    * This method creates a verb fact, eg. verb(listens,...).
+    * This method creates a verb term, eg. verb(listen, present, base).
     *
     * @param  word
-    * @param  pos code
-    * @return fact
+    * @param  part of speech tag
+    * @return term
     */
-   private static Rule makeVerbFact(String word, String code) {
+   private static Complex makeVerbTerm(String word, String tag) {
       Complex term = null;
-      if (code.equals("VB")) {
+      if (tag.equals("VB")) {
          term = new Complex(verb, new Constant(word), present, base);
       }
-      else if (code.equals("VBZ")) {
+      else if (tag.equals("VBZ")) {
          term = new Complex(verb, new Constant(word), present, third_sing);
       }
-      else if (code.equals("VBD")) {
+      else if (tag.equals("VBD")) {
          term = new Complex(verb, new Constant(word), past, base);
       }
-      else if (code.equals("VBG")) {
+      else if (tag.equals("VBG")) {
          term = new Complex(participle, new Constant(word), active);
       }
-      else if (code.equals("VBN")) {
+      else if (tag.equals("VBN")) {
          term = new Complex(participle, new Constant(word), passive);
       }
-      if (term != null) return new Rule(term);
-      return null;
-   } // makeVerbFact
+      return term;
+   } // makeVerbTerm
 
 
    /*
-    * makeNounFact
+    * makeNounTerm
     *
-    * This method creates a verb fact, eg. verb(listens).
+    * This method creates a noun term, eg. noun(speaker, singular).
     *
     * @param  word
-    * @param  pos code
-    * @return fact
+    * @param  part of speech tag
+    * @return term
     */
-   private static Rule makeNounFact(String word, String code) {
+   private static Complex makeNounTerm(String word, String tag) {
       Complex term = null;
-      if (code.equals("NN")) {
+      if (tag.equals("NN")) {
          term = new Complex(noun, new Constant(word), singular);
       }
-      else if (code.equals("NNS")) {
+      else if (tag.equals("NNS")) {
          term = new Complex(noun, new Constant(word), plural);
       }
-      else if (code.equals("NNP")) {
+      else if (tag.equals("NNP")) {
          term = new Complex(noun, new Constant(word), singular);
       }
-      if (term != null) return new Rule(term);
-      return null;
-   } // makeNounFact
+      return term;
+   } // makeNounTerm
 
 
    /*
-    * makeAdjectiveFact
+    * makeAdjectiveTerm
     *
-    * This method creates an adjective fact, eg. adjective(happy).
+    * This method creates an adjective term, eg. adjective(happy).
     *
     * @param  word
-    * @param  pos code
-    * @return fact
+    * @param  part of speech tag
+    * @return term
     */
-   private static Rule makeAdjectiveFact(String word, String code) {
+   private static Complex makeAdjectiveTerm(String word, String tag) {
       Complex term = null;
-      if (code.equals("JJ")) {
+      if (tag.equals("JJ")) {
          term = new Complex(adjective, new Constant(word), positive);
       }
-      else if (code.equals("JJR")) {
+      else if (tag.equals("JJR")) {
          term = new Complex(adjective, new Constant(word), comparative);
       }
-      else if (code.equals("JJS")) {
+      else if (tag.equals("JJS")) {
          term = new Complex(adjective, new Constant(word), superlative);
       }
-      if (term != null) return new Rule(term);
-      return null;
-   } // makeAdjectiveFact
+      return term;
+   } // makeAdjectiveTerm
 
 
    /*
-    * makeArticleFact
+    * makeArticleTerm
     *
-    * This method creates facts for articles, eg. article(the, definite).
+    * This method creates terms for articles, eg. article(the, definite).
     *
     * @param  word
-    * @return fact
+    * @return term
     */
-   private static Rule makeArticleFact(String word) {
-      Complex term;
+   private static Complex makeArticleTerm(String word) {
+      Complex term = null;
       String wordLower = word.toLowerCase();
       if (wordLower.equals("the")) {
          term = new Complex(article, new Constant(word), definite);
@@ -361,98 +362,152 @@ class PartOfSpeech {
       else {
          term = new Complex(article, new Constant(word), indefinite);
       }
-      if (term != null) return new Rule(term);
-      return null;
-   } // makeArticleFact
+      return term;
+   } // makeArticleTerm
 
 
    /*
-    * makeAdverbFact
+    * makeAdverbTerm
     *
-    * This method creates facts for adverbs, eg. adverb(happily).
+    * This method creates adverb terms, eg. adverb(happily).
     *
     * @param  word
-    * @return fact
+    * @return term
     */
-   private static Rule makeAdverbFact(String word) {
+   private static Complex makeAdverbTerm(String word) {
       Complex term = new Complex(adverb, new Constant(word));
-      if (term != null) return new Rule(term);
-      return null;
-   } // makeAdverbFact
+      return term;
+   } // makeAdverbTerm
 
 
    /*
-    * makePrepositionFact
+    * makePrepositionTerm
     *
-    * This method creates facts for adverbs, eg. adverb(happily).
+    * This method creates preposition terms, eg. preposition(from).
     *
     * @param  word
-    * @return fact
+    * @return term
     */
-   private static Rule makePrepositionFact(String word) {
+   private static Complex makePrepositionTerm(String word) {
       Complex term = new Complex(preposition, new Constant(word));
-      if (term != null) return new Rule(term);
+      return term;
+   } // makePrepositionTerm
+
+
+   /*
+    * makeUnknownTerm
+    *
+    * This method creates terms for words with unknown part of speech.
+    *
+    * @param  word
+    * @return term
+    */
+   private static Complex makeUnknownTerm(String word) {
+      Complex term = new Complex(preposition, new Constant(word));
+      return term;
+   } // makeUnknownTerm
+
+
+   /*
+    * makeTerm
+    *
+    * This method creates one (complex) Term object for an English word.
+    * The second parameter is a part of speech tag, such as NNS or VBD.
+    * Tags are listed at the top of this file.
+    *
+    * @param  word
+    * @param  part of speech tag
+    * @return complex term
+    */
+   private static Complex makeTerm(String word, String tag) {
+      if (tag.startsWith("VB")) return makeVerbTerm(word, tag);
+      if (tag.startsWith("NN")) return makeNounTerm(word, tag);
+      if (tag.startsWith("PP")) return makePronounTerm(word, tag);
+      if (tag.startsWith("JJ")) return makeAdjectiveTerm(word, tag);
+      if (tag.equals("AT")) return makeArticleTerm(word);
+      if (tag.equals("IN")) return makePrepositionTerm(word);
+      if (tag.equals("RB")) return makeAdverbTerm(word);
       return null;
-   } // makePrepositionFact
+   } // makeTerm
 
 
    /*
     * makeFacts
     *
-    * This method takes an English word and produces a Fact
-    * object, which can be analyzed by the inference engine.
+    * This method takes an English word and produces Fact objects,
+    * which can be analyzed by the inference engine.
+    *
+    * For some words, the part of speech is unambiguous. For
+    * example, 'the' can only be a definite article:
+    *
+    *      article(the, definite)
+    *
+    * Other words can have more than one part of speech. The word
+    * 'envy', for example, might be a noun or a verb.
+    *
+    *      noun(envy, singular)
+    *      verb(envy, present, base)
+    *
+    * For 'envy', a parsing algorithm must be able to test both
+    * possibilities. Therefore, the inference engine will need two
+    * facts for the knowledge base:
+    *
+    *      word(envy, noun(envy, singular)).
+    *      word(envy, verb(envy, present, base)).
     *
     * @param  word
-    * @return fact
+    * @return facts
     */
    private static List<Rule> makeFacts(String word) {
-      String[] posData;
-      posData = get(word);
+
+      Complex  term;
+      Rule     fact;
+      String[] posData = get(word);
+
       if (posData == null) {
          String low = lowerCaseExceptI(word);
          posData = get(low);
-         if (posData == null) return null; 
       }
-      if (posData.length < 1) return null;
+
       List<Rule> facts = new ArrayList<Rule>();
-      for (String pos : posData) {
-         Rule newFact = null;
-         if (pos.startsWith("VB")) newFact = makeVerbFact(word, pos);
-         else
-         if (pos.startsWith("NN")) newFact = makeNounFact(word, pos);
-         else
-         if (pos.startsWith("PP")) newFact = makePronounFact(word, pos);
-         else
-         if (pos.startsWith("JJ")) newFact = makeAdjectiveFact(word, pos);
-         else
-         if (pos.equals("AT")) newFact = makeArticleFact(word);
-         if (pos.equals("IN")) newFact = makePrepositionFact(word);
-         if (pos.equals("RB")) newFact = makeAdverbFact(word);
-         if (newFact != null) facts.add(newFact);
+
+      if (posData != null && posData.length > 0) {
+         for (String pos : posData) {
+            term = makeTerm(word, pos);
+            if (term != null) {
+               Complex wordTerm = new Complex(WORD, new Constant(word), term);
+               fact = new Rule(wordTerm);
+               facts.add(fact);
+            }
+         }
+      }
+      if (facts.size() < 1) {
+         term = new Complex(unknown, new Constant(word));
+         Complex wordTerm = new Complex(WORD, new Constant(word), term);
+         fact = new Rule(wordTerm);
+         facts.add(fact);
       }
       return facts;
+
    } // makeFacts
 
 
    /**
-    * wordsToFacts
+    * makeFacts
     *
-    * This method takes an array of words, and creates a list
+    * This method takes a list of words, and creates a list
     * of facts which can be analyzed by the inference engine.
+    * The word 'envy', for example, should produce two facts.
     *
-    * For example the array ["We", "will", "visit"]
-    * should produce a list of the following facts:
+    *      word(envy, noun(envy, singular)).
+    *      word(envy, verb(envy, present, base)).
     *
-    *     pronoun(We).
-    *     auxiliary(will).
-    *     verb(visit, present, not_3rd_sing).
-    *
-    * Note: A Fact is just a Rule without a body.
+    * Note: A Fact is the same as a Rule without a body.
     *
     * @param  list of words
     * @return list of facts
     */
-   public static List<Rule> wordsToFacts(List<String> words) {
+   public static List<Rule> makeFacts(List<String> words) {
       List<Rule> facts = new ArrayList<Rule>();
       List<Rule> wordFacts;
       for (String word : words) {
@@ -462,7 +517,7 @@ class PartOfSpeech {
          }
       }
       return facts;
-   } // wordsToFacts
+   } // makeFacts
 
 
 }  // PartOfSpeech
