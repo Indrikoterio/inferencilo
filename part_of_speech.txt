@@ -899,8 +899,8 @@ Uruguay NN
 Uruguayan NN JJ
 Uruguayans NNS
 Utah NN
-Utahn NN
-Utahns NN
+Utahn NN JJ
+Utahns NNS
 Uzbek NN
 Uzbekistan NN
 Uzbeks NNS
@@ -4214,6 +4214,7 @@ axis NN
 axle NN
 axles NNS
 axolotl NN
+axolotls NNS
 axon NN
 axons NNS
 aye RB
@@ -5841,7 +5842,7 @@ bludgeon NN VB
 bludgeoned VBN VBD
 bludgeoning VBG
 bludgeons NNS VBZ
-blue NN NP JJ
+blue NN JJ
 blue-black JJ
 blue-blooded VBN VBD
 blue-collar JJ
@@ -16799,7 +16800,7 @@ ellipsis NN
 ellipsoid NN
 ellipsoidal NN
 ellipsoids NNS
-elliptic JJ
+elliptic JJ NN
 elliptical JJ
 ells NNS
 elm NN
