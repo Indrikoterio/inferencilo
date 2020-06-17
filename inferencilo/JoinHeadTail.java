@@ -24,6 +24,19 @@ public class JoinHeadTail extends Function {
       super("JoinHeadTail", parameters);
    }
 
+   /**
+    * toString
+    */
+   public String toString() {
+      if (parameters.length >= 2) {
+         Unifiable head = parameters[0];
+         Unifiable tail = parameters[1];
+         return functionName + " " + head + " " + tail;
+      }
+      else {
+         return functionName;
+      }
+   }
 
    /**
     * evaluate
