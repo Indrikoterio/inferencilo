@@ -31,12 +31,16 @@ public class PList implements Unifiable {
    public  static PList empty = new PList();
 
    /* About isTailVar:
-      It is necessary to distinguish between [$A, $B]  and  [$A | $B].
-      If the last item in a list (tail == null) is a variable, it can
-      be an ordinary variable or a 'tailVariable', as in the latter list
-      above. A tail variable will unify with the the tail of another list.
-      An ordinary variable will not; it only unifies with one term from
-      the other list.
+
+      It is necessary to distinguish between
+            [$A, $B, $C]
+       and
+            [$A, $B | $C]
+      If the last item in a list is a variable ($C above), it can be
+      an ordinary variable, as in the first list, or a tail variable,
+      as in the second. A tail variable will unify with the the tail
+      of another list. An ordinary variable will not; it only unifies
+      with one term from the other list.
     */
    private boolean    isTailVar;
 
@@ -50,20 +54,26 @@ public class PList implements Unifiable {
       tail    = null;
       count   = 0;
       isTailVar = false;
-   }
+   } // constructor
+
 
    /**
     * PList constructor
     *
-    * Makes a Prolog list, eg: [a, b, c]
+    * Makes a Prolog-style list, such as [a, b, c]
     *
-    * The parameter hasPipe is true for lists such as [a, b, c | $T]
+    *     PList list = new PList(false, a, b, c);
     *
-    * Note: It may seem logical to add a fact to a list using this
-    * constructor, that is: new_plist = new PList(term, old_plist).
-    * This does not work. It creates a new list with two terms.
-    * To add a term to an existing list, use the built-in predicate
-    * JoinHeadTail: new_plist = new JoinHeadTail(term, old_plist).
+    * The first parameter, hasPipe, is set true for lists which have a tail
+    * variable, such as [a, b, c | $T]
+    *
+    *     PList list = new PList(true, a, b, c, $T);
+    *
+    * Note: It may seem logical to add a term to a list using this
+    * constructor, that is: new_plist = new PList(true, term, other_plist).
+    * This does not work. It creates a new list with two terms. To add
+    * a term to an existing list, use the built-in predicate JoinHeadTail:
+    *     new_plist = new JoinHeadTail(term, other_plist).
     *
     * @param   hasPipe t/f
     * @param   array of unifiable arguments.
@@ -82,20 +92,25 @@ public class PList implements Unifiable {
       term = args[0];
       tail = list;
       count = num;
-   }
+   } // constructor
 
    /**
     * PList constructor
     *
-    * Makes a Prolog list, eg: [a, b, c]
+    * Makes a Prolog-style list, such as [a, b, c]
     *
-    * The parameter hasPipe is true for lists such as [a, b, c | $T]
+    *     PList list = new PList(false, a, b, c);
     *
-    * Note: It may seem logical to add a fact to a list using this
-    * constructor, that is: new_plist = new PList(term, old_plist).
-    * This does not work. It creates a new list with two terms.
-    * To add a term to an existing list, use the built-in predicate
-    * JoinHeadTail. (new_plist = new JoinHeadTail(term, old_plist)).
+    * The first parameter, hasPipe, is set true for lists which have a tail
+    * variable, such as [a, b, c | $T]
+    *
+    *     PList list = new PList(true, a, b, c, $T);
+    *
+    * Note: It may seem logical to add a term to a list using this
+    * constructor, that is: new_plist = new PList(true, term, other_plist).
+    * This does not work. It creates a new list with two terms. To add
+    * a term to an existing list, use the built-in predicate JoinHeadTail:
+    *     new_plist = new JoinHeadTail(term, other_plist).
     *
     * @param   hasPipe t/f
     * @param   list of unifiable arguments.
@@ -114,7 +129,7 @@ public class PList implements Unifiable {
       term = args.get(0);
       tail = list;
       count = num;
-   }
+   } // constructor
 
 
    /**
@@ -135,7 +150,7 @@ public class PList implements Unifiable {
          this.tail = null;
       }
       count = num;
-   }
+   } // constructor
 
 
    /**
