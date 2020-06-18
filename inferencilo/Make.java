@@ -160,6 +160,7 @@ public class Make {
 
       String s = str.trim();
       int len = s.length();
+      if (len == 0) return null;
 
       // Return a variable.
       if (s.startsWith("$") && len > 1) {
