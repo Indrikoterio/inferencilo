@@ -1,8 +1,7 @@
 /**
  * TestList
  *
- * Tests the inference engine.
- * Testing PList (Prolog List).
+ * Tests the inference engine. Testing PList (Prolog List).
  *
  * Useful reference: https://swish.swi-prolog.org/
  *
@@ -17,8 +16,8 @@ public class TestList {
 
    public static void main(String[] args) {
 
-      PList    jobs  = PList.make("[lawyer, teacher, programmer, janitor]");
-      PList    jobs2 = PList.make("[lawyer, teacher, programmer, janitor]");
+      PList  jobs  = PList.make("[lawyer, teacher, programmer, janitor]");
+      PList  jobs2 = PList.make("[lawyer, teacher, programmer, janitor]");
 
       // Set up the knowledge base.
       KnowledgeBase kb = new KnowledgeBase(
@@ -30,7 +29,7 @@ public class TestList {
             new Complex("goal2($H, $H2, $T)"),
             new Unify(
                jobs,
-               //new PList(Var.get("$H"), Var.get("$H2"), Var.get("$T"))
+               //new PList(VarCache.get("$H"), VarCache.get("$H2"), VarCache.get("$T"))
                PList.make("[$H, $H2 | $T]")
             )
          ),
@@ -38,7 +37,7 @@ public class TestList {
             new Complex("goal3($H, $T)"),
             new Unify(
                jobs,
-               //new PList(Var.get("$H"), Anon.anon, Anon.anon, Var.get("$T"))
+               //new PList(VarCache.get("$H"), Anon.anon, Anon.anon, VarCache.get("$T"))
                PList.make("[$H, $_, $_ | $T]")
             )
          ),
@@ -47,7 +46,7 @@ public class TestList {
             new Unify(
                jobs,
                PList.make("[$_ | $T]")
-               // new PList(Anon.anon, Var.get("$T"))
+               // new PList(Anon.anon, VarCache.get("$T"))
             )
          )
       );
