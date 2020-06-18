@@ -69,12 +69,6 @@ public class PList implements Unifiable {
     *
     *     PList list = new PList(true, a, b, c, $T);
     *
-    * Note: It may seem logical to add a term to a list using this
-    * constructor, that is: new_plist = new PList(true, term, other_plist).
-    * This does not work. It creates a new list with two terms. To add
-    * a term to an existing list, use the built-in predicate JoinHeadTail:
-    *     new_plist = new JoinHeadTail(term, other_plist).
-    *
     * @param   hasPipe t/f
     * @param   array of unifiable arguments.
     */
@@ -88,13 +82,17 @@ public class PList implements Unifiable {
       for (int i = lastIndex; i > 0; i--) {
          Unifiable term = args[i];
          if (hasPipe && i == lastIndex && PList.class.isInstance(term)) {
+            // If the last term is empty [], there is no need
+            // to add it to the tail.
             list = (PList)term;
+            if (list.term == null) list = null;
+            else num++;
          }
          else {
             list = new PList(tailVar, term, list, num);
+            num++;
          }
          tailVar = false;
-         num++;
       }
       term = args[0];
       tail = list;
@@ -114,12 +112,6 @@ public class PList implements Unifiable {
     *
     *     PList list = new PList(true, a, b, c, $T);
     *
-    * Note: It may seem logical to add a term to a list using this
-    * constructor, that is: new_plist = new PList(true, term, other_plist).
-    * This does not work. It creates a new list with two terms. To add
-    * a term to an existing list, use the built-in predicate JoinHeadTail:
-    *     new_plist = new JoinHeadTail(term, other_plist).
-    *
     * @param   hasPipe t/f
     * @param   list of unifiable arguments.
     */
@@ -133,13 +125,17 @@ public class PList implements Unifiable {
       for (int i = lastIndex; i > 0; i--) {
          Unifiable term = args.get(i);
          if (hasPipe && i == lastIndex && PList.class.isInstance(term)) {
+            // If the last term is empty [], there is no need
+            // to add it to the tail.
             list = (PList)term;
+            if (list.term == null) list = null;
+            else num++;
          }
          else {
             list = new PList(tailVar, term, list, num);
+            num++;
          }
          tailVar = false;
-         num++;
       }
       term = args.get(0);
       tail = list;
