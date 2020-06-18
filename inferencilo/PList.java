@@ -374,32 +374,6 @@ public class PList implements Unifiable {
 
 
    /**
-    * joinHeadTail
-    *
-    * This static method is used to join a head term with a tail (PList).
-    * The constructor PList(boolean isTailVar, Unifiable h, PList t) cannot
-    * be used for this. The method produces a list of unifiable terms which
-    * can be used to create a new PList.
-    *
-    * @param  head term (Unifiable)
-    * @param  tail (PList)
-    * @return list of unifiable terms
-    */
-   public static List<Unifiable> joinHeadTail(Unifiable head, PList tail) {
-      List<Unifiable> outList = new ArrayList<Unifiable>();
-      outList.add(head);
-      PList plist = tail;
-      while (plist != null) {
-         head = plist.getHead();
-         if (head == null) break;
-         outList.add(head);
-         plist = plist.getTail();
-      }
-      return outList;
-   }
-
-
-   /**
     * unify
     *
     * Unify is complicated for lists. If the last parameter is a
