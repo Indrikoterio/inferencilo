@@ -55,8 +55,7 @@ class ParseDemo {
     *
     * Read in a file of Part of Speech data. Create a hashmap.
     */
-   private ParseDemo() {
-   }  // constructor
+   private ParseDemo() { }
 
 
    /*
@@ -68,6 +67,7 @@ class ParseDemo {
     * @param  inList
     * @param  knowledgeBase
     * @return outList
+    * @throws TimeOverrunException
     */
    private static PList oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb)
                           throws TimeOverrunException {
@@ -110,7 +110,7 @@ class ParseDemo {
       // Make word facts, such as word(envy, noun(envy, singular)).
       List<Rule> facts = pos.makeFacts(words);
 
-      // Set up the knowledge base, and fill it with facts.
+      // Set up the knowledge base, and fill it with word facts.
       KnowledgeBase kb = new KnowledgeBase();
       ListIterator<Rule> factIterator = facts.listIterator();
       while (factIterator.hasNext()) {
@@ -122,29 +122,16 @@ class ParseDemo {
 
       /*
         words_to_pos/2 is a rule to convert a list of words into
-        a list of parts of speech. For example, the constant term 'the'
-        is converted to the complex term article(the, definite).
-        The Prolog format of this rule would be:
+        a list of parts of speech. For example, the Constant term 'the'
+        is converted to the Complex term 'article(the, definite)'.
+        The Prolog format of words_to_pos/2 would be:
 
         words_to_pos([H1 | T1], [H2 | T2]) :- word(H1, H2), words_to_pos(T1, T2).
         words_to_pos([], []).
        */
 
-      /*
-        Important - The following does not work:
-
-        new Rule(
-           new Complex(words_to_pos, new PList(true, $H1, $T1),
-                                     new PList(true, $H2, $T2)),...
-
-        The reason is...
-        when you create a list with 'new PList(true, $H, $T)', you create
-        a list with two terms (not n-terms). In order to join a term with
-        a list, it is necessary to use JoinHeadTail: new JoinHeadTail($H, $T)
-       */
-
-      Constant word = new Constant("word");
       Constant words_to_pos = new Constant("words_to_pos");
+      Constant word = new Constant("word");
 
       // Define Prolog variables.
       Variable H1  = VarCache.get("$H1");
@@ -153,17 +140,30 @@ class ParseDemo {
       Variable T2  = VarCache.get("$T2");
       Variable Out = VarCache.get("$Out");
 
-      Rule rule;
-      rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1), Out),
+      Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
+                                                     new PList(true, H2, T2)),
                          new And(
                             new Complex(word, H1, H2),
-                            new Complex(words_to_pos, T1, T2),
-                            new Unify(Out, new JoinHeadTail(H2, T2))
+                            new Complex(words_to_pos, T1, T2)
                          )
                       );
+
+      // Note: The Constant, Variable and Rule definitions above can be
+      // replaced by a single line:
+      // Rule rule = new Rule("words_to_pos([$H1 | $T1], [$H2 | $T2]) :- word($H1, $H2), words_to_pos($T1, $T2)");
+      // The constructor for Rule will parse the given string to produce
+      // the Rule object defined above. In Prolog, variables begin with
+      // a capital letter and atoms (constants) begin with a lower case
+      // letter. This inference engine is slightly different. The parser
+      // requires a dollar sign to identify variables. A constant can begin
+      // with an upper case or lower case letter.
+
       kb.addRule(rule);
 
       rule = new Rule(new Complex(words_to_pos, PList.empty, PList.empty));
+      // Alternative (simpler) rule definition:
+      //rule = new Rule("words_to_pos([], [])");
+
       kb.addRule(rule);
 
       kb.showKB();
