@@ -17,20 +17,17 @@ public class TestConjunctionList {
 
    public static Constant scan_sentence = new Constant("scan_sentence");
 
-   public static Variable h        = new Variable("$H");
-   public static Variable t        = new Variable("$T");
-   public static Variable t1       = new Variable("$T1");
-   public static Variable t2       = new Variable("$T2");
+   public static Variable H        = new Variable("$H");
+   public static Variable T1       = new Variable("$T1");
+   public static Variable T2       = new Variable("$T2");
 
-   public static Variable in       = new Variable("$In");
-   public static Variable i2       = new Variable("$I2");
-   public static Variable i3       = new Variable("$I3");
-   public static Variable out      = new Variable("$Out");
+   public static Variable In       = new Variable("$In");
+   public static Variable I2       = new Variable("$I2");
+   public static Variable I3       = new Variable("$I3");
+   public static Variable Out      = new Variable("$Out");
 
-   public static Variable sentence_out  = new Variable("$SentenceOut");
-
-   public static Variable out_list   = new Variable("$OutList");
-   public static Complex  noun_list  = new Complex("noun_list(list)");
+   public static Variable SentenceOut  = new Variable("$SentenceOut");
+   public static Variable ConjList   = new Variable("$ConjList");
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
@@ -48,30 +45,38 @@ public class TestConjunctionList {
       rule = new Rule("scan_sentence([], [])");
       kb.addRule(rule);
 
-      rule = new Rule(new Complex(scan_sentence, in, out),
+      /* Prolog form:
+       scan_sentence(In, [OutList | I3]) :- collect_noun_list(In, OutList, I2),
+            scan_sentence(I2, I3)).
+       */
+
+      rule = new Rule(new Complex(scan_sentence, In, new PList(true, ConjList, I3)),
                          new And(
-                            new Complex(collect_noun_list, in, out_list, i2),
-                            new Complex(scan_sentence, i2, i3),
-                            new Unify(out, new JoinHeadTail(out_list, i3))
+                            new Complex(collect_noun_list, In, ConjList, I2),
+                            new Complex(scan_sentence, I2, I3)
                          )
                       );
       kb.addRule(rule);
 
-      rule = new Rule(new Complex(scan_sentence, in, out),
-                            new And(
-                               new Unify(in, new PList(true, h, t1)),
-                               new Complex(scan_sentence, t1, t2),
-                               new Unify(out, new JoinHeadTail(h, t2))
-                            )
+
+      /* Prolog form:
+       scan_sentence([H | T1], [H | T2]) :- scan_sentence(T1, T2).
+       */
+
+      rule = new Rule(new Complex(scan_sentence, new PList(true, H, T1),
+                                                 new PList(true, H, T2)),
+                            new And(new Complex(scan_sentence, T1, T2))
                          );
+
       kb.addRule(rule);
       //kb.showKB();
+
       System.out.print("-------------------------\n");
 
 
       //System.out.println("" + sentence_in);
       System.out.print("Test Conjunction-Lists: ");
-      Complex goal = new Complex(scan_sentence, sentence_in, sentence_out);
+      Complex goal = new Complex(scan_sentence, sentence_in, SentenceOut);
       SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
 
 
@@ -83,23 +88,9 @@ public class TestConjunctionList {
          };
          Solutions.verifyAll(goal, kb, expected, 2);
       } catch (TimeOverrunException tox) { }
-
-
-   /*
-      try {
-         SubstitutionSet solution = root.nextSolution();
-         Complex result;
-         int count = 0;
-         while (solution != null) {
-            result = (Complex)goal.replaceVariables(solution);
-            System.out.println(result.getTerm(2));
-            solution = root.nextSolution();
-            count++; if (count > 10) break;  // for safety
-         }
-      } catch (TimeOverrunException tox) { }
-    */
-
    }
-}
+
+} // TestConjunctionList
+
 
 
