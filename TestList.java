@@ -19,6 +19,10 @@ public class TestList {
       PList  jobs  = PList.make("[lawyer, teacher, programmer, janitor]");
       PList  jobs2 = PList.make("[lawyer, teacher, programmer, janitor]");
 
+      Constant scientist = new Constant("scientist");
+      PList  jobs3 = PList.make("[doctor, carpenter, sales manager]");
+      PList  jobs4 = new PList(true, scientist, jobs3);
+
       // Set up the knowledge base.
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(
@@ -36,9 +40,7 @@ public class TestList {
          new Rule(
             new Complex("goal3($H, $T)"),
             new Unify(
-               jobs,
-               //new PList(VarCache.get("$H"), Anon.anon, Anon.anon, VarCache.get("$T"))
-               PList.make("[$H, $_, $_ | $T]")
+               jobs, PList.make("[$H, $_, $_ | $T]")
             )
          ),
          new Rule(
@@ -48,6 +50,14 @@ public class TestList {
                PList.make("[$_ | $T]")
                // new PList(Anon.anon, VarCache.get("$T"))
             )
+         ),
+         new Rule(
+            new Complex("goal5($X)"),
+            new Unify(jobs4, VarCache.get("$X"))
+         ),
+         new Rule(
+            new Complex("goal6($H, $T)"),
+            new Unify(jobs4, PList.make("[$H, $_ | $T]"))
          )
       );
 
@@ -56,12 +66,15 @@ public class TestList {
       kb.addFact("job(programmer)");
       kb.addFact("job(janitor)");
 
+      //kb.showKB();
+
       System.out.println("Test List: ");
 
       Complex goal;
       ArrayList<String> solutions;
 
       try {
+
          goal = new Complex("goal1");
          String[] expected1 = {"goal1"};
          Solutions.verifyAll(goal, kb, expected1, 0);
@@ -77,9 +90,16 @@ public class TestList {
          goal = new Complex("goal4($T)");
          String[] expected4 = {"goal4([teacher, programmer, janitor])"};
          Solutions.verifyAll(goal, kb, expected4, 0);
+
+         goal = new Complex("goal5($X)");
+         String[] expected5 = {"goal5([scientist, doctor, carpenter, sales manager])"};
+         Solutions.verifyAll(goal, kb, expected5, 0);
+
+         goal = new Complex("goal6($H, $T)");
+         String[] expected6 = {"goal6(scientist, [carpenter, sales manager])"};
+         Solutions.verifyAll(goal, kb, expected6, 0);
+
       } catch (TimeOverrunException tox) { }
 
    }
-}
-
-
+}  // TestList
