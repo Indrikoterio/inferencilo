@@ -42,7 +42,7 @@ public class PList implements Unifiable {
       of another list. An ordinary variable will not; it only unifies
       with one term from the other list.
     */
-   private boolean    isTailVar;
+   private boolean isTailVar;
 
 
    /**
@@ -93,6 +93,7 @@ public class PList implements Unifiable {
       tail = list;
       count = num;
    } // constructor
+
 
    /**
     * PList constructor
