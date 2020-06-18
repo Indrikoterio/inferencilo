@@ -86,7 +86,6 @@ public class CheckError extends BuiltInPredicate {
       Constant newError = castConstant(getTerm(1), ss);
       if (newError == null) return null;
 
-      List<Unifiable> listOfErrors = PList.joinHeadTail(newError, errorList);
-      return new PList(false, listOfErrors);
+      return new PList(true, newError, errorList);
    }
 }
