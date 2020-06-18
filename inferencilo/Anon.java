@@ -16,7 +16,7 @@ public class Anon implements Unifiable {
 
    private Anon() {};  // Don't allow instantiation. Use the static attribute.
 
-   public String toString() { return ""; }
+   public String toString() { return "$_"; }
 
    // Attribute is public for convenience.
    public static Anon anon = new Anon();
