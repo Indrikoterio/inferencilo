@@ -84,8 +84,15 @@ public class PList implements Unifiable {
       PList list = null;
       boolean tailVar = hasPipe;
       int num = 1;
-      for (int i = args.length - 1; i > 0; i--) {
-         list = new PList(tailVar, args[i], list, num);
+      int lastIndex = args.length - 1;
+      for (int i = lastIndex; i > 0; i--) {
+         Unifiable term = args[i];
+         if (hasPipe && i == lastIndex && PList.class.isInstance(term)) {
+            list = (PList)term;
+         }
+         else {
+            list = new PList(tailVar, term, list, num);
+         }
          tailVar = false;
          num++;
       }
@@ -122,8 +129,15 @@ public class PList implements Unifiable {
       PList list = null;
       boolean tailVar = hasPipe;
       int num = 1;
-      for (int i = args.size() - 1; i > 0; i--) {
-         list = new PList(tailVar, args.get(i), list, num);
+      int lastIndex = args.size() - 1;
+      for (int i = lastIndex; i > 0; i--) {
+         Unifiable term = args.get(i);
+         if (hasPipe && i == lastIndex && PList.class.isInstance(term)) {
+            list = (PList)term;
+         }
+         else {
+            list = new PList(tailVar, term, list, num);
+         }
          tailVar = false;
          num++;
       }
@@ -212,7 +226,7 @@ public class PList implements Unifiable {
             if (ch == ',') {
                strTerm = arguments.substring(i + 1, endIndex);
                term = Make.term(strTerm);
-               list = new PList(false, term, list, count);
+               if (term != null) list = new PList(false, term, list, count);
                endIndex = i;
             }
             else if (i == 0) {  // final
