@@ -169,7 +169,7 @@ class ParseDemo {
       // The constructor for Rule will parse the given string to produce
       // the Rule object defined above. In Prolog, variables begin with
       // a capital letter and atoms (constants) begin with a lower case
-      // letter. This inference engine is slightly different. The parser
+      // letter. This inference engine is a little different. The parser
       // requires a dollar sign to identify variables. A constant can begin
       // with an upper case or lower case letter.
 
