@@ -113,9 +113,10 @@ class PartOfSpeech {
    private static Constant third_sing  = new Constant("third_sing");   // it is
    private static Constant base  = new Constant("base");   // you see
 
-   // Plurality for nouns.
+   // Plurality for nouns and pronouns
    private static Constant singular = new Constant("singular"); // table, mouse
    private static Constant plural   = new Constant("plural"); // tables, mice
+   private static Constant both     = new Constant("both"); // you
 
    // For adjectives.
    private static Constant positive  = new Constant("positive");        // good
@@ -132,7 +133,7 @@ class PartOfSpeech {
 
    // For pronouns.
    private static Constant subject = new Constant("subject");  // subject
-   private static Constant object = new Constant("object");    // object
+   private static Constant object  = new Constant("object");   // object
 
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
@@ -255,19 +256,48 @@ class PartOfSpeech {
     *       pronoun(they, subject).
     *
     * @param  word
+    * @param  lower case word
     * @param  part of speech tag
     * @return term
     */
-   private static Complex makePronounTerm(String word, String tag) {
+   private static Complex makePronounTerm(String word, String lower, String tag) {
       Complex term = null;
       if (tag.equals("PPSS")) {
-         term = new Complex(pronoun, new Constant(word), subject);
+         if (lower.equals("we") || lower.equals("they")) {
+            term = new Complex(pronoun, new Constant(word), subject, plural);
+         }
+         else {
+            term = new Complex(pronoun, new Constant(word), subject, singular);
+         }
       }
       else if (tag.equals("PPO")) {
-         term = new Complex(pronoun, new Constant(word), object);
+         if (lower.equals("us") || lower.equals("them")) {
+            term = new Complex(pronoun, new Constant(word), object, plural);
+         }
+         else {
+            term = new Complex(pronoun, new Constant(word), object, singular);
+         }
       }
       return term;
    } // makePronounTerm
+
+
+   /*
+    * makeYouFact
+    *
+    * This method creates a fact for the pronoun 'you', eg.
+    *       word(you, pronoun(you, subject, singular)).
+    *       word(you, pronoun(you, object, plural)).
+    *
+    * @param  word
+    * @param  subject or object
+    * @param  plurality
+    * @return fact
+    */
+   private static Complex makeYouFact(String word, Constant sub_obj, Constant plurality) {
+      Complex term = new Complex(pronoun, new Constant(word), sub_obj, plurality);
+      return new Complex(WORD, new Constant(word), term);
+   } // makeYouFact
 
 
    /*
@@ -419,13 +449,14 @@ class PartOfSpeech {
     * Tags are listed at the top of this file.
     *
     * @param  word
+    * @param  lower case word
     * @param  part of speech tag
     * @return complex term
     */
-   private static Complex makeTerm(String word, String tag) {
+   private static Complex makeTerm(String word, String lower, String tag) {
       if (tag.startsWith("VB")) return makeVerbTerm(word, tag);
       if (tag.startsWith("NN")) return makeNounTerm(word, tag);
-      if (tag.startsWith("PP")) return makePronounTerm(word, tag);
+      if (tag.startsWith("PP")) return makePronounTerm(word, lower, tag);
       if (tag.startsWith("JJ")) return makeAdjectiveTerm(word, tag);
       if (tag.equals("AT")) return makeArticleTerm(word);
       if (tag.equals("IN")) return makePrepositionTerm(word);
@@ -465,18 +496,31 @@ class PartOfSpeech {
 
       Complex  term;
       Rule     fact;
-      String[] posData = get(word);
 
+      String low = lowerCaseExceptI(word);
+      List<Rule> facts = new ArrayList<Rule>();
+
+      // Handle pronoun 'you', which is very ambiguous.
+      if (low.equals("you")) {
+         fact = new Rule(makeYouFact(word, subject, singular));
+         facts.add(fact);
+         fact = new Rule(makeYouFact(word, subject, plural));
+         facts.add(fact);
+         fact = new Rule(makeYouFact(word, object, singular));
+         facts.add(fact);
+         fact = new Rule(makeYouFact(word, object, plural));
+         facts.add(fact);
+         return facts;
+      }
+
+      String[] posData = get(word);
       if (posData == null) {
-         String low = lowerCaseExceptI(word);
          posData = get(low);
       }
 
-      List<Rule> facts = new ArrayList<Rule>();
-
       if (posData != null && posData.length > 0) {
          for (String pos : posData) {
-            term = makeTerm(word, pos);
+            term = makeTerm(word, low, pos);
             if (term != null) {
                Complex wordTerm = new Complex(WORD, new Constant(word), term);
                fact = new Rule(wordTerm);
