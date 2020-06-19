@@ -886,6 +886,7 @@ Turks NNS
 Tuvalu NN
 Tuvaluan NN JJ
 Tuvaluans NNS
+US NN
 USA NN
 Uganda NN
 Ugandan NN JJ
@@ -55037,7 +55038,7 @@ urn NN NP
 urns NNS
 urologist NN
 ursine NN
-us NN PPO
+us PPO
 usability NN
 usable JJ
 usage NN
