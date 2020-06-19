@@ -51292,7 +51292,7 @@ thimbleful NN
 thimblefuls NNS
 thimbles NNS
 thin VB JJ
-thine PP$
+thine PP$ PP$$
 thing NN
 things NNS
 think VB
@@ -57530,7 +57530,7 @@ yolk NN
 yolks NNS
 yon RB
 yonder RB
-yore NN PP$
+yore NN
 york NNP NP
 yorker NNP NP
 yorkers NNPS NPS
