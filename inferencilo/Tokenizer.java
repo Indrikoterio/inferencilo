@@ -137,7 +137,7 @@ public class Tokenizer {
             // If not inside complex term or Prolog list...
             if (top != COMPLEX && top != PLIST) {
                if (invalid.indexOf(ch) > -1)
-                  throw new InvalidExpressionException("Invalid character");
+                  throw new InvalidExpressionException("--> " + ch);
                if (ch == ',') {
                   String subgoal = s.substring(startIndex, i);
                   tokens.add(new Token(subgoal));
