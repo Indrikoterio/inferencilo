@@ -101,6 +101,21 @@ class ParseDemo {
    } // oneSolution
 
 
+   /*
+    * makeRule
+    *
+    * Parses a Prolog-like rule string, creates a Rule object,
+    * and stores the Rule into the knowledge base.
+    *
+    * @param str
+    * @param kb
+    */
+   private static void makeRule(String str, KnowledgeBase kb) {
+      Rule rule = new Rule(str);
+      kb.addRule(rule);
+   }
+
+
    public static void main(String[] args) {
 
       // Clean up the string to analyze.
@@ -153,7 +168,9 @@ class ParseDemo {
       Variable H2  = VarCache.get("$H2");
       Variable T1  = VarCache.get("$T1");
       Variable T2  = VarCache.get("$T2");
+      Variable In = VarCache.get("$In");
       Variable Out = VarCache.get("$Out");
+      Variable Out2 = VarCache.get("$Out2");
 
       Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
                                                      new PList(true, H2, T2)),
@@ -176,31 +193,26 @@ class ParseDemo {
       kb.addRule(rule);  // Add the rule to our knowledge base.
 
       rule = new Rule(new Complex(words_to_pos, PList.empty, PList.empty));
-
       // Alternative (simpler) rule definition:
       //rule = new Rule("words_to_pos([], [])");
-
       kb.addRule(rule);
 
-/*
-      rule = new Rule("make_np([noun($Word, $Plur) | $Out], [$NP | $Out]) :- !, $NP = np([$Word], $Plur)");
-      kb.addRule(rule);
 
-      rule = new Rule("make_np([$H | $T], [$H | $T])");
-      kb.addRule(rule);
-*/
+      Constant make_np = new Constant("make_np");
+      Constant noun  = new Constant("noun");
+      Constant np    = new Constant("np");
 
-      // Hard way.
-      // Variable In = VarCache.get("$In");
-      // Variable POS = VarCache.get("$POS");
-      // rule = new Rule(new Complex(parse, In, POS),
-      //                   new And(new Complex(words_to_pos, In, POS))
-      //                );
+      Variable Word  = VarCache.get("$Word");
+      Variable Plur  = VarCache.get("$Plur");
+      Variable NP    = VarCache.get("$NP");
 
-      // Easy way.
-      rule = new Rule("parse($In, $POS) :- words_to_pos($In, $POS)");
+      // Rules for noun phrases.
+      makeRule("make_np([noun($Word, $Plur) | $T], $Out2) :- " +
+            "!, $NP = np($Word, $Plur), make_np($T, $Out), $Out2 = [$NP | $Out]", kb);
+      makeRule("make_np([$H | $T], [$H | $T2]) :- make_np($T, $T2)", kb);
+      makeRule("make_np([], [])", kb);
 
-      kb.addRule(rule);
+      makeRule("parse($In, $Out) :- words_to_pos($In, $POS), make_np($POS, $Out)", kb);
 
       kb.showKB();
 
