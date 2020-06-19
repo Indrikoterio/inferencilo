@@ -170,11 +170,10 @@ public class Tokenizer {
    /**
     * generateGoal
     *
-    * Generates a goal object (And, Or, Complex, etc.) from a
-    * Prolog-like string representation. For example, a String
-    * such as 'can_swim($X), can_fly($X)' will become an And
-    * goal, with two complex statements (can_swim, can_fly) as
-    * subgoals.
+    * Generates a goal object (And, Or, etc.) from a Prolog-like
+    * string representation. For example, a String such as 'can_swim($X),
+    * can_fly($X)' will become an And goal, with two complex statements
+    * (can_swim, can_fly) as subgoals.
     *
     * @param  list of tokens
     * @return operator
@@ -345,7 +344,8 @@ public class Tokenizer {
       TokenType type = token.type();
 
       if (type == TokenType.SUBGOAL) {
-         return Make.subgoal(token.token());
+         // A single subgoal must be enclosed in an AND class.
+         return new And(Make.subgoal(token.token()));
       }
 
       if (type == TokenType.AND) {
