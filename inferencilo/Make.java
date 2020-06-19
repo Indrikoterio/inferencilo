@@ -209,11 +209,13 @@ public class Make {
     *
     * This function accepts a string which represents a subgoal,
     * and creates its corresponding Goal object. At present, it
-    * recognizes complex terms, the Unify operator, and the
-    * Not operator. That is:
+    * recognizes complex terms, the Unify operator, the Not
+    * operator and the Cut. That is:
+    *
     *    symptom(influenza, fever)
     *    $X = $Y
     *    not($X = $Y)
+    *    !
     *
     * @param  subgoal as String
     * @param  subgoal as Goal object
@@ -229,6 +231,9 @@ public class Make {
       }
       else if (s.indexOf('=') > 0) {
          return new Unify(s);
+      }
+      else if (s.equals("!")) {
+         return new Cut();
       }
       else {
          if (s.indexOf("(") < 0)
