@@ -207,8 +207,8 @@ class ParseDemo {
       Variable NP    = VarCache.get("$NP");
 
       // Rules for noun phrases.
-      makeRule("make_np([noun($Word, $Plur) | $T], $Out2) :- " +
-            "!, $NP = np($Word, $Plur), make_np($T, $Out), $Out2 = [$NP | $Out]", kb);
+      makeRule("make_np([noun($Word, $Plur) | $T], [$NP | $Out]) :- " +
+            "!, $NP = np($Word, $Plur), make_np($T, $Out)", kb);
       makeRule("make_np([$H | $T], [$H | $T2]) :- make_np($T, $T2)", kb);
       makeRule("make_np([], [])", kb);
 
