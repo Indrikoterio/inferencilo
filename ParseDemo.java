@@ -62,8 +62,10 @@ import java.util.*;
 
 class ParseDemo {
 
-   private static String testString =
-      "The ideal characteristic of artificial intelligence is its ability to rationalize.";
+   //private static String testString =
+   //   "The ideal characteristic of artificial intelligence is its ability to rationalize.";
+
+   private static String testString = "They envy us.";
 
    /*
     * constructor
@@ -207,12 +209,32 @@ class ParseDemo {
       Variable NP    = VarCache.get("$NP");
 
       // Rules for noun phrases.
-      makeRule("make_np([noun($Word, $Plur) | $T], [$NP | $Out]) :- " +
-            "!, $NP = np($Word, $Plur), make_np($T, $Out)", kb);
+      //makeRule("make_np([noun($Word, $Plur) | $T], [$NP | $Out]) :- " +
+      //      "!, $NP = np([$Word], $Plur), make_np($T, $Out)", kb);
+      makeRule("make_np([adjective($Adj, $_), noun($Noun, $Plur) | $T], [$NP | $Out]) :- " +
+            "!, $NP = np([$Adj, $Noun], $Plur), make_np($T, $Out)", kb);
       makeRule("make_np([$H | $T], [$H | $T2]) :- make_np($T, $T2)", kb);
       makeRule("make_np([], [])", kb);
 
-      makeRule("parse($In, $Out) :- words_to_pos($In, $POS), make_np($POS, $Out)", kb);
+      // Rules for subjects.
+      makeRule("make_subject([noun($Noun, $Plur) | $T], [$S | $Out]) :- " +
+            "!, $S = subject([$Noun], $Plur), make_subject($T, $Out)", kb);
+      makeRule("make_subject([pronoun($Pron, subject, $Plur) | $T], [$S | $Out]) :- " +
+            "!, $S = subject([$Pron], $Plur), make_subject($T, $Out)", kb);
+      makeRule("make_subject([$H | $T], [$H | $T2]) :- make_subject($T, $T2)", kb);
+      makeRule("make_subject([], [])", kb);
+
+      // Rules for objects.
+      makeRule("make_object([noun($Noun, $Plur) | $T], [$Ob | $Out]) :- " +
+            "!, $Ob = object([$Noun], $Plur), make_object($T, $Out)", kb);
+      makeRule("make_object([pronoun($Pron, object, $Plur) | $T], [$Ob | $Out]) :- " +
+            "!, $Ob = object([$Pron], $Plur), make_object($T, $Out)", kb);
+      makeRule("make_object([$H | $T], [$H | $T2]) :- make_object($T, $T2)", kb);
+      makeRule("make_object([], [])", kb);
+
+      makeRule("parse($In, $Out) :- words_to_pos($In, $POS), " +
+               "make_subject($POS, $S), " +
+               "make_object($S, $Out)", kb);
 
       kb.showKB();
 
