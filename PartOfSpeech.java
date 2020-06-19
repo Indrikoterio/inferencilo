@@ -41,6 +41,9 @@
  * OD ordinal numeral (first, 2nd)
  * NPS proper noun, plural Vikings
  * PDT predeterminer 'all the kids'
+ * PN nominal pronoun (everybody, nothing)
+ * PP$ possessive personal pronoun (my, our)
+ * PP$$ second (nominal) personal pronoun (mine, ours)
  * PPO objective personal pronoun (me, him, it, them)
  * PPS 3rd. singular nominative pronoun (he, she, it, one)
  * PPSS other nominative personal pronoun (I, we, they, you)
