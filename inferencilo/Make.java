@@ -218,7 +218,8 @@ public class Make {
     *    !
     *
     * @param  subgoal as String
-    * @param  subgoal as Goal object
+    * @return subgoal as Goal object
+    * @throws FatalParsingException
     */
    public static Goal subgoal(String subgoal) {
       String s = subgoal.trim();
@@ -237,9 +238,9 @@ public class Make {
       }
       else {
          if (s.indexOf("(") < 0)
-            new FatalParsingException("Invalid complex term: " + s);
+            throw new FatalParsingException("Invalid goal: " + s);
          if (s.indexOf(")") < 0)
-            new FatalParsingException("Invalid complex term: " + s);
+            throw new FatalParsingException("Invalid goal: " + s);
          return new Complex(s);
       }
    } // subgoal
