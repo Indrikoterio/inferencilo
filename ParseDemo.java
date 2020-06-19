@@ -72,7 +72,6 @@ class ParseDemo {
     */
    private ParseDemo() { }
 
-
    /*
     * oneSolution
     *
@@ -145,6 +144,7 @@ class ParseDemo {
         words_to_pos([], []).
        */
 
+      Constant parse = new Constant("parse");
       Constant words_to_pos = new Constant("words_to_pos");
       Constant word = new Constant("word");
 
@@ -165,7 +165,7 @@ class ParseDemo {
 
       // Note: The Constant, Variable and Rule definitions above can be
       // replaced by a single line:
-      // Rule rule = new Rule("words_to_pos([$H1 | $T1], [$H2 | $T2]) :- word($H1, $H2), words_to_pos($T1, $T2)");
+      // rule = new Rule("words_to_pos([$H1 | $T1], [$H2 | $T2]) :- word($H1, $H2), words_to_pos($T1, $T2)");
       // The constructor for Rule will parse the given string to produce
       // the Rule object defined above. In Prolog, variables begin with
       // a capital letter and atoms (constants) begin with a lower case
@@ -176,8 +176,29 @@ class ParseDemo {
       kb.addRule(rule);  // Add the rule to our knowledge base.
 
       rule = new Rule(new Complex(words_to_pos, PList.empty, PList.empty));
+
       // Alternative (simpler) rule definition:
       //rule = new Rule("words_to_pos([], [])");
+
+      kb.addRule(rule);
+
+/*
+      rule = new Rule("make_np([noun($Word, $Plur) | $Out], [$NP | $Out]) :- !, $NP = np([$Word], $Plur)");
+      kb.addRule(rule);
+
+      rule = new Rule("make_np([$H | $T], [$H | $T])");
+      kb.addRule(rule);
+*/
+
+      // Hard way.
+      // Variable In = VarCache.get("$In");
+      // Variable POS = VarCache.get("$POS");
+      // rule = new Rule(new Complex(parse, In, POS),
+      //                   new And(new Complex(words_to_pos, In, POS))
+      //                );
+
+      // Easy way.
+      rule = new Rule("parse($In, $POS) :- words_to_pos($In, $POS)");
 
       kb.addRule(rule);
 
@@ -186,7 +207,7 @@ class ParseDemo {
       try {
 
          // Convert the list of words to a list of parts of speech:
-         PList posList = oneSolution(words_to_pos, wordList, kb);
+         PList posList = oneSolution(parse, wordList, kb);
          if (posList == null) {
             System.out.println("Could not find a solution.");
          }
