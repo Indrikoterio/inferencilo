@@ -17,24 +17,6 @@ import java.util.ArrayList;
 public class Make {
 
    /*
-    * isNot
-    *
-    * Determines whether the string represents the not operator.
-    * Eg.:  not(father(albert, $X))
-    *
-    * @param   string representation of 'not'
-    * @return  true or false
-    */
-   private static boolean isNot(String str) {
-      String s = str.trim().toLowerCase();
-      if (s.startsWith("not(")) {
-         if (s.endsWith(")"))  return true;
-         throw new FatalParsingException("Invalid: " + str);
-      }
-      return false;
-   }
-
-   /*
     * isList
     *
     * Determines whether the string represents a proper list. eg.:
@@ -223,24 +205,23 @@ public class Make {
     */
    public static Goal subgoal(String subgoal) {
       String s = subgoal.trim();
-      if (isNot(s)) {   // detect 'Not' operator
-         // Trim the not() away to get the operand.
-         s = subgoal.substring(4);
-         int len = s.length();
-         s = s.substring(0, len - 1);
-         return new Not((Goal)term(s));
-      }
-      else if (s.indexOf('=') > 0) {
+      if (s.indexOf('=') > 0) {  // unify
          return new Unify(s);
       }
-      else if (s.equals("!")) {
+      else if (s.equals("!")) {  // cut
          return new Cut();
       }
-      else {
-         if (s.indexOf("(") < 0)
-            throw new FatalParsingException("Invalid goal: " + s);
-         if (s.indexOf(")") < 0)
-            throw new FatalParsingException("Invalid goal: " + s);
+      else { // complex terms, built-in functions
+         String[] parsed = parseComplex(s);
+         if (parsed == null) throw new FatalParsingException("Invalid term: " + s);
+         String functor = parsed[0];
+         String contents = parsed[1];
+         if (functor.equals("print")) {
+            return new Print(new Constant(contents));
+         }
+         else if (functor.equals("not")) {
+            return new Not((Goal)term(contents));
+         }
          return new Complex(s);
       }
    } // subgoal
@@ -350,5 +331,42 @@ public class Make {
       return operands;
 
    } // getOperands
+
+   /*
+    * parseComplex
+    *
+    * This method takes the string representation of a complex
+    * term or built in function, such as:
+    *
+    *    "father(Philip, Alize)"
+    *    "print(Hello world!)"
+    *
+    * and returns the functor and contents in an array of strings.
+    *
+    *   ["father", "Philip, Alize"]
+    *   ["print", "Hello world!"]
+    *
+    * If the complex term or function is invalid (missing a brace),
+    * the function returns null.
+    *
+    * @param  string representation of term
+    * @return functor and contents in string array
+    */
+   private static String[] parseComplex(String str) {
+
+      int length = str.length();
+      int first = str.indexOf("(");
+      if (first < 1) return null;
+      int second = str.indexOf(")");
+      if (second != length - 1) return null;
+
+      String functor = str.substring(0, first);
+      String contents = str.substring(first + 1, second);
+      String[] arr = new String[2];
+      arr[0] = functor;
+      arr[1] = contents;
+      return arr;
+
+   } // parseComplex
 
 } // Make
