@@ -65,7 +65,8 @@ class ParseDemo {
    //private static String testString =
    //   "The ideal characteristic of artificial intelligence is its ability to rationalize.";
 
-   private static String testString = "They envy us.";
+   //private static String testString = "They envy us";
+   private static String testString = "He envies us";
 
    /*
     * constructor
@@ -216,25 +217,16 @@ class ParseDemo {
       makeRule("make_np([$H | $T], [$H | $T2]) :- make_np($T, $T2)", kb);
       makeRule("make_np([], [])", kb);
 
-      // Rules for subjects.
-      makeRule("make_subject([noun($Noun, $Plur) | $T], [$S | $Out]) :- " +
-            "!, $S = subject([$Noun], $Plur), make_subject($T, $Out)", kb);
-      makeRule("make_subject([pronoun($Pron, subject, $Plur) | $T], [$S | $Out]) :- " +
-            "!, $S = subject([$Pron], $Plur), make_subject($T, $Out)", kb);
-      makeRule("make_subject([$H | $T], [$H | $T2]) :- make_subject($T, $T2)", kb);
-      makeRule("make_subject([], [])", kb);
+      // Rules for sentences.
+      makeRule("sentence([pronoun($PS, subject, plural), verb($V, $_, base), [$PS, $V]).", kb);
+      makeRule("sentence([pronoun($PS, subject, third_sing), verb($V, $_, third_sing), [$PS, $V]).", kb);
+      makeRule("sentence([pronoun($PS, subject, plural), verb($V, $_, base), pronoun($PO, object, $_)], " +
+               "[$PS, $V, $PO]).", kb);
+      makeRule("sentence([pronoun($PS, subject, singular), verb($V, $_, third_sing), " +
+               "pronoun($PO, object, $_)], [$PS, $V, $PO]).", kb);
 
-      // Rules for objects.
-      makeRule("make_object([noun($Noun, $Plur) | $T], [$Ob | $Out]) :- " +
-            "!, $Ob = object([$Noun], $Plur), make_object($T, $Out)", kb);
-      makeRule("make_object([pronoun($Pron, object, $Plur) | $T], [$Ob | $Out]) :- " +
-            "!, $Ob = object([$Pron], $Plur), make_object($T, $Out)", kb);
-      makeRule("make_object([$H | $T], [$H | $T2]) :- make_object($T, $T2)", kb);
-      makeRule("make_object([], [])", kb);
-
-      makeRule("parse($In, $Out) :- words_to_pos($In, $POS), " +
-               "make_subject($POS, $S), " +
-               "make_object($S, $Out)", kb);
+      makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), print(Hello world!), sentence($POS, $Out2)", kb);
+      //makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2)", kb);
 
       kb.showKB();
 
