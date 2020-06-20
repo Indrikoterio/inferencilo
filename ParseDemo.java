@@ -172,8 +172,6 @@ class ParseDemo {
       Variable T1  = VarCache.get("$T1");
       Variable T2  = VarCache.get("$T2");
       Variable In = VarCache.get("$In");
-      Variable Out = VarCache.get("$Out");
-      Variable Out2 = VarCache.get("$Out2");
 
       Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
                                                      new PList(true, H2, T2)),
@@ -200,15 +198,6 @@ class ParseDemo {
       //rule = new Rule("words_to_pos([], [])");
       kb.addRule(rule);
 
-
-      Constant make_np = new Constant("make_np");
-      Constant noun  = new Constant("noun");
-      Constant np    = new Constant("np");
-
-      Variable Word  = VarCache.get("$Word");
-      Variable Plur  = VarCache.get("$Plur");
-      Variable NP    = VarCache.get("$NP");
-
       // Rules for noun phrases.
       //makeRule("make_np([noun($Word, $Plur) | $T], [$NP | $Out]) :- " +
       //      "!, $NP = np([$Word], $Plur), make_np($T, $Out)", kb);
@@ -225,8 +214,7 @@ class ParseDemo {
       makeRule("sentence([pronoun($PS, subject, singular), verb($V, $_, third_sing), " +
                "pronoun($PO, object, $_)], [$PS, $V, $PO]).", kb);
 
-      makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), print(Hello world!), sentence($POS, $Out2)", kb);
-      //makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2)", kb);
+      makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2)", kb);
 
       kb.showKB();
 
