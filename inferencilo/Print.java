@@ -22,7 +22,7 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     * @param  unifiable arguments
     */
    public Print(Unifiable... arguments) {
-      super("PRINT()", arguments);
+      super("PRINT", arguments);
    }
 
 
