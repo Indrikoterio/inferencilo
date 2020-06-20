@@ -270,6 +270,9 @@ class PartOfSpeech {
             term = new Complex(pronoun, new Constant(word), subject, singular);
          }
       }
+      else if (tag.equals("PPS")) {
+         term = new Complex(pronoun, new Constant(word), subject, singular);
+      }
       else if (tag.equals("PPO")) {
          if (lower.equals("us") || lower.equals("them")) {
             term = new Complex(pronoun, new Constant(word), object, plural);
