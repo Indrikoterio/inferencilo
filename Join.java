@@ -4,7 +4,7 @@
  * This test function joins two complex terms to produce another.
  * For example:
  *
- * article(the), noun(city() --> noun phrase(the city)
+ * article(the), noun(city) --> noun phrase(the city)
  *
  * @author   Klivo
  * @version 1.0
