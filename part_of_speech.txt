@@ -17582,7 +17582,7 @@ enveloping VBG
 envelops NNS
 enviable JJ
 envied VBD
-envies NNS
+envies NNS VBZ
 envious JJ
 enviously RB
 environ NN
