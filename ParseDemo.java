@@ -30,7 +30,7 @@
  * The next step is to convert the above list into terms which identify
  * parts of speech. For example:
  *
- * [pronoun(They, subject), verb(envy, present, base), pronoun(us, object), period(.)]
+ * [pronoun(They, subject, plural), verb(envy, present, base), pronoun(us, object, plural), period(.)]
  *
  * Many words can have more than one part of speech. The word 'envy', for
  * example, can be a noun or a verb. In order to convert a list of word
@@ -119,6 +119,11 @@ class ParseDemo {
    }
 
 
+   /**
+    * main - The program starts here.
+    *
+    * @param  arguments
+    */
    public static void main(String[] args) {
 
       // Clean up the string to analyze.
@@ -132,9 +137,11 @@ class ParseDemo {
       for (String word : words) { System.out.println(word); }
 
       // Put all the words into a Prolog-style recursive list.
+      // Create a list of Constant terms.
       List<Unifiable> terms = new ArrayList<Unifiable>();
       for (String word : words) { terms.add(new Constant(word)); }
-      PList wordList = new PList(false, terms);
+      boolean hasPipe = false;
+      PList wordList = new PList(hasPipe, terms);
 
       // Load part of speech data.
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
@@ -152,16 +159,6 @@ class ParseDemo {
 
       // -------------------------------
 
-      /*
-        words_to_pos/2 is a rule to convert a list of words into
-        a list of parts of speech. For example, the Constant term 'the'
-        is converted to the Complex term 'article(the, definite)'.
-        The Prolog format of words_to_pos/2 would be:
-
-        words_to_pos([H1 | T1], [H2 | T2]) :- word(H1, H2), words_to_pos(T1, T2).
-        words_to_pos([], []).
-       */
-
       Constant parse = new Constant("parse");
       Constant words_to_pos = new Constant("words_to_pos");
       Constant word = new Constant("word");
@@ -172,6 +169,16 @@ class ParseDemo {
       Variable T1 = VarCache.get("$T1");
       Variable T2 = VarCache.get("$T2");
       Variable In = VarCache.get("$In");
+
+      /*
+        words_to_pos/2 is a rule to convert a list of words into
+        a list of parts of speech. For example, the Constant term 'the'
+        is converted to the Complex term 'article(the, definite)'.
+        The Prolog format of words_to_pos/2 would be:
+
+        words_to_pos([H1 | T1], [H2 | T2]) :- word(H1, H2), words_to_pos(T1, T2).
+        words_to_pos([], []).
+       */
 
       Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
                                                      new PList(true, H2, T2)),
@@ -199,14 +206,12 @@ class ParseDemo {
       kb.addRule(rule);
 
       // Rules for noun phrases.
-      //makeRule("make_np([noun($Word, $Plur) | $T], [$NP | $Out]) :- " +
-      //      "!, $NP = np([$Word], $Plur), make_np($T, $Out)", kb);
       makeRule("make_np([adjective($Adj, $_), noun($Noun, $Plur) | $T], [$NP | $Out]) :- " +
             "!, $NP = np([$Adj, $Noun], $Plur), make_np($T, $Out)", kb);
       makeRule("make_np([$H | $T], [$H | $T2]) :- make_np($T, $T2)", kb);
       makeRule("make_np([], [])", kb);
 
-      // Read sentence facts and rules from file.
+      // It is also possible to read facts and rules from file.
       List<String> rules = ReadRules.fromFile("demo_grammar.txt");
       kb.addRules(rules);
 
@@ -216,14 +221,14 @@ class ParseDemo {
 
       try {
 
-         // Convert the list of words to a list of parts of speech:
-         PList posList = oneSolution(parse, wordList, kb);
-         if (posList == null) {
+         // Find a solution for the goal 'parse'.
+         PList result = oneSolution(parse, wordList, kb);
+         if (result == null) {
             System.out.println("Could not find a solution.");
          }
 
          // Print out the solution.
-         System.out.println(posList);
+         System.out.println(result);
 
       }
       catch (TimeOverrunException tox) {
