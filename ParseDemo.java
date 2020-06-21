@@ -167,10 +167,10 @@ class ParseDemo {
       Constant word = new Constant("word");
 
       // Define Prolog variables.
-      Variable H1  = VarCache.get("$H1");
-      Variable H2  = VarCache.get("$H2");
-      Variable T1  = VarCache.get("$T1");
-      Variable T2  = VarCache.get("$T2");
+      Variable H1 = VarCache.get("$H1");
+      Variable H2 = VarCache.get("$H2");
+      Variable T1 = VarCache.get("$T1");
+      Variable T2 = VarCache.get("$T2");
       Variable In = VarCache.get("$In");
 
       Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
