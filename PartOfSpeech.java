@@ -135,6 +135,9 @@ class PartOfSpeech {
    private static Constant subject = new Constant("subject");  // subject
    private static Constant object  = new Constant("object");   // object
 
+   // Punctuation.
+   private static Constant punctuation = new Constant("punctuation");
+
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
 
@@ -247,6 +250,26 @@ class PartOfSpeech {
    public static String[] get(String word) {
       return wordPoS.get(word);
    } // get
+
+
+   /*
+    * makePunctuation
+    *
+    * Creates a fact for punctuation. For example:
+    *     word(., punctuation(.))
+    *
+    * @param  symbol as string
+    * @return complex term or null
+    */
+   private static Complex makePunctuation(String sym) {
+      if (sym.equals(".") || sym.equals("?") || sym.equals("!") ||
+          sym.equals("\"")) {
+         Constant symbol = new Constant(sym);
+         Complex term = new Complex(punctuation, symbol);
+         return new Complex(WORD, symbol, term);
+      }
+      else return null;
+   }
 
 
    /*
@@ -502,6 +525,15 @@ class PartOfSpeech {
 
       String low = lowerCaseExceptI(word);
       List<Rule> facts = new ArrayList<Rule>();
+
+      int length = word.length();
+      if (length == 1) { // Maybe this is punctuation.
+         term = makePunctuation(word);
+         if (term != null) {
+            facts.add(new Rule(term));
+            return facts;
+         }
+      }
 
       // Handle pronoun 'you', which is very ambiguous.
       if (low.equals("you")) {
