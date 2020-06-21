@@ -207,7 +207,7 @@ class ParseDemo {
       makeRule("make_np([], [])", kb);
 
       // Read sentence facts and rules from file.
-      List<String> rules = ReadRules.fromFile("demo_source.txt");
+      List<String> rules = ReadRules.fromFile("demo_grammar.txt");
       kb.addRules(rules);
 
       makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2)", kb);
