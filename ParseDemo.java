@@ -65,8 +65,8 @@ class ParseDemo {
    //private static String testString =
    //   "The ideal characteristic of artificial intelligence is its ability to rationalize.";
 
-   //private static String testString = "They envy us";
-   private static String testString = "He envies us";
+   //private static String testString = "They envy us.";
+   private static String testString = "He envies us.";
 
    /*
     * constructor
