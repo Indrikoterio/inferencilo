@@ -58,8 +58,6 @@ public class Make {
       throw new FatalParsingException("Invalid: " + str);
    }
 
-
-
    /**
     * addTerm
     *
@@ -212,6 +210,7 @@ public class Make {
          return new Cut();
       }
       else { // complex terms, built-in functions
+
          String[] parsed = parseComplex(s);
          if (parsed == null) throw new FatalParsingException("Invalid term: " + s);
          String functor = parsed[0];
@@ -358,7 +357,7 @@ public class Make {
       int first = str.indexOf("(");
       if (first < 1) return null;
       int second = str.indexOf(")");
-      if (second != length - 1) return null;
+      if (second < first) return null;
 
       String functor = str.substring(0, first);
       String contents = str.substring(first + 1, second);
