@@ -49,13 +49,13 @@ public class KnowledgeBase {
    }
 
    /**
-    * addFact
+    * addRule
     *
     * Add a fact to the knowledge base.
     *
     * @param fact as string, eg: "boss(Beth, Lily)"
     */
-   public void addFact(String str) {
+   public void addRule(String str) {
       addRule(new Rule(str));
    }
 
@@ -70,6 +70,21 @@ public class KnowledgeBase {
       addRule(new Rule(c));
       //showKB();
    }
+
+
+   /**
+    * addRules
+    *
+    * Add facts to the knowledge base.
+    *
+    * @param  list of rule strings
+    */
+   public void addRules(List<String> ruleList) {
+      for (String str : ruleList) {
+         addRule(new Rule(str));
+      }
+   }
+
 
    /**
     * remove
@@ -144,5 +159,6 @@ public class KnowledgeBase {
             System.out.println("rule: " + r);
          }
       }
-   }
-}
+   } // showKB
+
+}  // KnowledgeBase
