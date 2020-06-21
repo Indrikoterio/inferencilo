@@ -206,13 +206,9 @@ class ParseDemo {
       makeRule("make_np([$H | $T], [$H | $T2]) :- make_np($T, $T2)", kb);
       makeRule("make_np([], [])", kb);
 
-      // Rules for sentences.
-      makeRule("sentence([pronoun($PS, subject, plural), verb($V, $_, base), [$PS, $V]).", kb);
-      makeRule("sentence([pronoun($PS, subject, third_sing), verb($V, $_, third_sing), [$PS, $V]).", kb);
-      makeRule("sentence([pronoun($PS, subject, plural), verb($V, $_, base), pronoun($PO, object, $_)], " +
-               "[$PS, $V, $PO]).", kb);
-      makeRule("sentence([pronoun($PS, subject, singular), verb($V, $_, third_sing), " +
-               "pronoun($PO, object, $_)], [$PS, $V, $PO]).", kb);
+      // Read sentence facts and rules from file.
+      List<String> rules = ReadRules.fromFile("demo_source.txt");
+      kb.addRules(rules);
 
       makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2)", kb);
 
