@@ -61,10 +61,10 @@ public class TestList {
          )
       );
 
-      kb.addFact("job(lawyer)");
-      kb.addFact("job(teacher)");
-      kb.addFact("job(programmer)");
-      kb.addFact("job(janitor)");
+      kb.addRule("job(lawyer)");
+      kb.addRule("job(teacher)");
+      kb.addRule("job(programmer)");
+      kb.addRule("job(janitor)");
 
       //kb.showKB();
 
