@@ -1,0 +1,6 @@
+# This file contains facts/rules for the demo program ParseDemo.java.
+# Klivo - 2020/06
+sentence([pronoun($PS, subject, plural), verb($V, $_, base)], [$PS, $V]).
+sentence([pronoun($PS, subject, third_sing), verb($V, $_, third_sing)], [$PS, $V]).
+sentence([pronoun($PS, subject, plural), verb($V, $_, base), pronoun($PO, object, $_)], [$PS, $V, $PO]).
+sentence([pronoun($PS, subject, singular), verb($V, $_, third_sing), pronoun($PO, object, $_)], [$PS, $V, $PO]).
