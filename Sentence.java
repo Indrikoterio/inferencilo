@@ -95,7 +95,7 @@ class Sentence {
       return -1;
    }
    private static char[] leftQuotes = {'\'', '"', '\u00ab', '\u2018', '\u201c' };
-   private static char[] rightQuotes    = {'\'', '"', '\u00bb', '\u2019', '\u201d' };
+   private static char[] rightQuotes = {'\'', '"', '\u00bb', '\u2019', '\u201d' };
 
 
    /*
