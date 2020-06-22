@@ -1,7 +1,9 @@
 /**
  * OrSolutionNode
  *
- * @author  Klivo
+ * Solution node for the Or operator.
+ *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -14,6 +16,14 @@ public class OrSolutionNode extends SolutionNode {
    private Operator operatorTail = null;
    private SubstitutionSet parentSolution;
 
+   /**
+    * constructor
+    *
+    * @param  goal
+    * @param  knowledge base
+    * @param  parent solution (substitution set)
+    * @param  parent solution node
+    */
    public OrSolutionNode(Or goal, KnowledgeBase kb,
                          SubstitutionSet parentSolution,
                          SolutionNode parentNode) {
@@ -25,10 +35,20 @@ public class OrSolutionNode extends SolutionNode {
       this.parentSolution = parentSolution;
    }
 
+   /*
+    * getHeadSolutionNode
+    *
+    * @return solution node of head
+    */
    protected SolutionNode getHeadSolutionNode() {
       return headSolutionNode;
    }
 
+   /*
+    * getTailSolutionNode
+    *
+    * @return solution node of tail
+    */
    protected SolutionNode getTailSolutionNode() {
       return tailSolutionNode;
    }
@@ -64,4 +84,4 @@ public class OrSolutionNode extends SolutionNode {
       }
    }
 
-}
+} // OrSolutionNode
