@@ -104,6 +104,20 @@ public class KnowledgeBase {
     */
    public void remove(String str) { rules.remove(str); }
 
+
+   /**
+    * getRuleStandardizedApart
+    *
+    * Get a rule (or fact) from the Knowledge Base. Rules are
+    * indexed by functor/arity (eg. sister/2) and by index number.
+    *
+    * The retrieved rule is 'standardized', meaning that the
+    * variables are made unique.
+    *
+    * @param  goal
+    * @param  index
+    * @return rule/fact
+    */
    public Rule getRuleStandardizedApart(Goal goal, int i) {
       String key = ((Complex)goal).key();
       List<Rule> list = rules.get(key);
@@ -115,23 +129,12 @@ public class KnowledgeBase {
    }
 
    /**
-    * getRule
-    *
-    * Get the indicated rule (or fact) from the Knowledge Base.
-    * Rules are indexed by functor/arity, eg. sister/2, and
-    * by index number.
-    */
-   public Rule getRule(Goal goal, int index) {
-      String key = ((Complex)goal).key();
-      List<Rule> list = rules.get("" + key);
-      return list.get(index);
-   }
-
-   /**
     * getRuleCount
     *
     * Counts the number of rules for a given predicate.
     *
+    * @param  goal
+    * @return count
     */
    public int getRuleCount(Goal goal) {
       //showKB();
