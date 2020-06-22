@@ -1,6 +1,9 @@
 /**
  * AndSolutionNode
  *
+ * Solution node for the And operator.
+ *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -12,20 +15,39 @@ public class AndSolutionNode extends SolutionNode {
    private SolutionNode tailSolutionNode = null;
    private Operator operatorTail = null;
 
+   /**
+    * constructor
+    *
+    * @param  goal
+    * @param  knowledge base
+    * @param  parent solution (substitution set)
+    * @param  parent solution node
+    */
    public AndSolutionNode(And goal, KnowledgeBase kb,
                           SubstitutionSet parentSolution,
                           SolutionNode parentNode) {
       super(goal, kb, parentSolution, parentNode);
-      // The first operand could be anything, probably complex term.
+
+      // The first operand could be anything, perhaps a complex term.
       headSolutionNode = goal.getFirstOperand().getSolver(kb, parentSolution, this);
       // The operator tail is the same as the original 'And' minus the first goal.
       operatorTail = goal.getOperatorTail();
    }
 
+   /*
+    * getHeadSolutionNode
+    *
+    * @return solution node of head
+    */
    protected SolutionNode getHeadSolutionNode() {
       return headSolutionNode;
    }
 
+   /*
+    * getTailSolutionNode
+    *
+    * @return solution node of tail
+    */
    protected SolutionNode getTailSolutionNode() {
       return tailSolutionNode;
    }
@@ -35,7 +57,8 @@ public class AndSolutionNode extends SolutionNode {
     *
     * Recursively call next solution on all subgoals.
     *
-    * @return  new substitution set
+    * @return  new substitution set (solution)
+    * @throws  TimeOverrunException
     */
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
@@ -64,4 +87,4 @@ public class AndSolutionNode extends SolutionNode {
       return null;
    }
 
-}
+} // AndSolutionNode
