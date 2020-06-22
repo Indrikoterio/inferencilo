@@ -1,9 +1,11 @@
 /**
  * Goal
  *
- * Base of all goals. A goal is something which provides a solver.
+ * Base interface of all goal objects. Complex terms (eg. symptom(flu, fever))
+ * and operators such as And, Or, Unify etc. implement this interface. A goal
+ * object provides a solution node (solver).
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
