@@ -42,6 +42,19 @@ class Sentence {
       return false;
    }
 
+  /*
+   * isAnApostrophe
+   *
+   * Tests if a character is an apostrophe.
+   *
+   * @param  character
+   * @return true/false
+   */
+   private static boolean isAnApostrophe(char ch) {
+      if (ch == '\'' || ch == '\u2019' || ch == '\u02bc') return true;
+      return false;
+   }
+
 
    /*
     * isPunctuation
@@ -162,7 +175,7 @@ class Sentence {
                }
                // There might be an apostrophe within the word: don't, we've
                else
-               if (character == '\'' || character == '\u2019') {
+               if (isAnApostrophe(character)) {
                    if (lastIndex < length - 1) {
                       char ch2 = sentence.charAt(lastIndex + 1);
                       if (!isAWordCharacter(ch2)) break;
