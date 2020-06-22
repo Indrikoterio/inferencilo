@@ -1,11 +1,9 @@
 /**
  * BuiltInPredicate
  *
- * This is a base class for built-in predicates. In this project,
- * a built-in predicate is a Java class which is treated by the
- * solution searching algorithm as a Prolog predicate.
+ * This is a base class for built-in predicates.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
