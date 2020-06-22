@@ -1,22 +1,22 @@
 /**
  * ComplexSolutionNode
  *
- * Solution node for Complex terms (= compound terms).
+ * Solution node for complex terms (= compound terms).
  *
  * This node has a child node, which is the next subgoal. The method
  * nextSolution() will check to see if the child has a solution.
  * If it does, this solution (substitution set) is returned.
  *
  * Otherwise, nextSolution() fetches rules/facts from the knowledge
- * base, and tries to unify the head of these rules with the goal.
- * If a matching fact is found, and then the solution is returned.
+ * base, and tries to unify the head of these rules and facts with
+ * the goal. If a matching fact is found, the solution is returned.
  * (Note, a fact is a rule without a body.)
  *
  * Otherwise, the body node of the rule becomes the child node, and
  * the algorithm tries to find a solution (substitution set) for the
  * child. It will return the child solution or null for failure.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
