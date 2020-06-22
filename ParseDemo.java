@@ -89,7 +89,7 @@ class ParseDemo {
    private static PList oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb)
                           throws TimeOverrunException {
 
-      Variable X = VarCache.get("$X");  // placeholder
+      Variable X = VarCache.get("$X");  // placeholder variable
       Complex goal = new Complex(ruleFunctor, inList, X);
       SolutionNode node = goal.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = node.nextSolution();
