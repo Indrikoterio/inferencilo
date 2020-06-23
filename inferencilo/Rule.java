@@ -5,7 +5,7 @@
  *    grandfather(G, C) :- father(G, A), father(A, C).   // Prolog rule, head :- body
  *    father(john, kaitlyn).                             // Prolog fact.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -40,6 +40,7 @@ public class Rule implements Expression {
     *    parent($X, $Y) :- father($X, $Y); mother($X, $Y).
     *
     * @param  fact or rule
+    * @throws InvalidRuleException
     */
    public Rule(String str) {
       String s = str.trim();
@@ -51,11 +52,14 @@ public class Rule implements Expression {
       if (index > -1) {
          String head = str.substring(0, index);
          String body = str.substring(index + 2);
+         // Make sure there is not a second ':-' .
+         if (body.indexOf(":-") >= 0)
+            throw new InvalidRuleException(":- occurs twice:\n" + str);
          this.head = new Complex(head);
          Tokenizer tok = Tokenizer.getTokenizer();
          this.body = tok.generateGoal(body);
       }
-      else {
+      else {  // Must be a fact (no body).
          this.head = new Complex(str);
          this.body = null;
       }
