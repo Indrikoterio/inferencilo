@@ -14,6 +14,8 @@ import java.util.*;
 
 public class Print extends BuiltInPredicate implements Unifiable, Goal {
 
+   private static final String name = " PRINT ";
+
    String message = null;
 
    /**
@@ -22,7 +24,7 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     * @param  unifiable arguments
     */
    public Print(Unifiable... arguments) {
-      super("PRINT", arguments);
+      super(name, arguments);
    }
 
 
@@ -33,7 +35,7 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     * @param  unifiable arguments
     */
    public Print(String message, Unifiable... arguments) {
-      super("PRINT ", arguments);
+      super(name, arguments);
       this.message = message;
    }
 
