@@ -2,7 +2,7 @@
  * Print
  *
  * This predicate prints out a text message and the given term(s).
- * It is used for debugging purposes.
+ * It can be used for debugging purposes.
  *
  * @author  Klivo
  * @version 1.0
@@ -38,6 +38,27 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
       super(name, arguments);
       this.message = message;
    }
+
+
+   /**
+    * constructor
+    *
+    * This constructor takes a string of arguments, such as:
+    *    "cherry, [strawberry, blueberry], $X, $Out"
+    * and parses it to produce an array of Unifiable arguments.
+    *
+    * @param  arguments (String)
+    */
+   public Print(String str) {
+      super(name);
+      List<String> strTerms = Make.splitTerms(str, ',');
+      Unifiable[] terms = new Unifiable[strTerms.size()];
+      int index = 0;
+      for (String strTerm : strTerms) {
+         Make.addTerm(strTerm, terms, index++);
+      }
+      arguments = terms;
+   }  // constructor
 
 
    /**
