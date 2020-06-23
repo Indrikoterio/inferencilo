@@ -19,15 +19,37 @@ import java.util.*;
 
 public class Append extends BuiltInPredicate implements Unifiable, Goal {
 
+   private static final String name = " APPEND ";
+
    /**
     * constructor
     *
-    * @param  predicate name
     * @param  unifiable arguments
     */
    public Append(Unifiable... arguments) {
-      super("append", arguments);
+      super(name, arguments);
    }
+
+   /**
+    * constructor
+    *
+    * This constructor takes a string of arguments, such as:
+    *    "cherry, [strawberry, blueberry], $X, $Out"
+    * and parses it to produce an array of Unifiable arguments.
+    *
+    * @param  arguments (String)
+    */
+   public Append(String str) {
+      super(name);
+      List<String> strTerms = Make.splitTerms(str, ',');
+      Unifiable[] terms = new Unifiable[strTerms.size()];
+      int index = 0;
+      for (String strTerm : strTerms) {
+         Make.addTerm(strTerm, terms, index++);
+      }
+      arguments = terms;
+   }  // constructor
+
 
    /**
     * numOfArguments
