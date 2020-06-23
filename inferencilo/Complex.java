@@ -49,7 +49,7 @@ public class Complex implements Unifiable, Goal {
     * Eg. new Complex("boss(Susan, Jackie)")
     *
     * Important: To make an argument with a comma, use a backslash
-    * to escape the comma. Eg.:   new Complex("comma(\,)")
+    * to escape the comma. Eg.:  new Complex("comma(\,)")
     *
     * @param  complex term as string
     * @throws InvalidFunctorException, InvalidComplexTermException
@@ -57,7 +57,7 @@ public class Complex implements Unifiable, Goal {
    public Complex(String str) throws InvalidFunctorException,
                                      InvalidComplexTermException {
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidFunctorException(s);
+      if (s.length() < 1) throw new InvalidFunctorException("Complex constructor.");
       char first = s.charAt(0);
       if (first == '$') throw new InvalidFunctorException(s);
 
@@ -73,37 +73,19 @@ public class Complex implements Unifiable, Goal {
       }
 
       if (parenthesis1 < 1 || parenthesis2 < parenthesis1) {
-         throw new InvalidComplexTermException("Complex constructor: " + s);
+         throw new InvalidComplexTermException(s);
       }
 
       String arguments = s.substring(parenthesis1 + 1, parenthesis2);
       int argLength = arguments.length();
 
-      terms = new Unifiable[Make.countArguments(arguments) + 1];
+      List<String> strTerms = Make.splitTerms(arguments, ',');
+      terms = new Unifiable[strTerms.size() + 1];
       functor = s.substring(0, parenthesis1);
       terms[0] = new Constant(functor);
-
-      int startIndex = 0;
-      int roundDepth = 0;   // depth of round parenthesis (())
-      int squareDepth = 0;   // depth of square brackets [[]]
-      int termIndex = 1;
-
-      for (int i = startIndex; i < argLength; i++) {
-         char ch = arguments.charAt(i);
-         if (ch == '[') squareDepth++;
-         else if (ch == ']') squareDepth--;
-         else if (ch == '(') roundDepth++;
-         else if (ch == ')') roundDepth--;
-         else if (ch == '\\') i++;   // For comma escapes, eg. \,
-         else if (ch == ',' && roundDepth == 0 && squareDepth == 0) {
-            String term = arguments.substring(startIndex, i);
-            Make.addTerm(term, terms, termIndex++);
-            startIndex = i + 1;
-         }
-      }
-      if (argLength - startIndex > 0) {
-         String term = arguments.substring(startIndex, argLength);
-         Make.addTerm(term, terms, termIndex++);
+      int index = 1;
+      for (String strTerm : strTerms) {
+         Make.addTerm(strTerm, terms, index++);
       }
    } // constructor
 
