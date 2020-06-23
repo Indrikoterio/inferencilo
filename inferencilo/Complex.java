@@ -77,7 +77,6 @@ public class Complex implements Unifiable, Goal {
       }
 
       String arguments = s.substring(parenthesis1 + 1, parenthesis2);
-      int argLength = arguments.length();
 
       List<String> strTerms = Make.splitTerms(arguments, ',');
       terms = new Unifiable[strTerms.size() + 1];
