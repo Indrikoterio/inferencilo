@@ -295,5 +295,4 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
       return "";
    }
 
-
-}
+}  // BuiltInPredicate
