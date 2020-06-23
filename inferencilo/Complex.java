@@ -52,10 +52,10 @@ public class Complex implements Unifiable, Goal {
     * to escape the comma. Eg.:   new Complex("comma(\,)")
     *
     * @param  complex term as string
-    * @throws InvalidFunctorException
+    * @throws InvalidFunctorException, InvalidComplexTermException
     */
-   public Complex(String str) throws InvalidFunctorException {
-
+   public Complex(String str) throws InvalidFunctorException,
+                                     InvalidComplexTermException {
       String s = str.trim();
       if (s.length() < 1) throw new InvalidFunctorException(s);
       char first = s.charAt(0);
@@ -64,8 +64,8 @@ public class Complex implements Unifiable, Goal {
       int parenthesis1 = s.indexOf('(');
       int parenthesis2 = s.lastIndexOf(')');
 
+      // If there are no arguments. Eg.: rainy
       if (parenthesis1 == -1 && parenthesis2 == -1) {
-         // Perhaps this is just a constant.
          terms = new Unifiable[1];
          terms[0] = new Constant(s);
          functor = s;
@@ -73,7 +73,7 @@ public class Complex implements Unifiable, Goal {
       }
 
       if (parenthesis1 < 1 || parenthesis2 < parenthesis1) {
-         System.out.println("Oh no! Invalid complex term: " + s);
+         throw new InvalidComplexTermException("Complex constructor: " + s);
       }
 
       String arguments = s.substring(parenthesis1 + 1, parenthesis2);
