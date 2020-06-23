@@ -187,7 +187,7 @@ public class Make {
             return new Append(contents);
          }
          else if (functor.equals("print")) {
-            return new Print(new Constant(contents));
+            return new Print(contents);
          }
          else if (functor.equals("not")) {
             return new Not((Goal)term(contents));
