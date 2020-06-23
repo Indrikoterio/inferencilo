@@ -3,7 +3,7 @@
  *
  * Defines a logical 'Or' operator.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
