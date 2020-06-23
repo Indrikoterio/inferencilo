@@ -12,6 +12,7 @@
 
 package inferencilo;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class Make {
@@ -88,40 +89,6 @@ public class Make {
       else {
          terms[index] = new Constant(strTerm);
       }
-   }
-
-   /**
-    * countArguments
-    *
-    * @param list of comma separated arguments, eg. noun, conj, noun
-    * @return  count  (eg. 3)
-    */
-   public static int countArguments(String args) {
-      int len = args.length();
-      if (len == 0) return 0;
-      int startIndex = 0;
-      int roundDepth = 0;   // depth of round parenthesis (())
-      int squareDepth = 0;   // depth of square brackets [[]]
-      int count = 0;
-      for (int i = startIndex; i < len; i++) {
-         char ch = args.charAt(i);
-         if (ch == '[') squareDepth++;
-         else if (ch == ']') squareDepth--;
-         else if (ch == '(') roundDepth++;
-         else if (ch == ')') roundDepth--;
-         else if (ch == '\\') i++;   // For comma escapes, eg. \,
-         else if (roundDepth == 0 && squareDepth == 0) {
-            if (ch == ',') {
-               count++;
-            }
-            else if (ch == '|') {
-               count++;
-               break;    // Must be last argument.
-            }
-         }
-      }
-      count++;
-      return count;
    }
 
 
@@ -215,6 +182,12 @@ public class Make {
          if (parsed == null) throw new FatalParsingException("Invalid term: " + s);
          String functor = parsed[0];
          String contents = parsed[1];
+/*
+         if (functor.equals("append")) {
+System.out.println(">>>> " + contents);
+            return new Append(null);
+         }
+*/
          if (functor.equals("print")) {
             return new Print(new Constant(contents));
          }
@@ -234,13 +207,17 @@ public class Make {
     * In Prolog, logical And is represented by a comma in the body of
     * a rule. Eg. "article('The'), adj(A), noun(N), verb(V)"
     *
-    * Note: I don't intend to make a full parser at this time. Maybe later.
-    *
     * @param  string form
     * @return And operator
     */
    public static And and(String str) {
-      return new And(getOperands(str, ',', ";\"<>#@"));
+      List<String> terms = splitTerms(str, ',');
+      ArrayList<Goal> operands = new ArrayList<Goal>();
+      for (String term : terms) {
+         Goal subgoal = subgoal(term);
+         if (subgoal != null) operands.add(subgoal);
+      }
+      return new And(operands);
    }
 
    /**
@@ -251,10 +228,16 @@ public class Make {
     * a rule. Eg. "father(richard, X); mother(mary, X)"
     *
     * @param  string form
-    * @return And operator
+    * @return Or operator
     */
    public static Or or(String str) {
-      return new Or(getOperands(str, ';', ",\"<>#@"));
+      List<String> terms = splitTerms(str, ';');
+      ArrayList<Goal> operands = new ArrayList<Goal>();
+      for (String term : terms) {
+         Goal subgoal = subgoal(term);
+         if (subgoal != null) operands.add(subgoal);
+      }
+      return new Or(operands);
    }
 
 
@@ -273,30 +256,27 @@ public class Make {
    } // addOperand
 
 
-   /*
-    * getOperands
+   /**
+    * splitTerms
     *
-    * Collects operands for a logical operator from a string.
-    * In Prolog, the logical operator And is represented by a comma,
-    * and logical Or is represented by a semicolon in the body of
-    * a rule. Eg.
-    *    "article('The'), adj(A), noun(N), verb(V)"   (And)
-    *    "father(richard, X); mother(mary, X)"   (Or)
+    * Divides a comma separated (or semicolon separated) string
+    * of terms (subgoals) into separate strings. For example, the
+    * string "one, [two, three], four" will be divided into:
+    * "one", "[two, three]", "four".
     *
-    * This method will parse the string to collect operands, which
-    * are then used to create the operator (And/Or).
+    * This method will be used to create operands for operators
+    * such as And and Or, and terms for Complex terms.
     *
-    * @param  string form
-    * @param  separator (char)
-    * @param  invalid characters (String)
-    * @return operands (goals)
-    * @throws InvalidOperatorException
+    * @param  string of terms
+    * @param  separator (comma or semicolon)
+    * @return list of strings
+    * @throws FatalParsingException
     */
-   private static ArrayList<Goal> getOperands(String str, char separator, String invalid) {
+   public static ArrayList<String> splitTerms(String str, char separator) {
 
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidOperatorException(s);
-      ArrayList<Goal> operands = new ArrayList<Goal>();
+      if (s.length() < 1) throw new FatalParsingException("splitTerms - zero length");
+      ArrayList<String> terms = new ArrayList<String>();
 
       int startIndex = 0;
       int roundDepth = 0;   // depth of round parenthesis (())
@@ -310,26 +290,19 @@ public class Make {
          else if (ch == '(') roundDepth++;
          else if (ch == ')') roundDepth--;
          else if (ch == '\\') i++;   // For comma escapes, eg. \,
-         // Check for invalid chars between goals.
-         else if (roundDepth == 0 &&
-                  squareDepth == 0 && invalid.indexOf(ch) > -1)
-                  throw new InvalidOperatorException(s);
          else if (ch == separator && roundDepth == 0 && squareDepth == 0) {
-            String subgoal = s.substring(startIndex, i);
-            addOperand(subgoal, operands);
+            terms.add(s.substring(startIndex, i));
             startIndex = i + 1;
          }
       }
       if (s.length() - startIndex > 0) {
-         String subgoal = s.substring(startIndex, s.length());
-         addOperand(subgoal, operands);
+         terms.add(s.substring(startIndex, s.length()));
       }
 
-      // For debugging.
-      //for (Goal g : operands) System.out.println(g);
-      return operands;
+      return terms;
 
-   } // getOperands
+   } // splitTerms
+
 
    /*
     * parseComplex
