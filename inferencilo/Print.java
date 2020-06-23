@@ -33,7 +33,7 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     * @param  unifiable arguments
     */
    public Print(String message, Unifiable... arguments) {
-      super("PRINT()", arguments);
+      super("PRINT ", arguments);
       this.message = message;
    }
 
