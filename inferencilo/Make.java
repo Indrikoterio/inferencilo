@@ -182,13 +182,11 @@ public class Make {
          if (parsed == null) throw new FatalParsingException("Invalid term: " + s);
          String functor = parsed[0];
          String contents = parsed[1];
-/*
+
          if (functor.equals("append")) {
-System.out.println(">>>> " + contents);
-            return new Append(null);
+            return new Append(contents);
          }
-*/
-         if (functor.equals("print")) {
+         else if (functor.equals("print")) {
             return new Print(new Constant(contents));
          }
          else if (functor.equals("not")) {
