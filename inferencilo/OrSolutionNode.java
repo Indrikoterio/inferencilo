@@ -56,7 +56,8 @@ public class OrSolutionNode extends SolutionNode {
    /**
     * nextSolution
     *
-    * @return  new substitution set
+    * @return new substitution set
+    * @throws TimeOverrunException
     */
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
@@ -82,6 +83,6 @@ public class OrSolutionNode extends SolutionNode {
          // System.out.println("Or tailSolution>>>>>>>>>> " + solution);
          return tailSolution;
       }
-   }
+   } // nextSolution
 
 } // OrSolutionNode
