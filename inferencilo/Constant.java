@@ -33,7 +33,10 @@ public class Constant implements Unifiable {
     *
     * @param  value (String)
     */
-   public Constant(String value) { this.value = value; }
+   public Constant(String value) {
+      String s = adjustEscapes(value);
+      this.value = s;
+   }
 
    /**
     * toString
@@ -72,6 +75,23 @@ public class Constant implements Unifiable {
       }
    }  // convertDouble
 
+   /*
+    * adjustEscapes
+    *
+    * Some characters are escaped with a backslash.
+    * \\, represents a comma
+    * \\n represents a new line
+    * This function will convert the escaped sequence
+    * to the correct character.
+    *
+    * @param  original string
+    * @return adjusted string
+    */
+   private String adjustEscapes(String str) {
+      str = str.replaceAll("\\\\,",",");
+      str = str.replaceAll("\\\\n","\n");
+      return str;
+   }
 
    /**
     * unify
