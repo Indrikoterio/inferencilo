@@ -82,9 +82,9 @@ public class TestConjunctionList {
 
       try {
          String[] expected = {
-            "[pronoun(We), verb(visited), the_list(Canada \\, Italy and Germany)]",
-            "[pronoun(We), verb(visited), noun(Canada), comma(\\,), the_list(Italy and Germany)]",
-            "[pronoun(We), verb(visited), noun(Canada), comma(\\,), noun(Italy), conjunction(and), noun(Germany)]"
+            "[pronoun(We), verb(visited), the_list(Canada, Italy and Germany)]",
+            "[pronoun(We), verb(visited), noun(Canada), comma(,), the_list(Italy and Germany)]",
+            "[pronoun(We), verb(visited), noun(Canada), comma(,), noun(Italy), conjunction(and), noun(Germany)]"
          };
          Solutions.verifyAll(goal, kb, expected, 2);
       } catch (TimeOverrunException tox) { }
