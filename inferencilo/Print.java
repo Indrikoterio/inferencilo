@@ -37,18 +37,6 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
       super(NAME, arguments);
    }
 
-
-   /**
-    * constructor
-    *
-    * @param  identifying message (string)
-    * @param  unifiable arguments
-    */
-   public Print(String message, Unifiable... arguments) {
-      super(NAME, arguments);
-   }
-
-
    /**
     * constructor
     *
