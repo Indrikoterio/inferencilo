@@ -1,9 +1,9 @@
 /**
  * PrintSolutionNode
  *
- * Solution Node Print predicate.
+ * Solution Node for Print function.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -51,4 +51,4 @@ public class PrintSolutionNode extends SolutionNode {
       return ss;
    }
 
-}
+} // PrintSolutionNode
