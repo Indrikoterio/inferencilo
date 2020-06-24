@@ -240,21 +240,6 @@ public class Make {
 
 
    /**
-    * addOperand
-    *
-    * This function creates a subgoal from a string, then adds
-    * it to the list of operands.
-    *
-    * @param  subgoal as string
-    * @param  operand list
-    */
-   private static void addOperand(String str, ArrayList<Goal> operands) {
-      Goal subgoal = subgoal(str);
-      if (subgoal != null) operands.add(subgoal);
-   } // addOperand
-
-
-   /**
     * splitTerms
     *
     * Divides a comma separated (or semicolon separated) string
