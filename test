@@ -3,6 +3,9 @@
 javac TestConstant.java
 java TestConstant
 
+javac TestOr.java
+java TestOr
+
 javac TestAndOr.java
 java TestAndOr
 
@@ -44,3 +47,6 @@ java TestFunction
 
 javac TestConjunctionList.java
 java TestConjunctionList
+
+javac TestPrint.java
+java TestPrint
