@@ -176,6 +176,9 @@ public class Make {
       else if (s.equals("!")) {  // cut
          return new Cut();
       }
+      else if (s.equals("nl")) {  // new line
+         return new NewLine();
+      }
       else { // complex terms, built-in functions
 
          String[] parsed = parseComplex(s);
