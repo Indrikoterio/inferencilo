@@ -48,10 +48,10 @@ public class Rule implements Expression {
          int len = s.length();
          s = s.substring(0, len - 1);
       }
-      int index = str.indexOf(":-");
+      int index = s.indexOf(":-");
       if (index > -1) {
-         String head = str.substring(0, index);
-         String body = str.substring(index + 2);
+         String head = s.substring(0, index);
+         String body = s.substring(index + 2);
          // Make sure there is not a second ':-' .
          if (body.indexOf(":-") >= 0)
             throw new InvalidRuleException(":- occurs twice:\n" + str);
@@ -60,7 +60,7 @@ public class Rule implements Expression {
          this.body = tok.generateGoal(body);
       }
       else {  // Must be a fact (no body).
-         this.head = new Complex(str);
+         this.head = new Complex(s);
          this.body = null;
       }
    } // constructor
