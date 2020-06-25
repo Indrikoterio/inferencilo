@@ -66,7 +66,7 @@ class ParseDemo {
    //   "The ideal characteristic of artificial intelligence is its ability to rationalize.";
 
    //private static String testString = "They envy us.";
-   private static String testString = "He envies us.";
+   private static String testString = "He envies us";
 
    /*
     * constructor
@@ -215,7 +215,7 @@ class ParseDemo {
       List<String> rules = ReadRules.fromFile("demo_grammar.txt");
       kb.addRules(rules);
 
-      makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2)", kb);
+      makeRule("parse($In, $Out2) :- words_to_pos($In, $POS), sentence($POS, $Out2).", kb);
 
       kb.showKB();
 
