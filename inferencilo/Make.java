@@ -130,10 +130,11 @@ public class Make {
       // Complex term, eg:   sentence(subject, verb, object)
       if (parenthesis1 == 0) throw new InvalidComplexTermException(s);
 
-      // Consider:  functor(a, b, [1,2,3]) vs. [a, b, c(1,2,3), d]
+      // Consider:  analyze(a, b, [1,2,3]) vs. [a, b, c(1,2,3), d]
       else if (parenthesis1 > 0 && (bracket1 == -1 || parenthesis1 < bracket1)) {
          if (parenthesis2 > parenthesis1) {  // if OK.
-            return new Complex(s);
+            String[] arr = splitComplex(s, parenthesis1, parenthesis2);
+            return new Complex(arr[0], arr[1]);
          }
          else throw new InvalidComplexTermException(s);
       }  // Complex terms
@@ -318,13 +319,41 @@ public class Make {
       int second = str.indexOf(")");
       if (second < first) return null;
 
-      String functor = str.substring(0, first);
-      String contents = str.substring(first + 1, second);
-      String[] arr = new String[2];
-      arr[0] = functor;
-      arr[1] = contents;
-      return arr;
+      return splitComplex(str, first, second);
 
    } // parseComplex
+
+
+   /*
+    * splitComplex
+    *
+    * This method splits a string representation of a complex
+    * term into its functor and terms. For example, if the
+    * complex term is:
+    *
+    *    "father(Philip, Alize)"
+    *
+    * and the indices (index1, index2) are 6 and 20, the function
+    * will return this array:
+    *
+    *   ["father", "Philip, Alize"]
+    *
+    * This method assumes that index1 and index2 are valid.
+    *
+    * @param  complex term (string)
+    * @param  index1
+    * @param  index2
+    * @return array with functor and terms
+    */
+   private static String[] splitComplex(String comp, int index1, int index2) {
+
+      String functor = comp.substring(0, index1);
+      String terms = comp.substring(index1 + 1, index2);
+      String[] arr = new String[2];
+      arr[0] = functor;
+      arr[1] = terms;
+      return arr;
+
+   } // splitComplex
 
 } // Make
