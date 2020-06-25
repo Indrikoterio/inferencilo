@@ -13,6 +13,8 @@ import java.util.*;
 
 public class Functor extends Function {
 
+   private static final String NAME = " Functor ";
+
    /**
     * constructor
     *
@@ -20,7 +22,7 @@ public class Functor extends Function {
     * @param  unifiable parameters
     */
    public Functor(Unifiable... parameters) {
-      super("Functor", parameters);
+      super(NAME, parameters);
    }
 
    /**
