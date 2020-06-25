@@ -1,6 +1,35 @@
 # This file contains facts/rules for the demo program ParseDemo.java.
 # Klivo - 2020/06
-sentence([pronoun($PS, subject, plural), verb($V, $_, base), punctuation($Punc)], [$PS, $V, $Punc]).
-sentence([pronoun($PS, subject, third_sing), verb($V, $_, third_sing), punctuation($Punc)], [$PS, $V, $Punc]).
-sentence([pronoun($PS, subject, plural), verb($V, $_, base), pronoun($PO, object, $_), punctuation($Punc)], [$PS, $V, $PO, $Punc]).
-sentence([pronoun($PS, subject, singular), verb($V, $_, third_sing), pronoun($PO, object, $_), punctuation($Punc)], [$PS, $V, $PO, $Punc]).
+#
+# check_pron_verb
+# Check the agreement between a pronoun subject and verb. For example,
+# 'He is' is OK, because both 'He' and 'is' are third person singular,
+# but 'He are' is wrong.
+# The arguments are:
+#   original pronoun
+#   person (first, second, third)
+#   plurality (singular, plural)
+#   original verb
+#   verb form (base, past, third_sing)
+#
+check_pron_verb($_, first, singular, $_, base) :- !.  # OK
+check_pron_verb($_, first, singular, $_, past) :- !.  # OK
+check_pron_verb($_, second, singular, $_, base) :- !.  # OK
+check_pron_verb($_, second, singular, $_, past) :- !.  # OK
+check_pron_verb($_, third, singular, $_, third_sing) :- !.  # OK
+check_pron_verb($_, third, singular, $_, past) :- !.  # OK
+
+check_pron_verb($_, first, plural, $_, base) :- !.  # OK
+check_pron_verb($_, first, plural, $_, past) :- !.  # OK
+check_pron_verb($_, second, plural, $_, base) :- !.  # OK
+check_pron_verb($_, second, plural, $_, past) :- !.  # OK
+check_pron_verb($_, third, plural, $_, base) :- !.  # OK
+check_pron_verb($_, third, plural, $_, past) :- !.  # OK
+# Else
+check_pron_verb($Pr, $_, $_, $V, $_) :- print(%s and %s do not match.), nl.
+
+#remove_punc($In, $Out) :- $In = [$H | $T], $Func =
+
+sentence([pronoun($PS, subject, $Person, $Plur), verb($V, $_, $VerbForm)], [$PS, $V]) :- check_pron_verb($PS, $Person, $Plur, $V, $VerbForm).
+
+sentence([pronoun($PS, subject, $Person, $Plur), verb($V, $_, $VerbForm), pronoun($PO, object, $_, $_)], [$PS, $V, $PO]) :- check_pron_verb($PS, $Person, $Plur, $V, $VerbForm).
