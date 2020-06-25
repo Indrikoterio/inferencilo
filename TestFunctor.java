@@ -18,18 +18,20 @@ public class TestFunctor {
       Variable Y   = new Variable("$Y");
       Constant get = new Constant("get");
       Complex  term = new Complex("mouse(mammal, rodent)");
+//      Complex  term2 = new Complex("cat(mammal, carnivore)");
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex(get, Y),
             new And(
-               new Unify(
-                  X, new Functor(term)
-               ),
+               new Unify(X, new Functor(term)),
                new Unify(X, Y)
             )
          )
       );
 
+      // Test parsing.
+//      Rule rule = new Rule("get($Y) :- $X = functor(term2), $X = $Y.");
+//      kb.addRule(rule);
 
       System.out.print("Test Functor: ");
 
@@ -40,7 +42,8 @@ public class TestFunctor {
       }
       catch (TimeOverrunException tox) { }
 
-   }
-}
+   } // main
+
+} // TestFunctor
 
 
