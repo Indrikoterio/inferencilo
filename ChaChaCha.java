@@ -3,7 +3,7 @@
  *
  * A silly function to test Function class inheritance.
  *
- * @author   Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -46,6 +46,4 @@ public class ChaChaCha extends Function {
       }
       return new ChaChaCha(newParameters);
    }
-
-
-}
+}  // ChaChaCha
