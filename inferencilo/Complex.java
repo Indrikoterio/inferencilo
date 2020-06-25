@@ -23,8 +23,8 @@ import java.util.*;
 
 public class Complex implements Unifiable, Goal {
 
-   private Unifiable[] terms;
    private String functor;
+   private Unifiable[] terms;
 
    /**
     * constructor
@@ -41,6 +41,47 @@ public class Complex implements Unifiable, Goal {
       terms = args;
       functor = "" + terms[0];
    }
+
+
+   /**
+    * constructor
+    *
+    * Creates a complex term from a string representation. The first
+    * parameter is the functor, and the second is a list of terms.
+    * For example, "boss(Susan, Jackie)" can be instantiated with:
+    *
+    *     new Complex("boss", "Susan, Jackie")
+    *
+    * Important:
+    * To make an argument with a comma, use a (double) backslash
+    * Eg.:  new Complex("comma", "\\,")
+    *
+    * @param  strFunctor
+    * @param  strTerms
+    */
+   public Complex(String strFunctor, String strTerms) {
+
+      // If there are no arguments. Eg.: rainy
+      if (strTerms == null || strTerms.length() == 0) {
+         terms = new Unifiable[1];
+         // The functor is a constant, and must be unified,
+         // like any other term.
+         terms[0] = new Constant(strFunctor);
+         functor = strFunctor;
+         return;
+      }
+
+      List<String> listTerms = Make.splitTerms(strTerms, ',');
+      terms = new Unifiable[listTerms.size() + 1];
+      terms[0] = new Constant(functor);
+
+      int index = 1;
+      for (String t : listTerms) {
+         Make.addTerm(t, terms, index++);
+      }
+
+   } // constructor
+
 
    /**
     * constructor
@@ -82,6 +123,7 @@ public class Complex implements Unifiable, Goal {
       terms = new Unifiable[strTerms.size() + 1];
       functor = s.substring(0, parenthesis1);
       terms[0] = new Constant(functor);
+
       int index = 1;
       for (String strTerm : strTerms) {
          Make.addTerm(strTerm, terms, index++);
