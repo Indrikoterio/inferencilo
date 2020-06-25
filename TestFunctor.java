@@ -18,7 +18,7 @@ public class TestFunctor {
       Variable Y   = new Variable("$Y");
       Constant get = new Constant("get");
       Complex  term = new Complex("mouse(mammal, rodent)");
-//      Complex  term2 = new Complex("cat(mammal, carnivore)");
+      Complex  term2 = new Complex("cat(mammal, carnivore)");
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex(get, Y),
@@ -30,14 +30,14 @@ public class TestFunctor {
       );
 
       // Test parsing.
-//      Rule rule = new Rule("get($Y) :- $X = functor(term2), $X = $Y.");
-//      kb.addRule(rule);
+      Rule rule = new Rule("get($Y) :- $X = cat(mammal, carnivore), $Y = functor($X).");
+      kb.addRule(rule);
 
       System.out.print("Test Functor: ");
 
       try {
          Complex goal = new Complex(get, X);
-         String[] expected = {"mouse"};
+         String[] expected = {"mouse", "cat"};
          Solutions.verifyAll(goal, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
