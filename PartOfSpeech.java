@@ -113,6 +113,11 @@ class PartOfSpeech {
    private static Constant third_sing  = new Constant("third_sing");   // it is
    private static Constant base  = new Constant("base");   // you see
 
+   // Person, for pronouns
+   private static Constant first  = new Constant("first");  // I, me, we, us
+   private static Constant second = new Constant("second"); // you
+   private static Constant third  = new Constant("third");  // he, him, she, her, it, they, them
+
    // Plurality for nouns and pronouns
    private static Constant singular = new Constant("singular"); // table, mouse
    private static Constant plural   = new Constant("plural"); // tables, mice
@@ -131,7 +136,7 @@ class PartOfSpeech {
    private static Constant definite = new Constant("definite");     // the
    private static Constant indefinite = new Constant("indefinite"); // a, an
 
-   // For pronouns.
+   // For pronouns. (case)
    private static Constant subject = new Constant("subject");  // subject
    private static Constant object  = new Constant("object");   // object
 
@@ -276,7 +281,7 @@ class PartOfSpeech {
     * makePronounTerm
     *
     * This method creates a pronoun term, eg.
-    *       pronoun(they, subject).
+    *       pronoun(they, subject, third, plural).
     *
     * @param  word
     * @param  lower case word
@@ -284,24 +289,35 @@ class PartOfSpeech {
     * @return term
     */
    private static Complex makePronounTerm(String word, String lower, String tag) {
+
       Complex term = null;
-      if (tag.equals("PPSS")) {
-         if (lower.equals("we") || lower.equals("they")) {
-            term = new Complex(pronoun, new Constant(word), subject, plural);
+
+      if (tag.startsWith("PPS")) { // PPS or PPSS
+         if (lower.equals("we")) {
+            term = new Complex(pronoun, new Constant(word), subject, first, plural);
          }
-         else {
-            term = new Complex(pronoun, new Constant(word), subject, singular);
+         else if (lower.equals("they")) {
+            term = new Complex(pronoun, new Constant(word), subject, third, plural);
          }
-      }
-      else if (tag.equals("PPS")) {
-         term = new Complex(pronoun, new Constant(word), subject, singular);
+         else if (lower.equals("I")) {
+            term = new Complex(pronoun, new Constant(word), subject, first, singular);
+         }
+         else {  // he she it
+            term = new Complex(pronoun, new Constant(word), subject, third, singular);
+         }
       }
       else if (tag.equals("PPO")) {
-         if (lower.equals("us") || lower.equals("them")) {
-            term = new Complex(pronoun, new Constant(word), object, plural);
+         if (lower.equals("us")) {
+            term = new Complex(pronoun, new Constant(word), object, first, plural);
+         }
+         else if (lower.equals("them")) {
+            term = new Complex(pronoun, new Constant(word), object, third, plural);
+         }
+         else if (lower.equals("me")) {
+            term = new Complex(pronoun, new Constant(word), object, first, singular);
          }
          else {
-            term = new Complex(pronoun, new Constant(word), object, singular);
+            term = new Complex(pronoun, new Constant(word), object, third, singular);
          }
       }
       return term;
@@ -312,16 +328,16 @@ class PartOfSpeech {
     * makeYouFact
     *
     * This method creates a fact for the pronoun 'you', eg.
-    *       word(you, pronoun(you, subject, singular)).
-    *       word(you, pronoun(you, object, plural)).
+    *       word(you, pronoun(you, subject, second, singular)).
+    *       word(you, pronoun(you, object, second, plural)).
     *
     * @param  word
-    * @param  subject or object
+    * @param  case (subject or object)
     * @param  plurality
     * @return fact
     */
    private static Complex makeYouFact(String word, Constant sub_obj, Constant plurality) {
-      Complex term = new Complex(pronoun, new Constant(word), sub_obj, plurality);
+      Complex term = new Complex(pronoun, new Constant(word), sub_obj, second, plurality);
       return new Complex(WORD, new Constant(word), term);
    } // makeYouFact
 
