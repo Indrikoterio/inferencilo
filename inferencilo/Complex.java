@@ -73,6 +73,7 @@ public class Complex implements Unifiable, Goal {
 
       List<String> listTerms = Make.splitTerms(strTerms, ',');
       terms = new Unifiable[listTerms.size() + 1];
+      functor = strFunctor;
       terms[0] = new Constant(functor);
 
       int index = 1;
