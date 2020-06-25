@@ -1,9 +1,9 @@
 /**
  * Functor
  *
- * Function to get the functor of a terms.
+ * Function to get the functor of a term.
  *
- * @author   Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -24,6 +24,23 @@ public class Functor extends Function {
    public Functor(Unifiable... parameters) {
       super(NAME, parameters);
    }
+
+
+   /**
+    * constructor
+    *
+    * Parse a string to create the parameter for this function.
+    *
+    * @param  argument string
+    */
+   public Functor(String str) {
+      super(NAME);
+      Unifiable term = Make.term(str);
+      Unifiable[] terms = new Unifiable[1];
+      terms[0] = term;
+      parameters = terms;
+   }  // constructor
+
 
    /**
     * evaluate the parameter
@@ -52,6 +69,4 @@ public class Functor extends Function {
       }
       return new Functor(newParameters);
    }
-
-
-}
+}  // Functor
