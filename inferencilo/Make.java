@@ -134,7 +134,12 @@ public class Make {
       else if (parenthesis1 > 0 && (bracket1 == -1 || parenthesis1 < bracket1)) {
          if (parenthesis2 > parenthesis1) {  // if OK.
             String[] arr = splitComplex(s, parenthesis1, parenthesis2);
-            return new Complex(arr[0], arr[1]);
+            if (arr[0].equals("functor")) {
+               return new Functor(arr[1]);
+            }
+            else {
+               return new Complex(arr[0], arr[1]);
+            }
          }
          else throw new InvalidComplexTermException(s);
       }  // Complex terms
