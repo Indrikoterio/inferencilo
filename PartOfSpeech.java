@@ -360,7 +360,7 @@ class PartOfSpeech {
          term = new Complex(verb, new Constant(word), present, third_sing);
       }
       else if (tag.equals("VBD")) {
-         term = new Complex(verb, new Constant(word), past, base);
+         term = new Complex(verb, new Constant(word), past, past);
       }
       else if (tag.equals("VBG")) {
          term = new Complex(participle, new Constant(word), active);
