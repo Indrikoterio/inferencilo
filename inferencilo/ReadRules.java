@@ -45,24 +45,6 @@ public class ReadRules {
    } // checkBrackets
 
 
-   /*
-    * openFile
-    *
-    * Opens a file for reading, UTF-8 format.
-    *
-    * @param  name of file
-    * @return InputStreamReader
-    */
-   private static InputStreamReader openFile(String name) {
-      try {
-         return new InputStreamReader(new FileInputStream(name),"UTF-8");
-      }
-      catch (Exception e) {
-         System.out.println("ReadRule - Cannot open file: " + name);
-         return null;
-      }
-   } // openFile
-
 
    /**
     * fromFile
@@ -72,61 +54,152 @@ public class ReadRules {
     *
     * @param  name of file
     * @return rules (list of rules)
+    * @throws UnmatchedParenthesesException, UnmatchedBracketsException
     */
    public static List<String> fromFile(String filename) {
 
-      InputStreamReader reader = openFile(filename);
-      if (reader == null) return null;
+      String text = readFromFile(filename);
+      if (text == null) return null;
 
-      StringBuilder sb = new StringBuilder(80);
+      int length = text.length();
+      StringBuilder sb = new StringBuilder(100);
       List<String> rules = new ArrayList<String>();
-
       int roundDepth = 0;   // depth of round parenthesis (())
       int squareDepth = 0;  // depth of square brackets [[]]
 
-      try {
-         int ch = reader.read();
-         while (ch != -1) {
+      for (int i = 0; i < length; i++) {
 
-            // Skip past comments, marked by #
-            if (ch == '#') {
-               int ch2 = reader.read();
-               while (ch2 != -1) {
-                  if (ch2 == '\n') break;
-                  ch2 = reader.read();
-               }
-               if (ch2 == -1) {
-                  rules.add(sb.toString());
-                  checkBrackets(roundDepth, squareDepth);
-                  return rules;
-               }
-               ch = reader.read();
-               continue;
-            }
+         char c = text.charAt(i);
+         sb.append((char)c);
 
-            if (ch == '\n') ch = ' ';
+         if (c == '.' && roundDepth == 0 && squareDepth == 0) {
+            rules.add(sb.toString());
+            sb.setLength(0);
+         }
+         else if (c == '(') roundDepth++;
+         else if (c == '[') squareDepth++;
+         else if (c == ')') roundDepth--;
+         else if (c == ']') squareDepth--;
+      }  // for
 
-            sb.append((char)ch);
-
-            if (ch == '.' && roundDepth == 0 && squareDepth == 0) {
-               rules.add(sb.toString());
-               sb.setLength(0);
-            }
-            else if (ch == '(') roundDepth++;
-            else if (ch == '[') squareDepth++;
-            else if (ch == ')') roundDepth--;
-            else if (ch == ']') squareDepth--;
-
-            ch = reader.read();
-         }  // end of while
-
-         checkBrackets(roundDepth, squareDepth);
-         return rules;
-      }
-      catch (IOException iox) {
-         return null;
-      }
+      String last = sb.toString().trim();
+      if (roundDepth != 0) throw new UnmatchedParenthesesException("ReadRules");
+      if (squareDepth != 0) throw new UnmatchedBracketsException("ReadRules");
+      if (last.length() > 0) rules.add(last);
+      return rules;
 
    } // fromFile()
 
-}  // ReadRules
+
+
+
+   /*
+    * openFile
+    *
+    * Opens a file for reading, in UTF-8 format.
+    * Returns a buffered reader, or null if an
+    * exception occurs.
+    *
+    * @param  file name
+    * @return BufferedReader
+    */
+   private static BufferedReader openFile(String filename) {
+      try {
+         return new BufferedReader(
+                   new InputStreamReader(
+                      new FileInputStream(filename),"UTF-8"));
+      }
+      catch (Exception e) {
+         System.err.println("ReadRule - Cannot open " + filename + ".");
+         return null;
+      }
+   } // openFile
+
+
+   /*
+    * trimComments
+    *
+    * Trims comments from a line. In Inferencilo, valid comment
+    * delimiters are:
+    *
+    *   %  Comment
+    *   #  Comment
+    *   // Comment
+    *
+    * Any text which occurs after these delimiters is considered
+    * a comment, and removed from the line. But, if these
+    * delimiters occur within braces, they are not treated as
+    * comment delimiters. For example, in the line
+    *
+    *    print(Your rank is %s., $Rank),   % Print user's rank.
+    *
+    * the first percent sign does not start a comment, but the
+    * second does.
+    *
+    * @param  original line
+    * @return trimmed line
+    */
+   private static String trimComments(String line) {
+      char c;
+      char previous = 'x';
+      int index = -1;
+      int length = line.length();
+      int roundDepth = 0;   // depth of round parenthesis (())
+      int squareDepth = 0;  // depth of square brackets [[]]
+      for(int i = 0; i < length ; i++) {
+         c = line.charAt(i);
+         if (c == '(') roundDepth++;
+         else if (c == '[') squareDepth++;
+         else if (c == ')') roundDepth--;
+         else if (c == ']') squareDepth--;
+         else if (roundDepth == 0 && squareDepth == 0) {
+            if (c == '#' || c == '%') { index = i; break; }
+            if (c == '/' && previous == '/') { index = i - 1; break;}
+         }
+         previous = c;
+      }
+      if (index >= 0) {
+         return line.substring(0, index);
+      }
+      else return line;
+   } // trimComments
+
+
+   /*
+    * readFromFile
+    *
+    * This method opens a file and reads it line by line.
+    * Comments are removed from each line, and the lines
+    * are joined to produce a long string. The method
+    * returns this string, or null if there is a failure.
+    *
+    * @param  filename
+    * @return text as long string
+    */
+   private static String readFromFile(String filename) {
+
+      BufferedReader reader = openFile(filename);
+      if (reader == null) return null;
+
+      StringBuilder sb = new StringBuilder(80);
+
+      try {
+         String line = reader.readLine();
+         while (true) {
+            if (line == null) break;
+            line = trimComments(line).trim();
+            if (line.length() > 0) {
+               sb.append(line + " ");
+            }
+            line = reader.readLine();
+         } // while
+      }
+      catch (IOException e) {
+         System.err.println("readFromFile: Error while reading " + filename + ".");
+         return null;
+      }
+      return sb.toString();
+
+   } // readFromFile()
+
+} // ReadRules
