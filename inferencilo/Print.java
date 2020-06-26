@@ -25,7 +25,7 @@ import java.util.*;
 
 public class Print extends BuiltInPredicate implements Unifiable, Goal {
 
-   private static final String NAME = " PRINT ";
+   private static final String NAME = "PRINT";
    private static final String FORMAT_SPECIFIER = "%s";
 
    /**
