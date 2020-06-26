@@ -407,6 +407,8 @@ public class PList implements Unifiable {
             otherIsTailVar = otherList.isTailVar();
 
             if (thisIsTailVar && otherIsTailVar) {
+               if (otherTerm instanceof Anon) return newSS;
+               if (thisTerm instanceof Anon) return newSS;
                return thisTerm.unify(otherTerm, newSS);
             }
             else if (thisIsTailVar) {
