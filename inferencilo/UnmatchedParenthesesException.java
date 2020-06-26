@@ -14,9 +14,10 @@ public class UnmatchedParenthesesException extends RuntimeException {
    /**
     * constructor
     *
+    * @param  message
     */
-   public UnmatchedParenthesesException() {
-      super("Unmatched Parentheses.");
+   public UnmatchedParenthesesException(String message) {
+      super("Unmatched Parentheses: " + message);
    }
 
 }  // UnmatchedParenthesesException
