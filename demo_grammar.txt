@@ -28,8 +28,17 @@ check_pron_verb($_, third, plural, $_, past) :- !.  # OK
 # Else
 check_pron_verb($Pr, $_, $_, $V, $_) :- print(%s and %s do not match.), nl.
 
-#remove_punc($In, $Out) :- $In = [$H | $T], $Func =
+# show - To display the contents of a list.
+show($In) :- $In = [$H | $T], print(%s,$H), nl, show($T).
+show([]) :- print(------------), nl.
+
+# Rule to remove punctuation.
+remove_punc([$H | $T], $T2) :- functor($H) = punctuation, !, remove_punc($T, $T2).
+remove_punc([$H | $T], [$H | $T2]) :- remove_punc($T, $T2).
+remove_punc([], []).
 
 sentence([pronoun($PS, subject, $Person, $Plur), verb($V, $_, $VerbForm)], [$PS, $V]) :- check_pron_verb($PS, $Person, $Plur, $V, $VerbForm).
 
 sentence([pronoun($PS, subject, $Person, $Plur), verb($V, $_, $VerbForm), pronoun($PO, object, $_, $_)], [$PS, $V, $PO]) :- check_pron_verb($PS, $Person, $Plur, $V, $VerbForm).
+
+parse($In, $Out) :- words_to_pos($In, $In2), [$H | $_] = $In2, remove_punc($In2, $In3), sentence($In3, $Out).
