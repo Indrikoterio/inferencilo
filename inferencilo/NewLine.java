@@ -14,7 +14,7 @@ import java.util.Hashtable;
 
 public class NewLine extends BuiltInPredicate implements Unifiable, Goal {
 
-   private static final String NAME = " NL ";
+   private static final String NAME = "NL";
 
    /**
     * constructor
@@ -22,6 +22,14 @@ public class NewLine extends BuiltInPredicate implements Unifiable, Goal {
     * @param  unifiable arguments
     */
    public NewLine() { super(NAME); }
+
+
+   /**
+    * toString()
+    *
+    * @return printable name
+    */
+   public String toString() { return NAME; }
 
 
    /**
