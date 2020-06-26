@@ -14,9 +14,10 @@ public class UnmatchedBracketsException extends RuntimeException {
    /**
     * constructor
     *
+    * @param  message
     */
-   public UnmatchedBracketsException() {
-      super("Unmatched Brackets.");
+   public UnmatchedBracketsException(String message) {
+      super("Unmatched Brackets: " + message);
    }
 
 }  // UnmatchedBracketsException
