@@ -66,7 +66,7 @@ class ParseDemo {
    //   "The ideal characteristic of artificial intelligence is its ability to rationalize.";
 
    //private static String testString = "They envy us.";
-   private static String testString = "He envies us.";
+   private static String testString = "He envy us.";
 
    /*
     * constructor
@@ -119,6 +119,77 @@ class ParseDemo {
    }
 
 
+   /*
+    * sentenceToWords
+    *
+    * Divides a sentence into words.
+    *
+    * @param  original sentence
+    * @return list of words
+    */
+   private static List<String> sentenceToWords(String sentence) {
+      // Clean up the string. New line becomes a space.
+      String s = sentence.replace('\n', ' ');
+      // Divide string into words and punctuation.
+      return Sentence.getWords(s);
+   } // sentenceToWords
+
+
+   /*
+    * makeLinkedList
+    *
+    * Converts a list of words into a Prolog-style, singly linked
+    * list of words.
+    *
+    * @param  list of words
+    * @return linked list of words
+    */
+   private static PList makeLinkedList(List<String> words) {
+
+      // Put all the words into a Prolog-style linked list.
+      // First, create a list of Constant terms.
+      List<Unifiable> terms = new ArrayList<Unifiable>();
+      for (String word : words) { terms.add(new Constant(word)); }
+
+      boolean hasPipe = false;
+      return new PList(hasPipe, terms);
+
+   } // makeLinkedList
+
+
+   /*
+    * sentenceToFacts
+    *
+    * Takes a sentence, divides it into words, and creates facts
+    * which are written to the knowledge base.
+    *
+    * @param  sentence
+    * @param  knowledge base
+    * @return word list (linked list)
+    */
+   private static PList sentenceToFacts(String sentence, KnowledgeBase kb) {
+
+      List<String> words = sentenceToWords(sentence);
+      PList wordList = makeLinkedList(words);
+
+      // Load part of speech data.
+      PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
+
+      // Make word facts, such as: word(envy, noun(envy, singular)).
+      List<Rule> facts = pos.makeFacts(words);
+
+      // Fill the knowledge base with word facts.
+      ListIterator<Rule> factIterator = facts.listIterator();
+      while (factIterator.hasNext()) {
+         Rule fact = factIterator.next();
+         kb.addRule(fact);
+      }
+
+      return wordList;
+
+   } // sentenceToFacts
+
+
    /**
     * main - The program starts here.
     *
@@ -126,36 +197,8 @@ class ParseDemo {
     */
    public static void main(String[] args) {
 
-      // Clean up the string to analyze.
-      // New line becomes a space.
-      testString = testString.replace('\n', ' ');
-
-      // Divide string into words and punctuation.
-      List<String> words = Sentence.getWords(testString);
-
-      // Display these words.
-      for (String word : words) { System.out.println(word); }
-
-      // Put all the words into a Prolog-style recursive list.
-      // Create a list of Constant terms.
-      List<Unifiable> terms = new ArrayList<Unifiable>();
-      for (String word : words) { terms.add(new Constant(word)); }
-      boolean hasPipe = false;
-      PList wordList = new PList(hasPipe, terms);
-
-      // Load part of speech data.
-      PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
-
-      // Make word facts, such as word(envy, noun(envy, singular)).
-      List<Rule> facts = pos.makeFacts(words);
-
-      // Set up the knowledge base, and fill it with word facts.
       KnowledgeBase kb = new KnowledgeBase();
-      ListIterator<Rule> factIterator = facts.listIterator();
-      while (factIterator.hasNext()) {
-         Rule fact = factIterator.next();
-         kb.addRule(fact);
-      }
+      PList wordList = sentenceToFacts(testString, kb);
 
       // -------------------------------
 
