@@ -111,7 +111,7 @@ public class Tokenizer {
             }
          }
          else if (ch == ')') {
-            if (top == NONE) throw new UnmatchedParenthesesException();
+            if (top == NONE) throw new UnmatchedParenthesesException("Tokenizer");
             top = (Integer)stkParenth.pop();
             if (top == GROUP) {
                String subgoal = s.substring(startIndex, i);
@@ -120,17 +120,17 @@ public class Tokenizer {
                startIndex = i + 1;
             }
             else if (top != COMPLEX) {
-               throw new UnmatchedParenthesesException();
+               throw new UnmatchedParenthesesException("Tokenizer");
             }
          }
          else if (ch == '[') {
             stkParenth.push(PLIST);
          }
          else if (ch == ']') {
-            if (top == NONE) throw new UnmatchedBracketsException();
+            if (top == NONE) throw new UnmatchedBracketsException("Tokenizer");
             top = (Integer)stkParenth.pop();
             if (top != PLIST) {
-               throw new UnmatchedBracketsException();
+               throw new UnmatchedBracketsException("Tokenizer");
             }
          }
          else {
@@ -156,7 +156,7 @@ public class Tokenizer {
       }
       if (stkParenth.size() > 0) {
          top = (Integer)stkParenth.peek();
-         throw new UnmatchedParenthesesException();
+         throw new UnmatchedParenthesesException("Tokenizer");
       }
 
       if (s.length() - startIndex > 0) {
