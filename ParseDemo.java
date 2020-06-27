@@ -62,18 +62,13 @@ import java.util.*;
 
 class ParseDemo {
 
-   //private static String testString =
-   //   "The ideal characteristic of artificial intelligence is its ability to rationalize.";
-
-   //private static String testString = "They envy us.";
-   private static String testString = "He envy us.";
-
    /*
     * constructor
     *
     * Read in a file of Part of Speech data. Create a hashmap.
     */
    private ParseDemo() { }
+
 
    /*
     * oneSolution
@@ -83,10 +78,9 @@ class ParseDemo {
     * @param  ruleFunctor
     * @param  inList
     * @param  knowledgeBase
-    * @return outList
     * @throws TimeOverrunException
     */
-   private static PList oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb)
+   private static void oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb)
                           throws TimeOverrunException {
 
       Variable X = VarCache.get("$X");  // placeholder variable
@@ -95,12 +89,12 @@ class ParseDemo {
       SubstitutionSet solution = node.nextSolution();
       if (solution != null) {
          Complex result = (Complex)goal.replaceVariables(solution);
-         return (PList)result.getTerm(2);  // Get the out list.
+         PList outList = (PList)result.getTerm(2);  // Get the out list.
+         System.out.print("\n");
       }
       else {
-         System.out.println("Fatal error. " + ruleFunctor);
+         System.out.println("No solution for " + ruleFunctor + ".");
       }
-      return null;
    } // oneSolution
 
 
@@ -198,7 +192,6 @@ class ParseDemo {
    public static void main(String[] args) {
 
       KnowledgeBase kb = new KnowledgeBase();
-      PList wordList = sentenceToFacts(testString, kb);
 
       // -------------------------------
 
@@ -258,19 +251,21 @@ class ParseDemo {
       List<String> rules = ReadRules.fromFile("demo_grammar.txt");
       kb.addRules(rules);
 
-      kb.showKB();
+      //kb.showKB();
+
+      PList  wordList;
+      String[] sentences = {
+         "They envy us.",
+         "He envy us.",
+         "He envies us."
+      };
 
       try {
-
-         // Find a solution for the goal 'parse'.
-         PList result = oneSolution(parse, wordList, kb);
-         if (result == null) {
-            System.out.println("Could not find a solution.");
+         for (String sentence : sentences) {
+            System.out.print(sentence + "  ");
+            wordList = sentenceToFacts(sentence, kb);
+            oneSolution(parse, wordList, kb);
          }
-
-         // Print out the solution.
-         System.out.println(result);
-
       }
       catch (TimeOverrunException tox) {
          System.out.println("Time overrun exception.");
