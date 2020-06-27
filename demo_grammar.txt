@@ -26,7 +26,7 @@ check_pron_verb($_, second, plural, $_, past) :- !.  # OK
 check_pron_verb($_, third, plural, $_, base) :- !.  # OK
 check_pron_verb($_, third, plural, $_, past) :- !.  # OK
 # Else
-check_pron_verb($Pr, $_, $_, $V, $_) :- print('%s' and '%s' do not match., $Pr, $V), nl.
+check_pron_verb($Pr, $_, $_, $V, $_) :- print('%s' and '%s' do not match., $Pr, $V).
 
 # check_noun_verb
 # Check the agreement between a noun subject and verb.
@@ -36,7 +36,7 @@ check_pron_verb($Pr, $_, $_, $V, $_) :- print('%s' and '%s' do not match., $Pr, 
 check_noun_verb($_, $_, $_, past) :- !.  # OK
 check_noun_verb($_, singular, $_, third_sing) :- !.  # OK
 check_noun_verb($_, plurality, $_, base) :- !.  # OK
-check_noun_verb($N, $_, $_, $V, $_) :- print('%s' and '%s' do not match., $N, $V), nl.
+check_noun_verb($N, $_, $_, $V, $_) :- print('%s' and '%s' do not match., $N, $V).
 
 # show - To display the contents of a list.
 show($In) :- $In = [$H | $T], print(%s, $H), nl, show($T).
