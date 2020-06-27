@@ -191,6 +191,7 @@ class ParseDemo {
     */
    public static void main(String[] args) {
 
+      // A knowledge base stores rules and facts.
       KnowledgeBase kb = new KnowledgeBase();
 
       // -------------------------------
@@ -257,7 +258,9 @@ class ParseDemo {
       String[] sentences = {
          "They envy us.",
          "He envy us.",
-         "He envies us."
+         "He envies us.",
+         "I envied them.",
+         "I envies them."
       };
 
       try {
