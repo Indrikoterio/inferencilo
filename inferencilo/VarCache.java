@@ -35,14 +35,14 @@ public class VarCache {
     *
     * This function is equivalent to set().
     *
-    * @param  variable as string
+    * @param  variable name
     * @return Variable object.
     */
-   public static Variable get(String str) {
-      Variable v = variables.get(str);
+   public static Variable get(String name) {
+      Variable v = variables.get(name);
       if (v == null) {
-         v = new Variable(str);
-         variables.put(str, v);
+         v = new Variable(name);
+         variables.put(name, v);
       }
       return v;
    } // get
