@@ -13,8 +13,8 @@ public class TestPrint {
 
    public static void main(String[] args) {
 
-      Variable X = VarCache.get("$X");
-      Variable Y = VarCache.get("$Y");
+      Variable X = Variable.instance("$X");
+      Variable Y = Variable.instance("$Y");
       Constant P = new Constant("Persian");
 
       // Set up the knowledge base.
