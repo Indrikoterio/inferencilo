@@ -182,6 +182,9 @@ public class Make {
       else if (s.equals("!")) {  // cut
          return new Cut();
       }
+      else if (s.equals("fail")) {
+         return new Fail();
+      }
       else if (s.equals("nl")) {  // new line
          return new NewLine();
       }
