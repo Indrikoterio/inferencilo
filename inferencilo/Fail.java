@@ -1,8 +1,9 @@
 /**
  * Fail
  *
- * Defines logical 'Fail' operator.
+ * Defines the logical 'Fail' operator.
  *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -15,12 +16,12 @@ public class Fail extends Operator implements Goal {
    public Fail() { }
 
    public String toString() {
-      return " Fail ";
+      return "FAIL";
    }
 
    public SolutionNode getSolver(KnowledgeBase knowledge,
-                                         SubstitutionSet parentSolution,
-                                         SolutionNode parentNode) {
+                                 SubstitutionSet parentSolution,
+                                 SolutionNode parentNode) {
       return new FailSolutionNode(this, knowledge, parentSolution, parentNode);
    }
 
