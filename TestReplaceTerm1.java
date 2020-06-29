@@ -14,10 +14,10 @@ public class TestReplaceTerm1 {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
-      Variable x   = new Variable("$X");
-      Variable y   = new Variable("$Y");
-      Variable z   = new Variable("$Z");
-      Variable out = new Variable("$Out");
+      Variable x   = Variable.instance("$X");
+      Variable y   = Variable.instance("$Y");
+      Variable z   = Variable.instance("$Z");
+      Variable out = Variable.instance("$Out");
 
       Constant test = new Constant("test");
 
