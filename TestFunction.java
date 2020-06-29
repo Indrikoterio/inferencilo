@@ -16,20 +16,20 @@ public class TestFunction {
 
    public static void main(String[] args) {
 
-      Variable w = new Variable("$W");
-      Variable x = new Variable("$X");
-      Variable y = new Variable("$Y");
-      Variable z = new Variable("$Z");
+      Variable w = Variable.instance("$W");
+      Variable x = Variable.instance("$X");
+      Variable y = Variable.instance("$Y");
+      Variable z = Variable.instance("$Z");
 
-      Variable h = new Variable("$H");
-      Variable t = new Variable("$T");
-      Variable t2 = new Variable("$T2");
+      Variable h = Variable.instance("$H");
+      Variable t = Variable.instance("$T");
+      Variable t2 = Variable.instance("$T2");
 
-      Variable in = new Variable("$In");
-      Variable in_err = new Variable("$InErr");
-      Variable out = new Variable("$Out");
-      Variable out_err = new Variable("$OutErr");
-      Variable err2 = new Variable("$Err2");
+      Variable in = Variable.instance("$In");
+      Variable in_err = Variable.instance("$InErr");
+      Variable out = Variable.instance("$Out");
+      Variable out_err = Variable.instance("$OutErr");
+      Variable err2 = Variable.instance("$Err2");
 
       Constant function_test = new Constant("function_test");
       Constant bip_test = new Constant("bip_test");
