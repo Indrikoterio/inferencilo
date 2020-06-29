@@ -5,7 +5,7 @@
  * Constant stores a string value, which may represent a number.
  * It is instantiated as: new Constant("red").
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -20,8 +20,8 @@ public class TestConstant {
    public static void main(String[] args) {
 
       // Set up the knowledge base.
-      Variable X   = new Variable("$X");
-      Variable Out = new Variable("$Out");
+      Variable X   = Variable.instance("$X");
+      Variable Out = Variable.instance("$Out");
 
       Constant test_constant = new Constant("test_constant");
       Constant red = new Constant("red");
