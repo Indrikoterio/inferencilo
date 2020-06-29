@@ -47,14 +47,14 @@ public class TestFunction {
 
          new Rule(new Complex("function_test($L)"),
             new And(
-               /* new Unify( VarCache.get("$X"), new Constant("This is OK. This works.") ), */
+               /* new Unify( Variable.instance("$X"), new Constant("This is OK. This works.") ), */
                new Unify("$X = A"),
                new Unify("$Y = B"),
                new Unify(
-                  new ChaChaCha(VarCache.get("$X"), VarCache.get("$Y")),
-                  VarCache.get("$M")
+                  new ChaChaCha(Variable.instance("$X"), Variable.instance("$Y")),
+                  Variable.instance("$M")
                ),
-               /* new Unify( VarCache.get("$L"), VarCache.get("$M") ) */
+               /* new Unify( Variable.instance("$L"), Variable.instance("$M") ) */
                new Unify("$L = $M")
             )
          ),
@@ -63,7 +63,7 @@ public class TestFunction {
             new And(
                new Unify(
                   new Join(Make.term("article(the)"), Make.term("noun(city)")),
-                  VarCache.get("$X")
+                  Variable.instance("$X")
                )
             )
          ),
