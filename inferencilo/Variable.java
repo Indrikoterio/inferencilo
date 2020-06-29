@@ -164,4 +164,20 @@ public class Variable implements Unifiable {
       return newVar;
    }  // standardizeVariablesApart
 
+
+   /**
+    * displayCache
+    *
+    * This method displays entries in the variable cache.
+    * It's useful for debugging.
+    */
+   public static void displayCache() {
+      System.out.println("---------- Variable Cache ----------");
+      for (String key : cache.keySet()) {
+         Variable v = cache.get(key);
+         System.out.println("" + v);
+      }
+      System.out.println("------------------------------------");
+   } // displayCache
+
 }  // Variable
