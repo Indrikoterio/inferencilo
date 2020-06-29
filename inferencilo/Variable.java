@@ -25,7 +25,7 @@ public class Variable implements Unifiable {
    /**
     * constructor
     *
-    * Note: In this implemenation, variable names should
+    * Note: In this implementation, variable names should
     * start with a $ sign. Eg. $X.
     *
     * @param  name of variable
@@ -35,7 +35,21 @@ public class Variable implements Unifiable {
       this.name = name;
    }
 
+
    /**
+    * instance
+    *
+    * Factory method to produce Variables.
+    *
+    * @param  name of Variable
+    * @return Variable
+    */
+   public static Variable instance(String name) {
+      return new Variable(name);
+   }
+
+
+   /*
     * copy constructor
     *
     * Creates a Variable with the same name as the one given,
@@ -43,10 +57,11 @@ public class Variable implements Unifiable {
     *
     * @param variable to copy
     */
-   public Variable(Variable v) {
+   private Variable(Variable v) {
       this.id = nextId++;
       this.name = v.name();
    }
+
 
    /**
     * toString
