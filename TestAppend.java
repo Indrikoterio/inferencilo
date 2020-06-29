@@ -20,9 +20,9 @@ public class TestAppend {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
-      Variable X   = new Variable("$X");
-      Variable Y   = new Variable("$Y");
-      Variable Out = new Variable("$Out");
+      Variable X   = Variable.instance("$X");
+      Variable Y   = Variable.instance("$Y");
+      Variable Out = Variable.instance("$Out");
       Constant test_append = new Constant("test_append");
       Constant orange = new Constant("orange");
 
