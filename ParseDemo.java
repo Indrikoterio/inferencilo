@@ -93,7 +93,7 @@ class ParseDemo {
          System.out.print("\n");
       }
       else {
-         System.out.println("No solution for " + ruleFunctor + ".");
+         System.out.println("\nNo solution for " + ruleFunctor + ".");
       }
    } // oneSolution
 
