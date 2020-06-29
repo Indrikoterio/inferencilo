@@ -41,7 +41,7 @@ public class VarCache {
    public static Variable get(String name) {
       Variable v = variables.get(name);
       if (v == null) {
-         v = new Variable(name);
+         v = Variable.instance(name);
          variables.put(name, v);
       }
       return v;
