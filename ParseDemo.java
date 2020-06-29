@@ -30,7 +30,8 @@
  * The next step is to convert the above list into terms which identify
  * parts of speech. For example:
  *
- * [pronoun(They, subject, plural), verb(envy, present, base), pronoun(us, object, plural), period(.)]
+ * [pronoun(They, subject, third, plural), verb(envy, present, base),
+ *          pronoun(us, object, first, plural), period(.)]
  *
  * Many words can have more than one part of speech. The word 'envy', for
  * example, can be a noun or a verb. In order to convert a list of word
