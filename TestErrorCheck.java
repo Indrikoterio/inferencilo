@@ -14,12 +14,12 @@ public class TestErrorCheck {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
-      Variable x   = new Variable("$X");
-      Variable y   = new Variable("$Y");
-      Variable z   = new Variable("$Z");
+      Variable x   = Variable.instance("$X");
+      Variable y   = Variable.instance("$Y");
+      Variable z   = Variable.instance("$Z");
 
-      Variable inErr  = new Variable("$InErr");
-      Variable outErr = new Variable("$OutErr");
+      Variable inErr  = Variable.instance("$InErr");
+      Variable outErr = Variable.instance("$OutErr");
 
       Constant test = new Constant("test");
       Constant error1 = new Constant("Error 1");
