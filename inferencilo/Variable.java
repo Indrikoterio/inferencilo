@@ -30,7 +30,7 @@ public class Variable implements Unifiable {
     *
     * @param  name of variable
     */
-   public Variable(String name) {
+   private Variable(String name) {
       this.id = nextId++;
       this.name = name;
    }
