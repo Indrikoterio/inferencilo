@@ -8,6 +8,19 @@
  * $X, $Y, $Noun. This was done so that Constants which begin with a capital
  * letter do not have to be put inside quote marks. (Harold, instead of "Harold".)
  *
+ * This class has a cache of Variables. Why is this necessary? Consider this rule:
+ *
+ * grandfather($X, $Y) :- father($X, $Z), father($Z, $Y).
+ *
+ * The complex terms for 'father' can be implemented in Java as:
+ *    new Complex("father($X, $Z)")
+ * and
+ *    new Complex("father($Z, $Y)")
+ *
+ * The class Complex will create the variable $Z in the first instantiation,
+ * and save it in the cache. The second instantiation must use the same Variable.
+ * It gets this from the cache.
+ *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
@@ -21,6 +34,8 @@ public class Variable implements Unifiable {
    private String name = null;
    private static int nextId = 1;
    private int id;
+
+   private static HashMap<String, Variable> cache = new HashMap<>();
 
    /**
     * constructor
@@ -45,7 +60,12 @@ public class Variable implements Unifiable {
     * @return Variable
     */
    public static Variable instance(String name) {
-      return new Variable(name);
+      Variable v = cache.get(name);
+      if (v == null) {
+         v = new Variable(name);
+         cache.put(name, v);
+      }
+      return v;
    }
 
 
