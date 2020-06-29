@@ -33,7 +33,7 @@ public class TestList {
             new Complex("goal2($H, $H2, $T)"),
             new Unify(
                jobs,
-               //new PList(VarCache.get("$H"), VarCache.get("$H2"), VarCache.get("$T"))
+               //new PList(Variable.instance("$H"), Variable.instance("$H2"), Variable.instance("$T"))
                PList.make("[$H, $H2 | $T]")
             )
          ),
@@ -48,12 +48,12 @@ public class TestList {
             new Unify(
                jobs,
                PList.make("[$_ | $T]")
-               // new PList(Anon.anon, VarCache.get("$T"))
+               // new PList(Anon.anon, Variable.instance("$T"))
             )
          ),
          new Rule(
             new Complex("goal5($X)"),
-            new Unify(jobs4, VarCache.get("$X"))
+            new Unify(jobs4, Variable.instance("$X"))
          ),
          new Rule(
             new Complex("goal6($H, $T)"),
