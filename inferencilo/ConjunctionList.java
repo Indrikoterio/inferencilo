@@ -22,23 +22,23 @@ public class ConjunctionList {
 
    public static Constant middle_of_list = new Constant("middle_of_list");
 
-   public static Variable in  = new Variable("$In");
-   public static Variable i2  = new Variable("$I2");
-   public static Variable i3  = new Variable("$I3");
-   public static Variable i4  = new Variable("$I4");
-   public static Variable out = new Variable("$Out");
-   public static Variable h   = new Variable("$H");
-   public static Variable t   = new Variable("$T");
+   public static Variable in  = Variable.instance("$In");
+   public static Variable i2  = Variable.instance("$I2");
+   public static Variable i3  = Variable.instance("$I3");
+   public static Variable i4  = Variable.instance("$I4");
+   public static Variable out = Variable.instance("$Out");
+   public static Variable h   = Variable.instance("$H");
+   public static Variable t   = Variable.instance("$T");
 
-   public static Variable k1 = new Variable("$K1");
-   public static Variable k2 = new Variable("$K2");
-   public static Variable k3 = new Variable("$K3");
+   public static Variable k1 = Variable.instance("$K1");
+   public static Variable k2 = Variable.instance("$K2");
+   public static Variable k3 = Variable.instance("$K3");
 
-   public static Variable start          = new Variable("$Start");
-   public static Variable middle         = new Variable("$Middle");
-   public static Variable end_of_list    = new Variable("$End");
+   public static Variable start          = Variable.instance("$Start");
+   public static Variable middle         = Variable.instance("$Middle");
+   public static Variable end_of_list    = Variable.instance("$End");
 
-   public static Variable out_list  = new Variable("$OutList");
+   public static Variable out_list  = Variable.instance("$OutList");
    public static Complex  the_list  = new Complex("the_list(list)");
 
    /**
