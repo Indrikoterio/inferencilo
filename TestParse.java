@@ -68,7 +68,7 @@ public class TestParse {
                          );
       Rule r3 = new Rule("convert_words([$H | $T], [$H | $T2])",
                             new And(
-                               //new Not(new Unify(VarCache.get("$H"), new Complex("word(after)"))),
+                               //new Not(new Unify(Variable.instance("$H"), new Complex("word(after)"))),
                                new Not(new Unify("$H = word(after)")),
                                new Complex("convert_words($T, $T2)")
                             )
@@ -78,7 +78,7 @@ public class TestParse {
       kb.addRule(r3);
 
       System.out.print("Test Parse: ");
-      Complex goal = new Complex(new Constant("convert_words"), plist, VarCache.get("$X"));
+      Complex goal = new Complex(new Constant("convert_words"), plist, Variable.instance("$X"));
 
       try {
          String[] expected = {
