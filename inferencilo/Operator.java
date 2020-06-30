@@ -14,7 +14,7 @@ import java.util.*;
 
 public abstract class Operator implements Goal {
 
-   private ArrayList<Goal> operands;
+   private List<Goal> operands;
 
    /**
     * constructor
@@ -30,7 +30,7 @@ public abstract class Operator implements Goal {
     *
     * @param list of operands
     */
-   public Operator(ArrayList<Goal> operands) {
+   public Operator(List<Goal> operands) {
       this.operands = operands;
    }
 
@@ -58,7 +58,7 @@ public abstract class Operator implements Goal {
     *
     * @return all operands
     */
-   public ArrayList<Goal> getOperands() {
+   public List<Goal> getOperands() {
       return operands;
    }
 
