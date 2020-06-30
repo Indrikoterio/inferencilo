@@ -23,14 +23,14 @@ public class TestFunctor {
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex(get, Y),
             new And(
-               new Unify(X, new Functor(term)),
+               new Functor(term, X),
                new Unify(X, Y)
             )
          )
       );
 
       // Test parsing.
-      Rule rule = new Rule("get($Y) :- $X = cat(mammal, carnivore), $Y = functor($X).");
+      Rule rule = new Rule("get($Y) :- $X = cat(mammal, carnivore), functor($X, $Y).");
       kb.addRule(rule);
 
       System.out.print("Test Functor: ");
