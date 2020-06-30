@@ -27,7 +27,7 @@ public class Or extends Operator implements Goal {
     *
     * @param  list operands
     */
-   public Or(ArrayList<Goal> operands) {
+   public Or(List<Goal> operands) {
       super(operands);
    }
 
