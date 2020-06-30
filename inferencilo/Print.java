@@ -1,19 +1,29 @@
 /**
  * Print
  *
- * This built-in function prints out terms. If the first term has format
- * specifiers (%s), it is treated as a format string. For example,
+ * This built-in function prints out terms. If the first term is a
+ * Constant which has format specifiers (%s), it is treated as a
+ * format string. For example,
  *
- *    $Name = John, $Age = 23, print(%s is %s years old., $Name, $Age)
+ *  $Name = John, $Age = 23, print(%s is %s years old., $Name, $Age)
  *
  * will print out,
  *
- *    John is 23 years old.
+ *  John is 23 years old.
  *
- * Commas and new lines (\n) must be escaped with a double backslash,
- * for example:
+ * Commas which do not separate arguments, but are intended to be
+ * printed, must be escaped with a backslash, for example:
  *
- *    print(%s\\, my friend\\, is $s years old.\\n, $Name, $Age)
+ *  print(%s\, my friend\, is $s years old.\n, $Name, $Age)
+ *
+ * will print out,
+ *
+ *  John, my friend, is 23 years old.
+ *
+ * If the string is compiled within a Java source file, the back-
+ * slashes must be doubled.
+ *
+ *   print(%s\\, my friend\\, is $s years old.\\n, $Name, $Age)
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -160,6 +170,9 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     * evaluate
     *
     * Prints out an identifying message and the given terms.
+    *
+    * @param  substitution set
+    * @return unifiable (anonymous variable)
     */
    public Unifiable evaluate(SubstitutionSet ss) {
 
