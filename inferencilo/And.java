@@ -27,7 +27,7 @@ public class And extends Operator implements Goal {
     *
     * @param  list of operands
     */
-   public And(ArrayList<Goal> operands) {
+   public And(List<Goal> operands) {
       super(operands);
    }
 
