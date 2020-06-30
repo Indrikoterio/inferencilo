@@ -3,12 +3,14 @@
  *
  * A logical variable, which can be bound or unbound.
  *
- * Prolog variables are strings which begin with a capital letter, eg. X, Y, Noun.
- * In this inference engine, a Variable begins with a dollar sign and a letter:
- * $X, $Y, $Noun. This was done so that Constants which begin with a capital
- * letter do not have to be put inside quote marks. (Harold, instead of "Harold".)
+ * Prolog variables are strings which begin with a capital letter,
+ * eg. X, Y, Noun. In this inference engine, a Variable begins with
+ * a dollar sign and a letter: $X, $Y, $Noun. This was done so that
+ * Constants which begin with a capital letter do not have to be put
+ * inside quote marks. (Harold, instead of "Harold".)
  *
- * This class has a cache of Variables. Why is this necessary? Consider this rule:
+ * This class has a cache of Variables. Why is this necessary?
+ * Consider this rule:
  *
  * grandfather($X, $Y) :- father($X, $Z), father($Z, $Y).
  *
@@ -17,9 +19,9 @@
  * and
  *    new Complex("father($Z, $Y)")
  *
- * The class Complex will create the variable $Z in the first instantiation,
- * and save it in the cache. The second instantiation must use the same Variable.
- * It gets this from the cache.
+ * The class Complex will create the variable $Z in the first
+ * instantiation, and save it in the cache. The second instantiation
+ * must use the same Variable. It gets this from the cache.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -166,18 +168,28 @@ public class Variable implements Unifiable {
 
 
    /**
-    * displayCache
+    * printCache
     *
     * This method displays entries in the variable cache.
     * It's useful for debugging.
     */
-   public static void displayCache() {
+   public static void printCache() {
       System.out.println("---------- Variable Cache ----------");
       for (String key : cache.keySet()) {
          Variable v = cache.get(key);
          System.out.println("" + v);
       }
       System.out.println("------------------------------------");
-   } // displayCache
+   } // printCache
+
+
+   /**
+    * cacheSize
+    *
+    * Print the size of the Variable cache.
+    */
+   public static void cacheSize() {
+      System.out.println("Variable cache size: " + cache.size());
+   }
 
 }  // Variable
