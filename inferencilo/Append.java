@@ -1,15 +1,17 @@
 /**
  * Append
  *
- * This class implements a built-in predicate which appends terms to
- * make a PList. Example:
+ * This class implements a built-in predicate which appends terms
+ * to make a PList. For example:
  *
- *   append(constant, Plist, Another_Plist, Resulting_Plist)
+ *   $X = a, append($X, b, [c, d, e], [f, g], $OutList)
  *
- * The last argument is an output argument. The input arguments can be
- * Constants, Variables, Complex terms, or PLists.
+ * The $OutList will bind to [a, b, c, d, e, f, g]
  *
- * @author  Klivo
+ * The last argument is an output argument. The input arguments can
+ * be Constants, Variables, Complex terms, or PLists.
+ *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -19,7 +21,7 @@ import java.util.*;
 
 public class Append extends BuiltInPredicate implements Unifiable, Goal {
 
-   private static final String name = " APPEND ";
+   private static final String name = "APPEND";
 
    /**
     * constructor
@@ -152,4 +154,4 @@ public class Append extends BuiltInPredicate implements Unifiable, Goal {
 
    }  // evaluate()
 
-}
+} // Append
