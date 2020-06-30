@@ -9,7 +9,8 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Or extends Operator implements Goal {
 
@@ -70,4 +71,4 @@ public class Or extends Operator implements Goal {
       return " OR " + operandString();
    }
 
-}
+} // Or
