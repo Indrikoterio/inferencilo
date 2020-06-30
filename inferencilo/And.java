@@ -9,7 +9,8 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class And extends Operator implements Goal {
 
@@ -71,4 +72,4 @@ public class And extends Operator implements Goal {
       return " AND " + operandString();
    }
 
-}
+} // And
