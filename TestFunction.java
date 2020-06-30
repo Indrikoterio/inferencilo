@@ -5,7 +5,7 @@
  *
  * Useful reference: https://swish.swi-prolog.org/
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -32,7 +32,7 @@ public class TestFunction {
       Variable err2 = Variable.instance("$Err2");
 
       Constant function_test = new Constant("function_test");
-      Constant bip_test = new Constant("bip_test");
+      Constant bip_test  = new Constant("bip_test");
       Constant bip3_test = new Constant("bip3_test");
       Constant bip4_test = new Constant("bip4_test");
       Constant bip5_test = new Constant("bip5_test");
@@ -181,68 +181,68 @@ public class TestFunction {
       System.out.print("Test Function: ");
 
       try {
-      goal = new Complex(function_test, w);
-      String[] expected = {"A + B + Cha Cha Cha!"};
-      Solutions.verifyAll(goal, kb, expected, 1);
+         goal = new Complex(function_test, w);
+         String[] expected = {"A + B + Cha Cha Cha!"};
+         Solutions.verifyAll(goal, kb, expected, 1);
 
-      System.out.print("Test Join: ");
-      goal = new Complex("join_test($X)");
-      String[] expected2 = {"noun phrase(the city)"};
-      Solutions.verifyAll(goal, kb, expected2, 1);
+         System.out.print("Test Join: ");
+         goal = new Complex("join_test($X)");
+         String[] expected2 = {"noun phrase(the city)"};
+         Solutions.verifyAll(goal, kb, expected2, 1);
 
-      System.out.print("Test Built-In Predicate: ");
-      goal = new Complex(bip_test, z);
-      String[] expected3 = {"sept mille dance"};
-      Solutions.verifyAll(goal, kb, expected3, 1);
+         System.out.print("Test Built-In Predicate: ");
+         goal = new Complex(bip_test, z);
+         String[] expected3 = {"sept mille dance"};
+         Solutions.verifyAll(goal, kb, expected3, 1);
 
-      System.out.print("Test Built-In Predicate, 3 arguments: ");
-      goal = new Complex(bip3_test, h, t);
-      String[] expected4 = {"[2, 3, 4]"};
-      Solutions.verifyAll(goal, kb, expected4, 2);
+         System.out.print("Test Built-In Predicate, 3 arguments: ");
+         goal = new Complex(bip3_test, h, t);
+         String[] expected4 = {"[2, 3, 4]"};
+         Solutions.verifyAll(goal, kb, expected4, 2);
 
-      System.out.print("Test Built-In Predicate, 4 arguments: ");
-      goal = new Complex(bip4_test, x, y);
-      result = solveIt(goal, kb);
-      System.out.println(result.getTerm(1) + " " + result.getTerm(2));
-
-      System.out.print("Test Built-In Predicate, 5 arguments:\n");
-      goal = new Complex(bip5_test, x, y);
-      //result = solveIt(goal, kb);
-      //System.out.println(result.getTerm(1) + " " + result.getTerm(2));
-
-      root = goal.getSolver(kb, new SubstitutionSet(), null);
-      solution = root.nextSolution();
-      count = 0;
-      while (solution != null) {
-         result = (Complex)goal.replaceVariables(solution);
+         System.out.print("Test Built-In Predicate, 4 arguments: ");
+         goal = new Complex(bip4_test, x, y);
+         result = solveIt(goal, kb);
          System.out.println(result.getTerm(1) + " " + result.getTerm(2));
+
+         System.out.print("Test Built-In Predicate, 5 arguments:\n");
+         goal = new Complex(bip5_test, x, y);
+         //result = solveIt(goal, kb);
+         //System.out.println(result.getTerm(1) + " " + result.getTerm(2));
+
+         root = goal.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
-         count++; if (count > 30) break;  // for safety
-      }
+         count = 0;
+         while (solution != null) {
+            result = (Complex)goal.replaceVariables(solution);
+            System.out.println(result.getTerm(1) + " " + result.getTerm(2));
+            solution = root.nextSolution();
+            count++; if (count > 30) break;  // for safety
+         }
 
 
-      /*
-      System.out.print("Test FunctorIs/2:\n");
-      goal = new Complex(test_functor_is, w);
-      root = goal.getSolver(kb, new SubstitutionSet(), null);
-      solution = root.nextSolution();
-      count = 0;
-      while (solution != null) {
-         result = (Complex)goal.replaceVariables(solution);
-         System.out.println(result.getTerm(1));
+         /*
+         System.out.print("Test FunctorIs/2:\n");
+         goal = new Complex(test_functor_is, w);
+         root = goal.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
-         count++; if (count > 5) break;  // for safety
-      }
-      */
+         count = 0;
+         while (solution != null) {
+            result = (Complex)goal.replaceVariables(solution);
+            System.out.println(result.getTerm(1));
+            solution = root.nextSolution();
+            count++; if (count > 5) break;  // for safety
+         }
+         */
 
-      System.out.print("Test FunctorIs/2: ");
-      goal = new Complex(test_functor_is, w);
-      String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
-      Solutions.verifyAll(goal, kb, expected5, 1);
+         System.out.print("Test FunctorIs/2: ");
+         goal = new Complex(test_functor_is, w);
+         String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
+         Solutions.verifyAll(goal, kb, expected5, 1);
 
       } catch (TimeOverrunException tox) { }
-
    }
+
 
    /*
     * solveIt
@@ -260,4 +260,4 @@ public class TestFunction {
       return (Complex)goal.replaceVariables(solution);
    }
 
-}
+} // TestFunction
