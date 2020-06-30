@@ -33,9 +33,6 @@ java TestErrorCheck
 javac TestList.java
 java TestList
 
-javac TestParse.java
-java TestParse
-
 javac TestAppend.java
 java TestAppend
 
