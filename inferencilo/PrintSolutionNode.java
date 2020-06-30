@@ -39,6 +39,7 @@ public class PrintSolutionNode extends SolutionNode {
     * then unify the result(s) with the output arguments.
     *
     * @return  new substitution set
+    * @throws  TimeOverrunException
     */
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
