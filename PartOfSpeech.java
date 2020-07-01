@@ -260,15 +260,19 @@ class PartOfSpeech {
    /*
     * makePunctuation
     *
-    * Creates a fact for punctuation. For example:
+    * Creates a term for punctuation. For example:
+    *
     *     word(., punctuation(.))
     *
+    * If the given symbol does not represent punctuation,
+    * return null.
+    *
     * @param  symbol as string
-    * @return complex term or null
+    * @return term or null
     */
    private static Complex makePunctuation(String sym) {
-      if (sym.equals(".") || sym.equals("?") || sym.equals("!") ||
-          sym.equals("\"")) {
+      if (sym.equals(".") || sym.equals("?") ||
+          sym.equals("!") || sym.equals("\"")) {
          Constant symbol = new Constant(sym);
          Complex term = new Complex(punctuation, symbol);
          return new Complex(WORD, symbol, term);
@@ -325,21 +329,35 @@ class PartOfSpeech {
 
 
    /*
-    * makeYouFact
+    * makeYouFacts
     *
-    * This method creates a fact for the pronoun 'you', eg.
+    * This method creates facts for the pronoun 'you', for example.
     *       word(you, pronoun(you, subject, second, singular)).
-    *       word(you, pronoun(you, object, second, plural)).
     *
     * @param  word
-    * @param  case (subject or object)
-    * @param  plurality
-    * @return fact
+    * @return facts
     */
-   private static Complex makeYouFact(String word, Constant sub_obj, Constant plurality) {
-      Complex term = new Complex(pronoun, new Constant(word), sub_obj, second, plurality);
-      return new Complex(WORD, new Constant(word), term);
-   } // makeYouFact
+   private static List<Rule> makeYouFacts(String word) {
+
+      Constant conWord = new Constant(word);
+      List<Rule> facts = new ArrayList<Rule>();
+
+      List<Complex> pronouns = Arrays.asList(
+         new Complex(pronoun, conWord, subject, second, singular),
+         new Complex(pronoun, conWord, object, second, singular),
+         new Complex(pronoun, conWord, subject, second, plural),
+         new Complex(pronoun, conWord, object, second, plural)
+      );
+
+      pronouns
+         .stream()
+         .map(term -> new Complex(WORD, conWord, term))
+         .map(f -> new Rule(f))
+         .forEach(fact -> facts.add(fact));
+
+      return facts;
+
+   } // makeYouFacts
 
 
    /*
@@ -540,29 +558,17 @@ class PartOfSpeech {
       Rule     fact;
 
       String low = lowerCaseExceptI(word);
-      List<Rule> facts = new ArrayList<Rule>();
+
+      // Handle pronoun 'you', which is very ambiguous.
+      if (low.equals("you")) return makeYouFacts(word);
 
       int length = word.length();
       if (length == 1) { // Maybe this is punctuation.
-         term = makePunctuation(word);
-         if (term != null) {
-            facts.add(new Rule(term));
-            return facts;
-         }
+         Complex f = makePunctuation(word);
+         if (f != null) return Arrays.asList(new Rule(f));
       }
 
-      // Handle pronoun 'you', which is very ambiguous.
-      if (low.equals("you")) {
-         fact = new Rule(makeYouFact(word, subject, singular));
-         facts.add(fact);
-         fact = new Rule(makeYouFact(word, subject, plural));
-         facts.add(fact);
-         fact = new Rule(makeYouFact(word, object, singular));
-         facts.add(fact);
-         fact = new Rule(makeYouFact(word, object, plural));
-         facts.add(fact);
-         return facts;
-      }
+      List<Rule> facts = new ArrayList<Rule>();
 
       String[] posData = get(word);
       if (posData == null) {
@@ -607,16 +613,10 @@ class PartOfSpeech {
     */
    public static List<Rule> makeFacts(List<String> words) {
       List<Rule> facts = new ArrayList<Rule>();
-      List<Rule> wordFacts;
-      for (String word : words) {
-         wordFacts = makeFacts(word);
-         if (wordFacts != null) {
-            facts.addAll(wordFacts);
-         }
-      }
+      words.stream()
+           .map(word -> makeFacts(word))
+           .forEach(wordFacts -> facts.addAll(wordFacts));
       return facts;
    } // makeFacts
 
-
 }  // PartOfSpeech
-
