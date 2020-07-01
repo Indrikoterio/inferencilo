@@ -1,15 +1,38 @@
 /**
  * PList
  *
- * Represents a Prolog list. Eg.:
- *     [a, b, c], [X, Y, Z], [X, Y | Z]
+ * PList represents a singly linked list. This list object is called
+ * PList (i.e. Prolog List) to avoid confusion with Java Lists.
  *
- * It's called PList to avoid confusion with Java Lists.
+ * Examples:
+ *            [a, b, c]
+ *            [$X, $Y, $Z]
+ *            [$X, $Y | $Z]
  *
- * Note: Prolog Lists are recursive structures.
- * [a, b, c] is a representation of [a [b [c]]]
+ * Note: PLists are recursive structures. [a, b, c] can be represented
+ * as [a [b [c]]].
  *
- * @author  Klivo
+ * A pipe, |, is used to divide the list between head terms and the tail,
+ * which is everything left over. Thus, in the following code,
+ *
+ *    [a, b, c, d, e] = [$X, $Y | $Z]
+ *
+ *  $X is bound to 'a'
+ *  $Y is bound to 'b'
+ *  $Z is bount to [c, d, e]
+ *
+ * There are several ways to instantiate a PList. For example:
+ *
+ * 1. PList list = new PList(false, a, b, c);   // a, b, and c are Constants
+ * 2. PList list = PList.make("[a, b, c]");     // Parse string.
+ *
+ * 3. PList list = new PList(true, a, b, c, X);  // X is a tail Variable
+ * 4. PList list = PList.make("[a, b, c | $X]"); // Parse string.
+ *
+ * For the constructor method, the first parameter must be true if
+ * the last item is a tail variable (See #3.).
+ *
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
