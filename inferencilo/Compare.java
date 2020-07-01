@@ -4,7 +4,7 @@
  * This is a base class for built-in predicates which compare terms,
  * such as FunctorIs/2.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -85,4 +85,4 @@ public abstract class Compare extends BuiltInPredicate implements Unifiable, Goa
       return castComplex(u, ss);
    }
 
-}
+} // Compare
