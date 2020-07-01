@@ -37,7 +37,7 @@ public class TestFunction {
       Constant bip4_test = new Constant("bip4_test");
       Constant bip5_test = new Constant("bip5_test");
       Constant bip5_rule = new Constant("bip5_rule");
-      Constant test_functor_is = new Constant("test_functor_is");
+      Constant test_functor = new Constant("test_functor");
       Constant simple_test  = new Constant("simple_test");
       Constant simple_test2 = new Constant("simple_test2");
 
@@ -145,7 +145,7 @@ public class TestFunction {
             new Complex(bip5_rule, PList.empty, PList.empty, X, X)
          ),
 
-         new Rule(new Complex(test_functor_is, Y),
+         new Rule(new Complex(test_functor, Y),
             new And(
                new Unify(X, term),
                new Functor(X, new Constant("symptom")),
@@ -153,7 +153,7 @@ public class TestFunction {
             )
          ),
 
-         new Rule(new Complex(test_functor_is, Y),
+         new Rule(new Complex(test_functor, Y),
             new And(
                new Unify(X, term),
                new Not(
@@ -163,7 +163,7 @@ public class TestFunction {
             )
          ),
 
-         new Rule(new Complex(test_functor_is, Y),
+         new Rule(new Complex(test_functor, Y),
             new And(
                new Unify(X, term),
                new Functor(X, new Constant("symp*")),
@@ -209,8 +209,6 @@ public class TestFunction {
 
          System.out.print("Test Built-In Predicate, 5 arguments:\n");
          goal = new Complex(bip5_test, X, Y);
-         //result = solveIt(goal, kb);
-         //System.out.println(result.getTerm(1) + " " + result.getTerm(2));
 
          root = goal.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
@@ -222,23 +220,8 @@ public class TestFunction {
             count++; if (count > 30) break;  // for safety
          }
 
-
-         /*
-         System.out.print("Test FunctorIs/2:\n");
-         goal = new Complex(test_functor_is, W);
-         root = goal.getSolver(kb, new SubstitutionSet(), null);
-         solution = root.nextSolution();
-         count = 0;
-         while (solution != null) {
-            result = (Complex)goal.replaceVariables(solution);
-            System.out.println(result.getTerm(1));
-            solution = root.nextSolution();
-            count++; if (count > 5) break;  // for safety
-         }
-         */
-
          System.out.print("Test FunctorIs/2: ");
-         goal = new Complex(test_functor_is, W);
+         goal = new Complex(test_functor, W);
          String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
          Solutions.verifyAll(goal, kb, expected5, 1);
 
