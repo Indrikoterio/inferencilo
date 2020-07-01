@@ -3,7 +3,7 @@
  *
  * This interface defines a predicate calculus expression.
  * It is the base of unifiable objects (Constants, Variables,
- * Complex terms) and goal objects (Complex terms and operators.
+ * Complex terms) and goal objects (Complex terms and operators).
  *
  * The method standardizeVariablesApart() creates unique
  * variables every time the inference engine tries to solve
@@ -31,12 +31,13 @@ public interface Expression {
     *
     * When the inference engine has found a solution to a query, in order
     * to display the solution in a useable manner, it is necessary to
-    * replace all variables with the constants to which they have been
-    * bound. The bindings are recorded in the substitution set.
+    * replace all variables with the constants to which they have been bound.
+    * The bindings are recorded in the 'substitution set'.
     *
     * For example, suppose that our query was 'grandfather(Frank, $X)',
     * and in our resulting substitution set, $X was bound to $Y was bound
     * to Cindy. $X would be replaced by Cindy to give:
+    *
     *     grandfather(Frank, Cindy).
     *
     * @param   substitution set
