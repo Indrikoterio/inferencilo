@@ -24,6 +24,7 @@ public class Solutions {
     * @param  goal
     * @param  kb  - Knowledge Base
     * @return   solution as strings
+    * @throws TimeOverrunException
     */
    public static String solve(Complex goal, KnowledgeBase kb) throws TimeOverrunException {
       SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
@@ -45,6 +46,7 @@ public class Solutions {
     * @param  goal
     * @param  kb  - Knowledge Base
     * @return   solution as list of strings
+    * @throws TimeOverrunException
     */
    public static ArrayList<String> solveAll(Complex goal, KnowledgeBase kb)
                                    throws TimeOverrunException{
@@ -76,6 +78,7 @@ public class Solutions {
     * @param  kb  - Knowledge Base
     * @param  array of expected results
     * @param  argument index
+    * @throws TimeOverrunException
     */
    public static void verifyAll(Complex goal, KnowledgeBase kb,
                                 String[] expected, int index)
