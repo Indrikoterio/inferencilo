@@ -16,20 +16,20 @@ public class TestFunction {
 
    public static void main(String[] args) {
 
-      Variable w = Variable.instance("$W");
-      Variable x = Variable.instance("$X");
-      Variable y = Variable.instance("$Y");
-      Variable z = Variable.instance("$Z");
+      Variable W = Variable.instance("$W");
+      Variable X = Variable.instance("$X");
+      Variable Y = Variable.instance("$Y");
+      Variable Z = Variable.instance("$Z");
 
-      Variable h = Variable.instance("$H");
-      Variable t = Variable.instance("$T");
-      Variable t2 = Variable.instance("$T2");
+      Variable H = Variable.instance("$H");
+      Variable T = Variable.instance("$T");
+      Variable T2 = Variable.instance("$T2");
 
-      Variable in = Variable.instance("$In");
-      Variable in_err = Variable.instance("$InErr");
-      Variable out = Variable.instance("$Out");
-      Variable out_err = Variable.instance("$OutErr");
-      Variable err2 = Variable.instance("$Err2");
+      Variable In = Variable.instance("$In");
+      Variable In_err = Variable.instance("$InErr");
+      Variable Out = Variable.instance("$Out");
+      Variable Out_err = Variable.instance("$OutErr");
+      Variable Err2 = Variable.instance("$Err2");
 
       Constant function_test = new Constant("function_test");
       Constant bip_test  = new Constant("bip_test");
@@ -72,10 +72,10 @@ public class TestFunction {
              built_in_pred(Y) :- X = 'sept mille dance', bip(X, Y).
           */
          new Rule(
-            new Complex(bip_test, y),
+            new Complex(bip_test, Y),
             new And(
-               new Unify(x, new Constant("sept mille dance")),
-               new BuiltIn2(x, y)
+               new Unify(X, new Constant("sept mille dance")),
+               new BuiltIn2(X, Y)
             )
          ),
 
@@ -83,10 +83,10 @@ public class TestFunction {
              bip3_test(H, T) :- X = [1, 2, 3, 4], bip3(X, H, T).
           */
          new Rule(
-            new Complex(bip3_test, h, t),
+            new Complex(bip3_test, H, T),
             new And(
-               new Unify(x, PList.make("[1, 2, 3, 4]")),
-               new BuiltIn3(x, h, t)
+               new Unify(X, PList.make("[1, 2, 3, 4]")),
+               new BuiltIn3(X, H, T)
             )
          ),
 
@@ -95,11 +95,11 @@ public class TestFunction {
                                           bip4(In, Out, InErr, OutErr).
           */
          new Rule(
-            new Complex(bip4_test, x, y),
+            new Complex(bip4_test, X, Y),
             new And(
-               new Unify(w, PList.make("[first]")),
-               new Unify(z, PList.make("[first error]")),
-               new BuiltIn4(w, x, z, y)
+               new Unify(W, PList.make("[first]")),
+               new Unify(Z, PList.make("[first error]")),
+               new BuiltIn4(W, X, Z, Y)
             )
          ),
 
@@ -112,60 +112,62 @@ public class TestFunction {
              bip5_rule([H | T], [H | T2], InErr, OutErr) :-
                                        bip5_rule(T, T2, InErr, OutErr).
 
-             bip5_rule([], [], x, x).
+             bip5_rule([], [], X, X).
           ***************************************************/
 
          new Rule(
-            new Complex(bip5_test, out, out_err),
+            new Complex(bip5_test, Out, Out_err),
             new And(
-               new Unify(in, PList.make("[built, in, Hello]")),
-               new Unify(in_err, PList.make("[first error]")),
-               new Complex(bip5_rule, in, out, in_err, out_err)
+               new Unify(In, PList.make("[built, in, Hello]")),
+               new Unify(In_err, PList.make("[first error]")),
+               new Complex(bip5_rule, In, Out, In_err, Out_err)
             )
          ),
 
          new Rule(
-            new Complex(bip5_rule, in, new PList(true, h, t2), in_err, out_err),
+            new Complex(bip5_rule, In, new PList(true, H, T2), In_err, Out_err),
             new And(
-               new BuiltIn5(in, h, t, in_err, err2),
-               new Complex(bip5_rule, t, t2, err2, out_err)
+               new BuiltIn5(In, H, T, In_err, Err2),
+               new Complex(bip5_rule, T, T2, Err2, Out_err)
             )
          ),
 
          new Rule(
-            new Complex(bip5_rule, new PList(true, h, t),
-                                   new PList(true, h, t2),
-                                   in_err, out_err),
+            new Complex(bip5_rule, new PList(true, H, T),
+                                   new PList(true, H, T2),
+                                   In_err, Out_err),
             new And(
-               new Complex(bip5_rule, t, t2, in_err, out_err)
+               new Complex(bip5_rule, T, T2, In_err, Out_err)
             )
          ),
 
          new Rule(
-            new Complex(bip5_rule, PList.empty, PList.empty, x, x)
+            new Complex(bip5_rule, PList.empty, PList.empty, X, X)
          ),
 
-         new Rule(new Complex(test_functor_is, y),
+         new Rule(new Complex(test_functor_is, Y),
             new And(
-               new Unify(x, term),
-               new FunctorIs(new Constant("symptom"), x),
-               new Unify(y, new Constant("Success! #1"))
+               new Unify(X, term),
+               new Functor(X, new Constant("symptom")),
+               new Unify(Y, new Constant("Success! #1"))
             )
          ),
 
-         new Rule(new Complex(test_functor_is, y),
+         new Rule(new Complex(test_functor_is, Y),
             new And(
-               new Unify(x, term),
-               new FunctorIsNot(new Constant("symptoms"), x),
-               new Unify(y, new Constant("Success! #2"))
+               new Unify(X, term),
+               new Not(
+                  new Functor(X, new Constant("symptoms"))
+               ),
+               new Unify(Y, new Constant("Success! #2"))
             )
          ),
 
-         new Rule(new Complex(test_functor_is, y),
+         new Rule(new Complex(test_functor_is, Y),
             new And(
-               new Unify(x, term),
-               new FunctorStartsWith(new Constant("symp"), x),
-               new Unify(y, new Constant("Success! #3"))
+               new Unify(X, term),
+               new FunctorStartsWith(new Constant("symp"), X),
+               new Unify(Y, new Constant("Success! #3"))
             )
          ),
 
@@ -181,7 +183,7 @@ public class TestFunction {
       System.out.print("Test Function: ");
 
       try {
-         goal = new Complex(function_test, w);
+         goal = new Complex(function_test, W);
          String[] expected = {"A + B + Cha Cha Cha!"};
          Solutions.verifyAll(goal, kb, expected, 1);
 
@@ -191,22 +193,22 @@ public class TestFunction {
          Solutions.verifyAll(goal, kb, expected2, 1);
 
          System.out.print("Test Built-In Predicate: ");
-         goal = new Complex(bip_test, z);
+         goal = new Complex(bip_test, Z);
          String[] expected3 = {"sept mille dance"};
          Solutions.verifyAll(goal, kb, expected3, 1);
 
          System.out.print("Test Built-In Predicate, 3 arguments: ");
-         goal = new Complex(bip3_test, h, t);
+         goal = new Complex(bip3_test, H, T);
          String[] expected4 = {"[2, 3, 4]"};
          Solutions.verifyAll(goal, kb, expected4, 2);
 
          System.out.print("Test Built-In Predicate, 4 arguments: ");
-         goal = new Complex(bip4_test, x, y);
+         goal = new Complex(bip4_test, X, Y);
          result = solveIt(goal, kb);
          System.out.println(result.getTerm(1) + " " + result.getTerm(2));
 
          System.out.print("Test Built-In Predicate, 5 arguments:\n");
-         goal = new Complex(bip5_test, x, y);
+         goal = new Complex(bip5_test, X, Y);
          //result = solveIt(goal, kb);
          //System.out.println(result.getTerm(1) + " " + result.getTerm(2));
 
@@ -223,7 +225,7 @@ public class TestFunction {
 
          /*
          System.out.print("Test FunctorIs/2:\n");
-         goal = new Complex(test_functor_is, w);
+         goal = new Complex(test_functor_is, W);
          root = goal.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
          count = 0;
@@ -236,7 +238,7 @@ public class TestFunction {
          */
 
          System.out.print("Test FunctorIs/2: ");
-         goal = new Complex(test_functor_is, w);
+         goal = new Complex(test_functor_is, W);
          String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
          Solutions.verifyAll(goal, kb, expected5, 1);
 
