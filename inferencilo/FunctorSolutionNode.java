@@ -1,8 +1,20 @@
 /**
  * FunctorSolutionNode
  *
- * Solution Node for functor function.
+ * Solution Node for functor function. Functor takes 2 or 3 arguments.
  *
+ *   functor(alphabet(a, b, c), $Functor, $Arity)
+ *     $Functor binds to 'alphabet'
+ *     $Arity binds to '3'
+ *
+ * This predicate has a special feature. If the second parameter is
+ * a constant, and it has an asterisk, such as "alpha*", then the
+ * match is valid. Thus, this goal,
+ *
+ *    functor(alphabet(a, b, c), alpha*)
+ *
+ * will succeed.
+ * 
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
@@ -56,7 +68,20 @@ public class FunctorSolutionNode extends SolutionNode {
       SubstitutionSet ss = getParentSolution();
       if (num > 1) {
          Unifiable term = goal.getTerm(1);
-         ss = term.unify(new Constant(functor), ss);
+         if (term instanceof Constant) {
+            String f2 = "" + term;
+            if (f2.endsWith("*")) {
+               // Strip off asterisk.
+               f2 = f2.substring(0, f2.length() - 1);
+               if (!functor.startsWith(f2)) return null;
+            }
+            else {
+               if (!functor.equals(f2)) return null;
+            }
+         }
+         else {
+            ss = term.unify(new Constant(functor), ss);
+         }
       }
       if (num > 2) {
          Unifiable term = goal.getTerm(2);
