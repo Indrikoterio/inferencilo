@@ -220,7 +220,7 @@ public class TestFunction {
             count++; if (count > 30) break;  // for safety
          }
 
-         System.out.print("Test FunctorIs/2: ");
+         System.out.print("Test Functor/2: ");
          goal = new Complex(test_functor, W);
          String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
          Solutions.verifyAll(goal, kb, expected5, 1);
