@@ -166,7 +166,7 @@ public class TestFunction {
          new Rule(new Complex(test_functor_is, Y),
             new And(
                new Unify(X, term),
-               new FunctorStartsWith(new Constant("symp"), X),
+               new Functor(X, new Constant("symp*")),
                new Unify(Y, new Constant("Success! #3"))
             )
          ),
