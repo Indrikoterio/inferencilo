@@ -204,6 +204,5 @@ class Sentence {
 
    }  // getWords
 
-
 }  // Sentence
 
