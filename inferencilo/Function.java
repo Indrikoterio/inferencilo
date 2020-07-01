@@ -81,6 +81,15 @@ public abstract class Function implements Unifiable {
    }
 
 
+   /**
+    * replaceVariables
+    *
+    * Replaces bound Variables with their Constants in order to
+    * display results.
+    *
+    * @param   substitution set
+    * @return  new expression, without variables
+    */
    public Expression replaceVariables(SubstitutionSet ss) {
 
       for (Unifiable param : parameters) {
@@ -162,7 +171,6 @@ public abstract class Function implements Unifiable {
       return null;
    }
 
-
    /**
     * castConstant
     *
@@ -186,8 +194,6 @@ public abstract class Function implements Unifiable {
       if (outTerm instanceof Constant) return (Constant)outTerm;
       return null;
    }
-
-
 
    /**
     * castPList
@@ -215,5 +221,5 @@ public abstract class Function implements Unifiable {
       return null;
    }
 
+} // Function
 
-}
