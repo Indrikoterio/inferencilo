@@ -30,8 +30,6 @@ public abstract class Function implements Unifiable {
 
    public String toString() { return functionName; }
 
-   //public String printName() { return functionName; }
-
    public abstract Unifiable evaluate(SubstitutionSet ss, Unifiable[] parameters);
 
 
