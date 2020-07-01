@@ -60,6 +60,7 @@
 import inferencilo.*;
 
 import java.util.*;
+//import java.util.ArrayList;
 
 class ParseDemo {
 
@@ -79,23 +80,27 @@ class ParseDemo {
     * @param  ruleFunctor
     * @param  inList
     * @param  knowledgeBase
-    * @throws TimeOverrunException
     */
-   private static void oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb)
-                          throws TimeOverrunException {
+   private static void oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb) {
 
       Variable X = Variable.instance("$X");  // placeholder variable
-      Complex goal = new Complex(ruleFunctor, inList, X);
-      SolutionNode node = goal.getSolver(kb, new SubstitutionSet(), null);
-      SubstitutionSet solution = node.nextSolution();
-      if (solution != null) {
-         Complex result = (Complex)goal.replaceVariables(solution);
-         PList outList = (PList)result.getTerm(2);  // Get the out list.
-         System.out.print("\n");
+      try {
+         Complex goal = new Complex(ruleFunctor, inList, X);
+         SolutionNode node = goal.getSolver(kb, new SubstitutionSet(), null);
+         SubstitutionSet solution = node.nextSolution();
+         if (solution != null) {
+            Complex result = (Complex)goal.replaceVariables(solution);
+            PList outList = (PList)result.getTerm(2);  // Get the out list.
+            System.out.print("\n");
+         }
+         else {
+            System.out.println("\nNo solution for " + ruleFunctor + ".");
+         }
       }
-      else {
-         System.out.println("\nNo solution for " + ruleFunctor + ".");
+      catch (TimeOverrunException tox) {
+         System.out.println("Time overrun exception.");
       }
+
    } // oneSolution
 
 
@@ -174,11 +179,7 @@ class ParseDemo {
       List<Rule> facts = pos.makeFacts(words);
 
       // Fill the knowledge base with word facts.
-      ListIterator<Rule> factIterator = facts.listIterator();
-      while (factIterator.hasNext()) {
-         Rule fact = factIterator.next();
-         kb.addRule(fact);
-      }
+      facts.forEach(fact -> kb.addRule(fact));
 
       return wordList;
 
@@ -256,24 +257,19 @@ class ParseDemo {
       //kb.showKB();
 
       PList  wordList;
-      String[] sentences = {
+      List<String> sentences = Arrays.asList(
          "They envy us.",
          "He envy us.",
          "He envies us.",
          "I envied them.",
          "I envies them."
-      };
+      );
 
-      try {
-         for (String sentence : sentences) {
-            System.out.print(sentence + "  ");
-            wordList = sentenceToFacts(sentence, kb);
-            oneSolution(parse, wordList, kb);
-         }
-      }
-      catch (TimeOverrunException tox) {
-         System.out.println("Time overrun exception.");
-      }
+      sentences
+         .stream()
+         .map(s -> { System.out.print(s + " "); return s; })
+         .map(s2 -> sentenceToFacts(s2, kb)) // Returns word list.
+         .forEach(wl -> oneSolution(parse, wl, kb));
 
    } // main
 
