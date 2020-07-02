@@ -38,7 +38,9 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class PList implements Unifiable {
 
