@@ -7,7 +7,7 @@
  * conjunction lists. Current child classes are StartList, CommaWord
  * and ConjunctionWord.
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
