@@ -12,7 +12,9 @@
 
 import inferencilo.*;
 
-import java.util.Hashtable;
+import java.util.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class Join extends Function {
 
@@ -62,7 +64,24 @@ public class Join extends Function {
       for (int i = 0; i < parameters.length; i++) {
          newParameters[i] = standardizeParameter(parameters[i], newVars);
       }
-      return new Join(newParameters);
+//      return new Join(newParameters);
+
+try {
+String className = this.getClass().getName();
+System.out.println(">>>>>> " + className);
+System.out.println("22>>>>>> " + newParameters.getClass().getName());
+
+Constructor<?> c = Class.forName(className).getDeclaredConstructor(Unifiable[].class);
+c.setAccessible(true);
+return (Expression)c.newInstance(new Object[] {newParameters});
+}
+catch (ClassNotFoundException cnfx) {}
+catch (NoSuchMethodException nsmx) {}
+catch (InstantiationException ix) {}
+catch (IllegalAccessException iax) {}
+catch (InvocationTargetException itx) {}
+//catch (Exception iax) {}
+return null;
    }
 
 } // Join
