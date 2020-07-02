@@ -24,20 +24,6 @@ public class BuiltIn2 extends BuiltInPredicateIO {
 
 
    /**
-    * standardizeVariablesApart
-    *
-    * Refer to class Expression for full comments.
-    */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
-      Unifiable[] newArguments = new Unifiable[arguments.length];
-      for (int i = 0; i < arguments.length; i++) {
-         newArguments[i] = standardizeOne(arguments[i], newVars);
-      }
-      return new BuiltIn2(newArguments);
-   }
-
-
-   /**
     * evaluate
     *
     * The unique work of the built-in predicate is done in this method.
@@ -52,4 +38,4 @@ public class BuiltIn2 extends BuiltInPredicateIO {
       return arguments[0];
    }
 
-}
+} // BuiltIn2
