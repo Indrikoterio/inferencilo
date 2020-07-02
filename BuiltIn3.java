@@ -76,18 +76,4 @@ public class BuiltIn3 extends BuiltInPredicateIHT {
    Unifiable newTail = null;
    public Unifiable getTail() { return newTail; }
 
-
-   /**
-    * standardizeVariablesApart
-    *
-    * Refer to class Expression for full comments.
-    */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
-      Unifiable[] newArguments = new Unifiable[arguments.length];
-      for (int i = 0; i < arguments.length; i++) {
-         newArguments[i] = standardizeOne(arguments[i], newVars);
-      }
-      return new BuiltIn3(newArguments);
-   }
-
-}
+} // BuiltIn3
