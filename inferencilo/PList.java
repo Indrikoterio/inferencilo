@@ -19,7 +19,7 @@
  *
  *  $X is bound to 'a'
  *  $Y is bound to 'b'
- *  $Z is bount to [c, d, e]
+ *  $Z is bound to [c, d, e]
  *
  * There are several ways to instantiate a PList. For example:
  *
@@ -331,16 +331,20 @@ public class PList implements Unifiable {
    /**
     * getHead
     *
-    * @return the head term of this list.
+    * Returns the head term of this list.
+    *
+    * @return head term.
     */
    public Unifiable getHead() { return term; }
+
 
    /**
     * getTail
     *
+    * Return the tail item of this list.
     * If the tail is null, return an empty list.
     *
-    * @return the tail item of this list.
+    * @return tail
     */
    public PList getTail() {
       if (tail == null) return new PList();
@@ -351,7 +355,10 @@ public class PList implements Unifiable {
    /**
     * isTailVar
     *
-    * @return true if the term is a tail variable
+    * Return true if the term is a tail variable.
+    * False otherwise.
+    *
+    * @return true/false
     */
    public boolean isTailVar() { return isTailVar; }
 
@@ -542,4 +549,11 @@ public class PList implements Unifiable {
       return result;
    }
 
-}
+} // PList
+
+/*
+	Scan the list from head to tail,
+	Curse recursion, force a fail.
+	Hold your chin, hypothesize.
+	Predicate logic never lies.
+*/
