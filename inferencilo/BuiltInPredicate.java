@@ -1,7 +1,8 @@
 /**
  * BuiltInPredicate
  *
- * This is a base class for built-in predicates.
+ * This is a base class for built-in predicates. Subclasses should
+ * override the evaluate and getSolver methods.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
