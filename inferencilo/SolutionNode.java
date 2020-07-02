@@ -35,7 +35,7 @@ public abstract class SolutionNode {
     * constructor
     *
     * @param  goal
-    * @param  knowledge baswe
+    * @param  knowledge base
     * @param  parentSolution (substitution set)
     * @param  parentNode
     */
