@@ -1,21 +1,29 @@
 /**
  * Function
  *
- * A Prolog function returns a Constant.
+ * This class is a base class for logic Functions. Subclasses should
+ * override the evaluate method.
  *
- * @author   Cleve (Klivo) Lendon
- * @version  1.0
+ * A function returns a Constant. It should be used with a unification
+ * operator, for example:
+ *
+ *   $X = add(7, 3)   // $X is bound to 10.
+ *
+ * @author  Cleve (Klivo) Lendon
+ * @version 1.0
  */
 
 package inferencilo;
 
-import java.util.*;
+import java.util.Hashtable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public abstract class Function implements Unifiable {
 
    // public for convenience of subclasses
    public String functionName = null;
-   public Unifiable[] parameters;
+   public Unifiable[] parameters;  // arguments?
 
    /**
     * constructor
@@ -30,6 +38,16 @@ public abstract class Function implements Unifiable {
 
    public String toString() { return functionName; }
 
+
+   /**
+    * evaluate - abstract
+    *
+    * Each subclass must do its own evaluation.
+    *
+    * @param  substitution set
+    * @param  array of unifiable parameters
+    * @return Unifiable (Constant)
+    */
    public abstract Unifiable evaluate(SubstitutionSet ss, Unifiable[] parameters);
 
 
@@ -57,7 +75,7 @@ public abstract class Function implements Unifiable {
          }
       }
       return newParameters;
-   }
+   } // bindAllParameters
 
 
    /**
@@ -136,17 +154,6 @@ public abstract class Function implements Unifiable {
 
 
    /**
-    * standardizeVariablesApart()
-    *
-    * Refer to class Expression for full comments.
-    *
-    * Each subclass must return its own class. Function is a base class,
-    * so this method is abstract.
-    */
-   public abstract Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars);
-
-
-   /**
     * castComplex
     *
     * If the given unifiable is an instance of Complex, cast it
@@ -169,6 +176,7 @@ public abstract class Function implements Unifiable {
       if (outTerm instanceof Complex) return (Complex)outTerm;
       return null;
    } // castComplex
+
 
    /**
     * castConstant
@@ -219,6 +227,39 @@ public abstract class Function implements Unifiable {
       if (outTerm instanceof PList) return (PList)outTerm;
       return null;
    } // castPList
+
+
+   /**
+    * standardizeVariablesApart
+    *
+    * Refer to class Expression for full comments.
+    *
+    * This method uses reflection to instantiate the subclass,
+    * so that the method does not need to be repeated in each
+    * subclass.
+    */
+   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+      Unifiable[] newParameters = new Unifiable[parameters.length];
+      for (int i = 0; i < parameters.length; i++) {
+         newParameters[i] = standardizeParameter(parameters[i], newVars);
+      }
+      // Now instantiate the class with with new standardized parameters.
+      try {
+         String className = this.getClass().getName();
+         Constructor<?> c = Class.forName(className)
+                                 .getDeclaredConstructor(Unifiable[].class);
+         c.setAccessible(true);  // Necessary?
+         return (Expression)c.newInstance(new Object[] {newParameters});
+      }
+      catch (ClassNotFoundException cnfx) {}
+      catch (NoSuchMethodException nsmx) {}
+      catch (InstantiationException ix) {}
+      catch (IllegalAccessException iax) {}
+      catch (InvocationTargetException itx) {}
+      System.err.println("Function::standardizeVariablesApart - Major failure.");
+      System.exit(0);
+      return null;
+   } // standardizeVariablesApart
 
 } // Function
 
