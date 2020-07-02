@@ -9,7 +9,7 @@
  * Prolog format: seldom
  * Java format:   new Seldom()
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
