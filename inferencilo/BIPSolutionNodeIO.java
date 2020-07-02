@@ -8,7 +8,7 @@
  *
  *    do_something(InList, OutList)
  *
- * @author  Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -29,8 +29,8 @@ public class BIPSolutionNodeIO extends SolutionNode {
     * @param  solution node
     */
    public BIPSolutionNodeIO(BuiltInPredicateIO goal, KnowledgeBase kb,
-                          SubstitutionSet parentSolution,
-                          SolutionNode parentNode) {
+                            SubstitutionSet parentSolution,
+                            SolutionNode parentNode) {
       super(goal, kb, parentSolution, parentNode);
       this.goal = goal;
    }
