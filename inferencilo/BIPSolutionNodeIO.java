@@ -53,4 +53,5 @@ public class BIPSolutionNodeIO extends SolutionNode {
       SubstitutionSet solution = term1.unify(term2, getParentSolution());
       return solution;
    }
-}
+
+}  // BIPSolutionNodeIO
