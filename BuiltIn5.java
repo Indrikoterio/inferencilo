@@ -13,7 +13,7 @@
  * This class is useful in recursive rules. See comments in
  * BIPSolutionNodeIHTIO source.
  *
- * @author   Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
