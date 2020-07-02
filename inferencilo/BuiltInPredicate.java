@@ -60,7 +60,7 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
     * @param   already standardized variables (hash)
     * @return  out argument
     */
-   protected Unifiable standardizeOne(Unifiable argument,
+   private Unifiable standardizeOne(Unifiable argument,
                                       Hashtable<Variable, Variable> newVars) {
       if (argument instanceof Variable) {
          Variable arg = (Variable)argument;
@@ -80,7 +80,7 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
     * @param  already standardized variables (hash)
     * @return new standardized arguments
     */
-   protected Unifiable[] standardizeAll(Unifiable[] arguments,
+   private Unifiable[] standardizeAll(Unifiable[] arguments,
                                         Hashtable<Variable, Variable> newVars) {
       Unifiable[] novajArgumentoj = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
