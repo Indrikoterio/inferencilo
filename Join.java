@@ -6,12 +6,13 @@
  *
  * article(the), noun(city) --> noun phrase(the city)
  *
- * @author   Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
-import java.util.*;
 import inferencilo.*;
+
+import java.util.Hashtable;
 
 public class Join extends Function {
 
@@ -64,5 +65,4 @@ public class Join extends Function {
       return new Join(newParameters);
    }
 
-
-}
+} // Join
