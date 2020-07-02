@@ -76,7 +76,7 @@ public abstract class Function implements Unifiable {
       Unifiable result = evaluate(ss, boundParameters);
       if (result == null) return null;
       return result.unify(exp, ss);
-   }
+   } // unify
 
 
    /**
@@ -132,7 +132,8 @@ public abstract class Function implements Unifiable {
          return newParameter;
       }
       return parameter;
-   }
+   } // standardizeParameter
+
 
    /**
     * standardizeVariablesApart()
@@ -167,7 +168,7 @@ public abstract class Function implements Unifiable {
       }
       if (outTerm instanceof Complex) return (Complex)outTerm;
       return null;
-   }
+   } // castComplex
 
    /**
     * castConstant
@@ -191,7 +192,7 @@ public abstract class Function implements Unifiable {
       }
       if (outTerm instanceof Constant) return (Constant)outTerm;
       return null;
-   }
+   } // castConstant
 
    /**
     * castPList
@@ -217,7 +218,7 @@ public abstract class Function implements Unifiable {
       }
       if (outTerm instanceof PList) return (PList)outTerm;
       return null;
-   }
+   } // castPList
 
 } // Function
 
