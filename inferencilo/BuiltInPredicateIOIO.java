@@ -57,18 +57,6 @@ public abstract class BuiltInPredicateIOIO extends BuiltInPredicate implements U
 
 
    /**
-    * standardizeVariablesApart()
-    *
-    * Refer to class Expression for full comments.
-    *
-    * Each subclass must return its own class. This is a base class,
-    * so this method is abstract.
-    */
-   public abstract Expression
-          standardizeVariablesApart(Hashtable<Variable, Variable> newVars);
-
-
-   /**
     * evaluate
     *
     * The unique work of the built-in predicate is done in this method.
