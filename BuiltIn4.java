@@ -52,19 +52,4 @@ public class BuiltIn4 extends BuiltInPredicateIOIO {
    Unifiable newErrorList = null;
    public Unifiable getErrors() { return newErrorList; }
 
-
-   /**
-    * standardizeVariablesApart
-    *
-    * Refer to class Expression for full comments.
-    */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
-      Unifiable[] newArguments = new Unifiable[arguments.length];
-      for (int i = 0; i < arguments.length; i++) {
-         newArguments[i] = standardizeOne(arguments[i], newVars);
-      }
-      return new BuiltIn4(newArguments);
-   }
-
-
-}
+} // BuiltIn4
