@@ -9,7 +9,9 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.Hashtable;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public abstract class BuiltInPredicate implements Unifiable, Goal {
 
@@ -125,11 +127,32 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
     *
     * Refer to class Expression for full comments.
     *
-    * Each subclass must return its own class. This is a base class,
-    * so this method is abstract.
+    * This method uses reflection to instantiate the subclass, so
+    * that the method does not need to be repeated in each subclass.
     */
-   public abstract Expression
-          standardizeVariablesApart(Hashtable<Variable, Variable> newVars);
+   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      // Now instantiate the class with with new standardized arguments.
+      try {
+         String className = this.getClass().getName();
+         Constructor<?> c = Class.forName(className)
+                                 .getDeclaredConstructor(Unifiable[].class);
+         c.setAccessible(true);  // Necessary?
+         return (Expression)c.newInstance(new Object[] {newArguments});
+      }
+      catch (ClassNotFoundException cnfx) {}
+      catch (NoSuchMethodException nsmx) {}
+      catch (InstantiationException ix) {}
+      catch (IllegalAccessException iax) {}
+      catch (InvocationTargetException itx) {}
+      System.err.println("BuiltInPredicate::standardizeVariablesApart - Major failure.");
+      System.exit(0);
+      return null;
+   } // standardizeVariablesApart
+
 
    /**
     * evaluate
