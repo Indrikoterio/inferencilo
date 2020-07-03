@@ -69,4 +69,17 @@ public class CommaWord extends ConjunctionListBase implements Unifiable, Goal {
    public Unifiable getHead() { return newHead; }
    public Unifiable getTail() { return newTail; }
 
+   /**
+    * standardizeVariablesApart
+    *
+    * Refer to class Expression for full comments.
+    */
+   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new CommaWord(itemTypes, newArguments);
+   }
+
 } // CommaWord
