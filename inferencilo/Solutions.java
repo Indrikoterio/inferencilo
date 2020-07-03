@@ -99,22 +99,27 @@ public class Solutions {
          Complex result = (Complex)goal.replaceVariables(solution);
 
          String strResult;
+
          if (index == 0) {
             strResult = result.toString();
          }
          else {
+            if (index >= result.length()) {
+               System.err.println("verifyAll: Bad index: " + index);
+               return;
+            }
             strResult = result.getTerm(index).toString();
          }
 
          if (count >= expected.length) {
-            System.out.println(">>>>>>>> Too many solutions. ");
+            System.err.println("verifyAll:  Too many solutions.");
             System.out.println(strResult);
             return;
          }
 
          if (!strResult.equals(expected[count])) {
-            System.out.print("   Unexpected!! goal: " + goal);
-            System.out.println("  result: " + strResult +
+            System.err.print("verifyAll:  Unexpected!! goal: " + goal);
+            System.err.println("  result: " + strResult +
                                "    expected: " + expected[count]);
          }
          else {
@@ -126,14 +131,13 @@ public class Solutions {
       }  // while
 
       if (count != expected.length) {
-         System.out.println(">>>>>>>> Not enough solutions.");
-         System.out.println("count = " + count + "  expected = " + expected.length);
+         System.err.println("verifyAll: Not enough solutions.");
+         System.err.println("count = " + count + "  expected = " + expected.length);
       }
 
-      System.out.print("\n");
+      System.err.print("\n");
 
    }  // verifyAll
-
 
 }  // Solutions
 
