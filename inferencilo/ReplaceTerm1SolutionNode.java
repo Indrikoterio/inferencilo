@@ -19,7 +19,7 @@ public class ReplaceTerm1SolutionNode extends SolutionNode {
     * constructor
     *
     * @param  unifiable goal
-    * @param  knowlegde base
+    * @param  knowledge base
     * @param  parent solution set
     * @param  parent solution node
     * @param  solution node
