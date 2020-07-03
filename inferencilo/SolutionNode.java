@@ -69,6 +69,7 @@ public abstract class SolutionNode {
     * @return rule object
     */
    public Rule nextRule() {
+
       if (hasNextRule()) {
          currentRule = knowledge.getRuleStandardizedApart(goal, ruleNumber++);
       }
