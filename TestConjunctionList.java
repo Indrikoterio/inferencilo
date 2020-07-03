@@ -58,7 +58,6 @@ public class TestConjunctionList {
                       );
       kb.addRule(rule);
 
-
       /* Prolog form:
        scan_sentence([H | T1], [H | T2]) :- scan_sentence(T1, T2).
        */
@@ -73,12 +72,10 @@ public class TestConjunctionList {
 
       System.out.print("-------------------------\n");
 
-
       //System.out.println("" + sentence_in);
       System.out.print("Test Conjunction-Lists: ");
       Complex goal = new Complex(scan_sentence, sentence_in, SentenceOut);
       SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
-
 
       try {
          String[] expected = {
@@ -87,7 +84,7 @@ public class TestConjunctionList {
             "[pronoun(We), verb(visited), noun(Canada), comma(,), noun(Italy), conjunction(and), noun(Germany)]"
          };
          Solutions.verifyAll(goal, kb, expected, 2);
-      } catch (TimeOverrunException tox) { }
+      } catch (TimeOverrunException tox) {}
    }
 
 } // TestConjunctionList
