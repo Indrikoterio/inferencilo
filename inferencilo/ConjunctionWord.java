@@ -65,4 +65,20 @@ public class ConjunctionWord extends ConjunctionListBase implements Unifiable, G
    public Unifiable getHead() { return newHead; }
    public Unifiable getTail() { return newTail; }
 
+
+   /**
+    * standardizeVariablesApart
+    *
+    * Refer to class Expression for full comments.
+    */
+   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new ConjunctionWord(itemTypes, newArguments);
+   }
+
+
+
 } // ConjunctionWord
