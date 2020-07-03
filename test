@@ -42,8 +42,5 @@ java TestReplaceTerm1
 javac TestFunction.java
 java TestFunction
 
-javac TestConjunctionList.java
-java TestConjunctionList
-
 javac TestPrint.java
 java TestPrint
