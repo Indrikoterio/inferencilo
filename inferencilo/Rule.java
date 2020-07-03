@@ -43,12 +43,14 @@ public class Rule implements Expression {
     * @throws InvalidRuleException
     */
    public Rule(String str) {
+
       String s = str.trim();
       if (s.endsWith(".")) {
          int len = s.length();
          s = s.substring(0, len - 1);
       }
       int index = s.indexOf(":-");
+
       if (index > -1) {
          String head = s.substring(0, index);
          String body = s.substring(index + 2);
