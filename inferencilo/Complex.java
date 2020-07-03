@@ -119,16 +119,23 @@ public class Complex implements Unifiable, Goal {
       }
 
       String arguments = s.substring(parenthesis1 + 1, parenthesis2);
+      functor = s.substring(0, parenthesis1);
+
+      if (arguments.length() == 0) {
+         terms = new Unifiable[1];
+         terms[0] = new Constant(functor);
+         return;
+      }
 
       List<String> strTerms = Make.splitTerms(arguments, ',');
       terms = new Unifiable[strTerms.size() + 1];
-      functor = s.substring(0, parenthesis1);
       terms[0] = new Constant(functor);
 
       int index = 1;
       for (String strTerm : strTerms) {
          Make.addTerm(strTerm, terms, index++);
       }
+
    } // constructor
 
 
