@@ -136,7 +136,7 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);
       }
-      // Now instantiate the class with with new standardized arguments.
+      // Now instantiate the class with new standardized arguments.
       try {
          String className = this.getClass().getName();
          Constructor<?> c = Class.forName(className)
