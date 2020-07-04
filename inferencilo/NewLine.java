@@ -43,31 +43,17 @@ public class NewLine extends BuiltInPredicate implements Unifiable, Goal {
       return this;
    }
 
-
-   /**
-    * getSolver
-    *
-    * Returns a solution node for this predicate.
-    *
-    * @param  knowledge base
-    * @param  parent solution set
-    * @param  parent solution node
-    * @return solution node
-    */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode) {
-      return new NewLineSolutionNode(this, knowledge, parentSolution, parentNode);
-   }
-
    /**
     * evaluate
     *
     * Prints out a new line.
+    *
+    * @param  parentSolution
+    * @return new solution
     */
-   public Unifiable evaluate(SubstitutionSet ss) {
+   public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
       System.out.print("\n");
-      return Anon.anon;   // not needed
+      return parentSolution;
    } // evaluate
 
 }  // NewLine
