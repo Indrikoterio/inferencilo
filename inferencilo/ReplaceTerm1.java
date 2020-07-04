@@ -55,7 +55,32 @@ public class ReplaceTerm1 extends BuiltInPredicate implements Unifiable, Goal {
    public SolutionNode getSolver(KnowledgeBase knowledge,
                                  SubstitutionSet parentSolution,
                                  SolutionNode parentNode) {
-      return new ReplaceTerm1SolutionNode(this, knowledge, parentSolution, parentNode);
+
+      return new SolutionNode(this, knowledge, parentSolution, parentNode) {
+
+         boolean moreSolutions = true;
+
+         /**
+          * nextSolution
+          *
+          * Call evaluate() to do some work on the input argument(s),
+          * then unify the result(s) with the output arguments.
+          *
+          * @return  new substitution set
+          */
+         public SubstitutionSet nextSolution() {
+
+            if (noBackChaining()) return null;
+            if (!moreSolutions) return null;
+            moreSolutions = false;
+
+            Complex c = (Complex)evaluate(parentSolution);
+            if (c == null) return null;
+
+            Unifiable outTerm = getTerm(1);
+            return outTerm.unify(c, parentSolution);
+         }
+      };
    }
 
    /*
