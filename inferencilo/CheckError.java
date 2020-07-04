@@ -7,7 +7,7 @@
  * has not been exceeded. Otherwise, the predicate fails, causing
  * the inference engine to search for another solution.
  *
- * Prolog format:   check_error(InErrors, ErrorMessage, OutErrors)
+ * Prolog format:   check_error($InErrors, $ErrorMessage, $OutErrors)
  * Java format:  new CheckError(inErrors, new Constant("Error message."), outErrors)
  *
  * @author  Klivo
@@ -32,23 +32,6 @@ public class CheckError extends BuiltInPredicate {
 
 
    /**
-    * getSolver
-    *
-    * Returns a solution node for this predicate.
-    *
-    * @param  knowledge base
-    * @param  parent solution set
-    * @param  parent solution node
-    * @return solution node
-    */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode) {
-      return new CheckErrorSolutionNode(this, knowledge, parentSolution, parentNode);
-   }
-
-
-   /**
     * evaluate
     *
     * Get the input error list, and a count of the number of errors.
@@ -57,21 +40,26 @@ public class CheckError extends BuiltInPredicate {
     * If the error count is equal or greater than Global.maxErrors,
     * fail (return null).
     *
-    * @param   substitution set of parent
-    * @return  list of error messages or null
+    * @param  parentSolution
+    * @return new solution
     */
-   public Unifiable evaluate(SubstitutionSet ss) {
+   public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
 
       if (arguments.length < 3) return null;
 
-      PList errorList = castPList(getTerm(0), ss);
+      PList errorList = castPList(getTerm(0), parentSolution);
       if (errorList == null) return null;
       if (errorList.count() >= Global.maxErrors) return null;
 
       // Create a new error list with the new error message.
-      Constant newError = castConstant(getTerm(1), ss);
+      Constant newError = castConstant(getTerm(1), parentSolution);
       if (newError == null) return null;
 
-      return new PList(true, newError, errorList);
+      PList newList = new PList(true, newError, errorList);
+      if (newList == null) return null;
+
+      Unifiable outArgument = getTerm(2);
+      return newList.unify(outArgument, parentSolution);
    }
-}
+
+} // CheckError
