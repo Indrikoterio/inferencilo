@@ -2,7 +2,7 @@
  * BuiltInPredicate
  *
  * This is a base class for built-in predicates. Subclasses should
- * override the evaluate and getSolver methods.
+ * override the abstract evaluate() method.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -32,19 +32,49 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
       this.arguments = arguments;
    }
 
+
    /**
     * getSolver
     *
-    * Returns a solution node for this predicate.
+    * Returns a SolutionNode (object) for built-in predicates.
+    *
+    * The main method in a SolutionNode is nextSolution().
+    * nextSolution() calls evaluate(), which is defined by the
+    * subclass. evaluate() takes the parentSolution (a substitution
+    * set), performs some logic on the predicate's arguments, and
+    * returns a new substitution set.
     *
     * @param  knowledge base
     * @param  parent solution set
     * @param  parent solution node
     * @return solution node
     */
-   public abstract SolutionNode getSolver(KnowledgeBase knowledge,
+   public SolutionNode getSolver(KnowledgeBase knowledge,
                                  SubstitutionSet parentSolution,
-                                 SolutionNode parentNode);
+                                 SolutionNode parentNode) {
+      return
+
+         new SolutionNode(this, knowledge, parentSolution, parentNode) {
+
+         boolean moreSolutions = true;
+
+         /**
+          * nextSolution
+          *
+          * Call evaluate() to do some work on the input argument(s),
+          * then return the new solution set.
+          *
+          * @return  new substitution set
+          */
+         public SubstitutionSet nextSolution() {
+            if (noBackChaining()) return null;
+            if (!moreSolutions) return null;
+            moreSolutions = false;
+            return evaluate(parentSolution);
+         }
+      };
+   } // getSolver
+
 
    /*
     * standardizeOne
@@ -93,7 +123,7 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
    /**
     * replaceVariables
     *
-    * Refer to Expression for full comments.
+    * Refer to Expression.java for full comments.
     *
     * @param   substitution set
     * @return  new expression, without variables
@@ -126,10 +156,10 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
    /**
     * standardizeVariablesApart()
     *
-    * Refer to class Expression for full comments.
+    * Refer to Expression.java for full comments.
     *
     * This method uses reflection to instantiate the subclass, so
-    * that the method does not need to be repeated in each subclass.
+    * that this method does not need to be repeated in each subclass.
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
@@ -161,9 +191,9 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
     * The unique work of the built-in predicate is done by this method.
     *
     * @param   substitution set of parent
-    * @return  unifiable term or null
+    * @return  new substitution set
     */
-   public abstract Unifiable evaluate(SubstitutionSet ss);
+   public abstract SubstitutionSet evaluate(SubstitutionSet ss);
 
 
    /**
