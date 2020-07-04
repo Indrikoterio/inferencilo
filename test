@@ -36,9 +36,6 @@ java TestList
 javac TestAppend.java
 java TestAppend
 
-javac TestReplaceTerm1.java
-java TestReplaceTerm1
-
 javac TestFunction.java
 java TestFunction
 
