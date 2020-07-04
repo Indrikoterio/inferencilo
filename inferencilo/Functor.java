@@ -1,12 +1,34 @@
 /**
  * Functor
  *
- * Built-in predicate to get the functor and arity of a term.
- * Use thusly:
+ * Functor is a built-in predicate to get the functor and arity
+ * of a complex term. Eg.:
  *
- *     functor(boss(Zack, Stephen), $F, $A)
+ *     functor(boss(Zack, Stephen), $Func, $Arity)
  *
- * $F will bind to 'boss' and $A will bind to '3'.
+ * $Func will bind to 'boss' and $Arity will bind to '2' (because
+ * there are two arguments, Zack and Stephen). Arity is optional:
+ *
+ *     functor(boss(Zack, Stephen), $Func)
+ *
+ * Of course, the first argument would normally be a Variable, and
+ * the second would be a Constant. The following goal will succeed.
+ *
+ *     $X = boss(Zack, Stephen), functor($X, boss)
+ *
+ * The next goal will not succeed, because the arity is incorrect:
+ *
+ *     functor($X, boss, 3)
+ *
+ * If the second argument has an asterisk at the end, the match will
+ * test only the start of the string. For example, the following
+ * will succeed:
+ *
+ *     $X = noun_phrase(the blue sky), functor($X, noun*)
+ *
+ * TODO:
+ * Perhaps the functionality could be expanded to accept a regex
+ * string for the second argument.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -39,8 +61,6 @@ public class Functor extends BuiltInPredicate implements Unifiable, Goal {
     *
     *   "boss(Zack, Stephen), $F, $A"
     *
-    * and produces the represented arguments. There must be at least 2.
-    *
     * @param  argument string
     */
    public Functor(String str) {
@@ -58,70 +78,56 @@ public class Functor extends BuiltInPredicate implements Unifiable, Goal {
       arguments = terms;
    }  // constructor
 
-
-   /**
-    * getSolver
-    *
-    * Returns a solution node for this predicate.
-    *
-    * @param  knowledge base
-    * @param  parent solution set
-    * @param  parent solution node
-    * @return solution node
-    */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode) {
-      return new FunctorSolutionNode(this, knowledge, parentSolution, parentNode);
-   }
-
-
-   /**
-    * numOfArguments
-    *
-    */
-   public int numOfArguments() { return arguments.length; }
-
-   /**
-    * getFunctor
-    *
-    * @return functor
-    */
-   public String getFunctor() { return functor; }
-
-   /**
-    * getArity
-    *
-    * @return arity
-    */
-   public int getArity() { return arity; }
-
-
    /**
     * evaluate
     *
-    * Determines the functor and arity of the first term.
-    * If the evaluation succeeds, return an anonymous variable $_,
-    * which is not used. If there is a failure, return null.
+    * Determines the functor and arity of the first argument. Bind
+    * the functor to the second argument, and the arity to the third
+    * argument, if there is one. Return the new substitution set,
+    * or null for failure.
     *
-    * @param  substitution set
-    * @return anonymous variable or null
+    * @param  parentSolution
+    * @return new solution
     */
-   public Unifiable evaluate(SubstitutionSet ss) {
+   public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
+
+      SubstitutionSet ss = parentSolution;
 
       // Get first argument.
       Complex first = castComplex(arguments[0], ss);
-      if (first != null) {
+      if (first != null) {  // Must be a Complex term.
          functor = first.functor();
          arity = first.arity();
       }
-      else {
+      else {  // Maybe a Constant.
          Constant conTerm = castConstant(arguments[0], ss);
          if (conTerm == null) return null;
          functor = "" + conTerm;
          arity = 0;
       }
-      return Anon.anon;   // return value not needed
+
+      if (arguments.length > 1) {
+         Unifiable term = getTerm(1);
+         if (term instanceof Constant) {
+            String f2 = "" + term;
+            if (f2.endsWith("*")) {
+               // Strip off asterisk.
+               f2 = f2.substring(0, f2.length() - 1);
+               if (!functor.startsWith(f2)) return null;
+            }
+            else {
+               if (!functor.equals(f2)) return null;
+            }
+         }
+         else {
+            ss = term.unify(new Constant(functor), ss);
+         }
+      }
+      if (arguments.length > 2) {
+         Unifiable term = getTerm(2);
+         ss = term.unify(new Constant("" + arity), ss);
+      }
+      return ss;
 
    } // evaluate
 
