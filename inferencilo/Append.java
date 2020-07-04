@@ -1,15 +1,17 @@
 /**
  * Append
  *
- * This class implements a built-in predicate which appends terms
- * to make a PList. For example:
+ * This class implements a built-in predicate which appends terms to
+ * make a PList. For example:
  *
  *   $X = a, append($X, b, [c, d, e], [f, g], $OutList)
  *
- * The $OutList will bind to [a, b, c, d, e, f, g]
+ * The last argument, $OutList, is an output argument which will bind
+ * to [a, b, c, d, e, f, g]
  *
- * The last argument is an output argument. The input arguments can
- * be Constants, Variables, Complex terms, or PLists.
+ * Input arguments can be Constants, Variables, Complex terms, or PLists.
+ *
+ * There must be at least 2 arguments.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -54,55 +56,29 @@ public class Append extends BuiltInPredicate implements Unifiable, Goal {
 
 
    /**
-    * numOfArguments
-    *
-    */
-   public int numOfArguments() {
-      return arguments.length;
-   }
-
-   /**
-    * getSolver
-    *
-    * Returns a solution node for this predicate.
-    *
-    * @param  knowledge base
-    * @param  parent solution set
-    * @param  parent solution node
-    * @return solution node
-    */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode) {
-      return new AppendSolutionNode(this, knowledge, parentSolution, parentNode);
-   }
-
-
-   /**
     * evaluate
     *
     * Append all arguments together.
     *
-    * @param   substitution set of parent
-    * @return  unifiable term or null
+    * @param  parentSolution
+    * @return new solution
     */
-   public Unifiable evaluate(SubstitutionSet ss) {
+   public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
 
       PList resultPList = null;
 
-      int numOfArguments = arguments.length;
-      if (numOfArguments < 2) return null;
+      if (arguments.length < 2) return null;
 
       List<Unifiable> argList = new ArrayList<Unifiable>();
 
-      for (int i = 0; i < numOfArguments - 1; i++) {
+      for (int i = 0; i < arguments.length - 1; i++) {
 
          Unifiable term = arguments[i];
 
          // Get ground term.
          if (term instanceof Variable) {
-            if (ss.isGround((Variable)term)) {
-               term = ss.getGroundTerm((Variable)term);
+            if (parentSolution.isGround((Variable)term)) {
+               term = parentSolution.getGroundTerm((Variable)term);
             }
             // Long explanation: In a list of words (and punctuation), some terms
             // are optional. For example, a modifier may consist of an adverb and
@@ -136,7 +112,11 @@ public class Append extends BuiltInPredicate implements Unifiable, Goal {
       }
 
       PList outPList = new PList(false, argList);
-      return outPList;
+      if (outPList == null) return null;
+
+      Unifiable lastTerm = getTerm(arguments.length - 1);
+
+      return lastTerm.unify(outPList, parentSolution);
 
    }  // evaluate()
 
