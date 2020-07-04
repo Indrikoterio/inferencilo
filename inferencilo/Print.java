@@ -68,23 +68,6 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
    }  // constructor
 
 
-   /**
-    * getSolver
-    *
-    * Returns a solution node for this predicate.
-    *
-    * @param  knowledge base
-    * @param  parent solution set
-    * @param  parent solution node
-    * @return solution node
-    */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode) {
-      return new PrintSolutionNode(this, knowledge, parentSolution, parentNode);
-   }
-
-
    /*
     * isFormatString
     *
@@ -157,16 +140,16 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     *
     * Prints out an identifying message and the given terms.
     *
-    * @param  substitution set
-    * @return unifiable (anonymous variable)
+    * @param  parentSolution
+    * @return new solution
     */
-   public Unifiable evaluate(SubstitutionSet ss) {
+   public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
 
-      if (arguments.length == 0) return Anon.anon;
+      if (arguments.length == 0) return parentSolution;
 
       // Get first argument.
       Unifiable term0 = arguments[0];
-      term0 = getGround(term0, ss);
+      term0 = getGround(term0, parentSolution);
       if (isFormatString("" + term0)) {
          List<String> formatSubstrings = splitFormatString("" + term0);
          int count = 1;
@@ -174,7 +157,7 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
             if (format.equals(FORMAT_SPECIFIER)) {
                if (count < arguments.length) {
                   Unifiable t = arguments[count];
-                  t = getGround(t, ss);
+                  t = getGround(t, parentSolution);
                   System.out.print(t);
                   count++;
                }
@@ -193,12 +176,14 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
          for (Unifiable term : arguments) {
             if (first) first = false;
             else {
-               term = getGround(term, ss);
+               term = getGround(term, parentSolution);
                System.out.print(", " + term);
             }
          }
       }
-      return Anon.anon;   // not needed
+
+      return parentSolution;
+
    } // evaluate
 
 }  // Print
