@@ -187,20 +187,15 @@ public class TestFunction {
          String[] expected = {"A + B + Cha Cha Cha!"};
          Solutions.verifyAll(goal, kb, expected, 1);
 
-         System.out.print("Test Join: ");
-         goal = new Complex("join_test($X)");
-         String[] expected2 = {"noun phrase(the city)"};
-         Solutions.verifyAll(goal, kb, expected2, 1);
-
          System.out.print("Test Built-In Predicate: ");
          goal = new Complex(bip_test, Z);
-         String[] expected3 = {"sept mille dance"};
-         Solutions.verifyAll(goal, kb, expected3, 1);
+         String[] expected2 = {"sept mille dance"};
+         Solutions.verifyAll(goal, kb, expected2, 1);
 
          System.out.print("Test Built-In Predicate, 3 arguments: ");
          goal = new Complex(bip3_test, H, T);
-         String[] expected4 = {"[2, 3, 4]"};
-         Solutions.verifyAll(goal, kb, expected4, 2);
+         String[] expected3 = {"[2, 3, 4]"};
+         Solutions.verifyAll(goal, kb, expected3, 2);
 
          System.out.print("Test Built-In Predicate, 4 arguments: ");
          goal = new Complex(bip4_test, X, Y);
