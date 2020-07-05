@@ -56,23 +56,23 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
 
          new SolutionNode(this, knowledge, parentSolution, parentNode) {
 
-         boolean moreSolutions = true;
+            boolean moreSolutions = true;
 
-         /**
-          * nextSolution
-          *
-          * Call evaluate() to do some work on the input argument(s),
-          * then return the new solution set.
-          *
-          * @return  new substitution set
-          */
-         public SubstitutionSet nextSolution() {
-            if (noBackChaining()) return null;
-            if (!moreSolutions) return null;
-            moreSolutions = false;
-            return evaluate(parentSolution);
-         }
-      };
+            /**
+             * nextSolution
+             *
+             * Call evaluate() to do some work on the input argument(s),
+             * then return the new solution set.
+             *
+             * @return  new substitution set
+             */
+            public SubstitutionSet nextSolution() {
+               if (noBackChaining()) return null;
+               if (!moreSolutions) return null;
+               moreSolutions = false;
+               return evaluate(parentSolution);
+            }
+         };
    } // getSolver
 
 
