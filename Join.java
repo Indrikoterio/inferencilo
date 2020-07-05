@@ -16,7 +16,7 @@ import java.util.Hashtable;
 
 public class Join extends Function {
 
-   Constant np = new Constant("noun phrase");
+   Constant np = new Constant("noun_phrase");
 
    /**
     * constructor
