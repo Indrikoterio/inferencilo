@@ -59,15 +59,6 @@ public class TestFunction {
             )
          ),
 
-         new Rule(new Complex("join_test($X)"),
-            new And(
-               new Unify(
-                  new Join(Make.term("article(the)"), Make.term("noun(city)")),
-                  Variable.instance("$X")
-               )
-            )
-         ),
-
          /*
              built_in_pred(Y) :- X = 'sept mille dance', bip(X, Y).
           */
