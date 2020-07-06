@@ -1,5 +1,5 @@
 /**
- * Function
+ * PFunction
  *
  * This class is a base class for logic Functions. Subclasses should
  * override the evaluate method.
@@ -19,7 +19,7 @@ import java.util.Hashtable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public abstract class Function implements Unifiable {
+public abstract class PFunction implements Unifiable {
 
    // public for convenience of subclasses
    public String functionName = null;
@@ -31,7 +31,7 @@ public abstract class Function implements Unifiable {
     * @param  function name
     * @param  unifiable parameter
     */
-   public Function(String functionName, Unifiable... parameters) {
+   public PFunction(String functionName, Unifiable... parameters) {
       this.functionName = functionName;
       this.parameters = parameters;
    }
@@ -261,5 +261,5 @@ public abstract class Function implements Unifiable {
       return null;
    } // standardizeVariablesApart
 
-} // Function
+} // PFunction
 
