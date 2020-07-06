@@ -1,13 +1,18 @@
 /**
  * PFunction
  *
- * This class is a base class for logic Functions. Subclasses should
- * override the evaluate method.
+ * This class is a base class for Prolog-like functions. Subclasses
+ * should override the 'evaluate' method. The class is called 'PFunction'
+ * to distinguish it from Java Functions.
  *
  * A function returns a Constant. It should be used with a unification
  * operator, for example:
  *
  *   $X = add(7, 3)   // $X is bound to 10.
+ *
+ * Note: Currently, this inference engine does not have an is-operator.
+ * Unification will cause a function to be evaluated. In other words,
+ * there is no: $X is add(1, 2).
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
