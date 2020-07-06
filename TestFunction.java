@@ -31,7 +31,7 @@ public class TestFunction {
       Variable Out_err = Variable.instance("$OutErr");
       Variable Err2 = Variable.instance("$Err2");
 
-      Constant function_test = new Constant("function_test");
+      Constant test_add = new Constant("test_add");
       Constant bip_test  = new Constant("bip_test");
       Constant bip3_test = new Constant("bip3_test");
       Constant bip4_test = new Constant("bip4_test");
@@ -45,7 +45,8 @@ public class TestFunction {
 
       KnowledgeBase kb = new KnowledgeBase(
 
-         new Rule(new Complex("function_test($L)"),
+
+         new Rule(new Complex("test_add2($L)"),
             new And(
                /* new Unify( Variable.instance("$X"), new Constant("This is OK. This works.") ), */
                new Unify("$X = A"),
@@ -59,9 +60,15 @@ public class TestFunction {
             )
          ),
 
-         /*
-             built_in_pred(Y) :- X = 'sept mille dance', bip(X, Y).
-          */
+         new Rule(new Complex("test_add($Z)"),
+            new And(
+               new Unify(X, new Constant("1")),
+               new Unify(Y, new Constant("2.0")),
+               new Unify(Z, new Add(X, Y))
+            )
+         ),
+
+         /* built_in_pred(Y) :- X = 'sept mille dance', bip(X, Y). */
          new Rule(
             new Complex(bip_test, Y),
             new And(
@@ -174,8 +181,8 @@ public class TestFunction {
       System.out.print("Test Function: ");
 
       try {
-         goal = new Complex(function_test, W);
-         String[] expected = {"A + B + Cha Cha Cha!"};
+         goal = new Complex(test_add, W);
+         String[] expected = {"3.0"};
          Solutions.verifyAll(goal, kb, expected, 1);
 
          System.out.print("Test Built-In Predicate: ");
