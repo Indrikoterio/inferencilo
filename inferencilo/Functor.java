@@ -94,13 +94,13 @@ public class Functor extends BuiltInPredicate implements Unifiable, Goal {
       SubstitutionSet ss = parentSolution;
 
       // Get first argument.
-      Complex first = castComplex(arguments[0], ss);
+      Complex first = ss.castComplex(arguments[0]);
       if (first != null) {  // Must be a Complex term.
          functor = first.functor();
          arity = first.arity();
       }
       else {  // Maybe a Constant.
-         Constant conTerm = castConstant(arguments[0], ss);
+         Constant conTerm = ss.castConstant(arguments[0]);
          if (conTerm == null) return null;
          functor = "" + conTerm;
          arity = 0;
