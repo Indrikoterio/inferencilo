@@ -10,7 +10,7 @@
 import java.util.*;
 import inferencilo.*;
 
-public class ChaChaCha extends Function {
+public class ChaChaCha extends PFunction {
 
    /**
     * constructor
