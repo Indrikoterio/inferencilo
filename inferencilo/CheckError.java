@@ -47,12 +47,12 @@ public class CheckError extends BuiltInPredicate {
 
       if (arguments.length < 3) return null;
 
-      PList errorList = castPList(getTerm(0), parentSolution);
+      PList errorList = parentSolution.castPList(getTerm(0));
       if (errorList == null) return null;
       if (errorList.count() >= Global.maxErrors) return null;
 
       // Create a new error list with the new error message.
-      Constant newError = castConstant(getTerm(1), parentSolution);
+      Constant newError = parentSolution.castConstant(getTerm(1));
       if (newError == null) return null;
 
       PList newList = new PList(true, newError, errorList);
