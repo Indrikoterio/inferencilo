@@ -48,10 +48,10 @@ public class BuiltIn5 extends BuiltInPredicate {
     */
    public SubstitutionSet evaluate(SubstitutionSet ss) {
 
-      PList inList = castPList(arguments[0], ss);
+      PList inList = ss.castPList(arguments[0]);
       if (inList == null) return null;
 
-      PList inErrors = castPList(arguments[3], ss);
+      PList inErrors = ss.castPList(arguments[3]);
       if (inErrors == null) return null;
 
       Constant err = new Constant("an error");
