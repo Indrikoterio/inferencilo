@@ -32,18 +32,4 @@ public class ChaChaCha extends PFunction {
       return new Constant("" + param[0] + " + " + param[1] + " + Cha Cha Cha!");
    }
 
-
-   /**
-    * standardizeVariablesApart
-    *
-    * Refer to class Expression for full comments.
-    */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
-      Unifiable[] newParameters = new Unifiable[parameters.length];
-      for (int i = 0; i < parameters.length; i++) {
-         newParameters[i] = standardizeParameter(parameters[i], newVars);
-         //if (newParameter == null) return this;
-      }
-      return new ChaChaCha(newParameters);
-   }
 }  // ChaChaCha
