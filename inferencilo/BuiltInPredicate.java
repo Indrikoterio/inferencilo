@@ -223,82 +223,6 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
 
 
    /**
-    * castConstant
-    *
-    * If the given unifiable is an instance of Constant, cast it
-    * as Constant and return it.
-    *
-    * @param  Unifiable term
-    * @param  Substitution Set
-    * @return Constant term or null
-    */
-   public Constant castConstant(Unifiable term, SubstitutionSet ss) {
-      if (term instanceof Constant) return (Constant)term;
-      Unifiable outTerm = null;
-      if (term instanceof Variable) {
-         if (ss.isGround((Variable)term)) {
-            outTerm = ss.getGroundTerm((Variable)term);
-         }
-         else return null;
-      }
-      if (outTerm instanceof Constant) return (Constant)outTerm;
-      return null;
-   }
-
-
-   /**
-    * castComplex
-    *
-    * If the given unifiable is an instance of Complex, cast it
-    * as complex. Otherwise return null. This function is useful
-    * for subclasses of Function.
-    *
-    * @param  Unifiable term
-    * @param  Substitution Set
-    * @return Complex term or null
-    */
-   public Complex castComplex(Unifiable term, SubstitutionSet ss) {
-      if (term instanceof Complex) return (Complex)term;
-      Unifiable outTerm = null;
-      if (term instanceof Variable) {
-         if (ss.isGround((Variable)term)) {
-            outTerm = ss.getGroundTerm((Variable)term);
-         }
-         else return null;
-      }
-      if (outTerm instanceof Complex) return (Complex)outTerm;
-      return null;
-   }
-
-
-   /**
-    * castPList
-    *
-    * If the given unifiable is an instance of PList, cast it
-    * as PList and return it. If it is a Variable, get the term
-    * which it is bound to. If that term is a PList, cast it as
-    * a PList and return it. Otherwise return null. This function
-    * is useful for subclasses.
-    *
-    * @param  unifiable term
-    * @param  substitution set
-    * @param  plist or null
-    */
-   public PList castPList(Unifiable term, SubstitutionSet ss) {
-      if (term instanceof PList) return (PList)term;
-      Unifiable outTerm = null;
-      if (term instanceof Variable) {
-         if (ss.isGround((Variable)term)) {
-            outTerm = ss.getGroundTerm((Variable)term);
-         }
-         else return null;
-      }
-      if (outTerm instanceof PList) return (PList)outTerm;
-      return null;
-   }
-
-
-   /*
     * displayString
     *
     * If the given term is a Constant, return its string value,
@@ -347,6 +271,6 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
          return sb.toString();
       }
       return "";
-   }
+   } // displayString
 
 }  // BuiltInPredicate
