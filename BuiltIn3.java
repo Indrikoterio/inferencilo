@@ -35,10 +35,10 @@ public class BuiltIn3 extends BuiltInPredicate {
     */
    public SubstitutionSet evaluate(SubstitutionSet ss) {
 
-      PList inList = castPList(arguments[0], ss);
+      PList inList = ss.castPList(arguments[0]);
       if (inList == null) return null;
 
-      Unifiable newHead = castConstant(inList.getHead(), ss);
+      Unifiable newHead = ss.castConstant(inList.getHead());
       if (newHead == null) return null;
 
       Unifiable newTail = inList.getTail();
