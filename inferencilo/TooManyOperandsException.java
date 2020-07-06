@@ -1,9 +1,9 @@
 /**
  * TooManyOperandsException
  *
- * The operator Not() only accepts one operand.
+ * Throw when there are too many operands.
  *
- * @author Klivo
+ * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
@@ -11,8 +11,8 @@ package inferencilo;
 
 public class TooManyOperandsException extends Exception {
 
-   public TooManyOperandsException() {
-      super("'Not' operator only accepts one operand.");
+   public TooManyOperandsException(String message) {
+      super("Too many operands: " + message);
    }
 
 }  // TooManyOperandsException
