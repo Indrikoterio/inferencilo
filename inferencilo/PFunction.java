@@ -20,6 +20,7 @@
 
 package inferencilo;
 
+import java.util.List;
 import java.util.Hashtable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -34,12 +35,25 @@ public abstract class PFunction implements Unifiable {
     * constructor
     *
     * @param  function name
-    * @param  unifiable parameter
+    * @param  array of unifiable parameters
     */
    public PFunction(String functionName, Unifiable... parameters) {
       this.functionName = functionName;
       this.parameters = parameters;
    }
+
+   /**
+    * constructor
+    *
+    * @param  function name
+    * @param  list of unifiable parameters
+    */
+   public PFunction(String functionName, List<Goal> parameters) {
+      this.functionName = functionName;
+      Unifiable[] arr = new Unifiable[parameters.size()];
+      this.parameters = parameters.toArray(arr);
+   }
+
 
    public String toString() { return functionName; }
 
