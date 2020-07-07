@@ -24,6 +24,15 @@ public class Subtract extends PFunction {
    }
 
    /**
+    * constructor
+    *
+    * @param  parameters as string
+    */
+   public Subtract(String parameters) {
+      super("SUBTRACT", parameters);
+   }
+
+   /**
     * evaluate the parameters
     *
     * @param   Substitution Set
@@ -50,7 +59,6 @@ public class Subtract extends PFunction {
       int size = numbers.size();
       for (int i = 1; i < size; i++) {
          result -= numbers.get(i);
-System.out.println(result);
       }
 
       return new Constant("" + result);
