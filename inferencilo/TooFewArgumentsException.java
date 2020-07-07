@@ -12,7 +12,7 @@ package inferencilo;
 public class TooFewArgumentsException extends RuntimeException {
 
    public TooFewArgumentsException(String message) {
-      super("Too few arguments: " + message);
+      super("Too few arguments " + message);
    }
 
 }  // TooFewArgumentsException
