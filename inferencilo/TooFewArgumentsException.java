@@ -1,7 +1,7 @@
 /**
- * TooFewOperandsException
+ * TooFewArgumentsException
  *
- * Throw when there are too many operands.
+ * Throw when there are too few arguments.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -9,10 +9,10 @@
 
 package inferencilo;
 
-public class TooFewOperandsException extends RuntimeException {
+public class TooFewArgumentsException extends RuntimeException {
 
-   public TooFewOperandsException(String message) {
-      super("Too few operands: " + message);
+   public TooFewArgumentsException(String message) {
+      super("Too few arguments: " + message);
    }
 
-}  // TooFewOperandsException
+}  // TooFewArgumentsException
