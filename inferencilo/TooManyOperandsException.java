@@ -9,7 +9,7 @@
 
 package inferencilo;
 
-public class TooManyOperandsException extends Exception {
+public class TooManyOperandsException extends RuntimeException {
 
    public TooManyOperandsException(String message) {
       super("Too many operands: " + message);
