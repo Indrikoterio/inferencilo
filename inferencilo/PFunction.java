@@ -29,7 +29,7 @@ public abstract class PFunction implements Unifiable {
 
    // public for convenience of subclasses
    public String functionName = null;
-   public Unifiable[] parameters;  // arguments?
+   public Unifiable[] parameters;  // arguments
 
    /**
     * constructor
@@ -46,12 +46,17 @@ public abstract class PFunction implements Unifiable {
     * constructor
     *
     * @param  function name
-    * @param  list of unifiable parameters
+    * @param  parameters as string
     */
-   public PFunction(String functionName, List<Goal> parameters) {
+   public PFunction(String functionName, String strParams) {
+
       this.functionName = functionName;
-      Unifiable[] arr = new Unifiable[parameters.size()];
-      this.parameters = parameters.toArray(arr);
+      List<String> lstParams = Make.splitTerms(strParams, ',');
+      parameters = new Unifiable[lstParams.size()];
+      int index = 0;
+      for (String p : lstParams) {
+         Make.addTerm(p, parameters, index++);
+      }
    }
 
 
