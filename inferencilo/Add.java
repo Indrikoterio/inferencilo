@@ -24,6 +24,15 @@ public class Add extends PFunction {
    }
 
    /**
+    * constructor
+    *
+    * @param  list of parameters
+    */
+   public Add(List<Goal> parameters) {
+      super("ADD", parameters);
+   }
+
+   /**
     * evaluate the parameters
     *
     * @param   Substitution Set
