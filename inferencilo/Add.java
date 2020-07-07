@@ -26,9 +26,9 @@ public class Add extends PFunction {
    /**
     * constructor
     *
-    * @param  list of parameters
+    * @param  parameters as string
     */
-   public Add(List<Goal> parameters) {
+   public Add(String parameters) {
       super("ADD", parameters);
    }
 
