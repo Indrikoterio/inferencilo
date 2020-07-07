@@ -46,10 +46,11 @@ public class Make {
     *   member(Chris, Taylor)
     *
     * @param   string representing a complex term
-    * @return    true or false
+    * @return  true or false
+    * @throws  FatalParsingException
     */
    private static boolean isComplex(String str) {
-      if (str.length() < 4) return false;
+      if (str.length() < 3) return false;
       int parenthesis1 = str.indexOf("(");
       if (parenthesis1 < 1) return false; // Must find (, not first character.
       int bracket1 = str.indexOf("[");
@@ -123,9 +124,8 @@ public class Make {
 
       int parenthesis1 = s.indexOf("(");
       int parenthesis2 = s.lastIndexOf(")");
-
-      int bracket1 = s.indexOf("[");
-      int bracket2 = s.lastIndexOf("]");
+      int bracket1     = s.indexOf("[");
+      int bracket2     = s.lastIndexOf("]");
 
       // Complex term, eg:   sentence(subject, verb, object)
       if (parenthesis1 == 0) throw new InvalidComplexTermException(s);
@@ -134,7 +134,7 @@ public class Make {
       else if (parenthesis1 > 0 && (bracket1 == -1 || parenthesis1 < bracket1)) {
          if (parenthesis2 > parenthesis1) {  // if OK.
             String[] arr = splitComplex(s, parenthesis1, parenthesis2);
-            return new Complex(arr[0], arr[1]);
+            return complexOrFunction(arr[0], arr[1]);
          }
          else throw new InvalidComplexTermException(s);
       }  // Complex terms
@@ -171,6 +171,7 @@ public class Make {
     */
    public static Goal subgoal(String subgoal) {
       String s = subgoal.trim();
+
       if (s.indexOf('=') > 0) {  // unify
          return new Unify(s);
       }
@@ -220,12 +221,7 @@ public class Make {
     */
    public static And and(String str) {
       List<String> terms = splitTerms(str, ',');
-      ArrayList<Goal> operands = new ArrayList<Goal>();
-      for (String term : terms) {
-         Goal subgoal = subgoal(term);
-         if (subgoal != null) operands.add(subgoal);
-      }
-      return new And(operands);
+      return new And(strToGoals(terms));
    }
 
    /**
@@ -240,13 +236,26 @@ public class Make {
     */
    public static Or or(String str) {
       List<String> terms = splitTerms(str, ';');
-      ArrayList<Goal> operands = new ArrayList<Goal>();
+      return new Or(strToGoals(terms));
+   }
+
+
+   /*
+    * strToGoals
+    *
+    * Converts a list of terms (strings) to a list of subgoals.
+    *
+    * @param  list of terms
+    * @return list of subgoals
+    */
+   private static List<Goal> strToGoals(List<String> terms) {
+      List<Goal> arguments = new ArrayList<Goal>();
       for (String term : terms) {
          Goal subgoal = subgoal(term);
-         if (subgoal != null) operands.add(subgoal);
+         if (subgoal != null) arguments.add(subgoal);
       }
-      return new Or(operands);
-   }
+      return arguments;
+   } // strToGoals
 
 
    /**
@@ -257,7 +266,7 @@ public class Make {
     * string "one, [two, three], four" will be divided into:
     * "one", "[two, three]", "four".
     *
-    * This method will be used to create operands for operators
+    * This method will be used to create arguments for operators
     * such as And and Or, and terms for Complex terms.
     *
     * @param  string of terms
@@ -301,7 +310,7 @@ public class Make {
     * parseComplex
     *
     * This method takes the string representation of a complex
-    * term or built in function, such as:
+    * term or built-in predicates, such as:
     *
     *    "father(Philip, Alize)"
     *    "print(Hello world!)"
@@ -311,7 +320,7 @@ public class Make {
     *   ["father", "Philip, Alize"]
     *   ["print", "Hello world!"]
     *
-    * If the complex term or function is invalid (missing a brace),
+    * If the complex term or predicate is invalid (missing a brace),
     * the function returns null.
     *
     * @param  string representation of term
@@ -361,5 +370,24 @@ public class Make {
       return arr;
 
    } // splitComplex
+
+
+   /*
+    * complexOrFunction
+    *
+    * Makes a complex term or a function.
+    *
+    * @param  functor
+    * @param  arguments
+    * @return complex term or function
+    */
+   private static Unifiable complexOrFunction(String functor,
+                                              String arguments) {
+
+      if (functor.equals("add")) return new Add(arguments);
+      if (functor.equals("subtract")) return new Subtract(arguments);
+      return new Complex(functor, arguments);
+
+   } // complexOrFunction
 
 } // Make
