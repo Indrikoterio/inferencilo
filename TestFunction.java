@@ -32,6 +32,7 @@ public class TestFunction {
       Variable Err2 = Variable.instance("$Err2");
 
       Constant test_add = new Constant("test_add");
+      Constant test_subtract = new Constant("test_subtract");
       Constant bip_test  = new Constant("bip_test");
       Constant bip3_test = new Constant("bip3_test");
       Constant bip4_test = new Constant("bip4_test");
@@ -65,6 +66,14 @@ public class TestFunction {
                new Unify(X, new Constant("1")),
                new Unify(Y, new Constant("2.0")),
                new Unify(Z, new Add(X, Y))
+            )
+         ),
+
+         new Rule(new Complex("test_subtract($Z)"),
+            new And(
+               new Unify(X, new Constant("20")),
+               new Unify(Y, new Constant("22.00")),
+               new Unify(Z, new Subtract(X, Y))
             )
          ),
 
@@ -185,15 +194,19 @@ public class TestFunction {
          String[] expected = {"3.0"};
          Solutions.verifyAll(goal, kb, expected, 1);
 
+         goal = new Complex(test_subtract, W);
+         String[] expected2 = {"-2.0"};
+         Solutions.verifyAll(goal, kb, expected2, 1);
+
          System.out.print("Test Built-In Predicate: ");
          goal = new Complex(bip_test, Z);
-         String[] expected2 = {"sept mille dance"};
-         Solutions.verifyAll(goal, kb, expected2, 1);
+         String[] expected3 = {"sept mille dance"};
+         Solutions.verifyAll(goal, kb, expected3, 1);
 
          System.out.print("Test Built-In Predicate, 3 arguments: ");
          goal = new Complex(bip3_test, H, T);
-         String[] expected3 = {"[2, 3, 4]"};
-         Solutions.verifyAll(goal, kb, expected3, 2);
+         String[] expected4 = {"[2, 3, 4]"};
+         Solutions.verifyAll(goal, kb, expected4, 2);
 
          System.out.print("Test Built-In Predicate, 4 arguments: ");
          goal = new Complex(bip4_test, X, Y);
