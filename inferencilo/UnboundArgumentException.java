@@ -18,7 +18,7 @@ public class UnboundArgumentException extends RuntimeException {
     * @param  message
     */
    public UnboundArgumentException(String message) {
-      super("Unbound Argument: " + message);
+      super("Unbound Argument " + message);
    }
 
 }  // UnboundArgumentException
