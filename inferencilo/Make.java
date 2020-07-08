@@ -165,6 +165,15 @@ public class Make {
          else if (functor.equals("greater_than")) {
             return new GreaterThan(contents);
          }
+         else if (functor.equals("less_than")) {
+            return new LessThan(contents);
+         }
+         else if (functor.equals("greater_than_or_equal")) {
+            return new GreaterThanOrEqual(contents);
+         }
+         else if (functor.equals("less_than_or_equal")) {
+            return new LessThanOrEqual(contents);
+         }
          else if (functor.equals("not")) {
             return new Not((Goal)term(contents));
          }
