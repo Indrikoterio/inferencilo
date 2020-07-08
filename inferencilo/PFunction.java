@@ -39,6 +39,8 @@ public abstract class PFunction implements Unifiable {
     */
    public PFunction(String functionName, Unifiable... parameters) {
       this.functionName = functionName;
+      if (parameters.length < 1)
+          throw new TooFewArgumentsException("in " + functionName + ".");
       this.parameters = parameters;
    }
 
@@ -51,13 +53,16 @@ public abstract class PFunction implements Unifiable {
    public PFunction(String functionName, String strParams) {
 
       this.functionName = functionName;
-      List<String> lstParams = Make.splitTerms(strParams, ',');
-      parameters = new Unifiable[lstParams.size()];
-      int index = 0;
-      for (String p : lstParams) {
-         Make.addTerm(p, parameters, index++);
-      }
-   }
+
+      if (strParams == null || strParams.length() == 0)
+          throw new TooFewArgumentsException("in " + functionName + ".");
+
+      parameters = Make.splitTerms(strParams, ',')
+                  .stream()
+                  .map(Make::term)
+                  .toArray(Unifiable[]::new);
+
+   } // constructor
 
 
    public String toString() { return functionName; }
