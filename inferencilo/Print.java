@@ -57,14 +57,13 @@ public class Print extends BuiltInPredicate implements Unifiable, Goal {
     * @param  arguments (String)
     */
    public Print(String str) {
+
       super(NAME);
-      List<String> strTerms = Make.splitTerms(str, ',');
-      Unifiable[] terms = new Unifiable[strTerms.size()];
-      int index = 0;
-      for (String strTerm : strTerms) {
-         Make.addTerm(strTerm, terms, index++);
-      }
-      arguments = terms;
+      arguments = Make.splitTerms(str, ',')
+                      .stream()
+                      .map(Make::term)
+                      .toArray(Unifiable[]::new);
+
    }  // constructor
 
 
