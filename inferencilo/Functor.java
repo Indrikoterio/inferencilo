@@ -70,12 +70,8 @@ public class Functor extends BuiltInPredicate implements Unifiable, Goal {
       if (size < 2 || size > 3)
          throw new FatalParsingException(
                "functor() takes 2 or 3 arguments: " + str);
-      Unifiable[] terms = new Unifiable[size];
-      int index = 0;
-      for (String strTerm : strTerms) {
-         Make.addTerm(strTerm, terms, index++);
-      }
-      arguments = terms;
+      arguments = strTerms.stream().map(Make::term).toArray(Unifiable[]::new);
+
    }  // constructor
 
    /**
