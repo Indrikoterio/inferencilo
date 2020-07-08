@@ -25,7 +25,7 @@ import java.util.regex.*;
 public class Constant implements Unifiable {
 
    // For detecting numbers.
-   private static Pattern numberPattern = Pattern.compile("[+-]?\\d+(\\.\\d+)?");
+   private static Pattern numberPattern = Pattern.compile("[+-]?\\d+(\\.\\d*)?");
 
    // The internal representation.
    private String value = null;
