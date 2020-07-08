@@ -63,33 +63,16 @@ public class Make {
    /**
     * addTerm
     *
-    * Takes a string representation of a term (constant, variable, list, complex term),
-    * converts it to an object, and adds it to the terms array at the given index.
+    * Takes a string representation of a term (constant, variable, list,
+    * complex term), converts it to an object, and adds it to the terms
+    * array at the given index.
     *
     * @param term as String
     * @param unifiable terms (array)
     * @param index to terms
     */
    public static void addTerm(String t, Unifiable[] terms, int index) {
-      String strTerm = t.trim();
-      int len = strTerm.length();
-      if (len > 1 && strTerm.startsWith("$")) {
-         if (strTerm.charAt(1) == '_') {     // Anonymous variable $_
-            terms[index] = Anon.anon;
-         }
-         else {
-            terms[index] = Variable.instance(strTerm);
-         }
-      }
-      else if (isComplex(strTerm)) {
-         terms[index] = new Complex(strTerm);
-      }
-      else if (isList(strTerm)) {
-         terms[index] = PList.make(strTerm);
-      }
-      else {
-         terms[index] = new Constant(strTerm);
-      }
+      terms[index] = term(t);
    }
 
 
@@ -116,12 +99,6 @@ public class Make {
          else return Variable.instance(s);
       }
 
-      // Escape for commas: \,
-      if (s.startsWith("\\") && len > 1) {
-         if (s.charAt(1) == ',') return new Constant(",");
-         else return new Constant(s);
-      }
-
       int parenthesis1 = s.indexOf("(");
       int parenthesis2 = s.lastIndexOf(")");
       int bracket1     = s.indexOf("[");
@@ -130,7 +107,7 @@ public class Make {
       // Complex term, eg:   sentence(subject, verb, object)
       if (parenthesis1 == 0) throw new InvalidComplexTermException(s);
 
-      // Consider:  analyze(a, b, [1,2,3]) vs. [a, b, c(1,2,3), d]
+      // Consider:  analyze(a, b, [1,2,3]) vs. [a, b, analyze(1,2,3), d]
       else if (parenthesis1 > 0 && (bracket1 == -1 || parenthesis1 < bracket1)) {
          if (parenthesis2 > parenthesis1) {  // if OK.
             String[] arr = splitComplex(s, parenthesis1, parenthesis2);
