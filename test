@@ -41,3 +41,6 @@ java TestFunction
 
 javac TestPrint.java
 java TestPrint
+
+javac TestCompare.java
+java TestCompare
