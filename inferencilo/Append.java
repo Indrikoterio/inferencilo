@@ -45,13 +45,10 @@ public class Append extends BuiltInPredicate implements Unifiable, Goal {
     */
    public Append(String str) {
       super(name);
-      List<String> strTerms = Make.splitTerms(str, ',');
-      Unifiable[] terms = new Unifiable[strTerms.size()];
-      int index = 0;
-      for (String strTerm : strTerms) {
-         Make.addTerm(strTerm, terms, index++);
-      }
-      arguments = terms;
+      arguments = Make.splitTerms(str, ',')
+                      .stream()
+                      .map(Make::term)
+                      .toArray(Unifiable[]::new);
    }  // constructor
 
 
