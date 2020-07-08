@@ -51,7 +51,7 @@ public class Add extends PFunction {
       // All parameters must be bound.
       for (Unifiable param : params) {
          Constant c = ss.castConstant(param);
-         if (c == null) throw new UnboundArgumentException("in Add");
+         if (c == null) throw new UnboundArgumentException("in Add.");
          numbers.add(Double.parseDouble("" + c));
       }
       
