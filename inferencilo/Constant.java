@@ -60,10 +60,24 @@ public class Constant implements Unifiable {
    }
 
 
+   /**
+    * isNumber
+    *
+    * Use regex to determine whether this Constant represents a number.
+    * Valid numbers can have a decimal point and/or a sign.
+    * Eg. 1, 2, 3.14159, -42, +21
+    *
+    * @return  true if number, false otherwise
+    */
+   public boolean isNumber() {
+      return numberPattern.matcher(value).matches();
+   }
+
+
    /*
     * convertDouble
     *
-    * Convert the string value into a double floating point, if possible.
+    * Convert string into a double floating point, if possible.
     * (Returns 0.0 if not.)
     *
     * @param   number as string
@@ -76,6 +90,18 @@ public class Constant implements Unifiable {
          return 0.0;
       }
    }  // convertDouble
+
+
+   /**
+    * convertDouble
+    *
+    * Convert the value into a double floating point, if possible.
+    * (Returns 0.0 if not.)
+    *
+    * @return   number as double float
+    */
+   public double convertDouble() { return convertDouble(value); }
+
 
    /*
     * adjustEscapes
