@@ -27,7 +27,7 @@ public class Complex implements Unifiable, Goal {
    private Unifiable[] terms;
 
    /**
-    * constructor
+    * constructor 1
     *
     * The first argument (functor) must be a Constant.
     *
@@ -36,7 +36,7 @@ public class Complex implements Unifiable, Goal {
     */
    public Complex(Unifiable... args) throws InvalidFunctorException {
       if (!(args[0] instanceof Constant)) {
-         throw new InvalidFunctorException("" + args[0]);
+         throw new InvalidFunctorException("Complex constructor 1 -" + args[0]);
       }
       terms = args;
       functor = "" + terms[0];
@@ -44,7 +44,7 @@ public class Complex implements Unifiable, Goal {
 
 
    /**
-    * constructor
+    * constructor 2
     *
     * Creates a complex term from a string representation. The first
     * parameter is the functor, and the second is a list of terms.
@@ -58,34 +58,31 @@ public class Complex implements Unifiable, Goal {
     *
     * @param  strFunctor
     * @param  strTerms
+    * @throws InvalidFunctorException
     */
    public Complex(String strFunctor, String strTerms) {
 
-      // If there are no arguments. Eg.: rainy
+      // Check the functor.
+      if (strFunctor == null || strFunctor.length() == 0)
+            throw new InvalidFunctorException("Complex constructor 2.");
+      functor = strFunctor;
+
       if (strTerms == null || strTerms.length() == 0) {
-         terms = new Unifiable[1];
-         // The functor is a constant, and must be unified,
-         // like any other term.
-         terms[0] = new Constant(strFunctor);
-         functor = strFunctor;
+         terms = new Unifiable[] { new Constant(strFunctor) };
          return;
       }
 
-      List<String> listTerms = Make.splitTerms(strTerms, ',');
-      terms = new Unifiable[listTerms.size() + 1];
-      functor = strFunctor;
-      terms[0] = new Constant(functor);
-
-      int index = 1;
-      for (String t : listTerms) {
-         Make.addTerm(t, terms, index++);
-      }
+      String str = strFunctor + "," + strTerms;
+      terms = Make.splitTerms(str, ',')
+                  .stream()
+                  .map(Make::term)
+                  .toArray(Unifiable[]::new);
 
    } // constructor
 
 
    /**
-    * constructor
+    * constructor 2
     *
     * Creates a complex term from a string representation.
     * Eg. new Complex("boss(Susan, Jackie)")
@@ -98,18 +95,19 @@ public class Complex implements Unifiable, Goal {
     */
    public Complex(String str) throws InvalidFunctorException,
                                      InvalidComplexTermException {
+
+      if (str == null) throw new InvalidFunctorException("Complex constructor 3 - null");
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidFunctorException("Complex constructor.");
+      if (s.length() < 1) throw new InvalidFunctorException("Complex constructor 3 - empty");
       char first = s.charAt(0);
-      if (first == '$') throw new InvalidFunctorException(s);
+      if (first == '$') throw new InvalidFunctorException("Complex constructor 3 - " + s);
 
       int parenthesis1 = s.indexOf('(');
       int parenthesis2 = s.lastIndexOf(')');
 
       // If there are no arguments. Eg.: rainy
       if (parenthesis1 == -1 && parenthesis2 == -1) {
-         terms = new Unifiable[1];
-         terms[0] = new Constant(s);
+         terms = new Unifiable[] { new Constant(s) };
          functor = s;
          return;
       }
@@ -118,23 +116,19 @@ public class Complex implements Unifiable, Goal {
          throw new InvalidComplexTermException(s);
       }
 
-      String arguments = s.substring(parenthesis1 + 1, parenthesis2);
       functor = s.substring(0, parenthesis1);
+      String arguments = s.substring(parenthesis1 + 1, parenthesis2);
 
       if (arguments.length() == 0) {
-         terms = new Unifiable[1];
-         terms[0] = new Constant(functor);
+         terms = new Unifiable[] { new Constant(functor) } ;
          return;
       }
 
-      List<String> strTerms = Make.splitTerms(arguments, ',');
-      terms = new Unifiable[strTerms.size() + 1];
-      terms[0] = new Constant(functor);
-
-      int index = 1;
-      for (String strTerm : strTerms) {
-         Make.addTerm(strTerm, terms, index++);
-      }
+      String s2 = functor + "," + arguments;
+      terms = Make.splitTerms(s2, ',')
+                  .stream()
+                  .map(Make::term)
+                  .toArray(Unifiable[]::new);
 
    } // constructor
 
