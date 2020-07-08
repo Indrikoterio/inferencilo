@@ -162,6 +162,9 @@ public class Make {
          else if (functor.equals("print")) {
             return new Print(contents);
          }
+         else if (functor.equals("greater_than")) {
+            return new GreaterThan(contents);
+         }
          else if (functor.equals("not")) {
             return new Not((Goal)term(contents));
          }
