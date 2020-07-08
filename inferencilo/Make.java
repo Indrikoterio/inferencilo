@@ -60,21 +60,6 @@ public class Make {
       throw new FatalParsingException("Invalid: " + str);
    }
 
-   /**
-    * addTerm
-    *
-    * Takes a string representation of a term (constant, variable, list,
-    * complex term), converts it to an object, and adds it to the terms
-    * array at the given index.
-    *
-    * @param term as String
-    * @param unifiable terms (array)
-    * @param index to terms
-    */
-   public static void addTerm(String t, Unifiable[] terms, int index) {
-      terms[index] = term(t);
-   }
-
 
    /**
     * term
