@@ -96,24 +96,6 @@ public class TestCompare {
                                 };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
-
-   }
-
-
-   /*
-    * solveIt
-    *
-    * @param   goal
-    * @param   knowledge base
-    * @return  result
-    */
-   private static Complex solveIt(Complex goal, KnowledgeBase kb) {
-      SubstitutionSet solution = null;
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
-      try {
-         solution = root.nextSolution();
-      } catch (TimeOverrunException tox) { return null; }
-      return (Complex)goal.replaceVariables(solution);
    }
 
 } // TestCompare
