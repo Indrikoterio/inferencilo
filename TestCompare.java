@@ -8,8 +8,6 @@
  * @version 1.0
  */
 
-import java.util.*;
-
 import inferencilo.*;
 
 public class TestCompare {
