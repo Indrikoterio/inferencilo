@@ -1,16 +1,13 @@
 /**
  * Subtract
  *
- * Functor to subtract numbers.
+ * Function to subtract numbers.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
 
 package inferencilo;
-
-import java.util.List;
-import java.util.ArrayList;
 
 public class Subtract extends PFunction {
 
@@ -45,20 +42,18 @@ public class Subtract extends PFunction {
                               NumberFormatException,
                               TooFewArgumentsException {
 
-      List<Double> numbers = new ArrayList<Double>();
-      if (params.length < 2) throw new TooFewArgumentsException("in Substract.");
+      if (params.length < 2) throw new TooFewArgumentsException("in Subtract.");
+
+      Constant c = ss.castConstant(params[0]);
 
       // All parameters must be bound.
-      for (Unifiable param : params) {
-         Constant c = ss.castConstant(param);
-         if (c == null) throw new UnboundArgumentException("in Subtract.");
-         numbers.add(Double.parseDouble("" + c));
-      }
+      if (c == null) throw new UnboundArgumentException("in Subtract.");
+      double result = Double.parseDouble("" + c);
 
-      double result = numbers.get(0);
-      int size = numbers.size();
-      for (int i = 1; i < size; i++) {
-         result -= numbers.get(i);
+      for (int i = 1; i < params.length; i++) {
+         c = ss.castConstant(params[i]);
+         if (c == null) throw new UnboundArgumentException("in Subtract.");
+         result -= Double.parseDouble("" + c);
       }
 
       return new Constant("" + result);
