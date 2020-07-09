@@ -44,3 +44,6 @@ java TestPrint
 
 javac TestCompare.java
 java TestCompare
+
+javac TestArithmetic.java
+java TestArithmetic
