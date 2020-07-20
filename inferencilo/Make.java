@@ -104,7 +104,7 @@ public class Make {
       // List (PList), eg:   [a, b, c]
       if (bracket1 >= 0) {
          if (bracket2 > bracket1) {
-            return PList.make(s);
+            return PList.parse(s);
          }
          throw new InvalidListException(s);
       }  // List
