@@ -148,11 +148,11 @@ public abstract class PFunction implements Unifiable {
                return exp;
             }
             else {
-               return new Constant("Function: This is very bad.");
+               return new Constant("PFunction: This is very bad.");
             } 
          }
          else {
-            return new Constant("Function: Got a problem.");
+            return new Constant("PFunction: Got a problem.");
          }
       }
       return null;
@@ -209,7 +209,7 @@ public abstract class PFunction implements Unifiable {
       catch (InstantiationException ix) {}
       catch (IllegalAccessException iax) {}
       catch (InvocationTargetException itx) {}
-      System.err.println("Function::standardizeVariablesApart - Major failure.");
+      System.err.println("PFunction::standardizeVariablesApart - Major failure.");
       System.exit(0);
       return null;
    } // standardizeVariablesApart
