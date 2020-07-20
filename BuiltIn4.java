@@ -46,7 +46,7 @@ public class BuiltIn4 extends BuiltInPredicate {
 
       Constant err = new Constant("second error");  // Make a new error
       Unifiable newErrorList = new PList(false, err, arguments[2]);
-      Unifiable wordListOut = PList.make("[transformed list]");
+      Unifiable wordListOut = PList.parse("[transformed list]");
 
       SubstitutionSet solution = wordListOut.unify(arguments[1], ss);
       solution = newErrorList.unify(arguments[3], solution);
