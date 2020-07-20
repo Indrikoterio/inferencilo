@@ -33,13 +33,9 @@ public class TestFunction {
 
       Constant test_add = new Constant("test_add");
       Constant test_subtract = new Constant("test_subtract");
-      Constant bip3_test = new Constant("bip3_test");
-      Constant bip4_test = new Constant("bip4_test");
       Constant bip5_test = new Constant("bip5_test");
       Constant bip5_rule = new Constant("bip5_rule");
       Constant test_functor = new Constant("test_functor");
-      Constant simple_test  = new Constant("simple_test");
-      Constant simple_test2 = new Constant("simple_test2");
 
       Complex  term = new Complex("symptom(cold, sneezing)");
 
@@ -76,31 +72,6 @@ public class TestFunction {
             )
          ),
 
-         /*
-             bip3_test(H, T) :- X = [1, 2, 3, 4], bip3(X, H, T).
-          */
-         new Rule(
-            new Complex(bip3_test, H, T),
-            new And(
-               new Unify(X, PList.parse("[1, 2, 3, 4]")),
-               new BuiltIn3(X, H, T)
-            )
-         ),
-
-         /*
-             bip4_test(Out, OutErr) :- In = [first], InErr = [first error],
-                                          bip4(In, Out, InErr, OutErr).
-          */
-         new Rule(
-            new Complex(bip4_test, X, Y),
-            new And(
-               new Unify(W, PList.parse("[first]")),
-               new Unify(Z, PList.parse("[first error]")),
-               new BuiltIn4(W, X, Z, Y)
-            )
-         ),
-
-
          /****************************************************
              bip5_rule(In, [H | T2], InErr, OutErr) :-
                                        bip5_predicate(In, H, T, InErr, Err2),
@@ -115,7 +86,7 @@ public class TestFunction {
          new Rule(
             new Complex(bip5_test, Out, Out_err),
             new And(
-               new Unify(In, PList.parse("[built, in, Hello]")),
+               new Unify(In, PList.parse("[sister, in, law]")),
                new Unify(In_err, PList.parse("[first error]")),
                new Complex(bip5_rule, In, Out, In_err, Out_err)
             )
@@ -166,10 +137,7 @@ public class TestFunction {
                new Functor(X, new Constant("symp*")),
                new Unify(Y, new Constant("Success! #3"))
             )
-         ),
-
-         new Rule(new Complex(simple_test))
-
+         )
       );
 
       Complex goal, result;
@@ -180,6 +148,7 @@ public class TestFunction {
       System.out.print("Test Function: ");
 
       try {
+
          goal = new Complex(test_add, W);
          String[] expected = {"3.0"};
          Solutions.verifyAll(goal, kb, expected, 1);
@@ -188,28 +157,31 @@ public class TestFunction {
          String[] expected2 = {"-2.0"};
          Solutions.verifyAll(goal, kb, expected2, 1);
 
-         System.out.print("Test Built-In Predicate, 3 arguments: ");
-         goal = new Complex(bip3_test, H, T);
-         String[] expected4 = {"[2, 3, 4]"};
-         Solutions.verifyAll(goal, kb, expected4, 2);
-
-         System.out.print("Test Built-In Predicate, 4 arguments: ");
-         goal = new Complex(bip4_test, X, Y);
-         result = solveIt(goal, kb);
-         System.out.println(result.getTerm(1) + " " + result.getTerm(2));
-
-         System.out.print("Test Built-In Predicate, 5 arguments:\n");
+         System.out.print("Test Built-In Predicate, 5 arguments: ");
          goal = new Complex(bip5_test, X, Y);
+
+         String[] expectedBIP = {
+            "[sister-in, law] [another error message, first error]",
+            "[sister, in-law] [another error message, first error]",
+            "[sister, in, law] [first error]"
+         };
 
          root = goal.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
          count = 0;
          while (solution != null) {
             result = (Complex)goal.replaceVariables(solution);
-            System.out.println(result.getTerm(1) + " " + result.getTerm(2));
+            String r = result.getTerm(1) + " " + result.getTerm(2);
+            if (r.equals(expectedBIP[count])) {
+               System.out.print("✓");
+            }
+            else {
+               System.out.println("Unexpected: " + r);
+            }
             solution = root.nextSolution();
             count++; if (count > 30) break;  // for safety
          }
+         System.out.println("");
 
          System.out.print("Test Functor/2: ");
          goal = new Complex(test_functor, W);
