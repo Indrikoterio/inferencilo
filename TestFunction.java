@@ -33,7 +33,6 @@ public class TestFunction {
 
       Constant test_add = new Constant("test_add");
       Constant test_subtract = new Constant("test_subtract");
-      Constant bip_test  = new Constant("bip_test");
       Constant bip3_test = new Constant("bip3_test");
       Constant bip4_test = new Constant("bip4_test");
       Constant bip5_test = new Constant("bip5_test");
@@ -74,15 +73,6 @@ public class TestFunction {
                new Unify(X, new Constant("20")),
                new Unify(Y, new Constant("22.00")),
                new Unify(Z, new Subtract(X, Y))
-            )
-         ),
-
-         /* built_in_pred(Y) :- X = 'sept mille dance', bip(X, Y). */
-         new Rule(
-            new Complex(bip_test, Y),
-            new And(
-               new Unify(X, new Constant("sept mille dance")),
-               new BuiltIn2(X, Y)
             )
          ),
 
@@ -197,11 +187,6 @@ public class TestFunction {
          goal = new Complex(test_subtract, W);
          String[] expected2 = {"-2.0"};
          Solutions.verifyAll(goal, kb, expected2, 1);
-
-         System.out.print("Test Built-In Predicate: ");
-         goal = new Complex(bip_test, Z);
-         String[] expected3 = {"sept mille dance"};
-         Solutions.verifyAll(goal, kb, expected3, 1);
 
          System.out.print("Test Built-In Predicate, 3 arguments: ");
          goal = new Complex(bip3_test, H, T);
