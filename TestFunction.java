@@ -92,7 +92,7 @@ public class TestFunction {
          new Rule(
             new Complex(bip3_test, H, T),
             new And(
-               new Unify(X, PList.make("[1, 2, 3, 4]")),
+               new Unify(X, PList.parse("[1, 2, 3, 4]")),
                new BuiltIn3(X, H, T)
             )
          ),
@@ -104,8 +104,8 @@ public class TestFunction {
          new Rule(
             new Complex(bip4_test, X, Y),
             new And(
-               new Unify(W, PList.make("[first]")),
-               new Unify(Z, PList.make("[first error]")),
+               new Unify(W, PList.parse("[first]")),
+               new Unify(Z, PList.parse("[first error]")),
                new BuiltIn4(W, X, Z, Y)
             )
          ),
@@ -125,8 +125,8 @@ public class TestFunction {
          new Rule(
             new Complex(bip5_test, Out, Out_err),
             new And(
-               new Unify(In, PList.make("[built, in, Hello]")),
-               new Unify(In_err, PList.make("[first error]")),
+               new Unify(In, PList.parse("[built, in, Hello]")),
+               new Unify(In_err, PList.parse("[first error]")),
                new Complex(bip5_rule, In, Out, In_err, Out_err)
             )
          ),
