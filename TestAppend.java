@@ -35,7 +35,7 @@ public class TestAppend {
          new Rule(new Complex(test_append, Out),
             new And(
                new Unify(X, new Constant("red")),
-               new Unify(Y, PList.make("[green, blue, purple]")),
+               new Unify(Y, PList.parse("[green, blue, purple]")),
                new Append(X, orange, Y, Out)
             )
          )
