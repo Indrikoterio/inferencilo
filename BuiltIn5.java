@@ -54,7 +54,7 @@ public class BuiltIn5 extends BuiltInPredicate {
       PList inErrors = ss.castPList(arguments[3]);
       if (inErrors == null) return null;
 
-      Constant err = new Constant("an error");
+      Constant err = new Constant("another error message");
       Unifiable newErrorList = new PList(false, err, inErrors);  // Add an error.
 
       Unifiable[] terms = inList.flatten(2);  // Get two terms
