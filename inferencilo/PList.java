@@ -24,10 +24,10 @@
  * There are several ways to instantiate a PList. For example:
  *
  * 1. PList list = new PList(false, a, b, c);   // a, b, and c are Constants
- * 2. PList list = PList.make("[a, b, c]");     // Parse string.
+ * 2. PList list = PList.parse("[a, b, c]");     // Parse string.
  *
  * 3. PList list = new PList(true, a, b, c, X);  // X is a tail Variable
- * 4. PList list = PList.make("[a, b, c | $X]"); // Parse string.
+ * 4. PList list = PList.parse("[a, b, c | $X]"); // Parse string.
  *
  * For the constructor method, the first parameter must be true if
  * the last item is a tail variable (See #3.).
@@ -190,16 +190,17 @@ public class PList implements Unifiable {
 
 
    /**
-    * make
+    * parse
     *
     * Factory method to create a Prolog list.
-    * Usage. PList.make("[boss, Carl, Jim]")
-    * or     PList.make("[subject, verb | $T]")
+    *
+    * Usage. PList.parse("[boss, Carl, Jim]")
+    * or     PList.parse("[subject, verb | $T]")
     *
     * @param   string representing a Prolog list.
-    * @return    PList object
+    * @return  PList object
     */
-   public static PList make(String str) {
+   public static PList parse(String str) {
 
       String      strTerm;
       Unifiable   term;
@@ -266,7 +267,7 @@ public class PList implements Unifiable {
       }
       return list;
 
-   }  // make
+   }  // parse
 
 
    /*
