@@ -16,11 +16,11 @@ public class TestList {
 
    public static void main(String[] args) {
 
-      PList  jobs  = PList.make("[lawyer, teacher, programmer, janitor]");
-      PList  jobs2 = PList.make("[lawyer, teacher, programmer, janitor]");
+      PList  jobs  = PList.parse("[lawyer, teacher, programmer, janitor]");
+      PList  jobs2 = PList.parse("[lawyer, teacher, programmer, janitor]");
 
       Constant scientist = new Constant("scientist");
-      PList  jobs3 = PList.make("[doctor, carpenter, sales manager]");
+      PList  jobs3 = PList.parse("[doctor, carpenter, sales manager]");
       PList  jobs4 = new PList(true, scientist, jobs3);
 
       // Set up the knowledge base.
@@ -34,20 +34,20 @@ public class TestList {
             new Unify(
                jobs,
                //new PList(Variable.instance("$H"), Variable.instance("$H2"), Variable.instance("$T"))
-               PList.make("[$H, $H2 | $T]")
+               PList.parse("[$H, $H2 | $T]")
             )
          ),
          new Rule(
             new Complex("goal3($H, $T)"),
             new Unify(
-               jobs, PList.make("[$H, $_, $_ | $T]")
+               jobs, PList.parse("[$H, $_, $_ | $T]")
             )
          ),
          new Rule(
             new Complex("goal4($T)"),
             new Unify(
                jobs,
-               PList.make("[$_ | $T]")
+               PList.parse("[$_ | $T]")
                // new PList(Anon.anon, Variable.instance("$T"))
             )
          ),
@@ -57,7 +57,7 @@ public class TestList {
          ),
          new Rule(
             new Complex("goal6($H, $T)"),
-            new Unify(jobs4, PList.make("[$H, $_ | $T]"))
+            new Unify(jobs4, PList.parse("[$H, $_ | $T]"))
          )
       );
 
