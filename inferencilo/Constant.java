@@ -5,6 +5,9 @@
  * letters and digits which start with a lower case letter. For example: blue,
  * happy, suspect3
  *
+ * According to: http://www.cse.unsw.edu.au/~billw/dictionaries/prolog/atom.html
+ * "Numbers, in Prolog, are not considered to be atoms."
+ *
  * In this inference engine, there is no distinction between atoms, strings,
  * and numbers. These are represented by the Constant class, which holds an
  * internal String. Arithmetic functions which operate on these Constants must
@@ -102,7 +105,6 @@ public class Constant implements Unifiable {
     */
    public double convertDouble() { return convertDouble(value); }
 
-
    /*
     * adjustEscapes
     *
@@ -147,11 +149,10 @@ public class Constant implements Unifiable {
       if (strThis.equals(strThat)) return ss;
       // Check for number strings, because 1 unifies with 1.0 .
       if (isNumber(strThis) && isNumber(strThat)) {
-           if (convertDouble(strThis) == convertDouble(strThat)) return ss;
+         if (convertDouble(strThis) == convertDouble(strThat)) return ss;
       }
       return null;   // No unification.
    }
-
 
    /**
     * replaceVariables
@@ -176,7 +177,7 @@ public class Constant implements Unifiable {
     * Refer to class Expression for fuller comments.
     *
     * @param  prev - previously standardized variables (not used)
-    * @return  this constant
+    * @return this constant
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> prev) {
       return this;
