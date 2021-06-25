@@ -95,7 +95,7 @@ public class CheckTime implements Unifiable, Goal {
    /**
     * timeOK
     *
-    * Check ellapsed time. If it is less than the maximum time,
+    * Check elapsed time. If it is less than the maximum time,
     * return true. Otherwise false.
     *
     * @return  t/f
@@ -110,6 +110,6 @@ public class CheckTime implements Unifiable, Goal {
       }
       //return false;
 
-   }  // evaluate()
+   }  // timeOK()
 
 }
