@@ -100,7 +100,7 @@ public class Variable implements Unifiable {
     *
     * @return  name of variable
     */
-   protected String name() { return name; }
+   String name() { return name; }
 
 
    /**
