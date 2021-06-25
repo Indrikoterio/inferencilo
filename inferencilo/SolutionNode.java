@@ -87,7 +87,7 @@ public abstract class SolutionNode {
     *
     * @return t/f
     */
-   protected boolean hasNextRule() {
+   boolean hasNextRule() {
       return ruleNumber < knowledge.getRuleCount(goal);
    }
 
@@ -98,7 +98,7 @@ public abstract class SolutionNode {
     *
     * @return substitution set
     */
-   protected SubstitutionSet getParentSolution() {
+   SubstitutionSet getParentSolution() {
       return parentSolution;
    }
 
@@ -107,7 +107,7 @@ public abstract class SolutionNode {
     *
     * @return knowledge base
     */
-   protected KnowledgeBase getKnowledgeBase() {
+   KnowledgeBase getKnowledgeBase() {
       return knowledge;
    }
 
