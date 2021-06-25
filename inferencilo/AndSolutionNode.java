@@ -39,7 +39,7 @@ public class AndSolutionNode extends SolutionNode {
     *
     * @return solution node of head
     */
-   protected SolutionNode getHeadSolutionNode() {
+   SolutionNode getHeadSolutionNode() {
       return headSolutionNode;
    }
 
@@ -48,7 +48,7 @@ public class AndSolutionNode extends SolutionNode {
     *
     * @return solution node of tail
     */
-   protected SolutionNode getTailSolutionNode() {
+   SolutionNode getTailSolutionNode() {
       return tailSolutionNode;
    }
 
