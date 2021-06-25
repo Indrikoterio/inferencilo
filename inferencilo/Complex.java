@@ -1,11 +1,13 @@
 /**
- * Complex
+ * Complex (term)
  *
- * Note: 'Complex terms' are also called 'compound terms'.
- * There doesn't seem to be a difference in meaning.
+ * Note: 'Complex terms' are also called 'compound terms'. They are
+ * sometimes called 'function terms'. Luger and Stubblefield call
+ * them 'simple sentences'.
  *
- * This class represents a complex term, which consists of
- * a functor plus one or more arguments (unifiable terms).
+ * This class represents a complex term, which consists of a functor
+ * plus one or more arguments, which are unifiable terms.
+ *
  * Format:  functor(argument1, argument2)
  * Example: owns(john, house), owns($X, house)
  *
@@ -132,7 +134,6 @@ public class Complex implements Unifiable, Goal {
 
    } // constructor
 
-
    /**
     * key
     *
@@ -142,7 +143,6 @@ public class Complex implements Unifiable, Goal {
     * @return predicate name
     */
    public String key() { return functor() + "/" + arity(); }
-
 
    /**
     * toString()
@@ -245,7 +245,6 @@ public class Complex implements Unifiable, Goal {
       String str2 = "" + terms[index];
       return str.equals(str2);
    }
-
 
    /**
     * unify
