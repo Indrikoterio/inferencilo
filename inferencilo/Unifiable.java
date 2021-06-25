@@ -1,7 +1,8 @@
 /**
- * Unifiable  - Base interface for unifiable espressions.
+ * Unifiable  - Base interface for unifiable expressions.
  *
- * This interface defines a method to 'unify' logical expressions (Constant, Variable, Complex).
+ * This interface defines a method to 'unify' logical expressions
+ * (Constant, Variable, Complex).
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
