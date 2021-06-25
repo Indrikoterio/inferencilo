@@ -55,15 +55,15 @@ public interface Expression {
     *    parent($X, $Y) :- father($X, $Y).
     *    parent($X, $Y) :- mother($X, $Y).
     *
-    * To find a solution for the goal 'grandfather(Frank, $X)', the parent/2
+    * To find a solution for the goal 'grandparent(Frank, $X)', the parent/2
     * rule will be fetched from the knowledge base. When parent/2 is fetched
     * a second time, the variables ($X, $Y) must be unique, different from
     * the variables which were previously bound.
     * Every time a rule is fetched from the knowledge base, the variables
     * must be recreated (standardized).
     * A variable is uniquely identified by its print name and id number.
-    * For example, the $X for the first call might become '$X_22', and $X in
-    * the second call might become '$X_23'.
+    * For example, the variable $X for the first call might become '$X_22',
+    * and $X in the second call might become '$X_23'.
     *
     * @param   hash table of standardized variables
     * @return  expression with standardized variables
