@@ -21,7 +21,7 @@ package inferencilo;
 
 import java.util.*;
 
-interface Expression {
+public interface Expression {
 
    /**
     * replaceVariables - explanation here
