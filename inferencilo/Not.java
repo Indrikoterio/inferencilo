@@ -33,7 +33,7 @@ public class Not extends Operator implements Goal {
      *
      * @param  list of operands
      */
-   public Not(ArrayList<Goal> operands) {
+   public Not(List<Goal> operands) {
       super(operands);
       if (operands.size() != 1) throw new InvalidOperandException(errorMessage);
    }
