@@ -11,8 +11,6 @@
 
 package inferencilo;
 
-import java.util.*;
-
 public interface Goal extends Expression {
 
    /**
@@ -25,7 +23,7 @@ public interface Goal extends Expression {
     * @param  parent solution node
     * @return solution node
     */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode);
+   SolutionNode getSolver(KnowledgeBase knowledge,
+                          SubstitutionSet parentSolution,
+                          SolutionNode parentNode);
 }
