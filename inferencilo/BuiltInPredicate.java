@@ -90,7 +90,7 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
     * @param   already standardized variables (hash)
     * @return  out argument
     */
-   protected Unifiable standardizeOne(Unifiable argument,
+   Unifiable standardizeOne(Unifiable argument,
                                       Hashtable<Variable, Variable> newVars) {
       if (argument instanceof Variable) {
          Variable arg = (Variable)argument;
