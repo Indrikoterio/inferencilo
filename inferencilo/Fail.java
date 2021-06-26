@@ -9,8 +9,6 @@
 
 package inferencilo;
 
-import java.util.*;
-
 public class Fail extends Operator implements Goal {
 
    public Fail() { }
