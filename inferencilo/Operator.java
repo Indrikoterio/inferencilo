@@ -12,7 +12,7 @@ package inferencilo;
 
 import java.util.*;
 
-public abstract class Operator implements Goal {
+abstract class Operator implements Goal {
 
    private List<Goal> operands;
 
@@ -96,7 +96,6 @@ public abstract class Operator implements Goal {
     * to remove the head operand, thus leaving the tail.
     */
     private void removeHead() { operands.remove(0); }
-
 
    /**
     * isEmpty
