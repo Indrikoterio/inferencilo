@@ -171,8 +171,8 @@ public abstract class PFunction implements Unifiable {
     * @param   already standardized variables (hash)
     * @return  new unifiable parameter or null
     */
-   protected Unifiable standardizeParameter(Unifiable parameter,
-                                            Hashtable<Variable, Variable> newVars) {
+   Unifiable standardizeParameter(Unifiable parameter,
+                                  Hashtable<Variable, Variable> newVars) {
       if (parameter instanceof Variable) {
          Variable par = (Variable)parameter;
          Unifiable newParameter = (Unifiable)par.standardizeVariablesApart(newVars);
