@@ -27,6 +27,6 @@ public interface Unifiable extends Expression {
     * @param   substitution set
     * @return  updated substitution set
     */
-   public SubstitutionSet unify(Unifiable u, SubstitutionSet ss);
+   SubstitutionSet unify(Unifiable u, SubstitutionSet ss);
 
 }
