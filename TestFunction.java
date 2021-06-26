@@ -41,21 +41,6 @@ public class TestFunction {
 
       KnowledgeBase kb = new KnowledgeBase(
 
-
-         new Rule(new Complex("test_add2($L)"),
-            new And(
-               /* new Unify( Variable.instance("$X"), new Constant("This is OK. This works.") ), */
-               new Unify("$X = A"),
-               new Unify("$Y = B"),
-               new Unify(
-                  new ChaChaCha(Variable.instance("$X"), Variable.instance("$Y")),
-                  Variable.instance("$M")
-               ),
-               /* new Unify( Variable.instance("$L"), Variable.instance("$M") ) */
-               new Unify("$L = $M")
-            )
-         ),
-
          new Rule(new Complex("test_add($Z)"),
             new And(
                new Unify(X, new Constant("1")),
