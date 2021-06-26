@@ -84,7 +84,7 @@ public class Complex implements Unifiable, Goal {
 
 
    /**
-    * constructor 2
+    * constructor 3
     *
     * Creates a complex term from a string representation.
     * Eg. new Complex("boss(Susan, Jackie)")
