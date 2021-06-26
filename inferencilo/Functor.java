@@ -6,6 +6,8 @@
  *
  *     functor(boss(Zack, Stephen), $Func, $Arity)
  *
+ * Note: The first term must be the complex term to be tested.
+ *
  * $Func will bind to 'boss' and $Arity will bind to '2' (because
  * there are two arguments, Zack and Stephen). Arity is optional:
  *
