@@ -21,7 +21,7 @@ package inferencilo;
 
 import java.util.*;
 
-public interface Expression {
+interface Expression {
 
    /**
     * replaceVariables - explanation here
@@ -43,7 +43,7 @@ public interface Expression {
     * @param   substitution set
     * @return  new expression, without variables
     */
-   public Expression replaceVariables(SubstitutionSet ss);
+   Expression replaceVariables(SubstitutionSet ss);
 
    /**
     * standardizeVariablesApart  - explanation here
@@ -68,7 +68,6 @@ public interface Expression {
     * @param   hash table of standardized variables
     * @return  expression with standardized variables
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars);
-
+   Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars);
 }
 
