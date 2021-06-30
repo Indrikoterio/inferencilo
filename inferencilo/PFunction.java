@@ -29,7 +29,7 @@ public abstract class PFunction implements Unifiable {
 
    // public for convenience of subclasses
    String functionName = null;
-   Unifiable[] parameters;  // arguments
+   public Unifiable[] parameters;  // arguments
 
    /**
     * constructor
