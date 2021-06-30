@@ -28,8 +28,8 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class PFunction implements Unifiable {
 
    // public for convenience of subclasses
-   public String functionName = null;
-   public Unifiable[] parameters;  // arguments
+   String functionName = null;
+   Unifiable[] parameters;  // arguments
 
    /**
     * constructor
@@ -39,8 +39,6 @@ public abstract class PFunction implements Unifiable {
     */
    public PFunction(String functionName, Unifiable... parameters) {
       this.functionName = functionName;
-      if (parameters.length < 1)
-          throw new TooFewArgumentsException("in " + functionName + ".");
       this.parameters = parameters;
    }
 
