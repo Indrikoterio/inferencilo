@@ -47,3 +47,6 @@ java TestCompare
 
 javac TestArithmetic.java
 java TestArithmetic
+
+javac TestJoin.java
+java TestJoin
