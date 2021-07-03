@@ -1,8 +1,22 @@
 /**
  * TestCut
  *
- * Tests the inference engine.
- * Testing Cut.
+ * Testing Prolog's Cut (!).
+ *
+ * good_job(X) :- job(X), !, pay(X, high).
+ * good_job(programmer).
+ *
+ * getta_good_job(X) :- good_job(X).
+ *
+ * job(lawyer).
+ * job(teacher).
+ * job(programmer).
+ * job(janitor).
+ *
+ * pay(lawyer, high).
+ * pay(teacher, high).
+ * pay(programmer, low).
+ * pay(janitor, low).
  *
  * @author  Klivo
  * @version 1.0
@@ -13,7 +27,7 @@ import inferencilo.*;
 
 public class TestCut {
 
-   public static void main(String[] args) {         // Set up the knowledge base.
+   public static void main(String[] args) {    // Set up the knowledge base.
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("job(lawyer)")),
@@ -47,7 +61,7 @@ public class TestCut {
 
       try {
          Complex goal = new Complex("getta_good_job($X)");
-         String[] expected = {"lawyer" };
+         String[] expected = {"lawyer"};
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
 
