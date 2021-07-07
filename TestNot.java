@@ -1,13 +1,20 @@
 /**
  * TestNot
  *
- * Testing the Not operator.
+ * Testing the Not operator. (Note: variables begin with $.)
  *
  * parent(Sarah, Daniel).
  * parent(Richard, Daniel).
  * female(Sarah).
  * mother($X, $Y) := female($X), parent($X, $Y).
  * father($X, $Y) := parent($X, $Y), not(female($X)).
+ *
+ * A second test.
+ *
+ * friend(Susan).
+ * friend(Raj).
+ * friend(Carl).
+ * invite($X) :- friend($X), not($X = Carl).
  *
  * @author  Klivo
  * @version 1.0
@@ -37,7 +44,21 @@ public class TestNot {
                new Complex("parent($X, $Y)"),
                new Not(new Complex("female($X)"))
             )
+         ),
+
+         //---------------------------------------
+         // For second test.
+         new Rule(new Complex("friend(Susan)")),
+         new Rule(new Complex("friend(Raj)")),
+         new Rule(new Complex("friend(Carl)")),
+         new Rule(
+            new Complex("invite($X)"),
+            new And(
+               new Complex("friend($X)"),
+               new Not(new Unify(Variable.instance("$X"), new Constant("Carl")))
+            )
          )
+
       );
 
       System.out.print("Test Not: ");
@@ -45,6 +66,12 @@ public class TestNot {
       try {
          Complex goal = new Complex("father($X, Daniel)");
          String[] expected = { "Richard" };
+         Solutions.verifyAll(goal, kb, expected, 1);
+      } catch (TimeOverrunException tox) { }
+
+      try {
+         Complex goal = new Complex("invite($X)");
+         String[] expected = { "Susan", "Raj" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
    }
