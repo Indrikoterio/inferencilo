@@ -117,15 +117,14 @@ public class Make {
    /**
     * subgoal
     *
-    * This function accepts a string which represents a subgoal,
-    * and creates its corresponding Goal object. The Not operator
-    * must be dealt with first, because it encloses a subgoal.
-    * Eg.
+    * This function accepts a string which represents a subgoal, and
+    * creates its corresponding Goal object. At present, it parses
+    * complex terms, the Unify operator (=), the Cut (!), and others.
+    *
+    * The Not operator must be dealt with first, because it encloses
+    * a subgoal. Eg.
     *
     *    not($X = $Y)
-    *
-    * Other goals (Unify, Fail, Cut, etc.) are created by the
-    * private method _subgoal.
     *
     * @param  subgoal as String
     * @return subgoal as Goal object
@@ -141,34 +140,9 @@ public class Make {
          String end = s.substring(s.length() - 1);
          if (start.equals("not(") && end.equals(")")) {
             String s2 = s.substring(4, s.length() - 1);
-            return new Not(_subgoal(s2));
+            return new Not(subgoal(s2));
          }
       }
-
-      return _subgoal(s);
-
-   } // subgoal
-
-
-   /*
-    * _subgoal
-    *
-    * This function accepts a string which represents a subgoal,
-    * and creates its corresponding Goal object. At present, it
-    * recognizes complex terms, the Unify operator, and the Cut.
-    * That is:
-    *
-    *    symptom(influenza, fever)
-    *    $X = $Y
-    *    !
-    *
-    * @param  subgoal as String
-    * @return subgoal as Goal object
-    * @throws FatalParsingException
-    */
-   private static Goal _subgoal(String subgoal) {
-
-      String s = subgoal.trim();
 
       if (s.indexOf('=') > 0) {  // unify
          return new Unify(s);
@@ -182,39 +156,37 @@ public class Make {
       else if (s.equals("nl")) {  // new line
          return new NewLine();
       }
-      else { // complex terms, built-in functions
 
-         String[] parsed = parseComplex(s);
-         if (parsed == null) throw new FatalParsingException("Invalid term: " + s);
-         String functor = parsed[0];
-         String contents = parsed[1];
+      // complex terms, built-in functions
+      String[] parsed = parseComplex(s);
+      if (parsed == null) throw new FatalParsingException("Invalid term: " + s);
+      String functor = parsed[0];
+      String contents = parsed[1];
 
-         if (functor.equals("append")) {
-            return new Append(contents);
-         }
-         else if (functor.equals("functor")) {
-            return new Functor(contents);
-         }
-         else if (functor.equals("print")) {
-            return new Print(contents);
-         }
-         else if (functor.equals("greater_than")) {
-            return new GreaterThan(contents);
-         }
-         else if (functor.equals("less_than")) {
-            return new LessThan(contents);
-         }
-         else if (functor.equals("greater_than_or_equal")) {
-            return new GreaterThanOrEqual(contents);
-         }
-         else if (functor.equals("less_than_or_equal")) {
-            return new LessThanOrEqual(contents);
-         }
-         return new Complex(s);
+      if (functor.equals("append")) {
+         return new Append(contents);
       }
+      else if (functor.equals("functor")) {
+         return new Functor(contents);
+      }
+      else if (functor.equals("print")) {
+         return new Print(contents);
+      }
+      else if (functor.equals("greater_than")) {
+         return new GreaterThan(contents);
+      }
+      else if (functor.equals("less_than")) {
+         return new LessThan(contents);
+      }
+      else if (functor.equals("greater_than_or_equal")) {
+         return new GreaterThanOrEqual(contents);
+      }
+      else if (functor.equals("less_than_or_equal")) {
+         return new LessThanOrEqual(contents);
+      }
+      return new Complex(s);
 
-   } // _subgoal
-
+   } // subgoal
 
 
    /**
