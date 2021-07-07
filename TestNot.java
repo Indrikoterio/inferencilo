@@ -3,6 +3,12 @@
  *
  * Testing the Not operator.
  *
+ * parent(Sarah, Daniel).
+ * parent(Richard, Daniel).
+ * female(Sarah).
+ * mother($X, $Y) := female($X), parent($X, $Y).
+ * father($X, $Y) := parent($X, $Y), not(female($X)).
+ *
  * @author  Klivo
  * @version 1.0
  */
@@ -17,7 +23,6 @@ public class TestNot {
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("parent(Sarah, Daniel)")),
          new Rule(new Complex("parent(Richard, Daniel)")),
-         //new Rule(new Complex("parent(Steve, Daniel)")),
          new Rule(new Complex("female(Sarah)")),
          new Rule(
             new Complex("mother($X, $Y)"),
@@ -30,8 +35,7 @@ public class TestNot {
             new Complex("father($X, $Y)"),
             new And(
                new Complex("parent($X, $Y)"),
-               new Not(new Complex("female($X)")) //,
-               //new Fail()
+               new Not(new Complex("female($X)"))
             )
          )
       );
