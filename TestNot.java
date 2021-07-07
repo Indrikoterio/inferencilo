@@ -11,10 +11,10 @@
  *
  * A second test.
  *
- * friend(Susan).
- * friend(Raj).
- * friend(Carl).
- * invite($X) :- friend($X), not($X = Carl).
+ * friend(Penny).
+ * friend(Sheldon).
+ * friend(Leonard).
+ * invite($X) :- friend($X), not($X = Sheldon).
  *
  * @author  Klivo
  * @version 1.0
@@ -48,17 +48,26 @@ public class TestNot {
 
          //---------------------------------------
          // For second test.
-         new Rule(new Complex("friend(Susan)")),
-         new Rule(new Complex("friend(Raj)")),
-         new Rule(new Complex("friend(Carl)")),
+         new Rule(new Complex("friend(Penny)")),
+         new Rule(new Complex("friend(Sheldon)")),
+         new Rule(new Complex("friend(Leonard)")),
          new Rule(
             new Complex("invite($X)"),
             new And(
                new Complex("friend($X)"),
-               new Not(new Unify(Variable.instance("$X"), new Constant("Carl")))
+               new Not(new Unify(Variable.instance("$X"), new Constant("Sheldon")))
+            )
+         ),
+
+         //---------------------------------------
+         // Third test. Can this be parsed?
+         new Rule(
+            new Complex("invite2($X)"),
+            new And(
+               new Complex("friend($X)"),
+               Make.subgoal("not($X = Leonard)")
             )
          )
-
       );
 
       System.out.print("Test Not: ");
@@ -71,7 +80,13 @@ public class TestNot {
 
       try {
          Complex goal = new Complex("invite($X)");
-         String[] expected = { "Susan", "Raj" };
+         String[] expected = { "Penny", "Leonard" };
+         Solutions.verifyAll(goal, kb, expected, 1);
+      } catch (TimeOverrunException tox) { }
+
+      try {
+         Complex goal = new Complex("invite2($X)");
+         String[] expected = { "Penny", "Sheldon" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
    }
