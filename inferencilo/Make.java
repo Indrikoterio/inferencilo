@@ -118,20 +118,56 @@ public class Make {
     * subgoal
     *
     * This function accepts a string which represents a subgoal,
-    * and creates its corresponding Goal object. At present, it
-    * recognizes complex terms, the Unify operator, the Not
-    * operator and the Cut. That is:
+    * and creates its corresponding Goal object. The Not operator
+    * must be dealt with first, because it encloses a subgoal.
+    * Eg.
     *
-    *    symptom(influenza, fever)
-    *    $X = $Y
     *    not($X = $Y)
-    *    !
+    *
+    * Other goals (Unify, Fail, Cut, etc.) are created by the
+    * private method _subgoal.
     *
     * @param  subgoal as String
     * @return subgoal as Goal object
     * @throws FatalParsingException
     */
    public static Goal subgoal(String subgoal) {
+
+      String s = subgoal.trim();
+
+      // Parse not() goals first.
+      if (s.length() > 5) {
+         String start = s.substring(0, 4).toLowerCase();
+         String end = s.substring(s.length() - 1);
+         if (start.equals("not(") && end.equals(")")) {
+            String s2 = s.substring(4, s.length() - 1);
+            return new Not(_subgoal(s2));
+         }
+      }
+
+      return _subgoal(s);
+
+   } // subgoal
+
+
+   /*
+    * _subgoal
+    *
+    * This function accepts a string which represents a subgoal,
+    * and creates its corresponding Goal object. At present, it
+    * recognizes complex terms, the Unify operator, and the Cut.
+    * That is:
+    *
+    *    symptom(influenza, fever)
+    *    $X = $Y
+    *    !
+    *
+    * @param  subgoal as String
+    * @return subgoal as Goal object
+    * @throws FatalParsingException
+    */
+   private static Goal _subgoal(String subgoal) {
+
       String s = subgoal.trim();
 
       if (s.indexOf('=') > 0) {  // unify
@@ -174,12 +210,10 @@ public class Make {
          else if (functor.equals("less_than_or_equal")) {
             return new LessThanOrEqual(contents);
          }
-         else if (functor.equals("not")) {
-            return new Not((Goal)term(contents));
-         }
          return new Complex(s);
       }
-   } // subgoal
+
+   } // _subgoal
 
 
 
