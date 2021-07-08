@@ -237,7 +237,7 @@ public class PList implements Unifiable {
       int squareDepth = 0;   // depth of square brackets [[]]
 
       // Iterate backwards.
-      int count = 1;
+      int count = 1;  // Count the number of list elements.
       for (int i = argLength - 1; i >= 0; i--) {
          char ch = arguments.charAt(i);
          if (ch == ']') squareDepth++;
@@ -248,22 +248,21 @@ public class PList implements Unifiable {
             if (ch == ',') {
                strTerm = arguments.substring(i + 1, endIndex);
                term = Make.term(strTerm);
-               if (term != null) list = new PList(false, term, list, count);
+               if (term != null) list = new PList(false, term, list, count++);
                endIndex = i;
             }
             else if (i == 0) {  // final
                strTerm = arguments.substring(0, endIndex);
                term = Make.term(strTerm);
-               list = new PList(false, term, list, count);
+               list = new PList(false, term, list, count++);
             }
             else if (ch == '|') {  // There must be a tail variable.
                strTerm = arguments.substring(i + 1, endIndex);
                term = Make.term(strTerm);
-               list = new PList(true, term, list, count);
+               list = new PList(true, term, list, count++);
                endIndex = i;
             }
          }
-         count++;
       }
       return list;
 
