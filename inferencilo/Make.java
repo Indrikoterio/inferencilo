@@ -184,6 +184,9 @@ public class Make {
       else if (functor.equals("less_than_or_equal")) {
          return new LessThanOrEqual(contents);
       }
+      else if (functor.equals("count")) {
+         return new Count(contents);
+      }
       return new Complex(s);
 
    } // subgoal
