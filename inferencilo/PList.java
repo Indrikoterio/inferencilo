@@ -100,27 +100,29 @@ public class PList implements Unifiable {
    public PList(boolean hasPipe, Unifiable... args) {
       super();
       if (args.length == 0) return;
-      PList list = null;
+      PList tailList = null;
       boolean tailVar = hasPipe;
       int num = 1;
       int lastIndex = args.length - 1;
       for (int i = lastIndex; i > 0; i--) {
          Unifiable term = args[i];
-         if (hasPipe && i == lastIndex && PList.class.isInstance(term)) {
+         if (i == lastIndex && PList.class.isInstance(term)) {
             // If the last term is empty [], there is no need
             // to add it to the tail.
-            list = (PList)term;
-            if (list.term == null) list = null;
-            else num++;
+            tailList = (PList)term;
+            if (tailList.term == null) tailList = null;
+            else {  // Get number of terms in list.
+               num = tailList.count() + 1;
+            }
          }
          else {
-            list = new PList(tailVar, term, list, num);
+            tailList = new PList(tailVar, term, tailList, num);
             num++;
          }
          tailVar = false;
       }
       term = args[0];
-      tail = list;
+      tail = tailList;
       count = num;
    } // constructor
 
@@ -143,27 +145,29 @@ public class PList implements Unifiable {
    public PList(boolean hasPipe, List<Unifiable> args) {
       super();
       if (args.size() == 0) return;
-      PList list = null;
+      PList tailList = null;
       boolean tailVar = hasPipe;
       int num = 1;
       int lastIndex = args.size() - 1;
       for (int i = lastIndex; i > 0; i--) {
          Unifiable term = args.get(i);
-         if (hasPipe && i == lastIndex && PList.class.isInstance(term)) {
+         if (i == lastIndex && PList.class.isInstance(term)) {
             // If the last term is empty [], there is no need
             // to add it to the tail.
-            list = (PList)term;
-            if (list.term == null) list = null;
-            else num++;
+            tailList = (PList)term;
+            if (tailList.term == null) tailList = null;
+            else {  // Get number of terms in list.
+               num = tailList.count() + 1;
+            }
          }
          else {
-            list = new PList(tailVar, term, list, num);
+            tailList = new PList(tailVar, term, tailList, num);
             num++;
          }
          tailVar = false;
       }
       term = args.get(0);
-      tail = list;
+      tail = tailList;
       count = num;
    } // constructor
 
