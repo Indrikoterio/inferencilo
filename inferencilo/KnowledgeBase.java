@@ -150,6 +150,17 @@ public class KnowledgeBase {
    }
 
    /**
+    * getRuleCount
+    *
+    * Counts the total number of rules in the knowledge base.
+    *
+    * @return count
+    */
+   public int getRuleCount() {
+      return rules.size();
+   }
+
+   /**
     * showKB ()
     *
     * For diagnostic purposes.
