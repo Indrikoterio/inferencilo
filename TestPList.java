@@ -1,5 +1,5 @@
 /**
- * TestList
+ * TestPList
  *
  * Tests the inference engine. Testing PList (Prolog List).
  *
@@ -12,7 +12,7 @@
 import java.util.*;
 import inferencilo.*;
 
-public class TestList {
+public class TestPList {
 
    public static void main(String[] args) {
 
@@ -104,4 +104,4 @@ public class TestList {
       } catch (TimeOverrunException tox) { }
 
    }
-}  // TestList
+}  // TestPList
