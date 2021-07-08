@@ -33,7 +33,9 @@ public class TestList {
             new Complex("goal2($H, $H2, $T)"),
             new Unify(
                jobs,
-               //new PList(Variable.instance("$H"), Variable.instance("$H2"), Variable.instance("$T"))
+               //new PList(Variable.instance("$H"),
+               //          Variable.instance("$H2"),
+               //          Variable.instance("$T"))
                PList.parse("[$H, $H2 | $T]")
             )
          ),
@@ -68,7 +70,7 @@ public class TestList {
 
       //kb.showKB();
 
-      System.out.println("Test List: ");
+      System.out.println("Test PList: ");
 
       Complex goal;
       ArrayList<String> solutions;
