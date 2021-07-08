@@ -50,3 +50,6 @@ java TestArithmetic
 
 javac TestJoin.java
 java TestJoin
+
+javac TestCount.java
+java TestCount
