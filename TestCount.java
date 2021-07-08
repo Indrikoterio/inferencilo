@@ -24,10 +24,14 @@ public class TestCount {
 
       KnowledgeBase kb;
 
-      Constant a = new Constant("a");
-      Constant b = new Constant("b");
-      PList p1 = new PList();
-      PList p2 = new PList();
+      Constant red = new Constant("red");
+      Constant green = new Constant("green");
+      Constant blue = new Constant("blue");
+
+      PList p1 = new PList(false, green, blue);
+      PList p2 = new PList(false, red, p1);
+
+      Variable c = Variable.instance("$Count");
 
       kb = new KnowledgeBase(
          new Rule(new Complex("test_count($Count)"),
@@ -38,6 +42,9 @@ public class TestCount {
          ),
          new Rule(new Complex("test_count($Count)"),
             new And( new Count("[a | $_], $Count") )
+         ),
+         new Rule(new Complex("test_count($Count)"),
+            new And( new Count(p2, c) )
          )
       );
 
@@ -45,9 +52,10 @@ public class TestCount {
 
       try {
          Complex goal = new Complex("test_count($X)");
-         String[] expected = { "0", "3", "2" };
+         String[] expected = { "0", "3", "2", "3" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
+
    }
 
 } // TestCount
