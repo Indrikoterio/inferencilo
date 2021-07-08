@@ -54,6 +54,10 @@ public class Functor extends BuiltInPredicate implements Unifiable, Goal {
     */
    public Functor(Unifiable... arguments) {
       super(NAME, arguments);
+      int len = arguments.length;
+      if (len < 2 || len > 3)
+         throw new FatalParsingException(
+               "functor() takes 2 or 3 arguments.");
    }
 
    /**
