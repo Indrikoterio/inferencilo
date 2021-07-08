@@ -19,6 +19,8 @@
 
 package inferencilo;
 
+import java.util.*;
+
 public class Join extends PFunction {
 
    /**
@@ -28,6 +30,7 @@ public class Join extends PFunction {
     */
    public Join(Unifiable... parameters) {
       super("JOIN", parameters);
+      if (parameters.length < 2) throw new TooFewArgumentsException("- join(...)");
    }
 
    /**
@@ -37,6 +40,10 @@ public class Join extends PFunction {
     */
    public Join(String parameters) {
       super("JOIN", parameters);
+      List<String> strTerms = Make.splitTerms(parameters, ',');
+      if (strTerms.size() < 2)
+         throw new TooFewArgumentsException(
+               "join() needs at least 2 arguments: " + parameters);
    }
 
 
