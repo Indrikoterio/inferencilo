@@ -110,7 +110,7 @@ public class SubstitutionSet {
     * getGroundTerm
     *
     * If a term is a grounded Variable, get the ground term.
-    * Otherwise, return the non-variable.
+    * Otherwise, return the variable.
     *
     * @param   term
     * @return  ground term
