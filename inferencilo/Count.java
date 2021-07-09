@@ -49,8 +49,6 @@ public class Count extends BuiltInPredicate implements Unifiable, Goal {
    /**
     * evaluate
     *
-    * Get the count from the head of the PList.
-    *
     * @param  parentSolution
     * @return new solution
     */
@@ -59,10 +57,57 @@ public class Count extends BuiltInPredicate implements Unifiable, Goal {
       SubstitutionSet ss = parentSolution;
 
       // Get first argument.
+      /* Nope - have to count.
       PList pList = ss.castPList(arguments[0]);
       if (pList == null) return null;
       Constant count = new Constant("" + pList.count());
       return arguments[1].unify(count, ss);
+      */
+
+      /*
+          In standard Prolog:
+
+             doit(V2) :- V1 = [c, d, e], V2 = [a, b, Var].
+             The goal doit(X) returns X = [a, b, [c, d, e]] .
+
+             doit(V2) :- V1 = [c, d, e], V2 = [a, b | Var].
+             The goal doit(X) returns X = [a, b, c, d, e] .
+
+             doit(V2) :- V1 = [c, d, e], V2 = [a, Var, b].
+             The goal doit(X) returns X = [a, [c, d, e], b] .
+
+          Ref: https://swish.swi-prolog.org/
+
+          Conclusion - If there is a tail variable which represents
+          a list, its list items should be counted as part of the
+          original list.
+
+       */
+
+      // Get first item.
+      PList pList = ss.castPList(arguments[0]);
+      if (pList == null) {
+        throw new InvalidOperandException("Count's first argument must be a PList.");
+        //return null;
+      }
+
+      int count = 0;
+      Unifiable head = pList.getHead();
+      while (head != null) {
+         count++;
+         pList = pList.getTail();
+         head = pList.getHead();
+         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
+            Variable hVar  = (Variable)(head);
+            PList term = ss.castPList(hVar);
+            if (term != null && PList.class.isInstance(term)) {
+               pList = (PList)term;
+               head = pList.getHead();
+            }
+         }
+      }
+
+      return arguments[1].unify(new Constant("" + count), ss);
 
    } // evaluate
 

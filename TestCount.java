@@ -9,8 +9,13 @@
  *   test_count($Count) :- count([], $Count).          # $C is 0
  *   test_count($Count) :- count([a, b, c], $Count).   # $C is 3
  *   test_count($Count) :- count([a | $_], $Count).    # $C is 2
+ *   test_count($Count) :- count([red, [green, blue]], $Count).    # $C is 3
  *
- * Note: In this inference engine, numbers are Constant-s.
+ *   test_count($Count) :- $TailVar = [one, two, three],
+ *                         $NewList = [red, green, blue | $TailVar],
+ *                         count($NewList, $Count).    # $C is 6
+ *
+ * Note: In this inference engine, numbers are Constants.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -24,14 +29,22 @@ public class TestCount {
 
       KnowledgeBase kb;
 
-      Constant red = new Constant("red");
+      Constant red   = new Constant("red");
       Constant green = new Constant("green");
-      Constant blue = new Constant("blue");
+      Constant blue  = new Constant("blue");
+      Constant one   = new Constant("one");
+      Constant two   = new Constant("two");
+      Constant three = new Constant("three");
 
       PList p1 = new PList(false, green, blue);
       PList p2 = new PList(false, red, p1);
 
       Variable c = Variable.instance("$Count");
+
+      Variable tailVar = Variable.instance("$TailVar");
+      PList p3 = new PList(false, one, two, three);
+      PList p4 = new PList(true, red, green, blue, tailVar);
+      Variable newList = Variable.instance("$NewList");
 
       kb = new KnowledgeBase(
          new Rule(new Complex("test_count($Count)"),
@@ -45,6 +58,13 @@ public class TestCount {
          ),
          new Rule(new Complex("test_count($Count)"),
             new And( new Count(p2, c) )
+         ),
+         new Rule(new Complex("test_count($Count)"),
+            new And(
+               new Unify(p3, tailVar),
+               new Unify(newList, p4),
+               new Count(newList, c)
+            )
          )
       );
 
@@ -52,7 +72,7 @@ public class TestCount {
 
       try {
          Complex goal = new Complex("test_count($X)");
-         String[] expected = { "0", "3", "2", "3" };
+         String[] expected = { "0", "3", "2", "3", "6" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
 
