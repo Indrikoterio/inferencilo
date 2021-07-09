@@ -9,11 +9,15 @@
  *   test_count($Count) :- count([], $Count).          # $C is 0
  *   test_count($Count) :- count([a, b, c], $Count).   # $C is 3
  *   test_count($Count) :- count([a | $_], $Count).    # $C is 2
- *   test_count($Count) :- count([red, [green, blue]], $Count).    # $C is 3
+ *   test_count($Count) :- count([red | [green, blue]], $Count).    # $C is 3
  *
  *   test_count($Count) :- $TailVar = [one, two, three],
  *                         $NewList = [red, green, blue | $TailVar],
  *                         count($NewList, $Count).    # $C is 6
+ *
+ *   test_count($Count) :- $TailVar = [],
+ *                         $NewList = [red, green, blue | $TailVar],
+ *                         count($NewList, $Count).    # $C is 3
  *
  * Note: In this inference engine, numbers are Constants.
  *
@@ -65,6 +69,13 @@ public class TestCount {
                new Unify(newList, p4),
                new Count(newList, c)
             )
+         ),
+         new Rule(new Complex("test_count($Count)"),
+            new And(
+               new Unify(tailVar, PList.empty),
+               new Unify(newList, p4),
+               new Count(newList, c)
+            )
          )
       );
 
@@ -72,7 +83,7 @@ public class TestCount {
 
       try {
          Complex goal = new Complex("test_count($X)");
-         String[] expected = { "0", "3", "2", "3", "6" };
+         String[] expected = { "0", "3", "2", "3", "6", "3" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
 
