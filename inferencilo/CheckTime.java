@@ -23,16 +23,9 @@ public class CheckTime implements Unifiable, Goal {
    /**
     * constructor
     *
-    * The CheckTime built in predicate should produce an error message if
-    * execution time is exceeded. Therefore it needs two arguments, InErrors
-    * (list) and OutErrors (list). Extra arguments are ignored.
-    *
-    * @param  InErrors
-    * @param  OutErrors
+    * No arguments.
     */
-   public CheckTime(Unifiable... arguments) {
-      this.arguments = arguments;
-   }
+   public CheckTime() { }
 
 
    /**
@@ -103,10 +96,10 @@ public class CheckTime implements Unifiable, Goal {
    public boolean timeOK() throws TimeOverrunException {
 
       long nano = System.nanoTime();
-      long ellapsed = (long)((nano - Global.startTime) / 1000000.0);
-      if (ellapsed <= Global.maxTime) return true;
+      long elapsed = (long)((nano - Global.startTime) / 1000000.0);
+      if (elapsed <= Global.maxTime) return true;
       else {
-         throw new TimeOverrunException(ellapsed);
+         throw new TimeOverrunException(elapsed);
       }
       //return false;
 
