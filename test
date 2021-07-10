@@ -53,3 +53,6 @@ java TestJoin
 
 javac TestCount.java
 java TestCount
+
+javac TestCheckTime.java
+java TestCheckTime
