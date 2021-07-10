@@ -14,6 +14,8 @@
  * The global variable maxTime is 300 milliseconds by default,
  * but here it is set to 10 milliseconds.
  *
+ * There is a second test to check parsing of 'check_time'.
+ *
  * @author  Klivo
  * @version 1.0
  */
@@ -58,7 +60,18 @@ public class TestCheckTime {
 
       );
 
-      System.out.print("Test CheckTime: ");
+      KnowledgeBase kb2 = new KnowledgeBase(
+         new Rule(new Complex(fact, a, b)),
+         new Rule(new Complex(fact, b, c)),
+         new Rule(
+            new Complex(doit, X, Z),
+            new And( new Complex(fact, X, Z) )
+         ),
+         new Rule("doit($X, $Z) :- print(.), doit($X, $Y), fact($Y, $Z), check_time.")
+      ); // kb2
+
+
+      System.out.print("Test CheckTime\n");
 
       Global.maxTime = 10;  // milliseconds
       Global.startTime = System.nanoTime();
@@ -71,6 +84,14 @@ public class TestCheckTime {
          System.err.println("Time out. ✓");
       }
 
+      Global.startTime = System.nanoTime();
+      try {
+         Complex goal = new Complex("doit($_, Y)");
+         String[] expected = { "something" };
+         Solutions.verifyAll(goal, kb, expected, 2);
+      } catch (TimeOverrunException tox) {
+         System.err.println("Time out 2. ✓");
+      }
    }
 
 } // TestCheckTime
