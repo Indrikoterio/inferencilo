@@ -156,6 +156,9 @@ public class Make {
       else if (s.equals("nl")) {  // new line
          return new NewLine();
       }
+      else if (s.equals("check_time")) {
+         return new CheckTime();
+      }
 
       // complex terms, built-in functions
       String[] parsed = parseComplex(s);
@@ -187,6 +190,7 @@ public class Make {
       else if (functor.equals("count")) {
          return new Count(contents);
       }
+
       return new Complex(s);
 
    } // subgoal
