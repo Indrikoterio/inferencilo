@@ -372,15 +372,46 @@ public class PList implements Unifiable {
    /**
     * count
     *
-    * @return number of elements
+    * @return number of terms
     */
    public int count() { return count; }
 
 
    /**
+    * recursiveCount
+    *
+    * Count the number of terms by recursion.
+    * The tail term may be a variable, so this method
+    * requires the substitution set.
+    *
+    * @param  substitution set
+    * @return number of terms
+    */
+   public int recursiveCount(SubstitutionSet ss) {
+      int count = 0;
+      PList pList = this;
+      Unifiable head = pList.getHead();
+      while (head != null) {
+         count++;
+         pList = pList.getTail();
+         head = pList.getHead();
+         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
+            Variable hVar  = (Variable)(head);
+            PList term = ss.castPList(hVar);
+            if (term != null && PList.class.isInstance(term)) {
+               pList = (PList)term;
+               head = pList.getHead();
+            }
+         }
+      }
+      return count;
+   } // recursiveCount
+
+
+   /**
     * flatten
     *
-    * Flatten or partially flatten this recursive list.
+    * Partially flatten this recursive list.
     * If the number of terms requested is two, this
     * function will return an array of the first and
     * second terms, and the tail. In other words, the
@@ -406,7 +437,7 @@ public class PList implements Unifiable {
       }
       theArray[i] = plist;
       return theArray;
-   }
+   } // flatten()
 
 
    /**

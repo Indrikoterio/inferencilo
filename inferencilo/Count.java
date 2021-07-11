@@ -88,25 +88,9 @@ public class Count extends BuiltInPredicate implements Unifiable, Goal {
       PList pList = ss.castPList(arguments[0]);
       if (pList == null) {
         throw new InvalidOperandException("Count's first argument must be a PList.");
-        //return null;
       }
 
-      int count = 0;
-      Unifiable head = pList.getHead();
-      while (head != null) {
-         count++;
-         pList = pList.getTail();
-         head = pList.getHead();
-         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
-            Variable hVar  = (Variable)(head);
-            PList term = ss.castPList(hVar);
-            if (term != null && PList.class.isInstance(term)) {
-               pList = (PList)term;
-               head = pList.getHead();
-            }
-         }
-      }
-
+      int count = pList.recursiveCount(ss);
       return arguments[1].unify(new Constant("" + count), ss);
 
    } // evaluate
