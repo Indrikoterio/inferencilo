@@ -19,13 +19,17 @@
  * pay(janitor, low).
  *
  *----------------------------------------
- * Another test.
+ * Another cut test. Standard Prolog:
  *
-   cut_rule :- !, print("Print this."), fail.
-   cut_rule :- print("This should not print."), nl.
+   cut_rule :- !, print("Test Cut: This text should print."), fail.
+   cut_rule :- print("*** This should NOT print. ***").
    cut_rule("Two").
    my_goal("One") :- cut_rule.
    my_goal(X) :- cut_rule(X).
+ *
+ * Result is:
+   "Test Cut: This text should print."
+   X = "Two"
  *
  *
  * @author  Klivo
@@ -63,24 +67,27 @@ public class TestCut {
             new Complex("getta_good_job($X)"),
             new Complex("good_job($X)")
          ),
-         new Rule("cut_rule :- !, print(Print this.\\n), fail."),
-         new Rule("cut_rule :- print(This should not print.\\n)."),
+
+         new Rule("cut_rule :- !, print(Test Cut: This text should print.), fail."),
+         new Rule("cut_rule :- print(*** This should NOT print. ***)."),
          new Rule("cut_rule(Two)."),
          new Rule("my_goal(One) :- cut_rule()."),
          new Rule("my_goal($X) :- cut_rule($X).")
+
       );
 
       // Define goal and root of search space.
 
       System.out.print("Test Cut: ");
 
+      Complex goal;
       try {
-         Complex goal = new Complex("getta_good_job($X)");
+         goal = new Complex("getta_good_job($X)");
          String[] expected = {"lawyer"};
          Solutions.verifyAll(goal, kb, expected, 1);
 
          goal = new Complex("my_goal($X)");
-         String[] expected2 = { "One", "Two" };
+         String[] expected2 = { "Two" };
          Solutions.verifyAll(goal, kb, expected2, 1);
       } catch (TimeOverrunException tox) { }
 
