@@ -19,7 +19,7 @@ public class Cut extends Operator implements Goal {
    /**
     * toString
     */
-   public String toString() { return " Cut "; }
+   public String toString() { return "CUT"; }
 
    /**
     * getSolver
