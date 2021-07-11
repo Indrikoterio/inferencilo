@@ -21,7 +21,7 @@ public class TestPList {
 
       Constant scientist = new Constant("scientist");
       PList  jobs3 = PList.parse("[doctor, carpenter, sales manager]");
-      PList  jobs4 = new PList(true, scientist, jobs3);
+      PList  jobs4 = new PList(false, scientist, jobs3);
 
       // Set up the knowledge base.
       KnowledgeBase kb = new KnowledgeBase(
