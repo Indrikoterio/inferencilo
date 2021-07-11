@@ -18,6 +18,16 @@
  * pay(programmer, low).
  * pay(janitor, low).
  *
+ *----------------------------------------
+ * Another test.
+ *
+   cut_rule :- !, print("Print this."), fail.
+   cut_rule :- print("This should not print."), nl.
+   cut_rule("Two").
+   my_goal("One") :- cut_rule.
+   my_goal(X) :- cut_rule(X).
+ *
+ *
  * @author  Klivo
  * @version 1.0
  */
@@ -41,8 +51,8 @@ public class TestCut {
          new Rule(
             new Complex("good_job($X)"),
             new And(
-               new Complex("job($X)"),
                new Cut(),
+               new Complex("job($X)"),
                new Complex("pay($X, high)")
             )
          ),
@@ -52,7 +62,12 @@ public class TestCut {
          new Rule(
             new Complex("getta_good_job($X)"),
             new Complex("good_job($X)")
-         )
+         ),
+         new Rule("cut_rule :- !, print(Print this.\\n), fail."),
+         new Rule("cut_rule :- print(This should not print.\\n)."),
+         new Rule("cut_rule(Two)."),
+         new Rule("my_goal(One) :- cut_rule()."),
+         new Rule("my_goal($X) :- cut_rule($X).")
       );
 
       // Define goal and root of search space.
@@ -63,6 +78,10 @@ public class TestCut {
          Complex goal = new Complex("getta_good_job($X)");
          String[] expected = {"lawyer"};
          Solutions.verifyAll(goal, kb, expected, 1);
+
+         goal = new Complex("my_goal($X)");
+         String[] expected2 = { "One", "Two" };
+         Solutions.verifyAll(goal, kb, expected2, 1);
       } catch (TimeOverrunException tox) { }
 
    }
