@@ -422,15 +422,24 @@ public class PList implements Unifiable {
     * terms cannot proceed.
     *
     * @param   number of terms (int)
+    * @param   substitution set
     * @return  array of terms and tail (unifiable)
     */
-   public Unifiable[] flatten(int numOfTerms) {
+   public Unifiable[] flatten(int numOfTerms, SubstitutionSet ss) {
       PList plist = this;
       Unifiable[] theArray = new Unifiable[numOfTerms + 1];
       int i = 0;
       for (; i < numOfTerms; i++) {
          if (plist == null) return null;
          Unifiable head = plist.getHead();
+         if (plist.isTailVar() && !Anon.class.isInstance(head)) {
+            Variable hVar  = (Variable)(head);
+            PList term = ss.castPList(hVar);
+            if (term != null && PList.class.isInstance(term)) {
+               plist = (PList)term;
+               head = plist.getHead();
+            }
+         }
          if (head == null) return null;
          theArray[i] = head;
          plist = plist.getTail();
