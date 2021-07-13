@@ -56,3 +56,6 @@ java TestCount
 
 javac TestCheckTime.java
 java TestCheckTime
+
+javac TestReadRules.java
+java TestReadRules
