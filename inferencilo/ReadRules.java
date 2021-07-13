@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.*;
 
 public class ReadRules {
@@ -45,20 +46,18 @@ public class ReadRules {
    } // checkBrackets
 
 
-
    /**
-    * fromFile
+    * makeListOfRules
     *
-    * Opens a file and reads in Prolog-like rules.
-    * Returns the rules as a list of strings.
+    * Divides a text file to create a list of rules. One rule per item.
+    * Rules (and facts) end with a perido.
     *
-    * @param  name of file
+    * @param  original text
     * @return rules (list of rules)
     * @throws UnmatchedParenthesesException, UnmatchedBracketsException
     */
-   public static List<String> fromFile(String filename) {
+   private static List<String> makeListOfRules(String text) {
 
-      String text = readFromFile(filename);
       if (text == null) return null;
 
       int length = text.length();
@@ -88,9 +87,61 @@ public class ReadRules {
       if (last.length() > 0) rules.add(last);
       return rules;
 
+   } // makeListOfRules()
+
+
+   /**
+    * fromFile
+    *
+    * Opens a file and reads in Prolog-like rules.
+    * Returns the rules as a list of strings.
+    *
+    * @param  name of file
+    * @return rules (list of rules)
+    * @throws UnmatchedParenthesesException, UnmatchedBracketsException
+    */
+   public static List<String> fromFile(String filename) {
+
+      BufferedReader reader = openFile(filename);
+      if (reader == null) return null;
+      String text = readStripComments(reader);
+      if (text == null) return null;
+      return makeListOfRules(text);
+
    } // fromFile()
 
 
+  /**
+   * fromJar
+   *
+   * Reads a prolog-like program from a Java jar-archive.
+   * Returns the rules in a list of strings.
+   *
+   * @param   parent class
+   * @param   name of file
+   * @return  list of rules
+   * @throws  UnmatchedParenthesesException, UnmatchedBracketsException
+   */
+   public static List<String> fromJar(Class klass, String filename) {
+
+      if (klass == null) return null;
+      if (filename == null) return null;
+      String text;
+
+      try {
+         Reader in = new InputStreamReader(klass.getResourceAsStream(filename), "UTF-8");
+         BufferedReader reader = new BufferedReader(in);
+         if (reader == null) return null;
+         text = readStripComments(reader);
+         if (text == null) return null;
+      }
+      catch (IOException iox) {
+         System.err.println("ReadRules, fromJar() - iox: " + iox.toString());
+         return null;
+      }
+      return makeListOfRules(text);
+
+   }  // fromJar()
 
 
    /*
@@ -166,20 +217,17 @@ public class ReadRules {
 
 
    /*
-    * readFromFile
+    * readStripComments
     *
-    * This method opens a file and reads it line by line.
+    * Reads program text from a buffered reader, line by line.
     * Comments are removed from each line, and the lines
-    * are joined to produce a long string. The method
-    * returns this string, or null if there is a failure.
+    * are joined to produce a long string. The method returns
+    * the stripped program text, or null if there is a failure.
     *
-    * @param  filename
-    * @return text as long string
+    * @param  buffered reader
+    * @return stripped program text
     */
-   private static String readFromFile(String filename) {
-
-      BufferedReader reader = openFile(filename);
-      if (reader == null) return null;
+   private static String readStripComments(BufferedReader reader) {
 
       StringBuilder sb = new StringBuilder(80);
 
@@ -195,11 +243,12 @@ public class ReadRules {
          } // while
       }
       catch (IOException e) {
-         System.err.println("readFromFile: Error while reading " + filename + ".");
+         System.err.println("readStripComments: io erro:\n" + e);
          return null;
       }
       return sb.toString();
 
-   } // readFromFile()
+   } // readStripComments
+
 
 } // ReadRules
