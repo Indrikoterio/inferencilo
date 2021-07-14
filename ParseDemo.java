@@ -83,7 +83,7 @@ class ParseDemo {
     */
    private static void oneSolution(Constant ruleFunctor, PList inList, KnowledgeBase kb) {
 
-      Variable X = Variable.instance("$X");  // placeholder variable
+      Variable X = Variable.inst("$X");  // placeholder variable
       try {
          Complex goal = new Complex(ruleFunctor, inList, X);
          SolutionNode node = goal.getSolver(kb, new SubstitutionSet(), null);
@@ -203,11 +203,11 @@ class ParseDemo {
       Constant word = new Constant("word");
 
       // Define Prolog variables.
-      Variable H1 = Variable.instance("$H1");
-      Variable H2 = Variable.instance("$H2");
-      Variable T1 = Variable.instance("$T1");
-      Variable T2 = Variable.instance("$T2");
-      Variable In = Variable.instance("$In");
+      Variable H1 = Variable.inst("$H1");
+      Variable H2 = Variable.inst("$H2");
+      Variable T1 = Variable.inst("$T1");
+      Variable T2 = Variable.inst("$T2");
+      Variable In = Variable.inst("$In");
 
       /*
         words_to_pos/2 is a rule to convert a list of words into
