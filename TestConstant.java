@@ -2,8 +2,17 @@
  * TestConstant
  *
  * This class tests the Constant class.
- * Constant stores a string value, which may represent a number.
- * It is instantiated as: new Constant("red").
+ * The Constant class stores a string value, which may represent a number.
+ * It is instantiated as:
+ *
+ *    new Constant("red")
+ * or
+ *    Constant.inst("red")
+ *
+ * The second method may be more efficient, because it stores
+ * the newly created Constant in a hash table. Unification can
+ * be tested with a simple comparison (con1 == con2), instead
+ * of comparing strings.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -50,6 +59,12 @@ public class TestConstant {
          Solutions.verifyAll(goal, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
+
+      // Test Constant cache:
+      Constant c1 = Constant.inst("pronoun");
+      Constant c2 = Constant.inst("pronoun");
+      if (c1 == c2) System.out.println("Constant Cache is OK. ✓");
+      else System.out.println("Constant Cache NOT OK!");
    }
 }  // TestConstant
 
