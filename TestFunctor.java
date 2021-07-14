@@ -66,8 +66,8 @@ public class TestFunctor {
          SubstitutionSet solution = root.nextSolution();
          if (solution != null) {
             Complex result = (Complex)goal.replaceVariables(solution);
-            String functor = "" + result.getTerm(1);
-            String arity = "" + result.getTerm(2);
+            String functor = result.getTerm(1).toString();
+            String arity = result.getTerm(2).toString();
             if (functor.equals("diamonds") && arity.equals("2")) {
                System.out.println("✓");
                return;
