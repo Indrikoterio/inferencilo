@@ -48,12 +48,12 @@ public class Subtract extends PFunction {
 
       // All parameters must be bound.
       if (c == null) throw new UnboundArgumentException("in Subtract.");
-      double result = Double.parseDouble("" + c);
+      double result = Double.parseDouble(c.toString());
 
       for (int i = 1; i < params.length; i++) {
          c = ss.castConstant(params[i]);
          if (c == null) throw new UnboundArgumentException("in Subtract.");
-         result -= Double.parseDouble("" + c);
+         result -= Double.parseDouble(c.toString());
       }
 
       return new Constant("" + result);
