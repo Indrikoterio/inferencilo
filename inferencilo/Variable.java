@@ -54,14 +54,15 @@ public class Variable implements Unifiable {
 
 
    /**
-    * instance
+    * inst
     *
-    * Factory method to produce Variables.
+    * Factory method to produce Variables, or fetch
+    * them from cache.
     *
     * @param  name of Variable
     * @return Variable
     */
-   public static Variable instance(String name) {
+   public static Variable inst(String name) {
       Variable v = cache.get(name);
       if (v == null) {
          v = new Variable(name);

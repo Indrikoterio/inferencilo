@@ -81,7 +81,7 @@ public class Make {
       // Return a variable.
       if (s.startsWith("$") && len > 1) {
          if (s.charAt(1) == '_') return Anon.anon;
-         else return Variable.instance(s);
+         else return Variable.inst(s);
       }
 
       int parenthesis1 = s.indexOf("(");
