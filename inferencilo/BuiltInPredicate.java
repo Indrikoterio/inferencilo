@@ -244,7 +244,7 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
          else return "";
       }
 
-      if (term instanceof Constant) return "" + term;
+      if (term instanceof Constant) return term.toString();
       if (term instanceof Complex) {
          Complex t = (Complex)term;
          if (t.length() < 2) return "";
