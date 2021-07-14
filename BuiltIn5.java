@@ -61,7 +61,7 @@ public class BuiltIn5 extends BuiltInPredicate {
       if (terms == null) return null;
       if (terms.length < 3) return null;
 
-      String str = "" + terms[0] + "-" + terms[1];
+      String str = terms[0].toString() + "-" + terms[1];
       Unifiable newHead = new Constant(str);
 
       Unifiable newTail = terms[2];
