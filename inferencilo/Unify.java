@@ -90,6 +90,6 @@ public class Unify extends Operator implements Goal {
     *
     * @return printable string
     */
-   public String toString() { return "" + term1 + " = " + term2; }
+   public String toString() { return term1.toString() + " = " + term2; }
 
 }
