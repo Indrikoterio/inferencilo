@@ -34,7 +34,7 @@ public class Constant implements Unifiable {
    private String value = null;
 
    // A hash table for caching Constants.
-   private static Hashtable<String, Constant> ht = new Hashtable<>();
+   private static Hashtable<String, Constant> cache = new Hashtable<>();
 
    /**
     * constructor
@@ -56,15 +56,14 @@ public class Constant implements Unifiable {
     * @return  Constant, new or fetched
     */
    public static Constant inst(String key) {
-      if (ht.containsKey(key)) {
-         return ht.get(key);
+      Constant c = cache.get(key);
+      if (c == null) {
+         c = new Constant(key);
+         cache.put(key, c);
       }
-      else {
-         Constant newConst = new Constant(key);
-         ht.put(key, newConst);
-         return newConst;
-      }
+      return c;
    }
+
 
    /**
     * toString
