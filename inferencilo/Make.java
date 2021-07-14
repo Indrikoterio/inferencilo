@@ -109,7 +109,7 @@ public class Make {
          throw new InvalidListException(s);
       }  // List
 
-      return new Constant(s);
+      return Constant.inst(s);
 
    }  // term()
 
