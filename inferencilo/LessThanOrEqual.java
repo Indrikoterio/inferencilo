@@ -66,8 +66,8 @@ public class LessThanOrEqual extends CompareBase implements Unifiable, Goal {
          return null;  // Failure.
       }
       else {
-         String sFirst  = "" + first;
-         String sSecond = "" + second;
+         String sFirst  = first.toString();
+         String sSecond = second.toString();
          if (sFirst.compareTo(sSecond) <= 0) return ss;
          return null;  // Failure.
       }
