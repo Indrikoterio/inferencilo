@@ -104,14 +104,14 @@ public class Functor extends BuiltInPredicate implements Unifiable, Goal {
       else {  // Maybe a Constant.
          Constant conTerm = ss.castConstant(arguments[0]);
          if (conTerm == null) return null;
-         functor = "" + conTerm;
+         functor = conTerm.toString();
          arity = 0;
       }
 
       if (arguments.length > 1) {
          Unifiable term = getTerm(1);
          if (term instanceof Constant) {
-            String f2 = "" + term;
+            String f2 = term.toString();
             if (f2.endsWith("*")) {
                // Strip off asterisk.
                f2 = f2.substring(0, f2.length() - 1);
