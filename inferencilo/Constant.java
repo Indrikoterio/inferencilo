@@ -33,6 +33,9 @@ public class Constant implements Unifiable {
    // The internal representation.
    private String value = null;
 
+   // A hash table for caching Constants.
+   private static Hashtable<String, Constant> ht = new Hashtable<>();
+
    /**
     * constructor
     *
@@ -41,6 +44,26 @@ public class Constant implements Unifiable {
    public Constant(String value) {
       String s = adjustEscapes(value);
       this.value = s;
+   }
+
+   /**
+    * inst
+    *
+    * This is a factory method, which fetches and saves Constants
+    * to and from the hash table.
+    *
+    * @param   key (String)
+    * @return  Constant, new or fetched
+    */
+   public static Constant inst(String key) {
+      if (ht.containsKey(key)) {
+         return ht.get(key);
+      }
+      else {
+         Constant newConst = new Constant(key);
+         ht.put(key, newConst);
+         return newConst;
+      }
    }
 
    /**
