@@ -13,8 +13,8 @@ public class TestPrint {
 
    public static void main(String[] args) {
 
-      Variable X = Variable.instance("$X");
-      Variable Y = Variable.instance("$Y");
+      Variable X = Variable.inst("$X");
+      Variable Y = Variable.inst("$Y");
       Constant P = new Constant("Persian");
 
       // Set up the knowledge base.
