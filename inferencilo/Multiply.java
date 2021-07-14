@@ -50,7 +50,7 @@ public class Multiply extends PFunction {
       for (Unifiable param : params) {
          Constant c = ss.castConstant(param);
          if (c == null) throw new UnboundArgumentException("in Multiply.");
-         product = product * Double.parseDouble("" + c);
+         product = product * Double.parseDouble(c.toString());
       }
 
       return new Constant("" + product);
