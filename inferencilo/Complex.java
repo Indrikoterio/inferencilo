@@ -41,7 +41,7 @@ public class Complex implements Unifiable, Goal {
          throw new InvalidFunctorException("Complex constructor 1 -" + args[0]);
       }
       terms = args;
-      functor = "" + terms[0];
+      functor = terms[0].toString();
    }
 
 
@@ -242,7 +242,7 @@ public class Complex implements Unifiable, Goal {
     */
    public boolean equals(int index, String str) {
       if (index >= terms.length) return false;
-      String str2 = "" + terms[index];
+      String str2 = terms[index].toString();
       return str.equals(str2);
    }
 
