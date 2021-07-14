@@ -50,7 +50,7 @@ public class Add extends PFunction {
       for (Unifiable param : params) {
          Constant c = ss.castConstant(param);
          if (c == null) throw new UnboundArgumentException("in Add.");
-         sum = sum + Double.parseDouble("" + c);
+         sum = sum + Double.parseDouble(c.toString());
       }
 
       return new Constant("" + sum);
