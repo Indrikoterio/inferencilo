@@ -283,7 +283,7 @@ public class PList implements Unifiable {
     * @return  comma separated string
     */
    private String commaString() {
-      String str = "" + term;
+      String str = term.toString();
       PList theTail = tail;
       while (theTail != null) {
          Unifiable term = theTail.getHead();
@@ -322,7 +322,7 @@ public class PList implements Unifiable {
     */
    public String spaceString() {
       if (term == null) return "";
-      String str = "" + term;
+      String str = term.toString();
       PList theTail = tail;
       while (theTail != null) {
          Unifiable term = theTail.getHead();
