@@ -31,9 +31,9 @@ public class TestCheckTime {
       Constant b = new Constant("b");
       Constant c = new Constant("c");
 
-      Variable X = Variable.instance("$X");
-      Variable Y = Variable.instance("$Y");
-      Variable Z = Variable.instance("$Z");
+      Variable X = Variable.inst("$X");
+      Variable Y = Variable.inst("$Y");
+      Variable Z = Variable.inst("$Z");
 
       Constant fact = new Constant("fact");
       Constant doit = new Constant("doit");

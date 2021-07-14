@@ -29,8 +29,8 @@ public class TestConstant {
    public static void main(String[] args) {
 
       // Set up the knowledge base.
-      Variable X   = Variable.instance("$X");
-      Variable Out = Variable.instance("$Out");
+      Variable X   = Variable.inst("$X");
+      Variable Out = Variable.inst("$Out");
 
       Constant test_constant = new Constant("test_constant");
       Constant red = new Constant("red");

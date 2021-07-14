@@ -17,17 +17,17 @@ public class TestConjunctionList {
 
    public static Constant scan_sentence = new Constant("scan_sentence");
 
-   public static Variable H   = Variable.instance("$H");
-   public static Variable T1  = Variable.instance("$T1");
-   public static Variable T2  = Variable.instance("$T2");
+   public static Variable H   = Variable.inst("$H");
+   public static Variable T1  = Variable.inst("$T1");
+   public static Variable T2  = Variable.inst("$T2");
 
-   public static Variable In  = Variable.instance("$In");
-   public static Variable I2  = Variable.instance("$I2");
-   public static Variable I3  = Variable.instance("$I3");
-   public static Variable Out = Variable.instance("$Out");
+   public static Variable In  = Variable.inst("$In");
+   public static Variable I2  = Variable.inst("$I2");
+   public static Variable I3  = Variable.inst("$I3");
+   public static Variable Out = Variable.inst("$Out");
 
-   public static Variable SentenceOut  = Variable.instance("$SentenceOut");
-   public static Variable ConjList   = Variable.instance("$ConjList");
+   public static Variable SentenceOut  = Variable.inst("$SentenceOut");
+   public static Variable ConjList   = Variable.inst("$ConjList");
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
