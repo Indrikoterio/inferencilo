@@ -167,8 +167,8 @@ public class Constant implements Unifiable {
       if (other instanceof Variable) return other.unify(this, ss);
       if (other instanceof Anon) return ss;
       if (!(other instanceof Constant)) return null;
-      String strThis = "" + this;
-      String strThat = "" + other;
+      String strThis = value;
+      String strThat = other.toString();
       if (strThis.equals(strThat)) return ss;
       // Check for number strings, because 1 unifies with 1.0 .
       if (isNumber(strThis) && isNumber(strThat)) {
