@@ -67,8 +67,12 @@ public class Join extends PFunction {
          if (con == null) throw new UnboundArgumentException("in Join.");
          String str = con.toString();
          if (count > 0) {
-            if (str.equals(",") || str.equals(".") ||
-                str.equals("?") || str.equals("!")) {
+            if (str.length() == 1 &&
+                  (str.equals(",") ||
+                   str.equals(".") ||
+                   str.equals("?") ||
+                   str.equals("!"))
+                ) {
                sb.append(str);
             }
             else {
