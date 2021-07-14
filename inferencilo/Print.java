@@ -149,8 +149,8 @@ public class Print extends BuiltInPredicate {
       // Get first argument.
       Unifiable term0 = arguments[0];
       term0 = getGround(term0, parentSolution);
-      if (isFormatString("" + term0)) {
-         List<String> formatSubstrings = splitFormatString("" + term0);
+      if (isFormatString(term0.toString())) {
+         List<String> formatSubstrings = splitFormatString(term0.toString());
          int count = 1;
          for (String format : formatSubstrings) {
             if (format.equals(FORMAT_SPECIFIER)) {
@@ -170,7 +170,7 @@ public class Print extends BuiltInPredicate {
          }
       }
       else {
-         System.out.print("" + term0);
+         System.out.print(term0.toString());
          boolean first = true;
          for (Unifiable term : arguments) {
             if (first) first = false;
