@@ -16,20 +16,20 @@ public class TestFunction {
 
    public static void main(String[] args) {
 
-      Variable W = Variable.instance("$W");
-      Variable X = Variable.instance("$X");
-      Variable Y = Variable.instance("$Y");
-      Variable Z = Variable.instance("$Z");
+      Variable W = Variable.inst("$W");
+      Variable X = Variable.inst("$X");
+      Variable Y = Variable.inst("$Y");
+      Variable Z = Variable.inst("$Z");
 
-      Variable H = Variable.instance("$H");
-      Variable T = Variable.instance("$T");
-      Variable T2 = Variable.instance("$T2");
+      Variable H = Variable.inst("$H");
+      Variable T = Variable.inst("$T");
+      Variable T2 = Variable.inst("$T2");
 
-      Variable In = Variable.instance("$In");
-      Variable In_err = Variable.instance("$InErr");
-      Variable Out = Variable.instance("$Out");
-      Variable Out_err = Variable.instance("$OutErr");
-      Variable Err2 = Variable.instance("$Err2");
+      Variable In = Variable.inst("$In");
+      Variable In_err = Variable.inst("$InErr");
+      Variable Out = Variable.inst("$Out");
+      Variable Out_err = Variable.inst("$OutErr");
+      Variable Err2 = Variable.inst("$Err2");
 
       Constant test_add = new Constant("test_add");
       Constant test_subtract = new Constant("test_subtract");

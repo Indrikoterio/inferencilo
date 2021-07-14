@@ -14,8 +14,8 @@ public class TestFunctor {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
-      Variable X   = Variable.instance("$X");
-      Variable Y   = Variable.instance("$Y");
+      Variable X   = Variable.inst("$X");
+      Variable Y   = Variable.inst("$Y");
       Constant get = new Constant("get");
       Complex  animal  = new Complex("mouse(mammal, rodent)");
 

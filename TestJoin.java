@@ -15,12 +15,12 @@ public class TestJoin {
 
    public static void main(String[] args) {
 
-      Variable D1 = Variable.instance("$D1");
-      Variable D2 = Variable.instance("$D2");
-      Variable D3 = Variable.instance("$D3");
-      Variable D4 = Variable.instance("$D4");
-      Variable D5 = Variable.instance("$D5");
-      Variable Out = Variable.instance("$Out");
+      Variable D1 = Variable.inst("$D1");
+      Variable D2 = Variable.inst("$D2");
+      Variable D3 = Variable.inst("$D3");
+      Variable D4 = Variable.inst("$D4");
+      Variable D5 = Variable.inst("$D5");
+      Variable Out = Variable.inst("$Out");
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("would_you_like($Out)"),
