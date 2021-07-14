@@ -54,13 +54,13 @@ public class Divide extends PFunction {
 
       // All parameters must be bound.
       if (c == null) throw new UnboundArgumentException("in Divide.");
-      double result = Double.parseDouble("" + c);
+      double result = Double.parseDouble(c.toString());
 
       // There are one or more divisors.
       for (int i = 1; i < params.length; i++) {
          c = ss.castConstant(params[i]);
          if (c == null) throw new UnboundArgumentException("in Divide.");
-         result /= Double.parseDouble("" + c);
+         result /= Double.parseDouble(c.toString());
       }
 
       return new Constant("" + result);
