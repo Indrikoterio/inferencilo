@@ -137,10 +137,10 @@ public class Rule implements Expression {
     */
    public String toString() {
       if (body == null) {
-         return "" + head + ".";
+         return head.toString() + ".";
       }
       else {
-         return "" + head + " :- " + body + ".";
+         return head.toString() + " :- " + body + ".";
       }
    }
 
