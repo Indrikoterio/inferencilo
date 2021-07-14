@@ -177,7 +177,7 @@ public class Variable implements Unifiable {
       System.out.println("---------- Variable Cache ----------");
       for (String key : cache.keySet()) {
          Variable v = cache.get(key);
-         System.out.println("" + v);
+         System.out.println(v.toString());
       }
       System.out.println("------------------------------------");
    } // printCache
