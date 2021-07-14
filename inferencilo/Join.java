@@ -65,7 +65,7 @@ public class Join extends PFunction {
          Constant con = ss.castConstant(term);
          // All parameters must be bound.
          if (con == null) throw new UnboundArgumentException("in Join.");
-         String str = "" + con;
+         String str = con.toString();
          if (count > 0) {
             if (str.equals(",") || str.equals(".") ||
                 str.equals("?") || str.equals("!")) {
