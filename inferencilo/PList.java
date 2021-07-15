@@ -220,7 +220,7 @@ public class PList implements Unifiable {
 
       String arguments = str.substring(bracket1 + 1, bracket2).trim();
       int argLength = arguments.length();  // length of string
-      PList list = new PList();   // Start with empty list.
+      PList list = empty;   // Start with empty list.
 
       // Check for empty list.
       if (argLength == 0) return list;
@@ -353,7 +353,7 @@ public class PList implements Unifiable {
     * @return tail
     */
    public PList getTail() {
-      if (tail == null) return new PList();
+      if (tail == null) return empty;
       return tail;
    }
 
@@ -509,7 +509,7 @@ public class PList implements Unifiable {
          if (thisList == null && otherList != null) {
             if (otherList.isTailVar()) {
                otherTerm = otherList.getHead();
-               SubstitutionSet result = otherTerm.unify(new PList(), newSS);
+               SubstitutionSet result = otherTerm.unify(empty, newSS);
                return result;
             }
             return null;
@@ -518,7 +518,7 @@ public class PList implements Unifiable {
          if (thisList != null && otherList == null) {
             if (thisList.isTailVar()) {
                thisTerm = otherList.getHead();
-               SubstitutionSet result = thisTerm.unify(new PList(), newSS);
+               SubstitutionSet result = thisTerm.unify(empty, newSS);
             }
             return null;
          }
@@ -583,7 +583,7 @@ public class PList implements Unifiable {
       PList thisList = this;
       boolean hasPipe = thisList.isTailVar();
       Unifiable term = thisList.getHead();
-      if (term == null) return new PList();
+      if (term == null) return empty;
       while (term != null) {
          newTerms.add((Unifiable)term.standardizeVariablesApart(newVars));
          hasPipe = thisList.isTailVar();
