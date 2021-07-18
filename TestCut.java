@@ -31,6 +31,7 @@
    "Test Cut: This text should print."
    X = "Two"
  *
+ * Note: cut_rule/0 and cut_rule/1 are completely different rules.
  *
  * @author  Klivo
  * @version 1.0
