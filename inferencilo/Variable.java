@@ -187,10 +187,11 @@ public class Variable implements Unifiable {
    /**
     * cacheSize
     *
-    * Print the size of the Variable cache.
+    * @param size of the cache
     */
-   public static void cacheSize() {
-      System.out.println("Variable cache size: " + cache.size());
+   public static int cacheSize() {
+      return cache.size();
    }
+
 
 }  // Variable
