@@ -205,4 +205,13 @@ public class Constant implements Unifiable {
       return this;
    }
 
+   /**
+    * cacheSize
+    *
+    * @param size of the cache
+    */
+   public static int cacheSize() {
+      return cache.size();
+   }
+
 }  // Constant
