@@ -229,7 +229,8 @@ class ParseDemo {
 
       // Note: The Constant, Variable and Rule definitions above can be
       // replaced by a single line:
-      // rule = new Rule("words_to_pos([$H1 | $T1], [$H2 | $T2]) :- word($H1, $H2), words_to_pos($T1, $T2)");
+      // rule = new Rule("words_to_pos([$H1 | $T1], [$H2 | $T2]) :- " +
+      //         "word($H1, $H2), words_to_pos($T1, $T2)");
       // The constructor for Rule will parse the given string to produce
       // the Rule object defined above. In Prolog, variables begin with
       // a capital letter and atoms (constants) begin with a lower case
