@@ -4,7 +4,13 @@
  * This built-in predicate prints out a list in a readable form.
  * It's mainly for debugging purposes.
  *
- * Example:    print($List1, $List2);
+ * Example:
+ *    $List1 = [pronoun(They, subject, third, plural), verb(envy, present, base),
+ *              pronoun(us, object, first, plural), period(.)],
+ *    print_list($List1).
+ *
+ * Prints:
+ *    [pronoun(They, subject, third, plural), verb(envy, present, base)...
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -78,7 +84,7 @@ public class PrintList extends BuiltInPredicate {
    private void showList(PList listo, SubstitutionSet ss) {
       PList pList = listo;
       Unifiable head = pList.getHead();
-      System.out.print(ss.castComplex(head) + " ");
+      System.out.print(ss.castComplex(head));
       while (head != null) {
          pList = pList.getTail();
          head = pList.getHead();
@@ -88,9 +94,11 @@ public class PrintList extends BuiltInPredicate {
             if (term != null && PList.class.isInstance(term)) {
                pList = (PList)term;
                head = pList.getHead();
-               System.out.print(ss.castComplex(head) + " ");
+               System.out.print(ss.castComplex(head) + ", ");
             }
          }
+         if (head == null) break;
+         System.out.print(", " + ss.castComplex(head));
       }
       System.out.println("");
    } // showList
