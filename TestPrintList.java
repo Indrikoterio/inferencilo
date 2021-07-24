@@ -4,7 +4,8 @@
  * Tests the built-in Print List predicate.
  * The PrintList predicate is useful for debugging a theory.
  *
- *    $List1 = [pronoun(They, subject, third, plural), verb(envy, present, base),
+ *    $List1 = [pronoun(They, subject, third, plural),
+ *              verb(envy, present, base),
  *              pronoun(us, object, first, plural)],
  *    print_list($List1).
  *
