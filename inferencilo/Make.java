@@ -175,6 +175,9 @@ public class Make {
       else if (functor.equals("print")) {
          return new Print(contents);
       }
+      else if (functor.equals("print_list")) {
+         return new PrintList(contents);
+      }
       else if (functor.equals("greater_than")) {
          return new GreaterThan(contents);
       }
@@ -189,6 +192,9 @@ public class Make {
       }
       else if (functor.equals("count")) {
          return new Count(contents);
+      }
+      else if (functor.equals("stats")) {
+         return new Stats();
       }
 
       return new Complex(s);
