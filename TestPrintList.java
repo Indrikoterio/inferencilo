@@ -30,15 +30,31 @@ public class TestPrintList {
                new Unify("$List1 = [$X1, $X2, $X3]"),
                new PrintList("$List1")
             )
+         ),
+         new Rule(
+            new Complex("print_list_test2"),
+            new And(
+               new Unify("$X = [a, b, c]"),
+               new Unify("$List2 = [1, 2, 3 | $X]"),
+               new PrintList("$List2")
+            )
          )
       );
 
-      System.out.println("Test PrintList");
+      System.out.println("Test PrintList - should print:\npronoun(), verb(), pronoun()");
 
       try {
          // Define goal and root of search space.
          Complex goal = new Complex("print_list_test");
          String[] expected = {"print_list_test"};
+         Solutions.verifyAll(goal, kb, expected, 0);
+      } catch (TimeOverrunException tox) { }
+
+      System.out.println("Test PrintList - should print:\n1, 2, 3, a, b, c");
+      try {
+         // Define goal and root of search space.
+         Complex goal = new Complex("print_list_test2");
+         String[] expected = {"print_list_test2"};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
    }
