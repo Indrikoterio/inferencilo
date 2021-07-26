@@ -84,7 +84,7 @@ public class PrintList extends BuiltInPredicate {
    private void showList(PList listo, SubstitutionSet ss) {
       PList pList = listo;
       Unifiable head = pList.getHead();
-      System.out.print(ss.castComplex(head));
+      System.out.print(getGround(head, ss));
       while (head != null) {
          pList = pList.getTail();
          head = pList.getHead();
@@ -94,11 +94,10 @@ public class PrintList extends BuiltInPredicate {
             if (term != null && PList.class.isInstance(term)) {
                pList = (PList)term;
                head = pList.getHead();
-               System.out.print(ss.castComplex(head) + ", ");
             }
          }
          if (head == null) break;
-         System.out.print(", " + ss.castComplex(head));
+         System.out.print(", " + getGround(head, ss));
       }
       System.out.println("");
    } // showList
