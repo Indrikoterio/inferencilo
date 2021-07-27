@@ -3,6 +3,7 @@
  *
  * This function joins constants to form one new constant.
  * It's used to join words and punctuation.
+ *
  * Words are separated by a space, but punctuation is attached
  * directly to the previous word. For example:
  *
@@ -24,9 +25,9 @@ import java.util.*;
 public class Join extends PFunction {
 
    /**
-    * konstruilo
+    * constructor
     *
-    * @param  listo de unuigeblaj termoj
+    * @param  list of unifiable terms
     */
    public Join(Unifiable... parameters) {
       super("JOIN", parameters);
@@ -48,10 +49,11 @@ public class Join extends PFunction {
 
 
    /**
-    * evaluate (komputu)
+    * evaluate
     *
-    * @param   ghis-nuna solvo (SubstitutionSet)
-    * @return  nova konstanto
+    * @param   substitution set
+    * @param   parameters (arguments)
+    * @return  new Constant
     */
    public Unifiable evaluate(SubstitutionSet ss, Unifiable... params)
                        throws UnboundArgumentException,
