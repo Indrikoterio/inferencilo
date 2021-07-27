@@ -15,7 +15,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class CheckTime implements Unifiable, Goal {
+public class CheckTime implements Goal {
 
    public String predicateName = "Check Time";
    public Unifiable[] arguments;
@@ -67,21 +67,6 @@ public class CheckTime implements Unifiable, Goal {
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
       return this;
-   }
-
-
-   /**
-    * unify
-    *
-    * Performs unification with another term.
-    * For built-in predicates, this method is not used.
-    *
-    * @param  expression
-    * @param  substitution set
-    * @return new substitution set
-    */
-   public SubstitutionSet unify(Unifiable uni, SubstitutionSet ss) {
-      return ss;  // Nothing to do here.
    }
 
 
