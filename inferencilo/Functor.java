@@ -40,7 +40,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class Functor extends BuiltInPredicate implements Unifiable, Goal {
+public class Functor extends BuiltInPredicate {
 
    private static final String NAME = "FUNCTOR";
 
