@@ -19,7 +19,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class LessThan extends CompareBase implements Unifiable, Goal {
+public class LessThan extends CompareBase {
 
    private static final String NAME = "LESS_THAN";
 
