@@ -12,7 +12,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class Count extends BuiltInPredicate implements Unifiable, Goal {
+public class Count extends BuiltInPredicate {
 
    private static final String NAME = "COUNT";
 
