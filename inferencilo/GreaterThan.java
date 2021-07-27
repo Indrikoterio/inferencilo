@@ -19,7 +19,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class GreaterThan extends CompareBase implements Unifiable, Goal {
+public class GreaterThan extends CompareBase {
 
    private static final String NAME = "GREATER_THAN";
 
