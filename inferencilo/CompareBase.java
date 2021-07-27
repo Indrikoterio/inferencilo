@@ -12,7 +12,7 @@ package inferencilo;
 
 import java.util.*;
 
-public abstract class CompareBase extends BuiltInPredicate implements Unifiable, Goal {
+public abstract class CompareBase extends BuiltInPredicate {
 
    /**
     * constructor
