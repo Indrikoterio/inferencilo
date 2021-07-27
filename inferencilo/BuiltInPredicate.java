@@ -14,7 +14,7 @@ import java.util.Hashtable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public abstract class BuiltInPredicate implements Unifiable, Goal {
+public abstract class BuiltInPredicate implements Goal {
 
    // These are public for the convenience of subclasses.
    // It's a sin, but I don't care.
@@ -205,21 +205,6 @@ public abstract class BuiltInPredicate implements Unifiable, Goal {
    public Unifiable getTerm(int index) { return arguments[index]; }
 
    public String toString() { return predicateName + "(...)"; }
-
-
-   /**
-    * unify
-    *
-    * Performs unification with another term.
-    * For built-in predicates, this method is not used.
-    *
-    * @param  expression
-    * @param  substitution set
-    * @return new substitution set
-    */
-   public SubstitutionSet unify(Unifiable uni, SubstitutionSet ss) {
-      return ss;  // Don't know what else to do. :-)
-   }
 
 
    /**
