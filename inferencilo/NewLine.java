@@ -12,7 +12,7 @@ package inferencilo;
 
 import java.util.Hashtable;
 
-public class NewLine extends BuiltInPredicate implements Unifiable, Goal {
+public class NewLine extends BuiltInPredicate {
 
    private static final String NAME = "NL";
 
