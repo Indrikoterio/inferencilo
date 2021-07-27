@@ -62,3 +62,6 @@ java TestCheckTime
 
 javac TestReadRules.java
 java TestReadRules
+
+javac TestFilter.java
+java TestFilter
