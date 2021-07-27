@@ -41,7 +41,9 @@ public class TestPrintList {
          )
       );
 
-      System.out.println("Test PrintList - should print:\npronoun(), verb(), pronoun()");
+      System.out.println("Test PrintList - should print:\n" +
+           "pronoun(They, subject, third, plural), verb(envy, present, base), " +
+           "pronoun(us, object, first, plural)");
 
       try {
          // Define goal and root of search space.
