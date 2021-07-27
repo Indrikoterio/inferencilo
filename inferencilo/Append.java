@@ -21,7 +21,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class Append extends BuiltInPredicate implements Unifiable, Goal {
+public class Append extends BuiltInPredicate {
 
    private static final String name = "APPEND";
 
