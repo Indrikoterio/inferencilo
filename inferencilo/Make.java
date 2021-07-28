@@ -200,7 +200,7 @@ public class Make {
          return new Include(contents);
       }
       else if (functor.equals("exclude")) {
-         return new Include(contents);
+         return new Exclude(contents);
       }
 
       return new Complex(s);
