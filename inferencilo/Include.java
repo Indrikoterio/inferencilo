@@ -15,14 +15,7 @@
 
 package inferencilo;
 
-import java.util.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-
-//public class Include implements Goal {
-public class Include extends BuiltInPredicate {
-
-   private String filter;
+public class Include extends FilterBase {
 
    /**
     * constructor
@@ -31,19 +24,9 @@ public class Include extends BuiltInPredicate {
     * @throws TooFewArgumentsException, InvalidArgumentException
     */
    public Include(Unifiable... arguments) {
-
-      super("INCLUDE", arguments);
-
-      if (arguments.length > 3)
-          throw new TooManyArgumentsException("in Include.");
-      if (arguments.length < 3)
-          throw new TooFewArgumentsException("in Include.");
-
-      filter = arguments[0].toString();
-      if (filter.length() < 1)
-          throw new InvalidArgumentException("first argument in Include.");
-
+      super("Include", arguments);
    } // Include
+
 
    /**
     * constructor
@@ -52,69 +35,8 @@ public class Include extends BuiltInPredicate {
     * @throws TooFewArgumentsException, InvalidArgumentException
     */
    public Include(String strArgs) {
-
-      super("INCLUDE");
-
-      if (strArgs == null)
-          throw new TooFewArgumentsException("in Include.");
-
-      arguments = Make.splitTerms(strArgs, ',')
-                  .stream()
-                  .map(Make::term)
-                  .toArray(Unifiable[]::new);
-
-      if (arguments.length > 3)
-          throw new TooManyArgumentsException("in Include.");
-      if (arguments.length < 3)
-          throw new TooFewArgumentsException("in Include.");
-
-      filter = arguments[0].toString();
-      if (filter.length() < 1)
-          throw new InvalidArgumentException("first argument in Include.");
-
+      super("Include", strArgs);
    } // Include
-
-
-   /**
-    * getSolver
-    *
-    * Returns a SolutionNode (object) for filters.
-    *
-    * The main method in a SolutionNode is nextSolution().
-    * nextSolution() calls evaluate().
-    *
-    * @param  knowledge base
-    * @param  parent solution set
-    * @param  parent solution node
-    * @return solution node
-    */
-   public SolutionNode getSolver(KnowledgeBase knowledge,
-                                 SubstitutionSet parentSolution,
-                                 SolutionNode parentNode) {
-      return
-
-         new SolutionNode(this, knowledge, parentSolution, parentNode) {
-
-            boolean moreSolutions = true;
-
-            /**
-             * nextSolution
-             *
-             * Call evaluate() to do some work on the input argument(s),
-             * then return the new solution set.
-             *
-             * @return  new substitution set
-             */
-            public SubstitutionSet nextSolution() throws TimeOverrunException {
-               if (noBackChaining()) return null;
-               if (!moreSolutions) return null;
-               moreSolutions = false;
-               return evaluate(parentSolution, knowledge);
-            }
-         };
-
-   } // getSolver
-
 
    /*
     * passOrDiscard
@@ -127,70 +49,13 @@ public class Include extends BuiltInPredicate {
     * @return true if value passes
     *
     */
-   private boolean passOrDiscard(Unifiable value, KnowledgeBase kb)
-                      throws TimeOverrunException {
+   boolean passOrDiscard(Unifiable value, KnowledgeBase kb)
+                         throws TimeOverrunException {
       Complex goal = new Complex(filter + "(" + value + ").");
       SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = root.nextSolution();
       if (solution != null) return true;
       else return false;
    }
-
-
-   /**
-    * evaluate
-    *
-    * This 'evaluate' it not used in Include. The one below it, which has
-    * a two parameters, is in use. This evaluate() is defined to override
-    * the abstract method definition in BuiltInPredicate.
-    *
-    * @param   substitution set of parent
-    * @return  new substitution set
-    */
-   public SubstitutionSet evaluate(SubstitutionSet ss) {
-      return null;
-   }
-
-
-   /**
-    * evaluate the arguments
-    *
-    * @param   Substitution Set
-    * @param   Knowledge Base
-    * @throws  TimeOverrunException
-    * @return  new Substitution Set
-    */
-   SubstitutionSet evaluate(SubstitutionSet ss, KnowledgeBase kb)
-                            throws TimeOverrunException {
-
-      PList inList  = ss.castPList(arguments[1]);
-      if (inList == null) return null;
-
-      List<Unifiable> out  = new ArrayList<Unifiable>();
-
-      PList pList = inList;
-      int count = inList.recursiveCount(ss);
-
-      for (int i = 0; i < count; i++) {
-         Unifiable head = pList.getHead();
-         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
-            Variable hVar  = (Variable)(head);
-            PList term = ss.castPList(hVar);
-            if (term != null && PList.class.isInstance(term)) {
-               pList = (PList)term;
-               head = pList.getHead();
-            }
-         }
-         if (head == null) break;
-         if (passOrDiscard(ss.getGroundTerm(head), kb)) {
-            out.add(head);
-         }
-         pList = pList.getTail();
-      } // for
-
-      PList outList = new PList(false, out);
-      return outList.unify(arguments[2], ss);
-
-   } // evaluate()
 
 }  // Include
