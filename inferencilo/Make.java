@@ -196,8 +196,8 @@ public class Make {
       else if (functor.equals("stats")) {
          return new Stats();
       }
-      else if (functor.equals("filter")) {
-         return new Filter(contents);
+      else if (functor.equals("include")) {
+         return new Include(contents);
       }
 
       return new Complex(s);
