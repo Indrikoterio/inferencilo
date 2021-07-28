@@ -199,6 +199,9 @@ public class Make {
       else if (functor.equals("include")) {
          return new Include(contents);
       }
+      else if (functor.equals("exclude")) {
+         return new Include(contents);
+      }
 
       return new Complex(s);
 
