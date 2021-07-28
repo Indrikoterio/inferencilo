@@ -1,13 +1,13 @@
 /**
- * Filter
+ * Include
  *
- * Filters terms from an input list, according to the given predicate.
- * Returns a new list.
+ * Include filters terms from an input list, according to the
+ * filter predicate. It returns a new list. Eg.
  *
- * ..., filter($InList, filter_predicate_name, $OutList),...
+ * ..., include(filter_predicate_name, $InList, $OutList),...
  *
- * The second argument, a predicate name, must be a Constant,
- * which corresponds to a fact/rull with an arity of 1.
+ * The first argument, a predicate name, must be a Constant,
+ * which corresponds to a fact/rule with an arity of 1.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -19,8 +19,8 @@ import java.util.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-//public class Filter implements Goal {
-public class Filter extends BuiltInPredicate {
+//public class Include implements Goal {
+public class Include extends BuiltInPredicate {
 
    private String filter;
 
@@ -30,20 +30,20 @@ public class Filter extends BuiltInPredicate {
     * @param  unifiable arguments
     * @throws TooFewArgumentsException, InvalidArgumentException
     */
-   public Filter(Unifiable... arguments) {
+   public Include(Unifiable... arguments) {
 
-      super("FILTER", arguments);
+      super("INCLUDE", arguments);
 
       if (arguments.length > 3)
-          throw new TooManyArgumentsException("in Filter.");
+          throw new TooManyArgumentsException("in Include.");
       if (arguments.length < 3)
-          throw new TooFewArgumentsException("in Filter.");
+          throw new TooFewArgumentsException("in Include.");
 
-      filter = arguments[1].toString();
+      filter = arguments[0].toString();
       if (filter.length() < 1)
-          throw new InvalidArgumentException("second argument in Filter.");
+          throw new InvalidArgumentException("first argument in Include.");
 
-   } // Filter
+   } // Include
 
    /**
     * constructor
@@ -51,12 +51,12 @@ public class Filter extends BuiltInPredicate {
     * @param  arguments as string
     * @throws TooFewArgumentsException, InvalidArgumentException
     */
-   public Filter(String strArgs) {
+   public Include(String strArgs) {
 
-      super("FILTER");
+      super("INCLUDE");
 
       if (strArgs == null)
-          throw new TooFewArgumentsException("in Filter.");
+          throw new TooFewArgumentsException("in Include.");
 
       arguments = Make.splitTerms(strArgs, ',')
                   .stream()
@@ -64,15 +64,15 @@ public class Filter extends BuiltInPredicate {
                   .toArray(Unifiable[]::new);
 
       if (arguments.length > 3)
-          throw new TooManyArgumentsException("in Filter.");
+          throw new TooManyArgumentsException("in Include.");
       if (arguments.length < 3)
-          throw new TooFewArgumentsException("in Filter.");
+          throw new TooFewArgumentsException("in Include.");
 
-      filter = arguments[1].toString();
+      filter = arguments[0].toString();
       if (filter.length() < 1)
-          throw new InvalidArgumentException("second argument in Filter.");
+          throw new InvalidArgumentException("first argument in Include.");
 
-   } // Filter
+   } // Include
 
 
    /**
@@ -140,7 +140,7 @@ public class Filter extends BuiltInPredicate {
    /**
     * evaluate
     *
-    * This 'evaluate' it not used in Filter. The one below it, which has
+    * This 'evaluate' it not used in Include. The one below it, which has
     * a two parameters, is in use. This evaluate() is defined to override
     * the abstract method definition in BuiltInPredicate.
     *
@@ -163,7 +163,7 @@ public class Filter extends BuiltInPredicate {
    SubstitutionSet evaluate(SubstitutionSet ss, KnowledgeBase kb)
                             throws TimeOverrunException {
 
-      PList inList  = ss.castPList(arguments[0]);
+      PList inList  = ss.castPList(arguments[1]);
       if (inList == null) return null;
 
       List<Unifiable> out  = new ArrayList<Unifiable>();
@@ -193,4 +193,4 @@ public class Filter extends BuiltInPredicate {
 
    } // evaluate()
 
-}  // Filter
+}  // Include
