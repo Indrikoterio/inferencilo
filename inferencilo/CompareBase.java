@@ -19,7 +19,7 @@ public abstract class CompareBase extends BuiltInPredicate {
     *
     * @param  name of predicate
     * @param  unifiable arguments
-    * @throws TooManyParameters, TooFewParameters
+    * @throws TooManyArgumentsException, TooFewArgumentsException
     */
    public CompareBase(String name, Unifiable... arguments) {
       super(name, arguments);
@@ -34,7 +34,7 @@ public abstract class CompareBase extends BuiltInPredicate {
     *
     * @param  name of predicate
     * @param  argument string
-    * @throws TooManyParameters, TooFewParameters
+    * @throws TooManyArgumentsException, TooFewArgumentsException
     */
    public CompareBase(String name, String strArguments) {
 
