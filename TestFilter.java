@@ -1,7 +1,7 @@
 /**
  * TestFilter
  *
- * Test filter predicate. First, the facts:
+ * Test the include predicate. First, the facts:
  *
  * male(Sheldon).
  * male(Leonard).
@@ -14,8 +14,8 @@
  *
  * The filter test:
  *
- * list_wimmin($W) :- friends($F), filter($F, female, $W).")
- * list_nerds($N)  :- friends($F), filter($F, male, $N).")
+ * list_wimmin($W) :- friends($F), include(female, $F, $W).")
+ * list_nerds($N)  :- friends($F), include(male, $F, $N).")
  * 
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -36,11 +36,11 @@ public class TestFilter {
          new Rule("female(Bernadette)"),
          new Rule("female(Amy)"),
          new Rule("friends([Leonard, Raj, Penny, Sheldon, Bernadette, Amy, Howard])."),
-         new Rule("list_wimmin($W) :- friends($F), filter($F, female, $W)."),
-         new Rule("list_nerds($N) :- friends($F), filter($F, male, $N).")
+         new Rule("list_wimmin($W) :- friends($F), include(female, $F, $W)."),
+         new Rule("list_nerds($N) :- friends($F), include(male, $F, $N).")
       );
 
-      System.out.print("Test Filter function: ");
+      System.out.print("Test Include function: ");
 
       try {
          Complex goal = new Complex("list_wimmin($W)");
