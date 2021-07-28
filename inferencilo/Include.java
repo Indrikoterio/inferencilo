@@ -21,7 +21,6 @@ public class Include extends FilterBase {
     * constructor
     *
     * @param  unifiable arguments
-    * @throws TooFewArgumentsException, InvalidArgumentException
     */
    public Include(Unifiable... arguments) {
       super("Include", arguments);
@@ -32,7 +31,6 @@ public class Include extends FilterBase {
     * constructor
     *
     * @param  arguments as string
-    * @throws TooFewArgumentsException, InvalidArgumentException
     */
    public Include(String strArgs) {
       super("Include", strArgs);
