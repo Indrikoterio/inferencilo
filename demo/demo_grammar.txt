@@ -43,7 +43,15 @@ show($In) :- $In = [$H | $T], print(%s, $H), nl, show($T).
 show([]) :- print(------------), nl.
 
 # remove_punc - Rule to remove punctuation.
-remove_punc([$H | $T], $T2) :- functor($H, punctuation), !, remove_punc($T, $T2).
+remove_punc([period($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([comma($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([question_mark($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([exlamation_mark($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([colon($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([dash($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([semicolon($_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([quote_mark($_, $_) | $T], $T2) :- !, remove_punc($T, $T2).
+remove_punc([bracket($_, $_) | $T], $T2) :- !, remove_punc($T, $T2).
 remove_punc([$H | $T], [$H | $T2]) :- remove_punc($T, $T2).
 remove_punc([], []).
 
