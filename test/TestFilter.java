@@ -16,8 +16,8 @@
  *
  * The filter test:
  *
- * list_wimmin($W) :- friends($F), include(female, $F, $W).")
- * list_nerds($N)  :- friends($F), exclude(female, $F, $N).")
+ * list_wimmin($W) :- friends($F), include(female, $F, $W).
+ * list_nerds($N)  :- friends($F), exclude(female, $F, $N).
  * 
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
