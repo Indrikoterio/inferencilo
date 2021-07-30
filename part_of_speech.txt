@@ -22917,7 +22917,7 @@ guzzled VBD
 guzzler NN
 guzzlers NNS
 guzzling VBG
-gymnasia NN
+gymnasia NNS
 gymnasium NN
 gymnasiums NNS
 gymnast NN
@@ -28314,7 +28314,7 @@ labelled VBN
 labelling VBG
 labellings NNS
 labels NNS VBZ
-labia NN
+labia NNS
 labials NNS
 labile JJ
 labor NN VB
@@ -35773,7 +35773,7 @@ paranoid JJ
 paranormal JJ
 parapet NN
 parapets NNS
-paraphernalia NN
+paraphernalia NN NNS
 paraphrase NN
 paraphrased VBN VBD
 paraphrases NNS
@@ -39552,7 +39552,7 @@ pseudonym NN
 pseudonymous JJ
 pseudonyms NNS
 pseudopod NN
-pseudopodia NN
+pseudopodia NNS
 psoriasis NN
 psyche NN NP
 psychedelia NN
@@ -50228,7 +50228,7 @@ symphonic JJ
 symphonies NNS
 symphonists NNS
 symphony NN
-symposia NN
+symposia NNS
 symposium NN
 symptom NN
 symptomatic JJ
@@ -52437,7 +52437,7 @@ trap NN
 trapdoor NN
 trapdoors NNS
 trapeze NN
-trapezia NN
+trapezia NNS
 trapezium NN
 trapezoid NN
 trapezoidal NN
