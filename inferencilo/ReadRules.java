@@ -243,7 +243,7 @@ public class ReadRules {
          } // while
       }
       catch (IOException e) {
-         System.err.println("readStripComments: io erro:\n" + e);
+         System.err.println("readStripComments: io error:\n" + e);
          return null;
       }
       return sb.toString();
