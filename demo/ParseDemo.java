@@ -59,6 +59,7 @@
 
 import inferencilo.*;
 
+import java.io.*;
 import java.util.*;
 
 class ParseDemo {
@@ -185,6 +186,137 @@ class ParseDemo {
    } // sentenceToFacts
 
 
+   /*
+    * openFile
+    *
+    * Opens a file for reading, in UTF-8 format.
+    * Returns a buffered reader, or null if an exception occurs.
+    *
+    * @param  file name
+    * @return BufferedReader
+    */
+   private static BufferedReader openFile(String filename) {
+      try {
+         return new BufferedReader(
+            new InputStreamReader(new FileInputStream(filename),"UTF-8")
+         );
+      }
+      catch (Exception e) {
+         System.err.println("ParseDemo - Cannot open " + filename + ".");
+         return null;
+      }
+   } // openFile
+
+
+   /*
+    * readFile
+    *
+    * Reads a file into a string.
+    *
+    * @param  buffered reader
+    * @return file contents as string
+    */
+   private static String readFile(BufferedReader reader) {
+
+      String line;
+      StringBuilder sb = new StringBuilder("");
+
+      try {
+         line = reader.readLine();
+         while (true) {
+            if (line == null) break;
+            sb.append(line).append("\n");
+            line = reader.readLine();
+         } // while
+      }
+      catch (IOException e) {
+         System.err.println("ParseDemo: io error:\n" + e);
+         return null;
+      }
+      return sb.toString();
+
+   } // readFile
+
+
+   /*
+    * isPunc
+    *
+    * Returns true if the character is a punctuation mark,
+    * possibly marking the end of a sentence.
+    *
+    * @param  character to test
+    * @return t/f
+    */
+   private static boolean isPunc(char c) {
+      if (c == '!' || c == '?' || c == '.') return true;
+      return false;
+   }  // isPunc
+
+   /*
+    * endOfWord
+    *
+    * Returns true if the current character is a space,
+    * or is at the end of a line.
+    *
+    * @param  character to test
+    * @return t/f
+    */
+   private static boolean endOfWord(char c) {
+      if (c == ' ' || c == '\n') return true;
+      return false;
+   }  // endOfWord
+
+
+   /*
+    * splitIntoSentences
+    *
+    * Splits a string of text into sentences, by searching
+    * for punctuation. The punctuation must be followed by
+    * a space. (The period in '3.14' doesn't mark the end
+    * of a sentence.)
+    *
+    * @param  input string
+    * @return list of sentences
+    */
+   private static List<String> splitIntoSentences(String str) {
+
+      List<String> sentences = new ArrayList<String>();
+      String sentence;
+      int previousIndex = 0;
+      int index;
+      char[] prev3 = {'a', 'a', 'a'};
+
+      int i;
+      for (i = 0; i < str.length(); i++) {
+
+         char c = str.charAt(i);
+         if (endOfWord(c) && isPunc(prev3[2])) {
+            if (prev3[2] == '.') {
+               // Check for H.G. Wells or H. G. Wells
+               if (prev3[0] != '.' && prev3[0] != ' ') {
+                  sentences.add(str.substring(previousIndex, i).trim());
+                  previousIndex = i;
+               }
+            }
+            else {
+               sentences.add(str.substring(previousIndex, i).trim());
+               previousIndex = i;
+            }
+         }
+
+         prev3[0] = prev3[1];
+         prev3[1] = prev3[2];
+         prev3[2] = c;
+
+      } // for
+      if (i >= str.length())
+          sentences.add(str.substring(previousIndex, str.length()).trim());
+
+      return sentences;
+
+   }  // splitIntoSentences
+
+
    /**
     * main - The program starts here.
     *
@@ -216,6 +348,7 @@ class ParseDemo {
 
         words_to_pos([H1 | T1], [H2 | T2]) :- word(H1, H2), words_to_pos(T1, T2).
         words_to_pos([], []).
+
        */
 
       Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
@@ -256,15 +389,11 @@ class ParseDemo {
 
       //kb.showKB();
 
-      PList  wordList;
-      List<String> sentences = Arrays.asList(
-         "They envy us.",
-         "He envy us.",
-         "He envies us.",
-         "I envied them.",
-         "I envies them.",
-         "Cats loves me."
-      );
+      BufferedReader reader = openFile("sentences.txt");
+      if (reader == null) return;
+      String text = readFile(reader);
+      if (text == null) return;
+      List<String> sentences = splitIntoSentences(text);
 
       sentences
          .stream()
