@@ -60,7 +60,6 @@
 import inferencilo.*;
 
 import java.util.*;
-//import java.util.ArrayList;
 
 class ParseDemo {
 
