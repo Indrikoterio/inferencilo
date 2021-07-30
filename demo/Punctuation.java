@@ -13,13 +13,10 @@ import inferencilo.*;
 public class Punctuation {
 
 
-   public static Constant bracket = new Constant("bracket");
-   public static Constant quote_mark = new Constant("quote_mark");
-
    /**
     * makeTerm
     *
-    * Creates a term for the given symbol,.
+    * Creates a term for the given symbol.
     *
     * @param  punctuation symbol (str)
     * @return punctuation term, eg. semicolon(;)
@@ -36,88 +33,89 @@ public class Punctuation {
       char symbol = str.charAt(0);
 
       if (symbol == '.') {
-         c = new Complex(new Constant("period"), new Constant("."));
+         c = new Complex("period(.)");
       }
       else
       if (symbol == ',') {
-         c = new Complex(new Constant("comma"), new Constant(","));
+         c = new Complex("comma(\\,)");  // Must escape the comma with backslash.
       }
       else
       if (symbol == '?') {
-         c = new Complex(new Constant("question_mark"), new Constant("?"));
+         c = new Complex("question_mark(?)");
       }
       else
       if (symbol == '!') {
-         c = new Complex(new Constant("exclamation_mark"), new Constant("!"));
+         c = new Complex("exclamation_mark(!)");
       }
       else
       if (symbol == ':') {
-         c = new Complex(new Constant("colon"), new Constant(":"));
+         c = new Complex("colon(:)");
       }
       else
       if (symbol == ';') {
-         c = new Complex(new Constant("semicolon"), new Constant(";"));
+         c = new Complex("semicolon(;)");
       }
       else
       if (symbol == '-') {
-         c = new Complex(new Constant("dash"), new Constant("-"));
+         c = new Complex("dash(-)");
       }
       else
       if (symbol == '"') {    // The second argument is for comparisons.
-         c = new Complex(quote_mark, new Constant("\""), new Constant("\""));
+         // 
+         c = new Complex("quote_mark(\", \")");
       }
       else
       if (symbol == '\'') {
-         c = new Complex(quote_mark, new Constant("'"), new Constant("'"));
+         c = new Complex("quote_mark(', ')");
       }
       else
       if (symbol == '«') {
-         c = new Complex(quote_mark, new Constant("«"), new Constant("«"));
+         c = new Complex("quote_mark(«, «)");
       }
       else
       if (symbol == '»') {
-         c = new Complex(quote_mark, new Constant("»"), new Constant("«"));
+         c = new Complex("quote_mark(», «)");
       }
       else
       if (symbol == '‘') {
-         c = new Complex(quote_mark, new Constant("‘"), new Constant("‘"));
+         c = new Complex("quote_mark(‘, ‘)");
       }
       else
       if (symbol == '’') {
-         c = new Complex(quote_mark, new Constant("’"), new Constant("‘"));
+         c = new Complex("quote_mark(’, ‘)");
       }
       else
       if (symbol == '“') {
-         c = new Complex(quote_mark, new Constant("“"), new Constant("“"));
+         c = new Complex("quote_mark(“, “)");
       }
       else
       if (symbol == '”') {
-         c = new Complex(quote_mark, new Constant("”"), new Constant("“"));
+         c = new Complex("quote_mark(”, “)");
       }
       else
       if (symbol == '(') {
-         c = new Complex(bracket, new Constant("("), new Constant("("));
+         c = new Complex("bracket((, ()");
       }
       else
       if (symbol == ')') {
-         c = new Complex(bracket, new Constant(")"), new Constant("("));
+         c = new Complex("bracket(), ()");
       }
       else
       if (symbol == '[') {
-         c = new Complex(bracket, new Constant("["), new Constant("["));
+         c = new Complex("bracket([, [)");
       }
       else
       if (symbol == ']') {
-         c = new Complex(bracket, new Constant("]"), new Constant("["));
+         c = new Complex("bracket(], [)");
       }
       else
       if (symbol == '<') {
-         c = new Complex(bracket, new Constant("<"), new Constant("<"));
+         c = new Complex("bracket(<, <)");
       }
       else
       if (symbol == '>') {
-         c = new Complex(bracket, new Constant(">"), new Constant("<"));
+         c = new Complex("bracket(>, <)");
       }
       return c;
    }
-}
+}  // makeTerm
