@@ -1,4 +1,8 @@
-./clear
+echo "Build and run all tests. - Inferencilo"
+rm *.class
+rm ../inferencilo/*.class
+
+export CLASSPATH=.:..
 
 javac TestConstant.java
 java TestConstant
