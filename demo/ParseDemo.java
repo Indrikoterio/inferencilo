@@ -263,7 +263,8 @@ class ParseDemo {
          "He envy us.",
          "He envies us.",
          "I envied them.",
-         "I envies them."
+         "I envies them.",
+         "Cats loves me."
       );
 
       sentences
