@@ -309,8 +309,10 @@ class ParseDemo {
          prev3[2] = c;
 
       } // for
-      if (i >= str.length())
-          sentences.add(str.substring(previousIndex, str.length()).trim());
+      if (i >= str.length() ) {
+          String s = str.substring(previousIndex, str.length()).trim();
+          if (s.length() > 0) sentences.add(s);
+      }
 
       return sentences;
 
