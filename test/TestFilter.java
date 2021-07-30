@@ -42,7 +42,7 @@ public class TestFilter {
          new Rule("list_nerds($N) :- friends($F), exclude(female, $F, $N).")
       );
 
-      System.out.print("Test Include and Exclude functions: ");
+      System.out.print("Test Include and Exclude predicates: ");
 
       try {
          Complex goal = new Complex("list_wimmin($W)");
