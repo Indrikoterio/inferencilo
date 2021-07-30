@@ -262,7 +262,7 @@ class PartOfSpeech {
     *
     * Creates a term for punctuation. For example:
     *
-    *     word(., punctuation(.))
+    *     word(., period(.))
     *
     * If the given symbol does not represent punctuation,
     * return null.
@@ -271,15 +271,9 @@ class PartOfSpeech {
     * @return term or null
     */
    private static Complex makePunctuation(String sym) {
-      if (sym.equals(".") || sym.equals("?") ||
-          sym.equals("!") || sym.equals("\"")) {
-         Constant symbol = new Constant(sym);
-         Complex term = new Complex(punctuation, symbol);
-         return new Complex(WORD, symbol, term);
-      }
-      else return null;
+      Complex term = Punctuation.makeTerm(sym);
+      return term;
    }
-
 
    /*
     * makePronounTerm
@@ -554,7 +548,7 @@ class PartOfSpeech {
     */
    private static List<Rule> makeFacts(String word) {
 
-      Complex  term;
+      Complex  term, wordTerm;
       Rule     fact;
 
       String low = lowerCaseExceptI(word);
@@ -565,7 +559,10 @@ class PartOfSpeech {
       int length = word.length();
       if (length == 1) { // Maybe this is punctuation.
          Complex f = makePunctuation(word);
-         if (f != null) return Arrays.asList(new Rule(f));
+         if (f != null) {
+            wordTerm = new Complex(WORD, new Constant(word), f);
+            return Arrays.asList(new Rule(wordTerm));
+         }
       }
 
       List<Rule> facts = new ArrayList<Rule>();
@@ -579,7 +576,7 @@ class PartOfSpeech {
          for (String pos : posData) {
             term = makeTerm(word, low, pos);
             if (term != null) {
-               Complex wordTerm = new Complex(WORD, new Constant(word), term);
+               wordTerm = new Complex(WORD, new Constant(word), term);
                fact = new Rule(wordTerm);
                facts.add(fact);
             }
@@ -587,7 +584,7 @@ class PartOfSpeech {
       }
       if (facts.size() < 1) {
          term = new Complex(unknown, new Constant(word));
-         Complex wordTerm = new Complex(WORD, new Constant(word), term);
+         wordTerm = new Complex(WORD, new Constant(word), term);
          fact = new Rule(wordTerm);
          facts.add(fact);
       }
