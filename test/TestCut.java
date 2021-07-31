@@ -19,7 +19,7 @@
  * pay(janitor, low).
  *
  *----------------------------------------
- * Another cut test. Standard Prolog:
+ * Another cut test. In standard Prolog:
  *
    cut_rule :- !, print("Test Cut: This text should print."), fail.
    cut_rule :- print("*** This should NOT print. ***").
