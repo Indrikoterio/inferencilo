@@ -34,8 +34,18 @@ public class BuiltIn5 extends BuiltInPredicate {
     * @param  unifiable parameters
     */
    public BuiltIn5(Unifiable... args) {
+
       super("BuiltIn5", args);
-   }
+
+      if (args.length < 5) {
+         throw new TooFewArgumentsException("- BuiltIn5");
+      }
+
+      if (args.length > 5) {
+         throw new TooManyArgumentsException("- BuiltIn5");
+      }
+
+   } // constructor
 
 
    /**
