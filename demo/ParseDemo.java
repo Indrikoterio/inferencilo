@@ -51,24 +51,25 @@
  *
  * ...which are added to the KnowledgeBase.
  *
- * Note: Many words can have more than one part of speech. The word 'envy',
- * for example, can be a noun or a verb. In order to parse English sentences,
- * the program needs facts which identify all possible parts of speech:
+ * Note: Many words can have more than one part of speech. The word
+ * 'envy', for example, can be a noun or a verb. In order to parse
+ * English sentences, the program needs facts which identify all
+ * possible parts of speech:
  *
  *     word(envy, noun(envy, singular)).
  *     word(envy, verb(envy, present, base)).
  *
- * Finally, the program calls the method oneSolution(), which tries to find
- * a solution for the goal 'parse'.
+ * Finally, the program calls the method oneSolution(), which tries
+ * to find a solution for the goal 'parse'.
  *
  * The arguments of oneSolution() are:
  *   functor of goal (= parse)
  *   input argument - a word list, such as [They, envy, us, .]
  *   knowledge base
  *
- * During analysis, the rule words_to_pos/2 is applied to convert the input
- * word list, created by sentenceToFacts(), into a list of terms which
- * identify part of speech.
+ * During analysis, the rule words_to_pos/2 is applied to convert
+ * the input word list, created by sentenceToFacts(), into a list
+ * of terms which identify part of speech.
  *
  *   words_to_pos([$H1 | $T1], [$H2 | $T2]) :-
  *                                  word($H1, $H2), words_to_pos($T1, $T2).
@@ -79,8 +80,8 @@
  * [pronoun(They, subject, third, plural), verb(envy, present, base),
  *          pronoun(us, object, first, plural), period(.)]
  *
- * The inference rule 'sentence' identifies (unifies with) various types
- * of sentence, such as:
+ * The inference rule 'sentence' identifies (unifies with) various
+ * types of sentence, such as:
  *
  *   subject pronoun, verb
  *   subject noun, verb
