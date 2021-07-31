@@ -29,36 +29,36 @@ public abstract class PFunction implements Unifiable {
 
    // public for convenience of subclasses
    String functionName = null;
-   public Unifiable[] parameters;  // arguments
+   public Unifiable[] arguments;
 
    /**
     * constructor
     *
     * @param  function name
-    * @param  array of unifiable parameters
+    * @param  array of unifiable arguments
     */
-   public PFunction(String functionName, Unifiable... parameters) {
+   public PFunction(String functionName, Unifiable... arguments) {
       this.functionName = functionName;
-      this.parameters = parameters;
+      this.arguments = arguments;
    }
 
    /**
     * constructor
     *
     * @param  function name
-    * @param  parameters as string
+    * @param  arguments as string
     */
-   public PFunction(String functionName, String strParams) {
+   public PFunction(String functionName, String strArgs) {
 
       this.functionName = functionName;
 
-      if (strParams == null || strParams.length() == 0)
+      if (strArgs == null || strArgs.length() == 0)
           throw new TooFewArgumentsException("in " + functionName + ".");
 
-      parameters = Make.splitTerms(strParams, ',')
-                  .stream()
-                  .map(Make::term)
-                  .toArray(Unifiable[]::new);
+      arguments = Make.splitTerms(strArgs, ',')
+                 .stream()
+                 .map(Make::term)
+                 .toArray(Unifiable[]::new);
 
    } // constructor
 
@@ -72,36 +72,36 @@ public abstract class PFunction implements Unifiable {
     * Each subclass must do its own evaluation.
     *
     * @param  substitution set
-    * @param  array of unifiable parameters
+    * @param  array of unifiable arguments
     * @return Unifiable (Constant)
     */
-   public abstract Unifiable evaluate(SubstitutionSet ss, Unifiable[] parameters);
+   public abstract Unifiable evaluate(SubstitutionSet ss, Unifiable[] arguments);
 
 
    /**
-    * bindAllParameters
+    * bindAllArguments
     *
-    * In order to evaluate a function, all of its parameters must
-    * be bound. This method returns the bound parameters or null.
+    * In order to evaluate a function, all of its arguments must
+    * be bound. This method returns the bound arguments or null.
     *
     * @param  substitution set
-    * @return array of bound parameters
+    * @return array of bound arguments
     */
-   public Unifiable[] bindAllParameters(SubstitutionSet ss) {
-      Unifiable[] newParameters = new Unifiable[parameters.length];
-      for (int i = 0; i < parameters.length; i++) {
-         if (parameters[i] instanceof Variable) {
-            Variable varParam = (Variable)parameters[i];
-            if (ss.isBound(varParam)) {
-               newParameters[i] = ss.getBinding(varParam);
+   public Unifiable[] bindAllArguments(SubstitutionSet ss) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         if (arguments[i] instanceof Variable) {
+            Variable varArg = (Variable)arguments[i];
+            if (ss.isBound(varArg)) {
+               newArguments[i] = ss.getBinding(varArg);
             }
             else return null;  // Variables must be bound. Fail.
          }
          else {
-            newParameters[i] = parameters[i];
+            newArguments[i] = arguments[i];
          }
       }
-      return newParameters;
+      return newArguments;
    } // bindAllParameters
 
 
@@ -116,9 +116,9 @@ public abstract class PFunction implements Unifiable {
     * @return new substitution set
     */
    public SubstitutionSet unify(Unifiable exp, SubstitutionSet ss) {
-      Unifiable[] boundParameters = bindAllParameters(ss);
-      if (boundParameters == null) return null;
-      Unifiable result = evaluate(ss, boundParameters);
+      Unifiable[] boundArguments = bindAllArguments(ss);
+      if (boundArguments == null) return null;
+      Unifiable result = evaluate(ss, boundArguments);
       if (result == null) return null;
       return result.unify(exp, ss);
    } // unify
@@ -135,14 +135,14 @@ public abstract class PFunction implements Unifiable {
     */
    public Expression replaceVariables(SubstitutionSet ss) {
 
-      for (Unifiable param : parameters) {
-         if (param instanceof Constant || param instanceof Complex) {
-            return param;
+      for (Unifiable arg : arguments) {
+         if (arg instanceof Constant || arg instanceof Complex) {
+            return arg;
          }
-         else if (param instanceof Variable) {
-            Variable vParam = (Variable)param;
-            if (ss.isBound(vParam)) {
-               Expression exp = vParam.replaceVariables(ss);
+         else if (arg instanceof Variable) {
+            Variable vArg = (Variable)arg;
+            if (ss.isBound(vArg)) {
+               Expression exp = vArg.replaceVariables(ss);
                return exp;
             }
             else {
@@ -159,25 +159,25 @@ public abstract class PFunction implements Unifiable {
 
 
    /*
-    * standardizeParameter
+    * standardizeArgument
     *
     * This method assists standardizeVariablesApart() in the subclass.
-    * If the parameter is a Variable, this method will standardize it.
+    * If the argument is a Variable, this method will standardize it.
     * If not, it returns null.
     *
-    * @param   unifiable parameter
+    * @param   unifiable argument
     * @param   already standardized variables (hash)
-    * @return  new unifiable parameter or null
+    * @return  new unifiable argument or null
     */
-   public Unifiable standardizeParameter(Unifiable parameter,
+   public Unifiable standardizeArgument(Unifiable argument,
                                   Hashtable<Variable, Variable> newVars) {
-      if (parameter instanceof Variable) {
-         Variable par = (Variable)parameter;
-         Unifiable newParameter = (Unifiable)par.standardizeVariablesApart(newVars);
-         return newParameter;
+      if (argument instanceof Variable) {
+         Variable par = (Variable)argument;
+         Unifiable newArgument = (Unifiable)par.standardizeVariablesApart(newVars);
+         return newArgument;
       }
-      return parameter;
-   } // standardizeParameter
+      return argument;
+   } // standardizeArgument
 
 
    /**
@@ -190,17 +190,17 @@ public abstract class PFunction implements Unifiable {
     * subclass.
     */
    public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
-      Unifiable[] newParameters = new Unifiable[parameters.length];
-      for (int i = 0; i < parameters.length; i++) {
-         newParameters[i] = standardizeParameter(parameters[i], newVars);
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeArgument(arguments[i], newVars);
       }
-      // Now instantiate the class with with new standardized parameters.
+      // Now instantiate the class with with new standardized arguments.
       try {
          String className = this.getClass().getName();
          Constructor<?> c = Class.forName(className)
                                  .getDeclaredConstructor(Unifiable[].class);
          c.setAccessible(true);  // Necessary?
-         return (Expression)c.newInstance(new Object[] {newParameters});
+         return (Expression)c.newInstance(new Object[] {newArguments});
       }
       catch (ClassNotFoundException cnfx) {}
       catch (NoSuchMethodException nsmx) {}
