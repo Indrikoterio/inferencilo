@@ -28,7 +28,8 @@ public class TestAppend {
 
       /*
         Prolog format:
-        test_append(Out) :- X = red, Y = [green, blue, purple], append(X, orange, null, Y, Out).
+        test_append(Out) :- X = red, Y = [green, blue, purple],
+                            append(X, orange, null, Y, Out).
        */
 
       KnowledgeBase kb = new KnowledgeBase(
