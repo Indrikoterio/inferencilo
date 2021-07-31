@@ -40,6 +40,9 @@ java TestPList
 javac TestAppend.java
 java TestAppend
 
+javac TestBuiltInPredicate.java
+java TestBuiltInPredicate
+
 javac TestFunction.java
 java TestFunction
 
