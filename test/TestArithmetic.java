@@ -3,6 +3,16 @@
  *
  * Test built-in arithmetic functions: Add, Subtract, Multiply, Divide.
  *
+ * f(x, y) = ((x + y) - 6) * 3.4 / 3.4
+ *
+ * f(3, 7)  = 4
+ * f(3, -7) = -10
+ *
+ * The rule is:
+ *
+ * calculate($X, $Y, $Out) :- $A = add($X, $Y), $B = substract($A, 6),
+ *                            $C = multiply($B, 3.4), $Out = divide($C, 3.4).
+ *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
