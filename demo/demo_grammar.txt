@@ -5,6 +5,7 @@
 # Check the agreement between a pronoun subject and verb. For example,
 # 'He is' is OK, because both 'He' and 'is' are third person singular,
 # but 'He are' is wrong.
+#
 # The arguments are:
 #   original pronoun
 #   person (first, second, third)
