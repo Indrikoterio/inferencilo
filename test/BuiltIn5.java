@@ -2,18 +2,18 @@
  * BuiltIn5
  *
  * This class is used to test Built-in Predicate functionality.
- * BuiltIn5 has 5 arguments:
+ * BuiltIn5 takes 5 arguments:
  *
  *    word list  - in
  *    new head word  - out
- *    new tail - out
+ *    tail of list   - out
  *    error list - in
  *    new error list - out
  *
  * This predicate takes the first two words of the word list,
  * and joins them with a hyphen. The new word is unified with
- * (bound to) 'new head word'. The remainder (tail) of the word
- * list is bound to 'new tail'.
+ * (bound to) 'new head word'. The remainder of the word list
+ * is bound to the tail argument.
  *
  * The predicate also creates an error message: 'an error'. This
  * message is added to the error list, then unified with the
@@ -36,14 +36,8 @@ public class BuiltIn5 extends BuiltInPredicate {
    public BuiltIn5(Unifiable... args) {
 
       super("BuiltIn5", args);
-
-      if (args.length < 5) {
-         throw new TooFewArgumentsException("- BuiltIn5");
-      }
-
-      if (args.length > 5) {
-         throw new TooManyArgumentsException("- BuiltIn5");
-      }
+      if (args.length < 5) throw new TooFewArgumentsException("- BuiltIn5");
+      if (args.length > 5) throw new TooManyArgumentsException("- BuiltIn5");
 
    } // constructor
 
@@ -81,6 +75,7 @@ public class BuiltIn5 extends BuiltInPredicate {
       if (newTail != null) solution = newTail.unify(arguments[2], solution);
 
       return solution;
+
    } // evaluate
 
 } // BuiltIn5
