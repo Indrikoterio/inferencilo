@@ -77,6 +77,48 @@ public class TestFunctor {
       }
       catch (TimeOverrunException tox) { }
 
+
+      // A second test.
+
+      Complex  term = new Complex("symptom(cold, sneezing)");
+      Constant test_functor = new Constant("test_functor");
+
+      kb = new KnowledgeBase(
+
+         new Rule(new Complex(test_functor, Y),
+            new And(
+               new Unify(X, term),
+               new Functor(X, new Constant("symptom")),
+               new Unify(Y, new Constant("Success! #1"))
+            )
+         ),
+
+         new Rule(new Complex(test_functor, Y),
+            new And(
+               new Unify(X, term),
+               new Not(new Functor(X, new Constant("symptoms"))),
+               new Unify(Y, new Constant("Success! #2"))
+            )
+         ),
+
+         new Rule(new Complex(test_functor, Y),
+            new And(
+               new Unify(X, term),
+               new Functor(X, new Constant("symp*")),
+               new Unify(Y, new Constant("Success! #3"))
+            )
+         )
+      );
+
+      try {
+         System.out.print("Test Functor/2: ");
+         goal = new Complex(test_functor, X);
+         String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
+         Solutions.verifyAll(goal, kb, expected5, 1);
+
+      } catch (TimeOverrunException tox) { }
+
+
    } // main
 
 } // TestFunctor
