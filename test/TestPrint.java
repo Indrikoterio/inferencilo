@@ -34,7 +34,7 @@ public class TestPrint {
                            "print(Hello %s\\, my name is %s., $X, $Y), nl.");
       kb.addRule(rule);
 
-      System.out.println("Test Print 2 - should print:");
+      System.out.println("Test Print - should print:");
       System.out.println("Persian, king, [Cyrus, Cambysis, Darius]");
 
       try {
@@ -44,7 +44,7 @@ public class TestPrint {
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
-      System.out.println("Test Print - should print:");
+      System.out.println("Test Print 2 - should print:");
       System.out.println("Hello World, my name is Cleve.");
 
       try {
