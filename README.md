@@ -102,7 +102,7 @@ You may have to set Java's CLASSPATH environment variable...
 
 The program ParseDemo.java demonstrates how to set up a knowledge base and make queries. If you intend to incorporate Inferencilo into your own project, this is a good reference. There are detailed comments in the header. 
 
-Inferencilo doesn't have a lot of built-in functions, but it does have:
+Inferencilo doesn't have a lot of built-in predicates, but it does have:
 
 ```
 append, functor, print, nl, include, exclude, greater_than (etc.)
