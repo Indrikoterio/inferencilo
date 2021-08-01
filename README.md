@@ -58,9 +58,9 @@ To clone the repository, run the following command in a terminal window:
 The repository has three folders:
 
 ```
- inference/inferencilo
- inference/test
- inference/demo
+ inferencilo/inferencilo
+ inferencilo/test
+ inferencilo/demo
 ```
 
 ## Test, Demo
