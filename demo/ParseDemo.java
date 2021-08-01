@@ -111,8 +111,6 @@ class ParseDemo {
 
    /*
     * constructor
-    *
-    * Read in a file of Part of Speech data. Create a hashmap.
     */
    private ParseDemo() { }
 
