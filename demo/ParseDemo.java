@@ -72,7 +72,7 @@
  * of terms which identify part of speech.
  *
  *   words_to_pos([$H1 | $T1], [$H2 | $T2]) :-
- *                                  word($H1, $H2), words_to_pos($T1, $T2).
+ *                          word($H1, $H2), words_to_pos($T1, $T2).
  *   words_to_pos([], []).
  *
  * The sentence "They envy us." will become:
