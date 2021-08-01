@@ -61,12 +61,12 @@ remove_punc([], []).
 sentence([pronoun($PS, subject, $Person, $Plur), verb($V, $_, $VerbForm)], [$PS, $V]) :- check_pron_verb($PS, $Person, $Plur, $V, $VerbForm).
 
 # Noun subject, verb
-sentence([noun($N, $Plur), verb($V, $_, $VerbForm)], [$N, $V]) :- check_noun_verb($PS, $Plur, $V, $VerbForm).
+sentence([noun($N, $Plur), verb($V, $_, $VerbForm)], [$N, $V]) :- check_noun_verb($N, $Plur, $V, $VerbForm).
 
 # Pronoun subject, Verb, Object
 sentence([pronoun($PS, subject, $Person, $Plur), verb($V, $_, $VerbForm), pronoun($PO, object, $_, $_)], [$PS, $V, $PO]) :- check_pron_verb($PS, $Person, $Plur, $V, $VerbForm).
 
 # Noun subject, Verb, Object
-sentence([noun($PS, $Plur), verb($V, $_, $VerbForm), pronoun($PO, object, $_, $_)], [$PS, $V, $PO]) :- check_noun_verb($PS, $Plur, $V, $VerbForm).
+sentence([noun($N, $Plur), verb($V, $_, $VerbForm), pronoun($PO, object, $_, $_)], [$N, $V, $PO]) :- check_noun_verb($N, $Plur, $V, $VerbForm).
 
 parse($In, $Out) :- words_to_pos($In, $In2), remove_punc($In2, $In3), sentence($In3, $Out).
