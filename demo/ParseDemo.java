@@ -385,7 +385,6 @@ class ParseDemo {
       Variable H2 = Variable.inst("$H2");
       Variable T1 = Variable.inst("$T1");
       Variable T2 = Variable.inst("$T2");
-      Variable In = Variable.inst("$In");
 
       /*
         words_to_pos/2 is a rule to convert a list of words into a list
