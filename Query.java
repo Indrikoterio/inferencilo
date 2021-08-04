@@ -4,7 +4,7 @@
  * Reads in facts and rules from a text file, and allows the user
  * to query the knowledge base.
  *
- * First compile the program (javac).
+ * First compile this program (javac).
  * Run the program with a source file (test/kings.txt)
  * Type in a goal: father($F, $C).
  * Type <Enter> until all solutions are exhausted.
