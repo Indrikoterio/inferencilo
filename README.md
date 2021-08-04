@@ -63,23 +63,22 @@ The repository has three folders:
  inferencilo/demo
 ```
 
-## Test, Demo
+## Usage
 
-To run the all the tests, move to the test folder and enter './run'.
-
-```
- cd test
- ./run
-```
-
-Similarly, to run the demo program...
+The Java class Query loads facts and rules from a file, and allows the user to query the knowledge base. Query can be built and run as follows:
 
 ```
- cd demo
- ./run
+javac Query.java
+java Query test/kings.txt
+?- father($F, $C).
+$F = Godwin, $C = Harold II
+$F = Godwin, $C = Tostig
+$F = Godwin, $C = Edith
+$F = Tostig, $C = Skule
+$F = Harold II, $C = Harold
+No
+?-
 ```
-
-## Use
 
 To use Inferencilo in your own project, copy the subfolder 'inferencilo' to your project folder. In your Java classes, you must import the package:
 
@@ -100,7 +99,14 @@ You may have to set Java's CLASSPATH environment variable...
  java -cp ".:.." ParseDemo
 ```
 
-The program ParseDemo.java demonstrates how to set up a knowledge base and make queries. If you intend to incorporate Inferencilo into your own project, this is a good reference. There are detailed comments in the header. 
+The program ParseDemo.java demonstrates how to set up a knowledge base and make queries. If you intend to incorporate Inferencilo into your own project, this is a good reference. There are detailed comments in the header.
+
+To run ParseDemo, move to the demo folder and execute the batch file 'run'.
+
+```
+ cd demo
+ ./run
+```
 
 Inferencilo doesn't have a lot of built-in predicates, but it does have:
 
@@ -115,6 +121,13 @@ add, subtract, multply, divide
 ```
 
 Please refer to the test programs for examples of how to use these.
+
+To run the tests, go to the test folder and execute 'run'.
+
+```
+ cd test
+ ./run
+```
 
 If you need write your own predicates and functions, the classes BuiltInPredicate and PFunction can be extended. Refer to the BuiltIn5.java, Capitalize.java, TestBuiltInPredicate.java, and TestFunction.java to see how this is done.
 
