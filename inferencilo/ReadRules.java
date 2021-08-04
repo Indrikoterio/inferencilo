@@ -161,7 +161,7 @@ public class ReadRules {
                       new FileInputStream(filename),"UTF-8"));
       }
       catch (Exception e) {
-         System.err.println("ReadRule - Cannot open " + filename + ".");
+         System.err.println("ReadRules - Cannot open " + filename + ".");
          return null;
       }
    } // openFile
