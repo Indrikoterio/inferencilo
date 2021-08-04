@@ -22,11 +22,12 @@ public class Solutions {
     * Find a solution for the given goal.
     *
     * @param  goal
-    * @param  kb  - Knowledge Base
-    * @return   solution as strings
+    * @param  kb - Knowledge Base
+    * @return solution as strings
     * @throws TimeOverrunException
     */
-   public static String solve(Complex goal, KnowledgeBase kb) throws TimeOverrunException {
+   public static String solve(Complex goal, KnowledgeBase kb)
+                              throws TimeOverrunException {
       SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = root.nextSolution();
       if (solution != null) {
@@ -37,6 +38,35 @@ public class Solutions {
          return "No";
       }
    }
+
+   /**
+    * toString
+    *
+    * Returns one solution, as a String.
+    * Eg. $X = [a, b, c]
+    *
+    * @param   goal (Complex)
+    * @param   solution (SubstitutionSet solution)
+    * @return  solution string
+    */
+   public static String toString(Complex goal, SubstitutionSet solution) {
+      if (solution != null) {
+         int arity = goal.arity();
+         StringBuilder sb = new StringBuilder();
+         Complex result = (Complex)goal.replaceVariables(solution);
+         for (int i = 0; i < arity; i++) {
+            Unifiable term = goal.getTerm(i + 1);
+            if (term instanceof Variable) {
+               if (i > 0) sb.append(", ");
+               sb.append(((Variable)term).name() + " = " +
+                              result.getTerm(i + 1).toString());
+            }
+         }
+         return sb.toString();
+      }
+      return "No";
+   } // toString
+
 
    /**
     * solveAll
