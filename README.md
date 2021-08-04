@@ -129,7 +129,7 @@ To run the tests, go to the test folder and execute 'run'.
  ./run
 ```
 
-If you need write your own predicates and functions, the classes BuiltInPredicate and PFunction can be extended. Refer to the BuiltIn5.java, Capitalize.java, TestBuiltInPredicate.java, and TestFunction.java to see how this is done.
+If you need write your own predicates and functions (in Java), the classes BuiltInPredicate and PFunction can be extended. Refer to the BuiltIn5.java, Capitalize.java, TestBuiltInPredicate.java, and TestFunction.java to see how this is done.
 
 ## Developer
 
