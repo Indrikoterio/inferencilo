@@ -465,6 +465,10 @@ public class PList implements Unifiable {
 
       if (other instanceof PList) {
 
+         // Empty lists have the same ID.
+         // [] == []
+         if (other == this) return ss;
+
          SubstitutionSet newSS = new SubstitutionSet(ss);
 
          PList thisList = this;
