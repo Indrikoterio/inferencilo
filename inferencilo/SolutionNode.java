@@ -29,7 +29,6 @@ public abstract class SolutionNode {
 
    private Rule   currentRule = null;
    Goal    goal = null;     // goal being solved
-   String  predicateName;   // Use as key to kb, eg. mother/2
 
    private int count;  // counts number of rules/facts
 
@@ -42,11 +41,10 @@ public abstract class SolutionNode {
     * @param  parentNode
     */
    public SolutionNode(Goal goal,
-                            KnowledgeBase knowledge,
-                            SubstitutionSet parentSolution,
-                            SolutionNode parentNode) {
+                       KnowledgeBase knowledge,
+                       SubstitutionSet parentSolution,
+                       SolutionNode parentNode) {
       this.goal = goal;
-      predicateName = goal.toString();
       this.knowledge = knowledge;
 
       // If the goal is a rule or a fact (not an operator), count the number.
