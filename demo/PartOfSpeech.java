@@ -58,7 +58,7 @@
  * RP particle give up
  * SYM symbol
  * TO to go 'to' the store.
- * UH interjection errrrrrrrm
+ * UH interjection errrrrm
  * VB verb, base form take
  * VBD verb, past tense took
  * VBG verb, gerund/present participle taking
@@ -89,59 +89,59 @@ class PartOfSpeech {
    private static PartOfSpeech partOfSpeech;
 
    // Word functor. Use capitals to distinguish from the variable 'word'.
-   private static Constant WORD = new Constant("word");
+   private static Constant WORD = Constant.inst("word");
 
-   private static Constant noun = new Constant("noun");
-   private static Constant verb = new Constant("verb");
-   private static Constant pronoun = new Constant("pronoun");
-   private static Constant adjective = new Constant("adjective");
-   private static Constant participle = new Constant("participle");
-   private static Constant preposition = new Constant("preposition");
-   private static Constant unknown = new Constant("unknown");
+   private static Constant noun = Constant.inst("noun");
+   private static Constant verb = Constant.inst("verb");
+   private static Constant pronoun = Constant.inst("pronoun");
+   private static Constant adjective = Constant.inst("adjective");
+   private static Constant participle = Constant.inst("participle");
+   private static Constant preposition = Constant.inst("preposition");
+   private static Constant unknown = Constant.inst("unknown");
 
    // tenses
-   private static Constant past  = new Constant("past");
-   private static Constant present  = new Constant("present");
+   private static Constant past  = Constant.inst("past");
+   private static Constant present  = Constant.inst("present");
 
    // voice
-   private static Constant active  = new Constant("active");
-   private static Constant passive  = new Constant("passive");
+   private static Constant active  = Constant.inst("active");
+   private static Constant passive  = Constant.inst("passive");
 
    // Person, for verbs.
-   private static Constant first_sing  = new Constant("first_sing");   // I am
-   private static Constant second_sing  = new Constant("second_sing"); // Thou art
-   private static Constant third_sing  = new Constant("third_sing");   // it is
-   private static Constant base  = new Constant("base");   // you see
+   private static Constant first_sing  = Constant.inst("first_sing");   // I am
+   private static Constant second_sing  = Constant.inst("second_sing"); // Thou art
+   private static Constant third_sing  = Constant.inst("third_sing");   // it is
+   private static Constant base  = Constant.inst("base");   // you see
 
    // Person, for pronouns
-   private static Constant first  = new Constant("first");  // I, me, we, us
-   private static Constant second = new Constant("second"); // you
-   private static Constant third  = new Constant("third");  // he, him, she, her, it, they, them
+   private static Constant first  = Constant.inst("first");  // I, me, we, us
+   private static Constant second = Constant.inst("second"); // you
+   private static Constant third  = Constant.inst("third");  // he, him, she, her, it, they, them
 
    // Plurality for nouns and pronouns
-   private static Constant singular = new Constant("singular"); // table, mouse
-   private static Constant plural   = new Constant("plural"); // tables, mice
-   private static Constant both     = new Constant("both"); // you
+   private static Constant singular = Constant.inst("singular"); // table, mouse
+   private static Constant plural   = Constant.inst("plural"); // tables, mice
+   private static Constant both     = Constant.inst("both"); // you
 
    // For adjectives.
-   private static Constant positive  = new Constant("positive");        // good
-   private static Constant comparative  = new Constant("comparative");  // better
-   private static Constant superlative  = new Constant("superlative");  // best
+   private static Constant positive    = Constant.inst("positive");     // good
+   private static Constant comparative = Constant.inst("comparative");  // better
+   private static Constant superlative = Constant.inst("superlative");  // best
 
    // For adverbs.
-   private static Constant adverb = new Constant("adverb");  // happily
+   private static Constant adverb = Constant.inst("adverb");  // happily
 
    // For articles.
-   private static Constant article = new Constant("article");       // the, a, an
-   private static Constant definite = new Constant("definite");     // the
-   private static Constant indefinite = new Constant("indefinite"); // a, an
+   private static Constant article = Constant.inst("article");       // the, a, an
+   private static Constant definite = Constant.inst("definite");     // the
+   private static Constant indefinite = Constant.inst("indefinite"); // a, an
 
    // For pronouns. (case)
-   private static Constant subject = new Constant("subject");  // subject
-   private static Constant object  = new Constant("object");   // object
+   private static Constant subject = Constant.inst("subject");  // subject
+   private static Constant object  = Constant.inst("object");   // object
 
    // Punctuation.
-   private static Constant punctuation = new Constant("punctuation");
+   private static Constant punctuation = Constant.inst("punctuation");
 
    // HashMap: word / Part of Speech.
    private static Map<String, String[]> wordPoS;
@@ -490,7 +490,7 @@ class PartOfSpeech {
     * @return term
     */
    private static Complex makeUnknownTerm(String word) {
-      Complex term = new Complex(preposition, new Constant(word));
+      Complex term = new Complex(unknown, new Constant(word));
       return term;
    } // makeUnknownTerm
 
