@@ -123,7 +123,7 @@ public class KnowledgeBase {
       List<Rule> list = rules.get(key);
       Rule rule = list.get(i);
       rule = (Rule)rule.standardizeVariablesApart(
-                new Hashtable<Variable, Variable>()
+                new HashMap<Variable, Variable>()
              );
       return rule;
    }

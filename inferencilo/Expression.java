@@ -68,6 +68,6 @@ public interface Expression {
     * @param   hash table of standardized variables
     * @return  expression with standardized variables
     */
-   Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars);
+   Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars);
 }
 

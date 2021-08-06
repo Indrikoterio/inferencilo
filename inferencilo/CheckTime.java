@@ -13,7 +13,7 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.HashMap;
 
 public class CheckTime implements Goal {
 
@@ -65,7 +65,7 @@ public class CheckTime implements Goal {
     * Refer to class Expression for full comments.
     * Nothing to do here.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       return this;
    }
 
