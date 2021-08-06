@@ -10,7 +10,7 @@
 
 package inferencilo;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class NewLine extends BuiltInPredicate {
 
@@ -39,7 +39,7 @@ public class NewLine extends BuiltInPredicate {
     *
     * NewLine has no arguments, so there is nothing to do here.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       return this;
    }
 

@@ -10,7 +10,7 @@
 
 package inferencilo;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -91,7 +91,7 @@ public abstract class BuiltInPredicate implements Goal {
     * @return  out argument
     */
    Unifiable standardizeOne(Unifiable argument,
-                                      Hashtable<Variable, Variable> newVars) {
+                                      HashMap<Variable, Variable> newVars) {
       if (argument instanceof Variable) {
          Variable arg = (Variable)argument;
          Unifiable newArgument = (Unifiable)arg.standardizeVariablesApart(newVars);
@@ -111,7 +111,7 @@ public abstract class BuiltInPredicate implements Goal {
     * @return new standardized arguments
     */
    private Unifiable[] standardizeAll(Unifiable[] arguments,
-                                        Hashtable<Variable, Variable> newVars) {
+                                        HashMap<Variable, Variable> newVars) {
       Unifiable[] novajArgumentoj = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          novajArgumentoj[i] = standardizeOne(arguments[i], newVars);
@@ -161,7 +161,7 @@ public abstract class BuiltInPredicate implements Goal {
     * This method uses reflection to instantiate the subclass, so
     * that this method does not need to be repeated in each subclass.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);

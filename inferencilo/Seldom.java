@@ -34,7 +34,7 @@ public class Seldom extends BuiltInPredicate {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       return this;
    }
 

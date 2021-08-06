@@ -34,7 +34,7 @@ public class Constant implements Unifiable {
    private String value = null;
 
    // A hash table for caching Constants.
-   private static Hashtable<String, Constant> cache = new Hashtable<>();
+   private static HashMap<String, Constant> cache = new HashMap<>();
 
    /**
     * constructor
@@ -184,7 +184,7 @@ public class Constant implements Unifiable {
     * @param  prev - previously standardized variables (not used)
     * @return this constant
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> prev) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> prev) {
       return this;
    }
 
