@@ -10,7 +10,7 @@
 
 package inferencilo;
 
-import java.util.*;
+import java.util.HashMap;
 
 public class Anon implements Unifiable {
 
@@ -51,7 +51,7 @@ public class Anon implements Unifiable {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       return this;
    }
 
