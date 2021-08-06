@@ -2,9 +2,28 @@
  * Make
  *
  * Factory for generating Unifiable terms and operands from strings.
+ *
  * Use thusly:
  *    Make.term("[1, 2, 3]")
  *    Make.and("mother($X, $Z), mother($Z, $Y)")
+ *
+ * About Escapes
+ *
+ * In Inferencilo, the vertical bar | acts as an escape character.
+ * In a text source file, this is possible:
+ *
+ *  $X = Cleve Lendon.
+ *
+ * "Cleve Lendon" becomes a Constant. Unfortunately the following
+ * wouldn't work:
+ *
+ *  $X = Cleve (Klivo) Lendon.
+ *
+ * ... because the parentheses are interpreted by the parser as part
+ * of a complex term. It causes a parsing error. Such characters can
+ * be escaped by a vertical bar as follows:
+ *
+ *  $X = Cleve |(Klivo|) Lendon.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -16,50 +35,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Make {
-
-   /*
-    * isList
-    *
-    * Determines whether the string represents a proper list. eg.:
-    *   [subject(pronoun), verb, object(noun)]
-    * It prints out an error message if the list is invalid, eg:  [1, 2, 3
-    *
-    * @param   string representing a Prolog list
-    * @return    true or false
-    */
-   private static boolean isList(String str) {
-      if (str.length() < 2) return false;
-      int bracket1 = str.indexOf("[");
-      if (bracket1 == -1) return false;
-      int parenthesis1 = str.indexOf("(");
-      if (parenthesis1 != -1 && parenthesis1 < bracket1) return false;
-      int bracket2 = str.lastIndexOf("]");
-      if (bracket2 > bracket1) return true;
-      throw new FatalParsingException("Invalid: " + str);
-   }
-
-
-   /*
-    * isComplex
-    *
-    * Determines whether the string represents a complex term. eg.:
-    *   member(Chris, Taylor)
-    *
-    * @param   string representing a complex term
-    * @return  true or false
-    * @throws  FatalParsingException
-    */
-   private static boolean isComplex(String str) {
-      if (str.length() < 3) return false;
-      int parenthesis1 = str.indexOf("(");
-      if (parenthesis1 < 1) return false; // Must find (, not first character.
-      int bracket1 = str.indexOf("[");
-      if (bracket1 != -1 && bracket1 < parenthesis1) return false;
-      int parenthesis2 = str.lastIndexOf(")");
-      if (parenthesis2 > parenthesis1 + 1) return true;
-      throw new FatalParsingException("Invalid: " + str);
-   }
-
 
    /**
     * term
@@ -84,10 +59,10 @@ public class Make {
          else return Variable.inst(s);
       }
 
-      int parenthesis1 = s.indexOf("(");
-      int parenthesis2 = s.lastIndexOf(")");
-      int bracket1     = s.indexOf("[");
-      int bracket2     = s.lastIndexOf("]");
+      int parenthesis1 = specialIndexOf(s, "(");
+      int parenthesis2 = specialLastIndexOf(s, ")");
+      int bracket1     = specialIndexOf(s, "[");
+      int bracket2     = specialLastIndexOf(s, "]");
 
       // Complex term, eg:   sentence(subject, verb, object)
       if (parenthesis1 == 0) throw new InvalidComplexTermException(s);
@@ -109,10 +84,52 @@ public class Make {
          throw new InvalidListException(s);
       }  // List
 
-      return Constant.inst(s);
+      String s2 = cleanEscapes(s);
+      return Constant.inst(s2);
 
    }  // term()
 
+
+   /*
+    * specialIndexOf
+    *
+    * This method returns the first index of the given character,
+    * but only if it is not preceded by an escape character (|).
+    *
+    * @param  string to search
+    * @param  string to match
+    * @return index if found, or -1
+    */
+   private static int specialIndexOf(String search, String match) {
+      int index = search.indexOf(match);
+      if (index == -1) return -1;
+      if (index > 0) {
+         char ch = search.charAt(index - 1);
+         if (ch == '|') return -1;
+      }
+      return index;
+   }
+
+
+   /*
+    * specialLastIndexOf
+    *
+    * This method returns the last index of the given character,
+    * but only if it is not preceded by an escape character (|).
+    *
+    * @param  string to search
+    * @param  string to match
+    * @return index if found, or -1
+    */
+   private static int specialLastIndexOf(String search, String match) {
+      int index = search.lastIndexOf(match);
+      if (index == -1) return -1;
+      if (index > 0) {
+         char ch = search.charAt(index - 1);
+         if (ch == '|') return -1;
+      }
+      return index;
+   }
 
    /**
     * subgoal
@@ -276,6 +293,8 @@ public class Make {
    public static ArrayList<String> splitTerms(String str, char separator) {
 
       String s = str.trim();
+      String s2;
+
       if (s.length() < 1) throw new FatalParsingException("splitTerms - zero length");
       ArrayList<String> terms = new ArrayList<String>();
 
@@ -290,19 +309,78 @@ public class Make {
          else if (ch == ']') squareDepth--;
          else if (ch == '(') roundDepth++;
          else if (ch == ')') roundDepth--;
-         else if (ch == '\\') i++;   // For comma escapes, eg. \,
+         else if (ch == '|') i++;   // For character escapes: |,  |(
          else if (ch == separator && roundDepth == 0 && squareDepth == 0) {
-            terms.add(s.substring(startIndex, i));
+            s2 = s.substring(startIndex, i);
+            terms.add(cleanEscapes(s2));
             startIndex = i + 1;
          }
       }
       if (s.length() - startIndex > 0) {
-         terms.add(s.substring(startIndex, s.length()));
+         s2 = s.substring(startIndex, s.length());
+         terms.add(cleanEscapes(s2));
       }
 
       return terms;
 
    } // splitTerms
+
+
+   /*
+    * cleanEscapes
+    *
+    * Cleans the escape characters (vertical bar, |) from a string.
+    * Double bars are replaced by a single bar.
+    *
+    * @param  input string
+    * @return output string
+    */
+   public static String cleanEscapes(String in) {
+      int i = 0;
+      int len = in.length();
+      StringBuilder sb = new StringBuilder("");
+      String sub;
+      while (i < len) {
+         int index = in.indexOf("|", i);
+         if (index == -1) index = len;
+         if (index < len - 1) {
+            char ch = in.charAt(index + 1);
+            if (escapable(ch)) {
+               sub = in.substring(i, index);
+            }
+            else {
+               sub = in.substring(i, index + 1);
+            }
+            index++;
+         }
+         else {
+            sub = in.substring(i, index);
+         }
+         sb.append(sub);
+         i = index;
+      }
+      return sb.toString();
+   } // cleanEscapes
+
+
+   /*
+    * escapable
+    *
+    * Returns true if the given character can be escaped
+    * by a vertical bar, for example:  |, |(
+    *
+    * @param  character
+    * @return t/f
+    */
+    private static boolean escapable(char c) {
+       if (c == ',') return true;
+       if (c == '(') return true;
+       if (c == ')') return true;
+       if (c == '[') return true;
+       if (c == ']') return true;
+       if (c == '.') return true;
+       return false;
+    }
 
 
    /*
@@ -328,9 +406,9 @@ public class Make {
    private static String[] parseComplex(String str) {
 
       int length = str.length();
-      int first = str.indexOf("(");
+      int first = specialIndexOf(str, "(");
       if (first < 1) return null;
-      int second = str.indexOf(")");
+      int second = specialIndexOf(str, ")");
       if (second < first) return null;
 
       return splitComplex(str, first, second);
