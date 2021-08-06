@@ -67,13 +67,13 @@ public class Count extends BuiltInPredicate {
       /*
           In standard Prolog:
 
-             doit(V2) :- V1 = [c, d, e], V2 = [a, b, Var].
+             doit(V2) :- V1 = [c, d, e], V2 = [a, b, V1].
              The goal doit(X) returns X = [a, b, [c, d, e]] .
 
-             doit(V2) :- V1 = [c, d, e], V2 = [a, b | Var].
+             doit(V2) :- V1 = [c, d, e], V2 = [a, b | V1].
              The goal doit(X) returns X = [a, b, c, d, e] .
 
-             doit(V2) :- V1 = [c, d, e], V2 = [a, Var, b].
+             doit(V2) :- V1 = [c, d, e], V2 = [a, V1, b].
              The goal doit(X) returns X = [a, [c, d, e], b] .
 
           Ref: https://swish.swi-prolog.org/
