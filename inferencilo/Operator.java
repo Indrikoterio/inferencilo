@@ -133,7 +133,7 @@ abstract class Operator implements Goal {
     * @param   list of previously standardized variables
     * @return  expression with standardized variables
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       ArrayList<Goal> newOperands = new ArrayList<Goal>();
       for (int i = 0; i < operands.size(); i++) {
          // recursive

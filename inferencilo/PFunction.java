@@ -21,7 +21,7 @@
 package inferencilo;
 
 import java.util.List;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -170,7 +170,7 @@ public abstract class PFunction implements Unifiable {
     * @return  new unifiable argument or null
     */
    public Unifiable standardizeArgument(Unifiable argument,
-                                  Hashtable<Variable, Variable> newVars) {
+                                  HashMap<Variable, Variable> newVars) {
       if (argument instanceof Variable) {
          Variable par = (Variable)argument;
          Unifiable newArgument = (Unifiable)par.standardizeVariablesApart(newVars);
@@ -189,7 +189,7 @@ public abstract class PFunction implements Unifiable {
     * so that the method does not need to be repeated in each
     * subclass.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeArgument(arguments[i], newVars);

@@ -40,7 +40,7 @@ package inferencilo;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class PList implements Unifiable {
 
@@ -582,7 +582,7 @@ public class PList implements Unifiable {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       ArrayList<Unifiable> newTerms = new ArrayList<Unifiable>();
       PList thisList = this;
       boolean hasPipe = thisList.isTailVar();

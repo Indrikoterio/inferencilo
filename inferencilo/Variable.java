@@ -157,7 +157,7 @@ public class Variable implements Unifiable {
     *
     * Refer to Expression interface for full comments.
     */
-   public Expression standardizeVariablesApart(Hashtable<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       // Check if the expression already has a substitute variable.
       Variable newVar = newVars.get(this);
       if (newVar == null) {     // If not create one.
