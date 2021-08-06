@@ -61,10 +61,12 @@ public abstract class SolutionNode {
 
       if (goal instanceof Complex) {
          count = knowledge.getRuleCount(goal);
+         /*  For debugging.
          if (count == 0) {
             Complex c = (Complex)goal;
             System.err.println("Missing rule: " + c.key());
          }
+         */
       }
 
       this.parentSolution = parentSolution;
