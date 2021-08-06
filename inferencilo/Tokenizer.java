@@ -99,7 +99,7 @@ public class Tokenizer {
          top = NONE;
          if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
          char ch = s.charAt(i);
-         if (ch == '\\') i++;   // For comma escapes, eg. \,
+         if (ch == '|') i++;   // For comma escapes, eg. |,
          else if (ch == '(') {
             if (functorChar(previous)) {
                stkParenth.push(COMPLEX);
