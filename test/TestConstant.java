@@ -9,10 +9,9 @@
  * or
  *    Constant.inst("red")
  *
- * The second method may be more efficient, because it stores
- * the newly created Constant in a hash table. Unification can
- * be tested with a simple comparison (con1 == con2), instead
- * of comparing strings.
+ * The second method is more efficient, because it stores the newly created
+ * Constant in a hash table. Unification can be tested with a simple comparison
+ * (con1 == con2), instead of comparing strings.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -32,7 +31,8 @@ public class TestConstant {
       Variable X   = Variable.inst("$X");
       Variable Out = Variable.inst("$Out");
 
-      Constant test_constant = new Constant("test_constant");
+      Constant test_constant  = new Constant("test_constant");
+      Constant test_constant2 = new Constant("test_constant2");
       Constant red = new Constant("red");
       Constant one = new Constant("1");
       Constant two = new Constant("2");
@@ -49,7 +49,8 @@ public class TestConstant {
          new Rule(new Complex(test_constant, Out), new And(new Unify(Out, new Constant("red")))),
          // The next rule has no solution.
          new Rule(new Complex(test_constant, new Constant("bad")), new And(new Unify(one, two))),
-         new Rule(new Complex(test_constant, new Constant("ok")), new And(new Unify(one, oneFloat)))
+         new Rule(new Complex(test_constant, new Constant("ok")), new And(new Unify(one, oneFloat))),
+         new Rule("test_constant2($X) :- $X = Let's see|, if this works|..")
       );
 
       try {
@@ -60,11 +61,20 @@ public class TestConstant {
       }
       catch (TimeOverrunException tox) { }
 
+      try {
+         System.out.print("Test Constant2: ");
+         Complex goal = new Complex(test_constant2, X);
+         String[] expected = {"Let's see, if this works."};
+         Solutions.verifyAll(goal, kb, expected, 1);
+      }
+      catch (TimeOverrunException tox) { }
+
       // Test Constant cache:
       Constant c1 = Constant.inst("pronoun");
       Constant c2 = Constant.inst("pronoun");
       if (c1 == c2) System.out.println("Constant Cache is OK. ✓");
       else System.out.println("Constant Cache NOT OK!");
+
    }
 }  // TestConstant
 
