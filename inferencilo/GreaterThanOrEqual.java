@@ -27,7 +27,6 @@ public class GreaterThanOrEqual extends CompareBase {
     * constructor
     *
     * @param  unifiable arguments
-    * @throws TooManyParameters, TooFewParameters
     */
    public GreaterThanOrEqual(Unifiable... arguments) {
       super(NAME, arguments);
@@ -36,10 +35,16 @@ public class GreaterThanOrEqual extends CompareBase {
    /**
     * constructor
     *
-    * This constructor takes arguments as a string.
+    * @param  argument list
+    */
+   public GreaterThanOrEqual(List<String> args) {
+      super(NAME, args);
+   }  // constructor
+
+   /**
+    * constructor
     *
     * @param  argument string
-    * @throws TooManyParameters, TooFewParameters
     */
    public GreaterThanOrEqual(String strArguments) {
       super(NAME, strArguments);
