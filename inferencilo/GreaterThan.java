@@ -27,7 +27,6 @@ public class GreaterThan extends CompareBase {
     * constructor
     *
     * @param  unifiable arguments
-    * @throws TooManyParameters, TooFewParameters
     */
    public GreaterThan(Unifiable... arguments) {
       super(NAME, arguments);
@@ -36,15 +35,20 @@ public class GreaterThan extends CompareBase {
    /**
     * constructor
     *
-    * This constructor takes arguments as a string.
+    * @param  argument list
+    */
+   public GreaterThan(List<String> args) {
+      super(NAME, args);
+   }  // constructor
+
+   /**
+    * constructor
     *
     * @param  argument string
-    * @throws TooManyParameters, TooFewParameters
     */
    public GreaterThan(String strArguments) {
       super(NAME, strArguments);
    }  // constructor
-
 
    /**
     * evaluate
