@@ -72,7 +72,7 @@ public class Query {
             if (input.length() == 0) break;
             int len = input.length();
             char c = input.charAt(len - 1);
-            if (c == '.') input = input.substring(0,len - 1);
+            if (c == '.') input = input.substring(0, len - 1);
 
             try {
                // Define goal and root of search space.
