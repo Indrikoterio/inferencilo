@@ -27,7 +27,6 @@ public class LessThanOrEqual extends CompareBase {
     * constructor
     *
     * @param  unifiable arguments
-    * @throws TooManyParameters, TooFewParameters
     */
    public LessThanOrEqual(Unifiable... arguments) {
       super(NAME, arguments);
@@ -36,10 +35,16 @@ public class LessThanOrEqual extends CompareBase {
    /**
     * constructor
     *
-    * This constructor takes arguments as a string.
+    * @param  argument list
+    */
+   public LessThanOrEqual(List<String> args) {
+      super(NAME, args);
+   }  // constructor
+
+   /**
+    * constructor
     *
     * @param  argument string
-    * @throws TooManyParameters, TooFewParameters
     */
    public LessThanOrEqual(String strArguments) {
       super(NAME, strArguments);
