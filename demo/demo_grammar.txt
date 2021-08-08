@@ -27,7 +27,7 @@ check_pron_verb($_, second, plural, $_, past) :- !.  # OK
 check_pron_verb($_, third, plural, $_, base) :- !.  # OK
 check_pron_verb($_, third, plural, $_, past) :- !.  # OK
 # Else
-check_pron_verb($Pr, $_, $_, $V, $_) :- print(--> '%s' and '%s' do not agree., $Pr, $V).
+check_pron_verb($Pr, $_, $_, $V, $_) :- print(`--> '%s' and '%s' do not agree.`, $Pr, $V).
 
 # check_noun_verb
 # Check the agreement between a noun subject and verb.
