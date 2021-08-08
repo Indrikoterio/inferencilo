@@ -31,7 +31,7 @@ public class TestPrint {
       );
 
       Rule rule = new Rule("print_test2 :- $X = World, $Y = Cleve, " +
-                           "print(Hello %s`, my name is %s., $X, $Y), nl.");
+                           "print(`Hello %s, my name is %s.`, $X, $Y), nl.");
       kb.addRule(rule);
 
       System.out.println("Test Print - should print:");
