@@ -78,7 +78,7 @@ public class Tokenizer {
     *
     * @param  str
     */
-   private static String invalid = "\"<>#@"; // Invalid between terms.
+   private static String invalid = "\"#@"; // Invalid between terms.
    private void tokenize(String str) {
 
       Integer top;  // top of parenthesis stack
@@ -99,8 +99,7 @@ public class Tokenizer {
          top = NONE;
          if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
          char ch = s.charAt(i);
-         if (ch == '|') i++;   // For comma escapes, eg. |,
-         else if (ch == '(') {
+         if (ch == '(') {
             if (functorChar(previous)) {
                stkParenth.push(COMPLEX);
             }
@@ -138,12 +137,19 @@ public class Tokenizer {
             if (top != COMPLEX && top != PLIST) {
                if (invalid.indexOf(ch) > -1)
                   throw new InvalidExpressionException("--> " + ch);
+               if (ch == '`') {  // Find the next backtick.
+                  int endIndex = s.indexOf("`", i + 1);
+                  if (endIndex != -1) i = endIndex;
+                  else i++;
+               }
+               else
                if (ch == ',') {
                   String subgoal = s.substring(startIndex, i);
                   tokens.add(new Token(subgoal));
                   tokens.add(new Token(","));
                   startIndex = i + 1;
                }
+               else
                if (ch == ';') {
                   String subgoal = s.substring(startIndex, i);
                   tokens.add(new Token(subgoal));
