@@ -3,27 +3,35 @@
  *
  * Factory for generating Unifiable terms and operands from strings.
  *
- * Use thusly:
+ * In Java, use thusly:
+ *
  *    Make.term("[1, 2, 3]")
  *    Make.and("mother($X, $Z), mother($Z, $Y)")
  *
- * About Escapes
+ * 'Make' is also used by the parser (see Tokenizer).
  *
- * In Inferencilo, the vertical bar | acts as an escape character.
- * In a text source file, this is possible:
+ * About text strings:
  *
- *  $X = Cleve Lendon.
+ * In Java, a String is delimited with double quotes, as above.
+ * In a text file of Inferencilo facts and rules, text strings are
+ * delimited with backticks (`). (Backticks are also known as
+ * backquotes or grave accents.)
  *
- * "Cleve Lendon" becomes a Constant. Unfortunately the following
+ * Backticks are not always necessary. In the following subgoal,
+ *
+ *  $Name = Cleve Lendon.
+ *
+ * The Constant 'Cleve Lendon' is bound to $Name. The following
  * wouldn't work:
  *
- *  $X = Cleve (Klivo) Lendon.
+ *  $Name = Cleve (Klivo) Lendon.
  *
  * ... because the parentheses are interpreted by the parser as part
- * of a complex term. It causes a parsing error. Such characters can
- * be escaped by a vertical bar as follows:
+ * of a complex term. It causes a parsing error.
  *
- *  $X = Cleve |(Klivo|) Lendon.
+ * Putting backticks arround the string solves the problem.
+ *
+ *  $Name = `Cleve (Klivo) Lendon`.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -31,8 +39,7 @@
 
 package inferencilo;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Make {
 
@@ -53,16 +60,29 @@ public class Make {
       int len = s.length();
       if (len == 0) return null;
 
+      char firstChar = s.charAt(0);
+
       // Return a variable.
-      if (s.startsWith("$") && len > 1) {
+      if (firstChar == '$' && len > 1) {
          if (s.charAt(1) == '_') return Anon.anon;
          else return Variable.inst(s);
       }
 
-      int parenthesis1 = specialIndexOf(s, "(");
-      int parenthesis2 = specialLastIndexOf(s, ")");
-      int bracket1     = specialIndexOf(s, "[");
-      int bracket2     = specialLastIndexOf(s, "]");
+      // If a string begins and ends with a backtick, everything
+      // inside becomes a Constant.
+      if (firstChar == '`' && len > 1) {
+         int index = s.indexOf("`", 1);
+         if (index == -1) throw new UnmatchedBacktickException("Make.term()");
+         else {
+            String s2 = s.substring(1, index);
+            return Constant.inst(s2);
+         }
+      }
+
+      int parenthesis1 = s.indexOf("(");
+      int parenthesis2 = s.indexOf(")");
+      int bracket1     = s.indexOf("[");
+      int bracket2     = s.indexOf("]");
 
       // Complex term, eg:   sentence(subject, verb, object)
       if (parenthesis1 == 0) throw new InvalidComplexTermException(s);
@@ -84,8 +104,7 @@ public class Make {
          throw new InvalidListException(s);
       }  // List
 
-      String s2 = cleanEscapes(s);
-      return Constant.inst(s2);
+      return Constant.inst(s);
 
    }  // term()
 
@@ -94,42 +113,42 @@ public class Make {
     * specialIndexOf
     *
     * This method returns the first index of the given character,
-    * but only if it is not preceded by an escape character (|).
+    * but only if it is not within backticks or braces. If the
+    * code has:
+    *    print(`Is x > 7?`)
+    * ...then searching for '>' should return -1.
     *
     * @param  string to search
-    * @param  string to match
+    * @param  character to match
     * @return index if found, or -1
     */
-   private static int specialIndexOf(String search, String match) {
-      int index = search.indexOf(match);
-      if (index == -1) return -1;
-      if (index > 0) {
-         char ch = search.charAt(index - 1);
-         if (ch == '|') return -1;
-      }
-      return index;
-   }
+   private static int specialIndexOf(String search, char match) {
+      int len = search.length();
+      int i;
+      for (i = 0; i < len; i++) {
+         char c1 = search.charAt(i);
+         if (c1 == match) return i;
+         if (c1 == '`') {
+            for (int j = i + 1; j < len; j++) {
+               char c2 = search.charAt(j);
+               if (c2 == '`') {
+                  i = j; break;
+               }
+            } // for
+         }
+         else
+         if (c1 == '(') {
+            for (int j = i + 1; j < len; j++) {
+               char c2 = search.charAt(j);
+               if (c2 == ')') {
+                  i = j; break;
+               }
+            } // for
+         }
+      } // for
+      return -1;
+   } // specialIndexOf
 
-
-   /*
-    * specialLastIndexOf
-    *
-    * This method returns the last index of the given character,
-    * but only if it is not preceded by an escape character (|).
-    *
-    * @param  string to search
-    * @param  string to match
-    * @return index if found, or -1
-    */
-   private static int specialLastIndexOf(String search, String match) {
-      int index = search.lastIndexOf(match);
-      if (index == -1) return -1;
-      if (index > 0) {
-         char ch = search.charAt(index - 1);
-         if (ch == '|') return -1;
-      }
-      return index;
-   }
 
    /**
     * subgoal
@@ -147,24 +166,25 @@ public class Make {
     * @return subgoal as Goal object
     * @throws FatalParsingException
     */
+   static String args[] = new String[2];
    public static Goal subgoal(String subgoal) {
 
+      String s1, s2;
       String s = subgoal.trim();
+      int len = s.length();
+      int index;
 
       // Parse not() goals first.
-      if (s.length() > 5) {
+      if (len > 5) {
          String start = s.substring(0, 4).toLowerCase();
          String end = s.substring(s.length() - 1);
          if (start.equals("not(") && end.equals(")")) {
-            String s2 = s.substring(4, s.length() - 1);
+            s2 = s.substring(4, s.length() - 1);
             return new Not(subgoal(s2));
          }
       }
 
-      if (s.indexOf('=') > 0) {  // unify
-         return new Unify(s);
-      }
-      else if (s.equals("!")) {  // cut
+      if (s.equals("!")) {  // cut
          return new Cut();
       }
       else if (s.equals("fail")) {
@@ -175,6 +195,52 @@ public class Make {
       }
       else if (s.equals("check_time")) {
          return new CheckTime();
+      }
+
+      // Handle infixes: > <  >= <=
+      index = specialIndexOf(s, '>');
+      if (index > -1) {
+         if (index < len - 1 && s.charAt(index + 1) == '=') {
+            s1 = s.substring(0, index);
+            s2 = s.substring(index + 2, len);
+            args[0] = s1;
+            args[1] = s2;
+            List<String> lst = Arrays.asList(args);
+            return new GreaterThanOrEqual(lst);
+         }
+         s1 = s.substring(0, index);
+         s2 = s.substring(index + 1, len);
+         args[0] = s1;
+         args[1] = s2;
+         List<String> lst = Arrays.asList(args);
+         return new GreaterThanOrEqual(lst);
+      }
+      index = specialIndexOf(s, '<');
+      if (index > -1) {
+         if (index < len - 1 && s.charAt(index + 1) == '=') {
+            s1 = s.substring(0, index);
+            s2 = s.substring(index + 2, len);
+            args[0] = s1;
+            args[1] = s2;
+            List<String> lst = Arrays.asList(args);
+            return new LessThanOrEqual(lst);
+         }
+         s1 = s.substring(0, index);
+         s2 = s.substring(index + 1, len);
+         args[0] = s1;
+         args[1] = s2;
+         List<String> lst = Arrays.asList(args);
+         return new LessThanOrEqual(lst);
+      }
+      index = specialIndexOf(s, '=');
+      if (index > -1) {
+         /*
+         s1 = s.substring(0, index);
+         s2 = s.substring(index + 1, len);
+         List<String> args = Arrays.asList(args);
+         return new Unify(args);
+         */
+         return new Unify(s);
       }
 
       // complex terms, built-in functions
@@ -298,8 +364,8 @@ public class Make {
       if (s.length() < 1) throw new FatalParsingException("splitTerms - zero length");
       ArrayList<String> terms = new ArrayList<String>();
 
-      int startIndex = 0;
-      int roundDepth = 0;   // depth of round parenthesis (())
+      int startIndex  = 0;
+      int roundDepth  = 0;   // depth of round parenthesis (())
       int squareDepth = 0;   // depth of square brackets [[]]
 
       // Find comma, if there is one.
@@ -309,16 +375,21 @@ public class Make {
          else if (ch == ']') squareDepth--;
          else if (ch == '(') roundDepth++;
          else if (ch == ')') roundDepth--;
-         else if (ch == '|') i++;   // For character escapes: |,  |(
+         else if (ch == '`') {  // Backticks mark literal strings.
+            int index = s.indexOf("`", i + 1);
+            if (index == -1)
+               throw new UnmatchedBacktickException("Make.splitTerms()");
+            else i = index;
+         }
          else if (ch == separator && roundDepth == 0 && squareDepth == 0) {
             s2 = s.substring(startIndex, i);
-            terms.add(cleanEscapes(s2));
+            terms.add(s2);
             startIndex = i + 1;
          }
-      }
+      } // for
       if (s.length() - startIndex > 0) {
          s2 = s.substring(startIndex, s.length());
-         terms.add(cleanEscapes(s2));
+         terms.add(s2);
       }
 
       return terms;
@@ -329,8 +400,7 @@ public class Make {
    /*
     * cleanEscapes
     *
-    * Cleans the escape characters (vertical bar, |) from a string.
-    * Double bars are replaced by a single bar.
+    * Cleans the escape characters (backtick, `) from a string.
     *
     * @param  input string
     * @return output string
@@ -341,7 +411,7 @@ public class Make {
       StringBuilder sb = new StringBuilder("");
       String sub;
       while (i < len) {
-         int index = in.indexOf("|", i);
+         int index = in.indexOf("`", i);
          if (index == -1) index = len;
          if (index < len - 1) {
             char ch = in.charAt(index + 1);
@@ -367,18 +437,15 @@ public class Make {
     * escapable
     *
     * Returns true if the given character can be escaped
-    * by a vertical bar, for example:  |, |(
+    * by a backtick, for example:  `, `(
     *
     * @param  character
     * @return t/f
     */
     private static boolean escapable(char c) {
-       if (c == ',') return true;
-       if (c == '(') return true;
-       if (c == ')') return true;
-       if (c == '[') return true;
-       if (c == ']') return true;
-       if (c == '.') return true;
+       if (c >= ' ' && c <= '/') return true;
+       if (c >= ':' && c <= '?') return true;
+       if (c >= '[' && c <= '_') return true;
        return false;
     }
 
@@ -406,9 +473,9 @@ public class Make {
    private static String[] parseComplex(String str) {
 
       int length = str.length();
-      int first = specialIndexOf(str, "(");
+      int first = str.indexOf("(");
       if (first < 1) return null;
-      int second = specialIndexOf(str, ")");
+      int second = str.lastIndexOf(")");
       if (second < first) return null;
 
       return splitComplex(str, first, second);
