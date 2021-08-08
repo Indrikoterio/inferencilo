@@ -350,8 +350,7 @@ public class Tokenizer {
       TokenType type = token.type();
 
       if (type == TokenType.SUBGOAL) {
-         // A single subgoal must be enclosed in an AND class.
-         return new And(Make.subgoal(token.token()));
+         return Make.subgoal(token.token());
       }
 
       if (type == TokenType.AND) {
