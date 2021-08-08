@@ -54,7 +54,9 @@ public class ReadRules {
     *
     * @param  original text
     * @return rules (list of rules)
-    * @throws UnmatchedParenthesesException, UnmatchedBracketsException
+    * @throws UnmatchedParenthesesException,
+    *         UnmatchedBracketsException,
+    *         UnmatchedBacktickException
     */
    private static List<String> makeListOfRules(String text) {
 
@@ -71,6 +73,21 @@ public class ReadRules {
          char c = text.charAt(i);
          sb.append((char)c);
 
+         if (c == '`') {
+            int index = text.indexOf("`", i + 1);
+            if (index == -1) throw new UnmatchedBacktickException("ReadRules");
+            else if (index == i + 1) {
+               // Use a double backtick to output a single backtick.
+               i++;
+               continue;
+            }
+            else {
+               sb.append(text.substring(i + 1, index + 1));
+               i = index;
+               continue;
+            }
+         }
+         else
          if (c == '.' && roundDepth == 0 && squareDepth == 0) {
             rules.add(sb.toString());
             sb.setLength(0);
