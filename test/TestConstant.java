@@ -50,7 +50,6 @@ public class TestConstant {
          // The next rule has no solution.
          new Rule(new Complex(test_constant, new Constant("bad")), new And(new Unify(one, two))),
          new Rule(new Complex(test_constant, new Constant("ok")), new And(new Unify(one, oneFloat))),
-         new Rule("test_constant_bt($X) :- $X = Let's see`, if this works.."),
          new Rule("test_constant_bt($X) :- $X = `Let's see, if this works.`.")
       );
 
@@ -65,7 +64,7 @@ public class TestConstant {
       try {
          System.out.print("Test Constant (backticks): ");
          Complex goal = new Complex(test_constant_bt, X);
-         String[] expected = {"Let's see, if this works.", "Let's see, if this works."};
+         String[] expected = {"Let's see, if this works."};
          Solutions.verifyAll(goal, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
