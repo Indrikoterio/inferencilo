@@ -1,25 +1,18 @@
 # Inferencilo - A Prolog-like Inference Engine
 
-Inferencilo is an inference engine written in Java. Facts and rules can be defined in Java, or loaded from a text file.
+Inferencilo is an inference engine written in Java. The rule syntax looks very much like Prolog, but there are some differences.
 
-In the code sample below, Java objects are used to define the fact 'mother(Gina, Frank).'
+## Briefly
 
-```
- Constant mother = Constant.inst("mother");
- Constant Gina   = Constant.inst("Gina");
- Constant Frank  = Constant.inst("Frank");
- Complex  fact   = new Complex(mother, Gina, Frank);
-```
-
-(About terminology: 'complex' is synonymous with 'compound'.)
-
-The above fact can be defined more simply by passing a string to the Complex constructor:
+In the code sample below, the fact 'mother(Gina, Frank).' is defined in Java.
 
 ```
  Complex  fact = new Complex("mother(Gina, Frank).");
 ```
 
-Inferencilo can also fetch facts and rules from a text file. The above fact is written:
+('Complex' is synonymous with 'compound'.)
+
+Inferencilo can also read facts and rules from a text file. The above fact is written:
 
 ```
  mother(Gina, Frank).
@@ -30,8 +23,10 @@ Notice that in Inferencilo, unlike Prolog, constants (or atoms) can start with a
 Variables are defined by putting a dollar sign in front of the variable name:
 
 ```
- Variable ch = Variable.inst("$Child");
- Complex  goal  = new Complex(mother, Gina, ch);
+ Constant mother = Constant.inst("mother");
+ Constant Gina   = Constant.inst("Gina");
+ Variable child  = Variable.inst("$Child");
+ Complex  goal   = new Complex(mother, Gina, child);
 ```
 
 In a text file, the goal above would be written:
@@ -40,6 +35,17 @@ In a text file, the goal above would be written:
  mother(Gina, $Child)
 ```
 
+## Application / Limitations
+
+Inferencilo's inference engine implements a back-chaining algorithm. It was designed primarily to solve problems of logic.
+
+In Inferencilo, numbers are defined as Constant objects, which is inefficient. Because of this, it should <b>not</b> be used for number crunching. It is OK to include simple arithmetical functions in the knowledge base, such as 'greater than or equal':
+
+```
+voter($P) :- $P = person($_, $Age), $Age >= 18.
+```
+
+But writing rules to implement a quick sort algorithm, for example, would be difficult, and the algorithm would be horrendously inefficient. Do not use the inference engine to solve such problems. Write sorting algorithms in Java; you can pass the sorted data to the inference engine.
 
 ## Requirements
 
@@ -145,7 +151,7 @@ First release, August 2021.
 
 ## Reference
 
-The structure of this inference engine is based on the Predicate Calculus Problem Solver presented in chapters 23 and 24 of 'AI Algorithms...'. I highly recommend this book.
+The code structure of this inference engine is based on the Predicate Calculus Problem Solver presented in chapters 23 and 24 of 'AI Algorithms...'. I highly recommend this book.
 
 ```
 AI Algorithms, Data Structures, and Idioms in Prolog, Lisp, and Java
