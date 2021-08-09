@@ -22,20 +22,25 @@ public class Not extends Operator implements Goal {
      * constructor
      *
      * @param  list of operands
+     * @throws TooFewArgumentsException, TooManyArgumentsException
      */
    public Not(Goal... operands) {
       super(operands);
-      if (operands.length != 1) throw new InvalidOperandException(errorMessage);
+      if (operands.length < 1) throw new TooFewArgumentsException(errorMessage);
+      if (operands.length > 1) throw new TooManyArgumentsException(errorMessage);
    }
 
     /**
      * constructor
      *
      * @param  list of operands
+     * @throws TooFewArgumentsException, TooManyArgumentsException
      */
    public Not(List<Goal> operands) {
       super(operands);
-      if (operands.size() != 1) throw new InvalidOperandException(errorMessage);
+      int size = operands.size();
+      if (size < 1) throw new TooFewArgumentsException(errorMessage);
+      if (size > 1) throw new TooManyArgumentsException(errorMessage);
    }
 
    /**
