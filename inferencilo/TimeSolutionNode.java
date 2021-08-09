@@ -66,7 +66,7 @@ public class TimeSolutionNode extends SolutionNode {
 
       long microseconds = (long)((end - start) / 1000.0);
       double milliseconds = (double)microseconds / 1000.0;
-      System.out.println(String.format("\-- %.2f milliseconds.",
+      System.out.println(String.format("\n-- %.2f milliseconds.",
                          milliseconds));
 
       return solution;
