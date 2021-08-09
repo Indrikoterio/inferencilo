@@ -157,10 +157,11 @@ public class Make {
     * creates its corresponding Goal object. At present, it parses
     * complex terms, the Unify operator (=), the Cut (!), and others.
     *
-    * The Not operator must be dealt with first, because it encloses
-    * a subgoal. Eg.
+    * The Not and Time operators are dealt with first, because they
+    * enclose subgoals. Eg.
     *
     *    not($X = $Y)
+    *    time(qsort)
     *
     * @param  subgoal as String
     * @return subgoal as Goal object
@@ -174,13 +175,18 @@ public class Make {
       int len = s.length();
       int index;
 
-      // Parse not() goals first.
+      // Not and Time operators.
       if (len > 5) {
-         String start = s.substring(0, 4).toLowerCase();
-         String end = s.substring(s.length() - 1);
-         if (start.equals("not(") && end.equals(")")) {
-            s2 = s.substring(4, s.length() - 1);
-            return new Not(subgoal(s2));
+         String end = s.substring(len - 1);
+         if (end.equals(")")) {
+            if (s.startsWith("not(")) {
+               s2 = s.substring(4, len - 1);
+               return new Not(subgoal(s2));
+            }
+            if (s.startsWith("time(")) {
+               s2 = s.substring(5, len - 1);
+               return new Time(subgoal(s2));
+            }
          }
       }
 
