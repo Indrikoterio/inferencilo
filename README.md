@@ -35,19 +35,19 @@ In a text file, the goal above would be written:
  mother(Gina, $Child)
 ```
 
-Note: The 'anonymous variable' must also begin with a dollar sign: $\_. A simple underscore '\_' is treated as a Constant.
+Note: The <i>anonymous variable</i> must also begin with a dollar sign: $\_ . A simple underscore '\_' is treated as a Constant.
 
 ## Application / Limitations
 
 This inference engine implements a back-chaining algorithm. It was designed primarily to solve problems of logic.
 
-Numbers are implemented as Constant objects, which enclose Strings. Because of this, Inferencilo should <b>not</b> be used for number crunching. It is OK to include simple arithmetical functions in the knowledge base, such as 'greater than or equal':
+Numbers are implemented as Constant objects, which enclose String objects. Because of this, Inferencilo should <b>not</b> be used for number crunching. It is OK to include arithmetical functions, such as '<i>greater than or equal</i>', in the knowledge base:
 
 ```
 voter($P) :- $P = person($_, $Age), $Age >= 18.
 ```
 
-But writing rules to implement a quick sort algorithm, for example, would be horrendously inefficient. Do not use the inference engine to solve such problems. Write sorting algorithms in Java code; you can pass the sorted data to the inference engine.
+But a Quick Sort algorithm, for example, written with inference engine rules, would be horrendously inefficient. Do not use the inference engine to solve such problems. Write sorting algorithms in Java code; you can pass the sorted data to the inference engine.
 
 ## Requirements
 
