@@ -35,17 +35,19 @@ In a text file, the goal above would be written:
  mother(Gina, $Child)
 ```
 
+Note: The 'anonymous variable' must also begin with a dollar sign: $\_. A simple underscore '\_' is treated as a Constant.
+
 ## Application / Limitations
 
-Inferencilo's inference engine implements a back-chaining algorithm. It was designed primarily to solve problems of logic.
+This inference engine implements a back-chaining algorithm. It was designed primarily to solve problems of logic.
 
-In Inferencilo, numbers are defined as Constant objects, which is inefficient. Because of this, it should <b>not</b> be used for number crunching. It is OK to include simple arithmetical functions in the knowledge base, such as 'greater than or equal':
+Numbers are implemented as Constant objects, which enclose Strings. Because of this, Inferencilo should <b>not</b> be used for number crunching. It is OK to include simple arithmetical functions in the knowledge base, such as 'greater than or equal':
 
 ```
 voter($P) :- $P = person($_, $Age), $Age >= 18.
 ```
 
-But writing rules to implement a quick sort algorithm, for example, would be difficult, and the algorithm would be horrendously inefficient. Do not use the inference engine to solve such problems. Write sorting algorithms in Java; you can pass the sorted data to the inference engine.
+But writing rules to implement a quick sort algorithm, for example, would be horrendously inefficient. Do not use the inference engine to solve such problems. Write sorting algorithms in Java code; you can pass the sorted data to the inference engine.
 
 ## Requirements
 
@@ -71,7 +73,7 @@ The repository has three folders:
 
 ## Usage
 
-The Java class Query loads facts and rules from a file, and allows the user to query the knowledge base. Query can be built and run as follows:
+The Java class Query loads facts and rules from a file, and allows the user to query the knowledge base. Query can be built, run and tested in a terminal window as follows:
 
 ```
 javac Query.java
@@ -98,7 +100,7 @@ You may have to set Java's CLASSPATH environment variable...
  export CLASSPATH=.:..
 ```
 
-...or add the path as a command line option (cp).
+...or add the class path as a command line option (cp).
 
 ```
  javac -cp ".:.." ParseDemo.java
@@ -128,7 +130,7 @@ add, subtract, multply, divide
 
 Please refer to the test programs for examples of how to use these.
 
-To run the tests, go to the test folder and execute 'run'.
+To run the tests, open a terminal window, go to the test folder, and execute 'run'.
 
 ```
  cd test
@@ -151,7 +153,7 @@ First release, August 2021.
 
 ## Reference
 
-The code structure of this inference engine is based on the Predicate Calculus Problem Solver presented in chapters 23 and 24 of 'AI Algorithms...'. I highly recommend this book.
+The code structure of this inference engine is based on the Predicate Calculus Problem Solver presented in chapters 23 and 24 of 'AI Algorithms...' by Luger and Stubblefield. I highly recommend this book.
 
 ```
 AI Algorithms, Data Structures, and Idioms in Prolog, Lisp, and Java
