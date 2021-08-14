@@ -71,7 +71,9 @@ public class BuiltIn5 extends BuiltInPredicate {
       Unifiable newTail = terms[2];
 
       SubstitutionSet solution = newErrorList.unify(arguments[4], ss);
+      if (solution == null) return null;
       solution = newHead.unify(arguments[1], solution);
+      if (solution == null) return null;
       if (newTail != null) solution = newTail.unify(arguments[2], solution);
 
       return solution;
