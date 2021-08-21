@@ -398,7 +398,7 @@ public class PList implements Unifiable {
          if (pList.isTailVar() && !Anon.class.isInstance(head)) {
             Variable hVar  = (Variable)(head);
             PList term = ss.castPList(hVar);
-            if (term != null && PList.class.isInstance(term)) {
+            if (term != null) {
                pList = (PList)term;
                head = pList.getHead();
             }
@@ -435,7 +435,7 @@ public class PList implements Unifiable {
          if (plist.isTailVar() && !Anon.class.isInstance(head)) {
             Variable hVar  = (Variable)(head);
             PList term = ss.castPList(hVar);
-            if (term != null && PList.class.isInstance(term)) {
+            if (term != null) {
                plist = (PList)term;
                head = plist.getHead();
             }
