@@ -84,7 +84,12 @@ public class PrintList extends BuiltInPredicate {
    private void showList(PList listo, SubstitutionSet ss) {
       PList pList = listo;
       Unifiable head = pList.getHead();
-      System.out.print(getGround(head, ss));
+      if (head == null) {
+         System.out.print("");
+      }
+      else {
+         System.out.print(getGround(head, ss));
+      }
       while (head != null) {
          pList = pList.getTail();
          head = pList.getHead();
