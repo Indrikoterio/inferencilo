@@ -110,11 +110,7 @@ public abstract class SolutionNode {
     * @return t/f
     */
    boolean hasNextRule() {
-
       if (noBackChaining) return false;
-      // I believe that count can be set during instantiation.
-      // If not, uncomment this:
-      // int count = knowledge.getRuleCount(goal);
       return ruleNumber < count;
    }
 
