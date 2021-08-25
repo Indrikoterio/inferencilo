@@ -163,7 +163,7 @@ public abstract class FilterBase extends BuiltInPredicate {
 
       for (int i = 0; i < count; i++) {
          Unifiable head = pList.getHead();
-         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
+         if (pList.isTailVar() && head != Anon.anon) {
             Variable hVar  = (Variable)(head);
             PList term = ss.castPList(hVar);
             if (term != null) {
