@@ -222,11 +222,9 @@ public abstract class BuiltInPredicate implements Goal {
    public String displayString(Unifiable term, SubstitutionSet ss) {
 
       if (term instanceof Variable) {
-         if (ss.isGround((Variable)term)) {
-            Unifiable t = ss.getGroundTerm((Variable)term);
-            return displayString(t, ss);
-         }
-         else return "";
+         Unifiable t = ss.getGroundTermOrNull((Variable)term);
+         if (t == null) return "";
+         return displayString(t, ss);
       }
 
       if (term instanceof Constant) return term.toString();
