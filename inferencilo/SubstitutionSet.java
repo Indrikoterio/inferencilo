@@ -99,7 +99,7 @@ public class SubstitutionSet {
       Variable  v = var;
       Unifiable u;
       while (true) {
-         u = getBinding(v);
+         u = (Unifiable)bindings.get(v);
          if (u == null) return false;
          if (!(u instanceof Variable)) return true;  // Constant, Complex, PList
          v = (Variable)u;
@@ -120,7 +120,7 @@ public class SubstitutionSet {
       Variable  v = (Variable)term;
       Unifiable u;
       while (true) {
-         u = getBinding(v);
+         u = (Unifiable)bindings.get(v);
          if (u == null) return v;
          if (!(u instanceof Variable)) return u;
          v = (Variable)u;
@@ -134,14 +134,14 @@ public class SubstitutionSet {
     * If a variable is grounded, get the ground term.
     * Otherwise, return null.
     *
-    * @param   variable
+    * @param   variable  (Known to be a variable.)
     * @return  ground term or null
     */
    public Unifiable getGroundTermOrNull(Variable var) {
       Variable  v = var;
       Unifiable u;
       while (true) {
-         u = getBinding(v);
+         u = (Unifiable)bindings.get(v);
          if (u == null) return null;
          if (!(u instanceof Variable)) return u;
          v = (Variable)u;
@@ -153,7 +153,7 @@ public class SubstitutionSet {
    /**
     * castConstant
     *
-    * If the given unifiable is an instance of Constant, cast it
+    * If the given Unifiable is an instance of Constant, cast it
     * as Constant and return it. Otherwise return null.
     *
     * @param  Unifiable term
@@ -174,7 +174,7 @@ public class SubstitutionSet {
    /**
     * castComplex
     *
-    * If the given unifiable is an instance of Complex, cast it
+    * If the given Unifiable is an instance of Complex, cast it
     * as complex. Otherwise return null.
     *
     * @param  Unifiable term
@@ -195,7 +195,7 @@ public class SubstitutionSet {
    /**
     * castPList
     *
-    * If the given unifiable is an instance of PList, cast it
+    * If the given Unifiable is an instance of PList, cast it
     * as PList and return it. If it is a Variable, get the term
     * which it is bound to. If that term is a PList, cast it as
     * a PList and return it. Otherwise return null.
