@@ -395,7 +395,7 @@ public class PList implements Unifiable {
          count++;
          pList = pList.getTail();
          head = pList.getHead();
-         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
+         if (pList.isTailVar() && head != Anon.anon) {
             Variable hVar  = (Variable)(head);
             PList term = ss.castPList(hVar);
             if (term != null) {
@@ -426,25 +426,25 @@ public class PList implements Unifiable {
     * @return  array of terms and tail (unifiable)
     */
    public Unifiable[] flatten(int numOfTerms, SubstitutionSet ss) {
-      PList plist = this;
+      PList pList = this;
       Unifiable[] theArray = new Unifiable[numOfTerms + 1];
       int i = 0;
       for (; i < numOfTerms; i++) {
-         if (plist == null) return null;
-         Unifiable head = plist.getHead();
-         if (plist.isTailVar() && !Anon.class.isInstance(head)) {
+         if (pList == null) return null;
+         Unifiable head = pList.getHead();
+         if (pList.isTailVar() && head != Anon.anon) {
             Variable hVar  = (Variable)(head);
             PList term = ss.castPList(hVar);
             if (term != null) {
-               plist = (PList)term;
-               head = plist.getHead();
+               pList = (PList)term;
+               head = pList.getHead();
             }
          }
          if (head == null) return null;
          theArray[i] = head;
-         plist = plist.getTail();
+         pList = pList.getTail();
       }
-      theArray[i] = plist;
+      theArray[i] = pList;
       return theArray;
    } // flatten()
 
