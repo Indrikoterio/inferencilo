@@ -127,8 +127,28 @@ public class SubstitutionSet {
       }
    }
 
-   public String toString() { return "Bindings: (" + bindings + ")"; }
 
+   /**
+    * getGroundTermOrNull
+    *
+    * If a variable is grounded, get the ground term.
+    * Otherwise, return null.
+    *
+    * @param   variable
+    * @return  ground term or null
+    */
+   public Unifiable getGroundTermOrNull(Variable var) {
+      Variable  v = var;
+      Unifiable u;
+      while (true) {
+         u = getBinding(v);
+         if (u == null) return null;
+         if (!(u instanceof Variable)) return u;
+         v = (Variable)u;
+      }
+   }
+
+   public String toString() { return "Bindings: (" + bindings + ")"; }
 
    /**
     * castConstant
@@ -143,10 +163,7 @@ public class SubstitutionSet {
       if (term instanceof Constant) return (Constant)term;
       Unifiable outTerm = null;
       if (term instanceof Variable) {
-         if (isGround((Variable)term)) {
-            outTerm = getGroundTerm((Variable)term);
-         }
-         else return null;
+         outTerm = getGroundTermOrNull((Variable)term);
       }
       if (outTerm instanceof Constant) return (Constant)outTerm;
       return null;
@@ -166,10 +183,7 @@ public class SubstitutionSet {
       if (term instanceof Complex) return (Complex)term;
       Unifiable outTerm = null;
       if (term instanceof Variable) {
-         if (isGround((Variable)term)) {
-            outTerm = getGroundTerm((Variable)term);
-         }
-         else return null;
+         outTerm = getGroundTermOrNull((Variable)term);
       }
       if (outTerm instanceof Complex) return (Complex)outTerm;
       return null;
@@ -191,10 +205,7 @@ public class SubstitutionSet {
       if (term instanceof PList) return (PList)term;
       Unifiable outTerm = null;
       if (term instanceof Variable) {
-         if (isGround((Variable)term)) {
-            outTerm = getGroundTerm((Variable)term);
-         }
-         else return null;
+         outTerm = getGroundTermOrNull((Variable)term);
       }
       if (outTerm instanceof PList) return (PList)outTerm;
       return null;
