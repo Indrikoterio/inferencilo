@@ -164,6 +164,7 @@ public class SubstitutionSet {
       Unifiable outTerm = null;
       if (term instanceof Variable) {
          outTerm = getGroundTermOrNull((Variable)term);
+         if (outTerm == null) return null;
       }
       if (outTerm instanceof Constant) return (Constant)outTerm;
       return null;
@@ -184,6 +185,7 @@ public class SubstitutionSet {
       Unifiable outTerm = null;
       if (term instanceof Variable) {
          outTerm = getGroundTermOrNull((Variable)term);
+         if (outTerm == null) return null;
       }
       if (outTerm instanceof Complex) return (Complex)outTerm;
       return null;
@@ -206,6 +208,7 @@ public class SubstitutionSet {
       Unifiable outTerm = null;
       if (term instanceof Variable) {
          outTerm = getGroundTermOrNull((Variable)term);
+         if (outTerm == null) return null;
       }
       if (outTerm instanceof PList) return (PList)outTerm;
       return null;
