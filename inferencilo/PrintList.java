@@ -93,7 +93,7 @@ public class PrintList extends BuiltInPredicate {
       while (head != null) {
          pList = pList.getTail();
          head = pList.getHead();
-         if (pList.isTailVar() && !Anon.class.isInstance(head)) {
+         if (pList.isTailVar() && head != Anon.anon) {
             Variable hVar  = (Variable)(head);
             PList term = ss.castPList(hVar);
             if (term != null) {
