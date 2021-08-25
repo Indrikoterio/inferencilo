@@ -147,7 +147,7 @@ public class Constant implements Unifiable {
    public SubstitutionSet unify(Unifiable other, SubstitutionSet ss) {
       if (this == other) return ss;
       if (other instanceof Variable) return other.unify(this, ss);
-      if (other instanceof Anon) return ss;
+      if (other == Anon.anon) return ss;
       if (!(other instanceof Constant)) return null;
       String strThis = value;
       String strThat = other.toString();
