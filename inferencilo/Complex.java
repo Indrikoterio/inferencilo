@@ -268,7 +268,7 @@ public class Complex implements Unifiable, Goal {
             Unifiable termA = this.getTerm(i);
             Unifiable termB = comp.getTerm(i);
             if (termA == null || termB == null) continue;
-            if (termA instanceof Anon || termB instanceof Anon) continue;
+            if (termA == Anon.anon || termB == Anon.anon) continue;
             newSS = termA.unify(termB, newSS);
             if (newSS == null) return null;
          }
@@ -276,7 +276,7 @@ public class Complex implements Unifiable, Goal {
       }
 
       else if (other instanceof Variable) return other.unify(this, ss);
-      else if (other instanceof Anon) return ss;
+      else if (other == Anon.anon) return ss;
       return null;
    }
 
