@@ -262,7 +262,7 @@ public class Complex implements Unifiable, Goal {
          Complex comp = (Complex)other;
 
          if (terms.length != comp.length()) return null;  // Must be same size to unify.
-         SubstitutionSet newSS = new SubstitutionSet(ss);
+         SubstitutionSet newSS = ss;
 
          for (int i = 0; i < this.length(); i++) {
             Unifiable termA = this.getTerm(i);
