@@ -47,28 +47,6 @@ public abstract class SolutionNode {
       this.goal = goal;
       this.knowledge = knowledge;
 
-      // If the goal is a rule or a fact (not an operator), count the number.
-      // For example, if the database has:
-      // grandfather($Grand, $Child) :- father($Grand, $X), father($X, $Child).
-      // grandfather($Grand, $Child) :- father($Grand, $X), mother($X, $Child).
-      // ...then the count of grandfather is 2;
-
-      // Note: Sometimes it is perfectly OK for a goal to fail
-      // because a rule or fact is not found in the knowledgebase.
-      // In other cases, the rule or fact is missing because the
-      // programmer has misspelled it. Report missing rules.
-      // This error message can be commented out in production.
-
-      if (goal instanceof Complex) {
-         count = knowledge.getRuleCount(goal);
-         /*  For debugging.
-         if (count == 0) {
-            Complex c = (Complex)goal;
-            System.err.println("Missing rule: " + c.key());
-         }
-         */
-      }
-
       this.parentSolution = parentSolution;
       this.parentNode     = parentNode;
    }
@@ -159,6 +137,15 @@ public abstract class SolutionNode {
     */
    public boolean noBackChaining() {
       return noBackChaining;
+   }
+
+   /**
+    * setRuleCount
+    *
+    * @param count
+    */
+   public void setRuleCount(int c) {
+      count = c;
    }
 
 }  // SolutionNode
