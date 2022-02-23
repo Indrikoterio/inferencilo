@@ -54,10 +54,10 @@ public class ComplexSolutionNode extends SolutionNode {
       // In other cases, the rule or fact is missing because the
       // programmer has misspelled it. Report missing rules.
       // This error message can be commented out in production.
-      if (count == 0) {
-         Complex c = (Complex)goal;
-         System.err.println("Missing rule: " + c.key());
-      }
+      //if (count == 0) {
+      //   Complex c = (Complex)goal;
+      //   System.err.println("Missing rule: " + c.key());
+      //}
       setRuleCount(count);
    }
 
