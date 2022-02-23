@@ -40,6 +40,25 @@ public class ComplexSolutionNode extends SolutionNode {
                               SolutionNode parentNode) {
 
       super(goal, knowledge, parentSolution, null);
+
+      // If the goal is a rule or a fact (not an operator), count the number.
+      // For example, if the database has:
+      // grandfather($Grand, $Child) :- father($Grand, $X), father($X, $Child).
+      // grandfather($Grand, $Child) :- father($Grand, $X), mother($X, $Child).
+      // ...then the count of grandfather is 2;
+
+      int count = knowledge.getRuleCount(goal);
+
+      // Note: Sometimes it is perfectly OK for a goal to fail
+      // because a rule or fact is not found in the knowledgebase.
+      // In other cases, the rule or fact is missing because the
+      // programmer has misspelled it. Report missing rules.
+      // This error message can be commented out in production.
+      if (count == 0) {
+         Complex c = (Complex)goal;
+         System.err.println("Missing rule: " + c.key());
+      }
+      setRuleCount(count);
    }
 
 
