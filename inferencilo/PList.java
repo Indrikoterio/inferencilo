@@ -45,7 +45,6 @@ import java.util.HashMap;
 public class PList implements Unifiable {
 
    private String printName = "LIST";
-   private static int nextId = 1;
    private int id;
 
    private Unifiable  term;
@@ -74,7 +73,6 @@ public class PList implements Unifiable {
     * PList constructor for empty list
     */
    public PList() {
-      id = nextId++;
       term    = null;
       tail    = null;
       count   = 0;
@@ -181,7 +179,6 @@ public class PList implements Unifiable {
     * @param   count - number of elements
     */
    private PList(boolean isTailVar, Unifiable h, PList t, int num) {
-      id = nextId++;
       this.term = h;
       this.tail = t;
       this.isTailVar = isTailVar;
