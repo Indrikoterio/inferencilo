@@ -45,7 +45,6 @@ import java.util.HashMap;
 public class PList implements Unifiable {
 
    private String printName = "LIST";
-   private int id;
 
    private Unifiable  term;
    private PList      tail;       // Null = end of list
