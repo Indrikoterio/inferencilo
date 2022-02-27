@@ -95,7 +95,6 @@ public class PList implements Unifiable {
     * @param   array of unifiable arguments.
     */
    public PList(boolean hasPipe, Unifiable... args) {
-      super();
       if (args.length == 0) return;
       PList tailList = null;
       boolean tailVar = hasPipe;
@@ -140,7 +139,6 @@ public class PList implements Unifiable {
     * @param   list of unifiable arguments.
     */
    public PList(boolean hasPipe, List<Unifiable> args) {
-      super();
       if (args.size() == 0) return;
       PList tailList = null;
       boolean tailVar = hasPipe;
