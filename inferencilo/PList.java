@@ -47,7 +47,7 @@ public class PList implements Unifiable {
    private String printName = "LIST";
 
    private Unifiable  term;
-   private PList      tail;       // Null = end of list
+   private PList      next;       // Null = end of list
 
    private int  count;  // Number of elements in this list.
 
@@ -73,7 +73,7 @@ public class PList implements Unifiable {
     */
    public PList() {
       term    = null;
-      tail    = null;
+      next    = null;
       count   = 0;
       isTailVar = false;
    } // constructor
@@ -118,7 +118,7 @@ public class PList implements Unifiable {
          tailVar = false;
       }
       term = args[0];
-      tail = tailList;
+      next = tailList;
       count = num;
    } // constructor
 
@@ -162,7 +162,7 @@ public class PList implements Unifiable {
          tailVar = false;
       }
       term = args.get(0);
-      tail = tailList;
+      next = tailList;
       count = num;
    } // constructor
 
@@ -177,11 +177,11 @@ public class PList implements Unifiable {
     */
    private PList(boolean isTailVar, Unifiable h, PList t, int num) {
       this.term = h;
-      this.tail = t;
+      this.next = t;
       this.isTailVar = isTailVar;
       // If this is the tail var...
       if (isTailVar) {
-         this.tail = null;
+         this.next = null;
       }
       count = num;
    } // constructor
@@ -278,7 +278,7 @@ public class PList implements Unifiable {
     */
    private String commaString() {
       String str = term.toString();
-      PList theTail = tail;
+      PList theTail = next;
       while (theTail != null) {
          Unifiable term = theTail.getHead();
          if (term == null) break;
@@ -317,7 +317,7 @@ public class PList implements Unifiable {
    public String spaceString() {
       if (term == null) return "";
       String str = term.toString();
-      PList theTail = tail;
+      PList theTail = next;
       while (theTail != null) {
          Unifiable term = theTail.getHead();
          if (term == null) break;
@@ -347,8 +347,8 @@ public class PList implements Unifiable {
     * @return tail
     */
    public PList getTail() {
-      if (tail == null) return empty;
-      return tail;
+      if (next == null) return empty;
+      return next;
    }
 
 
@@ -463,7 +463,7 @@ public class PList implements Unifiable {
          // [] == []
          if (other == this) return ss;
 
-         SubstitutionSet newSS = new SubstitutionSet(ss);
+         SubstitutionSet newSS = ss;
 
          PList thisList = this;
          Unifiable thisTerm;
