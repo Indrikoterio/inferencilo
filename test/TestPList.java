@@ -60,6 +60,10 @@ public class TestPList {
          new Rule(
             new Complex("goal6($H, $T)"),
             new Unify(jobs4, PList.parse("[$H, $_ | $T]"))
+         ),
+         new Rule(
+            new Complex("goal7"),
+            new Unify(PList.parse("[a, b, c]"), PList.parse("[a, b, c, d]"))
          )
       );
 
@@ -100,6 +104,10 @@ public class TestPList {
          goal = new Complex("goal6($H, $T)");
          String[] expected6 = {"goal6(scientist, [carpenter, sales manager])"};
          Solutions.verifyAll(goal, kb, expected6, 0);
+
+         goal = new Complex("goal7");
+         String[] expected7 = {};  // should not unify
+         Solutions.verifyAll(goal, kb, expected7, 0);
 
       } catch (TimeOverrunException tox) { }
 
