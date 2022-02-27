@@ -501,26 +501,6 @@ public class PList implements Unifiable {
             otherList = otherList.getTail();
          }
 
-         if (thisList == null && otherList == null) { return newSS; }
-
-         // Perhaps one of the lists has run out of items. (== null)
-         if (thisList == null && otherList != null) {
-            if (otherList.isTailVar()) {
-               otherTerm = otherList.getHead();
-               SubstitutionSet result = otherTerm.unify(empty, newSS);
-               return result;
-            }
-            return null;
-         }
-         else
-         if (thisList != null && otherList == null) {
-            if (thisList.isTailVar()) {
-               thisTerm = otherList.getHead();
-               SubstitutionSet result = thisTerm.unify(empty, newSS);
-            }
-            return null;
-         }
-
          return null;
       }
       else if (other instanceof Variable) return other.unify(this, ss);
