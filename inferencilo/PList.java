@@ -231,7 +231,7 @@ public class PList implements Unifiable {
       }
 
       int endIndex = argLength;
-      int roundDepth = 0;   // depth of round parenthesis (())
+      int roundDepth = 0;   // depth of round parentheses (())
       int squareDepth = 0;   // depth of square brackets [[]]
 
       // Iterate backwards.
