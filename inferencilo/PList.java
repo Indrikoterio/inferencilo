@@ -520,7 +520,6 @@ public class PList implements Unifiable {
 
       List<Unifiable> newTerms = new ArrayList<Unifiable>();
       PList thisList = this;
-      boolean hasPipe = thisList.isTailVar();
       Unifiable term = thisList.getHead();
       Unifiable newTerm = null;
       if (term == null) return this;  // Must be empty list.
