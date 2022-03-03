@@ -183,37 +183,5 @@ public abstract class PFunction implements Unifiable {
       return argument;
    }
 
-   /**
-    * standardizeVariablesApart
-    *
-    * Refer to class Expression for full comments.
-    *
-    * This method uses reflection to instantiate the subclass,
-    * so that the method does not need to be repeated in each
-    * subclass.
-    */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
-      Unifiable[] newArguments = new Unifiable[arguments.length];
-      for (int i = 0; i < arguments.length; i++) {
-         newArguments[i] = standardizeOne(arguments[i], newVars);
-      }
-      // Now instantiate the class with with new standardized arguments.
-      try {
-         String className = this.getClass().getName();
-         Constructor<?> c = Class.forName(className)
-                                 .getDeclaredConstructor(Unifiable[].class);
-         c.setAccessible(true);  // Necessary?
-         return (Expression)c.newInstance(new Object[] {newArguments});
-      }
-      catch (ClassNotFoundException cnfx) {}
-      catch (NoSuchMethodException nsmx) {}
-      catch (InstantiationException ix) {}
-      catch (IllegalAccessException iax) {}
-      catch (InvocationTargetException itx) {}
-      System.err.println("PFunction::standardizeVariablesApart - Major failure.");
-      System.exit(0);
-      return null;
-   } // standardizeVariablesApart
-
 } // PFunction
 
