@@ -16,6 +16,8 @@
 
 package inferencilo;
 
+import java.util.HashMap;
+
 public class Exclude extends FilterBase {
 
    /**
@@ -56,5 +58,17 @@ public class Exclude extends FilterBase {
       if (solution == null) return true;
       else return false;
    }
+
+   /**
+    * standardizeVariablesApart()
+    * Refer to Expression.java for full comments.
+    */
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new Exclude(newArguments);
+   } // standardizeVariablesApart
 
 }  // Exclude
