@@ -9,6 +9,8 @@
 
 package inferencilo;
 
+import java.util.HashMap;
+
 public class Subtract extends PFunction {
 
    /**
@@ -59,5 +61,17 @@ public class Subtract extends PFunction {
       return new Constant("" + result);
 
    } // evaluate()
+
+   /**
+    * standardizeVariablesApart()
+    * Refer to Expression.java for full comments.
+    */
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new Subtract(newArguments);
+   } // standardizeVariablesApart
 
 }  // Subtract
