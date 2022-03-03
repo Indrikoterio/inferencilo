@@ -134,38 +134,6 @@ public abstract class BuiltInPredicate implements Goal {
 
 
    /**
-    * standardizeVariablesApart()
-    *
-    * Refer to Expression.java for full comments.
-    *
-    * This method uses reflection to instantiate the subclass, so
-    * that this method does not need to be repeated in each subclass.
-    */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
-      Unifiable[] newArguments = new Unifiable[arguments.length];
-      for (int i = 0; i < arguments.length; i++) {
-         newArguments[i] = standardizeOne(arguments[i], newVars);
-      }
-      // Now instantiate the class with new standardized arguments.
-      try {
-         String className = this.getClass().getName();
-         Constructor<?> c = Class.forName(className)
-                                 .getDeclaredConstructor(Unifiable[].class);
-         c.setAccessible(true);  // Necessary?
-         return (Expression)c.newInstance(new Object[] {newArguments});
-      }
-      catch (ClassNotFoundException cnfx) {}
-      catch (NoSuchMethodException nsmx) {}
-      catch (InstantiationException ix) {}
-      catch (IllegalAccessException iax) {}
-      catch (InvocationTargetException itx) {}
-      System.err.println("BuiltInPredicate::standardizeVariablesApart - Major failure.");
-      System.exit(0);
-      return null;
-   } // standardizeVariablesApart
-
-
-   /**
     * evaluate
     *
     * The unique work of the built-in predicate is done by this method.
