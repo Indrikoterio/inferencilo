@@ -100,26 +100,6 @@ public abstract class BuiltInPredicate implements Goal {
       return argument;
    }
 
-
-   /**
-    * standardizeAll
-    *
-    * Standardize (remake) all given arguments.
-    *
-    * @param  array of arguments
-    * @param  already standardized variables (hash)
-    * @return new standardized arguments
-    */
-   private Unifiable[] standardizeAll(Unifiable[] arguments,
-                                        HashMap<Variable, Variable> newVars) {
-      Unifiable[] novajArgumentoj = new Unifiable[arguments.length];
-      for (int i = 0; i < arguments.length; i++) {
-         novajArgumentoj[i] = standardizeOne(arguments[i], newVars);
-      }
-      return novajArgumentoj;
-   }
-
-
    /**
     * replaceVariables
     *
