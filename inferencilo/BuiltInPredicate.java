@@ -76,7 +76,7 @@ public abstract class BuiltInPredicate implements Goal {
    } // getSolver
 
 
-   /*
+   /**
     * standardizeOne
     *
     * Standardize one argument.
@@ -90,7 +90,7 @@ public abstract class BuiltInPredicate implements Goal {
     * @param   already standardized variables (hash)
     * @return  out argument
     */
-   Unifiable standardizeOne(Unifiable argument,
+   public Unifiable standardizeOne(Unifiable argument,
                                       HashMap<Variable, Variable> newVars) {
       if (argument instanceof Variable) {
          Variable arg = (Variable)argument;

@@ -63,7 +63,6 @@ public class IncMaxErrors extends BuiltInPredicate {
       return new IncMaxErrorsSolutionNode(this, knowledge, parentSolution, parentNode);
    }
 
-
    /**
     * evaluate
     *
@@ -76,4 +75,17 @@ public class IncMaxErrors extends BuiltInPredicate {
       Global.maxErrors++;
       return x;
    }
-}
+
+   /**
+    * standardizeVariablesApart()
+    * Refer to Expression.java for full comments.
+    */
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new IncMaxErrors(newArguments);
+   } // standardizeVariablesApart
+
+}  // IncMaxErrors

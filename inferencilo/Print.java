@@ -185,4 +185,16 @@ public class Print extends BuiltInPredicate {
 
    } // evaluate
 
+   /**
+    * standardizeVariablesApart()
+    * Refer to Expression.java for full comments.
+    */
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new Print(newArguments);
+   } // standardizeVariablesApart
+
 }  // Print

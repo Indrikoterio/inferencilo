@@ -109,5 +109,4 @@ public abstract class CompareBase extends BuiltInPredicate {
       return second;
    }
 
-
 }  // CompareBase
