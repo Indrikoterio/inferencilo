@@ -14,7 +14,7 @@
  * Commas which do not separate arguments, but are intended to be
  * printed, must be escaped with a backslash, for example:
  *
- *  print(%s\, my friend\, is $s years old.\n, $Name, $Age)
+ *  print(%s\, my friend\, is %s years old.\n, $Name, $Age)
  *
  * will print out,
  *
