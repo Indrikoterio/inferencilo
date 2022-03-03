@@ -158,27 +158,30 @@ public abstract class PFunction implements Unifiable {
    }  // replaceVariables
 
 
-   /*
-    * standardizeArgument
+
+   /**
+    * standardizeOne
+    *
+    * Standardize one argument. This method is copied from BuiltInPredicate.
     *
     * This method assists standardizeVariablesApart() in the subclass.
-    * If the argument is a Variable, this method will standardize it.
-    * If not, it returns null.
+    * If the argument is a Variable, this method will 'standardize' it.
+    * (That is, substitute a new unique variable.)
+    * If not, it just returns the argument as is.
     *
     * @param   unifiable argument
     * @param   already standardized variables (hash)
-    * @return  new unifiable argument or null
+    * @return  out argument
     */
-   public Unifiable standardizeArgument(Unifiable argument,
-                                  HashMap<Variable, Variable> newVars) {
+   public Unifiable standardizeOne(Unifiable argument,
+                                      HashMap<Variable, Variable> newVars) {
       if (argument instanceof Variable) {
-         Variable par = (Variable)argument;
-         Unifiable newArgument = (Unifiable)par.standardizeVariablesApart(newVars);
+         Variable arg = (Variable)argument;
+         Unifiable newArgument = (Unifiable)arg.standardizeVariablesApart(newVars);
          return newArgument;
       }
       return argument;
-   } // standardizeArgument
-
+   }
 
    /**
     * standardizeVariablesApart
@@ -192,7 +195,7 @@ public abstract class PFunction implements Unifiable {
    public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
-         newArguments[i] = standardizeArgument(arguments[i], newVars);
+         newArguments[i] = standardizeOne(arguments[i], newVars);
       }
       // Now instantiate the class with with new standardized arguments.
       try {
