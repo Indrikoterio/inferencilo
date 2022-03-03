@@ -18,6 +18,8 @@
 
 import inferencilo.*;
 
+import java.util.HashMap;
+
 public class Capitalize extends PFunction {
 
    /**
@@ -63,5 +65,17 @@ public class Capitalize extends PFunction {
       return new Constant(first + theRest);
 
    } // evaluate()
+
+   /**
+    * standardizeVariablesApart()
+    * Refer to Expression.java for full comments.
+    */
+   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+      Unifiable[] newArguments = new Unifiable[arguments.length];
+      for (int i = 0; i < arguments.length; i++) {
+         newArguments[i] = standardizeOne(arguments[i], newVars);
+      }
+      return new Capitalize(newArguments);
+   } // standardizeVariablesApart
 
 }  // Capitalize
