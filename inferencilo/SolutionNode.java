@@ -27,7 +27,6 @@ public abstract class SolutionNode {
    private int ruleNumber = 0;
    private boolean noBackChaining = false;
 
-   private Rule   currentRule = null;
    Goal    goal = null;     // goal being solved
 
    private int count;  // counts number of rules/facts
@@ -70,11 +69,10 @@ public abstract class SolutionNode {
     * @return rule object
     */
    public Rule nextRule() {
+
+      Rule currentRule = null;
       if (hasNextRule()) {
          currentRule = knowledge.getRuleStandardizedApart(goal, ruleNumber++);
-      }
-      else {
-         currentRule = null;
       }
       return currentRule;
    }
