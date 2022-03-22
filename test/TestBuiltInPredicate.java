@@ -5,7 +5,16 @@
  * predicates and functions, by subclassing BuiltInPredicate and
  * PFunction, respectively.
  *
- * This program tests BuiltIn5, which extends BuiltInPredicate.
+ * This program tests Hyphenate, which extends BuiltInPredicate.
+ *
+ * In order to test this functionality, the following rules will
+ * be written to the knowledgebase:
+ *
+ *   join_all($In, $Out, $InErr, $OutErr) :- hyphenate($In, $H, $T, $InErr, $Err2),
+ *                                              join_all([$H | $T], $Out, $Err2, $OutErr).
+ *   join_all([$H], $H, $X, $X).
+ *
+ *   bip_test($Out, $OutErr) :- join_all([sister, in, law], $Out, [first error], $OutErr).
  *
  * Useful reference: https://swish.swi-prolog.org/
  *
@@ -25,7 +34,6 @@ public class TestBuiltInPredicate {
 
       Variable H = Variable.inst("$H");
       Variable T = Variable.inst("$T");
-      Variable T2 = Variable.inst("$T2");
 
       Variable In = Variable.inst("$In");
       Variable In_err = Variable.inst("$InErr");
@@ -33,51 +41,39 @@ public class TestBuiltInPredicate {
       Variable Out_err = Variable.inst("$OutErr");
       Variable Err2 = Variable.inst("$Err2");
 
-      Constant bip5_test = new Constant("bip5_test");
-      Constant bip5_rule = new Constant("bip5_rule");
+      Constant bip_test = new Constant("bip_test");
+      Constant join_all = new Constant("join_all");
 
       KnowledgeBase kb = new KnowledgeBase(
 
          /****************************************************
-             bip5_rule(In, [H | T2], InErr, OutErr) :-
-                                 bip5_predicate(In, H, T, InErr, Err2),
-                                 bip5_rule(T, T2, Err2, OutErr).
-
-             bip5_rule([H | T], [H | T2], InErr, OutErr) :-
-                                 bip5_rule(T, T2, InErr, OutErr).
-
-             bip5_rule([], [], X, X).
+             join_all($In, $Out, $InErr, $OutErr) :-
+                             hyphenate($In, $H, $T, $InErr, $Err2),
+                             join_all([$H, $T], $Out, $Err2, $OutErr).
+             join_all([$H], $H, $X, $X).
           ***************************************************/
 
          new Rule(
-            new Complex(bip5_test, Out, Out_err),
+            new Complex(join_all, In, Out, In_err, Out_err),
+            new And(
+               new Hyphenate(In, H, T, In_err, Err2),
+               new Complex(join_all, new PList(true, H, T), Out, Err2, Out_err)
+            )
+         ),
+
+         new Rule(
+            new Complex(join_all, new PList(false, H), H, X, X)
+         ),
+
+         new Rule(
+            new Complex(bip_test, Out, Out_err),
             new And(
                new Unify(In, PList.parse("[sister, in, law]")),
                new Unify(In_err, PList.parse("[first error]")),
-               new Complex(bip5_rule, In, Out, In_err, Out_err)
+               new Complex(join_all, In, Out, In_err, Out_err)
             )
-         ),
-
-         new Rule(
-            new Complex(bip5_rule, In, new PList(true, H, T2), In_err, Out_err),
-            new And(
-               new BuiltIn5(In, H, T, In_err, Err2),
-               new Complex(bip5_rule, T, T2, Err2, Out_err)
-            )
-         ),
-
-         new Rule(
-            new Complex(bip5_rule, new PList(true, H, T),
-                                   new PList(true, H, T2),
-                                   In_err, Out_err),
-            new And(
-               new Complex(bip5_rule, T, T2, In_err, Out_err)
-            )
-         ),
-
-         new Rule(
-            new Complex(bip5_rule, PList.empty, PList.empty, X, X)
          )
+
       );
 
       Complex goal, result;
@@ -88,29 +84,22 @@ public class TestBuiltInPredicate {
       try {
 
          System.out.print("Test Built-In Predicate, 5 arguments: ");
-         goal = new Complex(bip5_test, X, Y);
+         goal = new Complex(bip_test, X, Y);
 
-         String[] expectedBIP = {
-            "[sister-in, law] [another error message, first error]",
-            "[sister, in-law] [another error message, first error]",
-            "[sister, in, law] [first error]"
-         };
+         String expected = "sister-in-law [another error, another error, first error]";
 
          root = goal.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
-         count = 0;
-         while (solution != null) {
-            result = (Complex)goal.replaceVariables(solution);
-            String r = result.getTerm(1) + " " + result.getTerm(2);
-            if (r.equals(expectedBIP[count])) {
-               System.out.print("✓");
-            }
-            else {
-               System.out.println("Unexpected: " + r);
-            }
-            solution = root.nextSolution();
-            count++; if (count > 30) break;  // for safety
+
+         result = (Complex)goal.replaceVariables(solution);
+         String r = result.getTerm(1) + " " + result.getTerm(2);
+         if (r.equals(expected)) {
+            System.out.print("✓");
          }
+         else {
+            System.out.println("Unexpected: " + r);
+         }
+
          System.out.println("");
 
       } catch (TimeOverrunException tox) { }
