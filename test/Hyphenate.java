@@ -1,8 +1,8 @@
 /**
- * BuiltIn5
+ * Hyphenate
  *
  * This class is used to test Built-in Predicate functionality.
- * BuiltIn5 takes 5 arguments:
+ * Hyphenate takes 5 arguments:
  *
  *    word list  - in
  *    new head word  - out
@@ -26,18 +26,18 @@
 import java.util.*;
 import inferencilo.*;
 
-public class BuiltIn5 extends BuiltInPredicate {
+public class Hyphenate extends BuiltInPredicate {
 
    /**
     * constructor
     *
     * @param  unifiable parameters
     */
-   public BuiltIn5(Unifiable... args) {
+   public Hyphenate(Unifiable... args) {
 
-      super("BuiltIn5", args);
-      if (args.length < 5) throw new TooFewArgumentsException("- BuiltIn5");
-      if (args.length > 5) throw new TooManyArgumentsException("- BuiltIn5");
+      super("Hyphenate", args);
+      if (args.length < 5) throw new TooFewArgumentsException("- Hyphenate");
+      if (args.length > 5) throw new TooManyArgumentsException("- Hyphenate");
 
    } // constructor
 
@@ -58,7 +58,7 @@ public class BuiltIn5 extends BuiltInPredicate {
       PList inErrors = ss.castPList(arguments[3]);
       if (inErrors == null) return null;
 
-      Constant err = new Constant("another error message");
+      Constant err = new Constant("another error");
       Unifiable newErrorList = new PList(false, err, inErrors);  // Add an error.
 
       Unifiable[] terms = inList.flatten(2, ss);  // Get two terms
@@ -89,7 +89,7 @@ public class BuiltIn5 extends BuiltInPredicate {
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);
       }
-      return new BuiltIn5(newArguments);
+      return new Hyphenate(newArguments);
    } // standardizeVariablesApart
 
-} // BuiltIn5
+} // Hyphenate
