@@ -65,7 +65,10 @@ public class Hyphenate extends BuiltInPredicate {
       if (terms == null) return null;
       if (terms.length < 3) return null;
 
-      String str = terms[0].toString() + "-" + terms[1];
+      Unifiable term1 = ss.castConstant(terms[0]);
+      Unifiable term2 = ss.castConstant(terms[1]);
+
+      String str = term1.toString() + "-" + term2;
       Unifiable newHead = new Constant(str);
 
       Unifiable newTail = terms[2];
