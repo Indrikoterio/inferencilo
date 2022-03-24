@@ -41,7 +41,7 @@ public class IncMaxErrorsSolutionNode extends SolutionNode {
     * @return  new substitution set
     */
    public SubstitutionSet nextSolution() throws TimeOverrunException {
-      if (noBackChaining()) { return null; }
+      if (noBackTracking()) { return null; }
       if (!moreSolutions) { return null; }
       moreSolutions = false;
       SubstitutionSet ss = getParentSolution();
