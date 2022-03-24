@@ -3,9 +3,9 @@
  *
  * Represents a node in a 'proof tree'.
  *
- * Complex terms and operators (And, Or, Unify, etc.) implement a
- * method called getSolver(), which returns a SolutionNode specific
- * to the term or operator.
+ * Complex terms and operators (And, Or, etc.) implement a method
+ * called getSolver(), which returns a SolutionNode specific to
+ * the term or operator.
  *
  * The method nextSolution() starts the search for a solution.
  * When a solution is found, the search stops. Each node preserves
@@ -25,7 +25,7 @@ public abstract class SolutionNode {
    private SubstitutionSet parentSolution;
    private SolutionNode parentNode;
    private int ruleNumber = 0;
-   private boolean noBackChaining = false;
+   private boolean noBackTracking = false;
 
    Goal    goal = null;     // goal being solved
 
@@ -86,7 +86,7 @@ public abstract class SolutionNode {
     * @return t/f
     */
    boolean hasNextRule() {
-      if (noBackChaining) return false;
+      if (noBackTracking) return false;
       return ruleNumber < count;
    }
 
@@ -118,23 +118,23 @@ public abstract class SolutionNode {
    public SolutionNode getParentNode() { return parentNode; }
 
    /**
-    * setNoBackChaining
+    * setNoBackTracking
     *
-    * Disables back chaining. This is used for the cut operator: !.
+    * Disables backtracking. This is used for the cut operator: !.
     */
-   public void setNoBackChaining() {
-      noBackChaining = true;
+   public void setNoBackTracking() {
+      noBackTracking = true;
    }
 
    /**
-    * noBackChaining
+    * noBackTracking
     *
-    * Tests whether back chaining is allowed or not.
+    * Tests whether backtracking is allowed or not.
     *
     * @return t/f
     */
-   public boolean noBackChaining() {
-      return noBackChaining;
+   public boolean noBackTracking() {
+      return noBackTracking;
    }
 
    /**

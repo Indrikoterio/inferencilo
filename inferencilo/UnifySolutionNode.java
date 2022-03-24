@@ -39,7 +39,7 @@ public class UnifySolutionNode extends SolutionNode {
     */
    public SubstitutionSet nextSolution() {
 
-      if (noBackChaining()) { return null; }
+      if (noBackTracking()) { return null; }
       if (!moreSolutions) { return null; }
       moreSolutions = false;
 
