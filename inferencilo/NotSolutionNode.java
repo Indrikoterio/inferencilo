@@ -41,7 +41,7 @@ public class NotSolutionNode extends SolutionNode {
     */
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
-      if (noBackChaining()) { return null; }
+      if (noBackTracking()) { return null; }
       if (parentSolution == null) return null;
 
       if (operand instanceof Complex) {
