@@ -67,7 +67,7 @@ public abstract class BuiltInPredicate implements Goal {
              * @return  new substitution set
              */
             public SubstitutionSet nextSolution() {
-               if (noBackChaining()) return null;
+               if (noBackTracking()) return null;
                if (!moreSolutions) return null;
                moreSolutions = false;
                return evaluate(parentSolution);

@@ -1,7 +1,7 @@
 /**
  * CutSolutionNode
  *
- * Solution Node for Cut operator. Sets 'noBackChaining' flag
+ * Solution Node for Cut operator. Sets 'noBackTracking' flag
  * for all ancestors.
  *
  : @author  Klivo
@@ -22,13 +22,13 @@ public class CutSolutionNode extends SolutionNode {
    }
 
    public SubstitutionSet nextSolution() throws TimeOverrunException {
-      if (noBackChaining()) { return null; }
-      setNoBackChaining();
+      if (noBackTracking()) { return null; }
+      setNoBackTracking();
       SolutionNode parent = getParentNode();
-      // Set noBackChaining on all ancestors.
+      // Set noBackTracking on all ancestors.
       while (parent != null) {
          //System.out.println("......" + parent);
-         parent.setNoBackChaining();
+         parent.setNoBackTracking();
          parent = parent.getParentNode();
       }
       return parentSolution;

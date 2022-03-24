@@ -103,7 +103,7 @@ public abstract class FilterBase extends BuiltInPredicate {
              * @return  new substitution set
              */
             public SubstitutionSet nextSolution() throws TimeOverrunException {
-               if (noBackChaining()) return null;
+               if (noBackTracking()) return null;
                if (!moreSolutions) return null;
                moreSolutions = false;
                return evaluate(parentSolution, knowledge);

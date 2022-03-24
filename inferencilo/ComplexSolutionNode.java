@@ -70,7 +70,7 @@ public class ComplexSolutionNode extends SolutionNode {
     */
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
-      if (noBackChaining()) { return null; }
+      if (noBackTracking()) { return null; }
 
       SubstitutionSet solution;
 
