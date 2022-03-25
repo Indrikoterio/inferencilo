@@ -8,9 +8,9 @@
  * has_small_children(Mary).
  * is_elderly(Diane)
  * is_elderly(John)
- * priority_seating($Name, $YN) :- handicapped($Name), $YN = Yes.
- * priority_seating($Name, $YN) :- has_small_children($Name), $YN = Yes.
- * priority_seating($Name, $YN) :- is_elderly($Name), $YN = Yes.
+ * priority_seating($Name, $YN) :- handicapped($Name), $YN = Yes, !.
+ * priority_seating($Name, $YN) :- has_small_children($Name), $YN = Yes, !.
+ * priority_seating($Name, $YN) :- is_elderly($Name), $YN = Yes, !.
  * priority_seating($Name, No).
  *
  *----------------------------------------
