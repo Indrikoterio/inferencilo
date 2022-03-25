@@ -1,22 +1,17 @@
 /**
  * TestCut
  *
- * Testing Prolog's Cut (!).
+ * Testing Cut predicate (!).
  *
- * good_job(X) :- job(X), !, pay(X, high).
- * good_job(programmer).
- *
- * getta_good_job(X) :- good_job(X).
- *
- * job(lawyer).
- * job(teacher).
- * job(programmer).
- * job(janitor).
- *
- * pay(lawyer, high).
- * pay(teacher, high).
- * pay(programmer, low).
- * pay(janitor, low).
+ * handicapped(John).
+ * handicapped(Mary).
+ * has_small_children(Mary).
+ * is_elderly(Diane)
+ * is_elderly(John)
+ * priority_seating($Name, $YN) :- handicapped($Name), $YN = Yes.
+ * priority_seating($Name, $YN) :- has_small_children($Name), $YN = Yes.
+ * priority_seating($Name, $YN) :- is_elderly($Name), $YN = Yes.
+ * priority_seating($Name, No).
  *
  *----------------------------------------
  * Another cut test. In standard Prolog:
@@ -45,28 +40,37 @@ public class TestCut {
    public static void main(String[] args) {    // Set up the knowledge base.
 
       KnowledgeBase kb = new KnowledgeBase(
-         new Rule(new Complex("job(lawyer)")),
-         new Rule(new Complex("job(teacher)")),
-         new Rule(new Complex("job(programmer)")),
-         new Rule(new Complex("job(janitor)")),
-         new Rule(new Complex("pay(lawyer, high)")),
-         new Rule(new Complex("pay(teacher, high)")),
-         new Rule(new Complex("pay(programmer, low)")),
-         new Rule(new Complex("pay(janitor, low)")),
+         new Rule(new Complex("handicapped(John)")),
+         new Rule(new Complex("handicapped(Mary)")),
+         new Rule(new Complex("has_small_children(Mary)")),
+         new Rule(new Complex("is_elderly(Diane)")),
+         new Rule(new Complex("is_elderly(John)")),
          new Rule(
-            new Complex("good_job($X)"),
+            new Complex("priority_seating($Name, $YN)"),
             new And(
-               new Cut(),
-               new Complex("job($X)"),
-               new Complex("pay($X, high)")
+               new Complex("handicapped($Name)"),
+               new Unify("$YN = Yes"),
+               new Cut()
             )
          ),
          new Rule(
-            new Complex("good_job(programmer)")
+            new Complex("priority_seating($Name, $YN)"),
+            new And(
+               new Complex("has_small_children($Name)"),
+               new Unify("$YN = Yes"),
+               new Cut()
+            )
          ),
          new Rule(
-            new Complex("getta_good_job($X)"),
-            new Complex("good_job($X)")
+            new Complex("priority_seating($Name, $YN)"),
+            new And(
+               new Complex("is_elderly($Name)"),
+               new Unify("$YN = Yes"),
+               new Cut()
+            )
+         ),
+         new Rule(
+            new Complex("priority_seating($Name, No)")
          ),
 
          new Rule("cut_rule :- !, print(Test Cut: This text should print.), fail."),
@@ -83,9 +87,9 @@ public class TestCut {
 
       Complex goal;
       try {
-         goal = new Complex("getta_good_job($X)");
-         String[] expected = {"lawyer"};
-         Solutions.verifyAll(goal, kb, expected, 1);
+         goal = new Complex("priority_seating(John, $X)");
+         String[] expected = {"Yes"};
+         Solutions.verifyAll(goal, kb, expected, 2);
 
          goal = new Complex("my_goal($X)");
          String[] expected2 = { "Two" };
@@ -94,5 +98,3 @@ public class TestCut {
 
    }
 }
-
-
