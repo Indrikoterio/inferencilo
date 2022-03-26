@@ -2,7 +2,7 @@
  * TestReadRules
  *
  * Read in the rules from a text file (kings.txt).
- * Who is Skule's grandfather.
+ * Who is Skule's grandfather?
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
