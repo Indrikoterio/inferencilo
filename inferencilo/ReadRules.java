@@ -50,7 +50,7 @@ public class ReadRules {
     * makeListOfRules
     *
     * Divides a text file to create a list of rules. One rule per item.
-    * Rules (and facts) end with a perido.
+    * Rules (and facts) end with a period.
     *
     * @param  original text
     * @return rules (list of rules)
