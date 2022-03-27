@@ -167,8 +167,7 @@ public class Rule implements Expression {
       if (body != null) {
          newBody = (Goal)body.standardizeVariablesApart(newVars);
       }
-
       return new Rule(newHead, newBody);
    }
 
-}
+} // Rule
