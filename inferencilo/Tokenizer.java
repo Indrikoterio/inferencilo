@@ -61,10 +61,12 @@ public class Tokenizer {
     * @return t/f
     */
    private boolean functorChar(char ch) {
-      if (ch >= '0' && ch <= '9') return true;
       if (ch >= 'a' && ch <= 'z') return true;
       if (ch >= 'A' && ch <= 'Z') return true;
-      if (ch == '_') return true;
+      if (ch >= '0' && ch <= '9') return true;
+      if (ch == '_' || ch == '-' || ch == 0xAD) return true;
+      if (ch >= 0xC0 && ch < 0x2C0) return true;
+      if (ch >= 0x380 && ch < 0x510) return true;
       return false;
    }
 
