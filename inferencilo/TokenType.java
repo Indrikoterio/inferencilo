@@ -25,5 +25,3 @@ public enum TokenType {
    SUBGOAL, COMMA, SEMICOLON, LPAREN, RPAREN,
    GROUP, AND, OR;
 }  // TokenType
-
-
