@@ -163,7 +163,6 @@ public class Tokenizer {
          previous = ch;
       }
       if (stkParenth.size() > 0) {
-         top = (Integer)stkParenth.peek();
          throw new UnmatchedParenthesesException("Tokenizer");
       }
 
