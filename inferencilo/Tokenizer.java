@@ -182,8 +182,8 @@ public class Tokenizer {
     * can_fly($X)' will become an And goal, with two complex statements
     * (can_swim, can_fly) as subgoals.
     *
-    * @param  list of tokens
-    * @return operator
+    * @param  string of tokens
+    * @return goal
     */
    public Goal generateGoal(String str) {
       tokenize(str);
@@ -234,7 +234,7 @@ public class Tokenizer {
             // Make a GROUP token.
             Token t = groupTokens(tokens, index);
             newTokens.add(t);
-            // Skip passed tokens already processed.
+            // Skip past tokens already processed.
             index += t.size() + 1;  // +1 for right parenthesis
          }
          else if (type == TokenType.RPAREN) {
