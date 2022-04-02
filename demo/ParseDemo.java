@@ -326,7 +326,6 @@ class ParseDemo {
    private static List<String> splitIntoSentences(String str) {
 
       List<String> sentences = new ArrayList<String>();
-      String sentence;
       int previousIndex = 0;
       char[] prev3 = {'a', 'a', 'a'};
 
