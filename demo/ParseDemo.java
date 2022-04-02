@@ -328,7 +328,6 @@ class ParseDemo {
       List<String> sentences = new ArrayList<String>();
       String sentence;
       int previousIndex = 0;
-      int index;
       char[] prev3 = {'a', 'a', 'a'};
 
       int i;
@@ -354,10 +353,9 @@ class ParseDemo {
          prev3[2] = c;
 
       } // for
-      if (i >= str.length() ) {
-          String s = str.substring(previousIndex, str.length()).trim();
-          if (s.length() > 0) sentences.add(s);
-      }
+
+      String s = str.substring(previousIndex, str.length()).trim();
+      if (s.length() > 0) sentences.add(s);
 
       return sentences;
 
