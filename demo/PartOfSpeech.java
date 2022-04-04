@@ -501,7 +501,7 @@ class PartOfSpeech {
 
 
    /*
-    * makeFacts
+    * wordToFacts
     *
     * This method takes an English word and produces Fact objects,
     * which can be analyzed by the inference engine.
@@ -527,7 +527,7 @@ class PartOfSpeech {
     * @param  word
     * @return facts
     */
-   private static List<Rule> makeFacts(String word) {
+   private static List<Rule> wordToFacts(String word) {
 
       Complex  term, wordTerm;
       Rule     fact;
@@ -571,7 +571,7 @@ class PartOfSpeech {
       }
       return facts;
 
-   } // makeFacts
+   } // wordToFacts
 
 
    /**
@@ -592,7 +592,7 @@ class PartOfSpeech {
    public static List<Rule> makeFacts(List<String> words) {
       List<Rule> facts = new ArrayList<Rule>();
       words.stream()
-           .map(word -> makeFacts(word))
+           .map(word -> wordToFacts(word))
            .forEach(wordFacts -> facts.addAll(wordFacts));
       return facts;
    } // makeFacts
