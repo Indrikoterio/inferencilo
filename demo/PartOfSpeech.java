@@ -256,25 +256,6 @@ class PartOfSpeech {
       return wordPoS.get(word);
    } // get
 
-
-   /*
-    * makePunctuation
-    *
-    * Creates a term for punctuation. For example:
-    *
-    *     word(., period(.))
-    *
-    * If the given symbol does not represent punctuation,
-    * return null.
-    *
-    * @param  symbol as string
-    * @return term or null
-    */
-   private static Complex makePunctuation(String sym) {
-      Complex term = Punctuation.makeTerm(sym);
-      return term;
-   }
-
    /*
     * makePronounTerm
     *
@@ -558,7 +539,7 @@ class PartOfSpeech {
 
       int length = word.length();
       if (length == 1) { // Maybe this is punctuation.
-         Complex f = makePunctuation(word);
+         Complex f = Punctuation.makeTerm(word);
          if (f != null) {
             wordTerm = new Complex(WORD, new Constant(word), f);
             return Arrays.asList(new Rule(wordTerm));
