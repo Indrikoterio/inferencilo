@@ -12,7 +12,7 @@
  * http://athena.ecs.csus.edu/~mei/logicp/prolog.html
  * https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
  *
- * The program starts at main. The first thing is does is to create a
+ * The program starts at main. The first thing it does is to create a
  * KnowledgeBase. Next it defines some Constants and Variables, and some
  * Rules, which it adds to the KnowledgeBase.
  *
