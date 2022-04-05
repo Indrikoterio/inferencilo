@@ -220,6 +220,10 @@ class ParseDemo {
       // Load part of speech data.
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
 
+      // Remove previous 'word' facts.
+      kb.remove("word/2");
+      //kb.showKB();
+
       // Make word facts, such as: word(envy, noun(envy, singular)).
       List<Rule> facts = pos.makeFacts(words);
 
