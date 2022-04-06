@@ -144,7 +144,7 @@ public class Make {
                }
             } // for
          }
-         if (c1 == match) return i;
+         else if (c1 == match) return i;
       } // for
       return -1;
    } // specialIndexOf
