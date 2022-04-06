@@ -127,7 +127,6 @@ public class Make {
       int i;
       for (i = 0; i < len; i++) {
          char c1 = search.charAt(i);
-         if (c1 == match) return i;
          if (c1 == '`') {
             for (int j = i + 1; j < len; j++) {
                char c2 = search.charAt(j);
@@ -145,6 +144,7 @@ public class Make {
                }
             } // for
          }
+         if (c1 == match) return i;
       } // for
       return -1;
    } // specialIndexOf
