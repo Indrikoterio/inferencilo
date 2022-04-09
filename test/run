@@ -1,6 +1,6 @@
 echo "Build and run all tests. - Inferencilo"
-rm *.class
-rm ../inferencilo/*.class
+rm *.class  > /dev/null 2>&1
+rm ../inferencilo/*.class  > /dev/null 2>&1
 
 export CLASSPATH=.:..
 
