@@ -1,6 +1,6 @@
 echo "Build and run ParseDemo. - Inferencilo"
 
-rm *.class
+rm *.class > /dev/null 2>&1
 
 export CLASSPATH=.:..
 
