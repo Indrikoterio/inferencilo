@@ -44,20 +44,6 @@ public class TimeSolutionNode extends SolutionNode {
       if (noBackTracking()) { return null; }
       if (parentSolution == null) return null;
 
-      if (operand instanceof Complex) {
-
-         Unifiable[] terms = ((Complex)operand).getTerms();
-
-         for (Unifiable term : terms) {
-            if (term instanceof Variable) {
-               if (!parentSolution.isGround((Variable)term)) {
-                  System.out.println("Time: Variable " + term.toString() +
-                                     " is not grounded.");
-               }
-            }
-         } // for
-      }
-
       SubstitutionSet solution;
 
       long start = System.nanoTime();
