@@ -1,0 +1,10 @@
+#!/bin/bash
+javac inferencilo/InvalidRuleException.java
+javac inferencilo/UnmatchedParenthesesException.java
+javac inferencilo/UnmatchedBracketsException.java
+javac inferencilo/InvalidExpressionException.java
+javac inferencilo/AlreadyBoundException.java
+javac inferencilo/ComplexSolutionNode.java
+javac inferencilo/AndSolutionNode.java
+javac inferencilo/ReadRules.java
+javac inferencilo/Make.java
