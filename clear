@@ -1,0 +1,4 @@
+#!/bin/bash
+rm inferencilo/*.class > /dev/null 2>&1
+rm test/*.class > /dev/null 2>&1
+rm demo/*.class > /dev/null 2>&1
