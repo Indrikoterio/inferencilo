@@ -59,6 +59,15 @@ public class TestCompare {
          new Rule(new Complex("test_less_than_or_equal($_, $_, $Z)"),
             new Unify(Z, failed)
          ),
+         new Rule(new Complex("test_equal($X, $Y, $Z)"),
+            new And( new Equal(X, Y),
+                     new Cut(),
+                     new Unify(Z, passed)
+                   )
+         ),
+         new Rule(new Complex("test_equal($_, $_, $Z)"),
+            new Unify(Z, failed)
+         ),
 
          new Rule(
             new Complex("test($Z)"),
@@ -74,7 +83,9 @@ public class TestCompare {
                new Complex("test_greater_than_or_equal(3.9, 4.0, $Z)"),
                new Complex("test_less_than_or_equal(7.000, 7, $Z)"),
                new Complex("test_less_than_or_equal(7.000, 7.1, $Z)"),
-               new Complex("test_less_than_or_equal(0.0, -20, $Z)")
+               new Complex("test_less_than_or_equal(0.0, -20, $Z)"),
+               new Complex("test_equal(37.4, 37.4, $Z)"),
+               new Complex("test_equal(37.4, 37.0, $Z)")
             )
          )
       );
@@ -90,7 +101,8 @@ public class TestCompare {
          String[] expected = { "passed", "passed", "failed",
                                "passed", "passed", "failed",
                                "passed", "passed", "failed",
-                               "passed", "passed", "failed"
+                               "passed", "passed", "failed",
+                               "passed", "failed"
                                 };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
