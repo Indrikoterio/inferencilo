@@ -150,6 +150,26 @@ public class Make {
    } // specialIndexOf
 
 
+   /*
+    * getTwoTerms
+    *
+    * Divides a string representation of a comparison predicate
+    * such as "$X >= 27" into two terms.
+    *
+    * @param  string of predicate
+    * @param  index of comparison operator
+    * @param  length of operator
+    * @return array of strings
+    */
+   private static List<String> getTwoTerms(String str, int index, int length) {
+      String s1 = str.substring(0, index);
+      String s2 = str.substring(index + length, str.length());
+      String args[] = new String[2];
+      args[0] = s1;
+      args[1] = s2;
+      return Arrays.asList(args);
+   }
+
    /**
     * subgoal
     *
@@ -207,45 +227,25 @@ public class Make {
       index = specialIndexOf(s, '>');
       if (index > -1) {
          if (index < len - 1 && s.charAt(index + 1) == '=') {
-            s1 = s.substring(0, index);
-            s2 = s.substring(index + 2, len);
-            args[0] = s1;
-            args[1] = s2;
-            List<String> lst = Arrays.asList(args);
+            List<String> lst = getTwoTerms(s, index, 2);
             return new GreaterThanOrEqual(lst);
          }
-         s1 = s.substring(0, index);
-         s2 = s.substring(index + 1, len);
-         args[0] = s1;
-         args[1] = s2;
-         List<String> lst = Arrays.asList(args);
+         List<String> lst = getTwoTerms(s, index, 1);
          return new GreaterThan(lst);
       }
       index = specialIndexOf(s, '<');
       if (index > -1) {
          if (index < len - 1 && s.charAt(index + 1) == '=') {
-            s1 = s.substring(0, index);
-            s2 = s.substring(index + 2, len);
-            args[0] = s1;
-            args[1] = s2;
-            List<String> lst = Arrays.asList(args);
+            List<String> lst = getTwoTerms(s, index, 2);
             return new LessThanOrEqual(lst);
          }
-         s1 = s.substring(0, index);
-         s2 = s.substring(index + 1, len);
-         args[0] = s1;
-         args[1] = s2;
-         List<String> lst = Arrays.asList(args);
+         List<String> lst = getTwoTerms(s, index, 1);
          return new LessThan(lst);
       }
       index = specialIndexOf(s, '=');
       if (index > -1) {
          if (index < len - 1 && s.charAt(index + 1) == '=') {
-            s1 = s.substring(0, index);
-            s2 = s.substring(index + 2, len);
-            args[0] = s1;
-            args[1] = s2;
-            List<String> lst = Arrays.asList(args);
+            List<String> lst = getTwoTerms(s, index, 2);
             return new Equal(lst);
          }
          return new Unify(s);
