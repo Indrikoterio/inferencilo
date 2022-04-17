@@ -203,7 +203,7 @@ public class Make {
          return new CheckTime();
       }
 
-      // Handle infixes: > <  >= <=
+      // Handle infixes: > <  >= <= ==
       index = specialIndexOf(s, '>');
       if (index > -1) {
          if (index < len - 1 && s.charAt(index + 1) == '=') {
@@ -219,7 +219,7 @@ public class Make {
          args[0] = s1;
          args[1] = s2;
          List<String> lst = Arrays.asList(args);
-         return new GreaterThanOrEqual(lst);
+         return new GreaterThan(lst);
       }
       index = specialIndexOf(s, '<');
       if (index > -1) {
@@ -236,16 +236,18 @@ public class Make {
          args[0] = s1;
          args[1] = s2;
          List<String> lst = Arrays.asList(args);
-         return new LessThanOrEqual(lst);
+         return new LessThan(lst);
       }
       index = specialIndexOf(s, '=');
       if (index > -1) {
-         /*
-         s1 = s.substring(0, index);
-         s2 = s.substring(index + 1, len);
-         List<String> args = Arrays.asList(args);
-         return new Unify(args);
-         */
+         if (index < len - 1 && s.charAt(index + 1) == '=') {
+            s1 = s.substring(0, index);
+            s2 = s.substring(index + 2, len);
+            args[0] = s1;
+            args[1] = s2;
+            List<String> lst = Arrays.asList(args);
+            return new Equal(lst);
+         }
          return new Unify(s);
       }
 
@@ -278,6 +280,9 @@ public class Make {
       }
       else if (functor.equals("less_than_or_equal")) {
          return new LessThanOrEqual(contents);
+      }
+      else if (functor.equals("equal")) {
+         return new Equal(contents);
       }
       else if (functor.equals("count")) {
          return new Count(contents);
