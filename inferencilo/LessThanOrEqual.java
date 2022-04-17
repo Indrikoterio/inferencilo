@@ -54,7 +54,9 @@ public class LessThanOrEqual extends CompareBase {
    /**
     * evaluate
     *
-    * 
+    * Get two arguments. If both are numbers, compare them as numbers.
+    * Otherwise compare them as strings. Succeed if first term is less
+    * than or equal to the second.
     *
     * @param  parentSolution
     * @return new solution
