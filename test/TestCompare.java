@@ -30,7 +30,7 @@ public class TestCompare {
                    )
          ),
          new Rule(new Complex("test_greater_than($_, $_, $Z)"),
-            new And( new Unify(Z, failed) )
+            new Unify(Z, failed)
          ),
          new Rule(new Complex("test_less_than($X, $Y, $Z)"),
             new And( new LessThan(X, Y),
@@ -39,7 +39,7 @@ public class TestCompare {
                    )
          ),
          new Rule(new Complex("test_less_than($_, $_, $Z)"),
-            new And( new Unify(Z, failed) )
+            new Unify(Z, failed)
          ),
          new Rule(new Complex("test_greater_than_or_equal($X, $Y, $Z)"),
             new And( new GreaterThanOrEqual(X, Y),
@@ -48,7 +48,7 @@ public class TestCompare {
                    )
          ),
          new Rule(new Complex("test_greater_than_or_equal($_, $_, $Z)"),
-            new And( new Unify(Z, failed) )
+            new Unify(Z, failed)
          ),
          new Rule(new Complex("test_less_than_or_equal($X, $Y, $Z)"),
             new And( new LessThanOrEqual(X, Y),
@@ -57,7 +57,7 @@ public class TestCompare {
                    )
          ),
          new Rule(new Complex("test_less_than_or_equal($_, $_, $Z)"),
-            new And( new Unify(Z, failed) )
+            new Unify(Z, failed)
          ),
 
          new Rule(
