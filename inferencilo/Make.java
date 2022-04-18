@@ -584,4 +584,41 @@ public class Make {
 
    } // complexOrFunction
 
+
+   /**
+    * goal
+    *
+    * A goal is the same as a complex term, but it is necessary to ensure
+    * that the global variable id is reset to 0 and that all variable ids
+    * are standardized, before querying the knowledgebase.
+    *
+    * @param  arguments
+    * @return goal as complex term
+    */
+   public static Complex goal(Unifiable... args) {
+      Variable.reset();  // Always reset the variable ID.
+      HashMap<Variable, Variable> vars = new HashMap<Variable, Variable>();
+      int n = args.length;
+      Unifiable[] newArgs = new Unifiable[n];
+      for (int i = 0; i < n; i++) {
+         newArgs[i] = (Unifiable)args[i].standardizeVariablesApart(vars);
+      }
+      return new Complex(newArgs);
+   } // goal()
+
+   /**
+    * goal
+    *
+    * A goal is the same as a complex term, but it is necessary to ensure
+    * that the global variable id is reset to 0 and that all variable ids
+    * are recreated, before querying the knowledgebase.
+    *
+    * @param  goal as string
+    * @return goal as complex term
+    */
+   public static Complex goal(String str) {
+      Complex c = new Complex(str);
+      return Make.goal(c.getTerms());
+   }
+
 } // Make
