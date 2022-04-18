@@ -75,7 +75,7 @@ public class TestConjunctionList {
       //System.out.println("" + sentence_in);
       System.out.print("Test Conjunction-Lists: ");
       Complex goal = new Complex(scan_sentence, sentence_in, SentenceOut);
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+//      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
 
       try {
          String[] expected = {

@@ -38,7 +38,7 @@ public class TestJoin {
       System.out.print("Test Join: ");
 
       try {
-         Complex goal = new Complex("would_you_like($X)");
+         Complex goal = Make.goal("would_you_like($X)");
          String[] expected = { "coffee, tea or juice" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}

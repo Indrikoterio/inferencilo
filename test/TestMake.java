@@ -38,7 +38,7 @@ public class TestMake {
 
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("relative($X, Marcus)");
+         Complex goal = Make.goal("relative($X, Marcus)");
          String[] expected = {
             "relative(George, Marcus)",
             "relative(Frank, Marcus)",
@@ -51,7 +51,7 @@ public class TestMake {
 
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("get_song($X)");
+         Complex goal = Make.goal("get_song($X)");
          String[] expected = { "Cache ta joie", "Fade to Grey" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }

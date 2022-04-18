@@ -47,7 +47,8 @@ public class TestAndOr {
 
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("relative($X, Marcus)");
+         // Must use Make.goal() to create goals.
+         Complex goal = Make.goal("relative($X, Marcus)");
          String[] expected = {
             "relative(George, Marcus)",
             "relative(Frank, Marcus)",

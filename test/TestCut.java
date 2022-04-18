@@ -87,11 +87,11 @@ public class TestCut {
 
       Complex goal;
       try {
-         goal = new Complex("priority_seating(John, $X)");
+         goal = Make.goal("priority_seating(John, $X)");
          String[] expected = {"Yes"};
          Solutions.verifyAll(goal, kb, expected, 2);
 
-         goal = new Complex("my_goal($X)");
+         goal = Make.goal("my_goal($X)");
          String[] expected2 = { "Two" };
          Solutions.verifyAll(goal, kb, expected2, 1);
       } catch (TimeOverrunException tox) { }

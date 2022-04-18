@@ -63,7 +63,9 @@ public class TestUnify {
 
       try {
          Complex goal;
-         goal = new Complex("unify_goal($X, $Y, $Z)");
+         // Must use Make.goal() to create goals, to ensure
+         // that variables are standardized.
+         goal = Make.goal("unify_goal($X, $Y, $Z)");
          String[] expected = {"unify_goal(lawyer, programmer, janitor)",
                               "unify_goal(teacher, programmer, janitor)",
                               "unify_goal(programmer, programmer, janitor)",
@@ -75,7 +77,7 @@ public class TestUnify {
 
       try {
          Complex goal;
-         goal = new Complex("second_goal($Y)");
+         goal = Make.goal("second_goal($Y)");
          String[] expected = {};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }

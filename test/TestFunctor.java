@@ -35,7 +35,7 @@ public class TestFunctor {
 
       System.out.print("Test Functor: ");
 
-      Complex goal = new Complex(get, X);
+      Complex goal = Make.goal(get, X);
 
       try {
          String[] expected = {"mouse", "cat"};
@@ -59,7 +59,7 @@ public class TestFunctor {
          )
       );
 
-      goal = new Complex(check_arity, X, Y);
+      goal = Make.goal(check_arity, X, Y);
 
       try {
          SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
@@ -112,7 +112,7 @@ public class TestFunctor {
 
       try {
          System.out.print("Test Functor/2: ");
-         goal = new Complex(test_functor, X);
+         goal = Make.goal(test_functor, X);
          String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
          Solutions.verifyAll(goal, kb, expected5, 1);
 

@@ -36,7 +36,7 @@ public class TestFunction {
 
       try {
          System.out.print("Test PFunction: ");
-         goal = new Complex(fix_cap, tokyo, Word);
+         goal = Make.goal(fix_cap, tokyo, Word);
          String[] expected = { "Tokyo" };
          Solutions.verifyAll(goal, kb, expected, 2);
       }

@@ -55,7 +55,9 @@ public class TestConstant {
 
       try {
          System.out.print("Test Constant: ");
-         Complex goal = new Complex(test_constant, X);
+         // Must use Make.goal() to create goals,
+         // even though goals are Complex terms.
+         Complex goal = Make.goal(test_constant, X);
          String[] expected = {"red", "ok"};
          Solutions.verifyAll(goal, kb, expected, 1);
       }
@@ -63,7 +65,7 @@ public class TestConstant {
 
       try {
          System.out.print("Test Constant (backticks): ");
-         Complex goal = new Complex(test_constant_bt, X);
+         Complex goal = Make.goal(test_constant_bt, X);
          String[] expected = {"Let's see, if this works."};
          Solutions.verifyAll(goal, kb, expected, 1);
       }

@@ -77,7 +77,8 @@ public class TestCheckTime {
       Global.startTime = System.nanoTime();
 
       try {
-         Complex goal = new Complex("doit($_, Y)");
+         // Must use Make.goal() to create goals, not new Complex().
+         Complex goal = Make.goal("doit($_, Y)");
          String[] expected = { "something" };
          Solutions.verifyAll(goal, kb, expected, 2);
       } catch (TimeOverrunException tox) {
@@ -86,7 +87,7 @@ public class TestCheckTime {
 
       Global.startTime = System.nanoTime();
       try {
-         Complex goal = new Complex("doit($_, Y)");
+         Complex goal = Make.goal("doit($_, Y)");
          String[] expected = { "something" };
          Solutions.verifyAll(goal, kb, expected, 2);
       } catch (TimeOverrunException tox) {

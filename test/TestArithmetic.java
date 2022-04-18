@@ -54,7 +54,7 @@ public class TestArithmetic {
       System.out.print("Test Arithmetic: ");
 
       try {
-         Complex goal = new Complex("test($X)");
+         Complex goal = Make.goal("test($X)");
          String[] expected = { "4.0", "-10.0" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}

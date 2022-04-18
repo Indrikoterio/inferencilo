@@ -38,7 +38,7 @@ public class TestBackChaining {
       System.out.print("Test Backchaining: ");
 
       try {
-         Complex goal = new Complex("ancestor(Charles, $Y)");
+         Complex goal = Make.goal("ancestor(Charles, $Y)");
          String[] expected = {"ancestor(Charles, Tony)",
                               "ancestor(Charles, Maria)",
                               "ancestor(Charles, Bill)",
@@ -47,5 +47,3 @@ public class TestBackChaining {
       } catch (TimeOverrunException tox) { }
    }
 } // TestBackChaining
-
-

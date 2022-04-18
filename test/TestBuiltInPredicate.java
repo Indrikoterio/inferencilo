@@ -84,7 +84,7 @@ public class TestBuiltInPredicate {
       try {
 
          System.out.print("Test Built-In Predicate, 5 arguments: ");
-         goal = new Complex(bip_test, X, Y);
+         goal = Make.goal(bip_test, X, Y);
 
          String expected = "sister-in-law [another error, another error, first error]";
 
@@ -103,23 +103,6 @@ public class TestBuiltInPredicate {
          System.out.println("");
 
       } catch (TimeOverrunException tox) { }
-   }
-
-
-   /*
-    * solveIt
-    *
-    * @param   goal
-    * @param   knowledge base
-    * @return  result
-    */
-   private static Complex solveIt(Complex goal, KnowledgeBase kb) {
-      SubstitutionSet solution = null;
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
-      try {
-         solution = root.nextSolution();
-      } catch (TimeOverrunException tox) { return null; }
-      return (Complex)goal.replaceVariables(solution);
    }
 
 } // TestBuiltInPredicate

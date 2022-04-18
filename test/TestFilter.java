@@ -45,11 +45,11 @@ public class TestFilter {
       System.out.print("Test Include and Exclude predicates: ");
 
       try {
-         Complex goal = new Complex("list_wimmin($W)");
+         Complex goal = Make.goal("list_wimmin($W)");
          String[] expected = { "[Penny, Bernadette, Amy]" };
          Solutions.verifyAll(goal, kb, expected, 1);
 
-         goal = new Complex("list_nerds($N)");
+         goal = Make.goal("list_nerds($N)");
          String[] expected2 = { "[Leonard, Raj, Sheldon, Howard]" };
          Solutions.verifyAll(goal, kb, expected2, 1);
       } catch (TimeOverrunException tox) {}

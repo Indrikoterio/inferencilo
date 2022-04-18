@@ -82,7 +82,7 @@ public class TestCount {
       System.out.print("Test Count: ");
 
       try {
-         Complex goal = new Complex("test_count($X)");
+         Complex goal = Make.goal("test_count($X)");
          String[] expected = { "0", "3", "2", "3", "6", "3" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) {}

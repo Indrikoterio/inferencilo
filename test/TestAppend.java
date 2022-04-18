@@ -45,7 +45,7 @@ public class TestAppend {
       System.out.print("Test Append: ");
 
       try {
-         Complex goal = new Complex(test_append, X);
+         Complex goal = Make.goal(test_append, X);
          String[] expected = {"[red, orange, green, blue, purple]"};
          Solutions.verifyAll(goal, kb, expected, 1);
       }
@@ -57,7 +57,7 @@ public class TestAppend {
       kb.addRule(rule);
 
       try {
-         Complex goal = new Complex("test_append2($Z)");
+         Complex goal = Make.goal("test_append2($Z)");
          String[] expected = {"[cherry, strawberry, blueberry, raspberry]"};
          Solutions.verifyAll(goal, kb, expected, 1);
       }

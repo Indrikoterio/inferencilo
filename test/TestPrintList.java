@@ -47,7 +47,7 @@ public class TestPrintList {
 
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("print_list_test");
+         Complex goal = Make.goal("print_list_test");
          String[] expected = {"print_list_test"};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
@@ -55,7 +55,7 @@ public class TestPrintList {
       System.out.println("Test PrintList - should print:\n1, 2, 3, a, b, c");
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("print_list_test2");
+         Complex goal = Make.goal("print_list_test2");
          String[] expected = {"print_list_test2"};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }

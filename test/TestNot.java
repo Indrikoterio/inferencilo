@@ -73,19 +73,19 @@ public class TestNot {
       System.out.print("Test Not: ");
 
       try {
-         Complex goal = new Complex("father($X, Daniel)");
+         Complex goal = Make.goal("father($X, Daniel)");
          String[] expected = { "Richard" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
 
       try {
-         Complex goal = new Complex("invite($X)");
+         Complex goal = Make.goal("invite($X)");
          String[] expected = { "Penny", "Leonard" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
 
       try {
-         Complex goal = new Complex("invite2($X)");
+         Complex goal = Make.goal("invite2($X)");
          String[] expected = { "Penny", "Sheldon" };
          Solutions.verifyAll(goal, kb, expected, 1);
       } catch (TimeOverrunException tox) { }

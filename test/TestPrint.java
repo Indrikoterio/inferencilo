@@ -39,7 +39,7 @@ public class TestPrint {
 
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("print_test");
+         Complex goal = Make.goal("print_test");
          String[] expected = {"print_test"};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
@@ -48,7 +48,7 @@ public class TestPrint {
       System.out.println("Hello World, my name is Cleve.");
 
       try {
-         Complex goal = new Complex("print_test2");
+         Complex goal = Make.goal("print_test2");
          String[] expected = {"print_test2"};
          Solutions.verifyAll(goal, kb, expected, 0);
       } catch (TimeOverrunException tox) { }

@@ -32,7 +32,7 @@ public class TestOr {
 
       try {
          // Define goal and root of search space.
-         Complex goal = new Complex("teacher($X)");
+         Complex goal = Make.goal("teacher($X)");
          String[] expected = {
             "teacher(Apollonius)",
             "teacher(Aristoteles)",

@@ -81,31 +81,31 @@ public class TestPList {
 
       try {
 
-         goal = new Complex("goal1");
+         goal = Make.goal("goal1");
          String[] expected1 = {"goal1"};
          Solutions.verifyAll(goal, kb, expected1, 0);
 
-         goal = new Complex("goal2($H, $H2, $T)");
+         goal = Make.goal("goal2($H, $H2, $T)");
          String[] expected2 = {"goal2(lawyer, teacher, [programmer, janitor])"};
          Solutions.verifyAll(goal, kb, expected2, 0);
 
-         goal = new Complex("goal3($A, $B)");
+         goal = Make.goal("goal3($A, $B)");
          String[] expected3 = {"goal3(lawyer, [janitor])"};
          Solutions.verifyAll(goal, kb, expected3, 0);
 
-         goal = new Complex("goal4($T)");
+         goal = Make.goal("goal4($T)");
          String[] expected4 = {"goal4([teacher, programmer, janitor])"};
          Solutions.verifyAll(goal, kb, expected4, 0);
 
-         goal = new Complex("goal5($X)");
+         goal = Make.goal("goal5($X)");
          String[] expected5 = {"goal5([scientist, doctor, carpenter, sales manager])"};
          Solutions.verifyAll(goal, kb, expected5, 0);
 
-         goal = new Complex("goal6($H, $T)");
+         goal = Make.goal("goal6($H, $T)");
          String[] expected6 = {"goal6(scientist, [carpenter, sales manager])"};
          Solutions.verifyAll(goal, kb, expected6, 0);
 
-         goal = new Complex("goal7");
+         goal = Make.goal("goal7");
          String[] expected7 = {};  // should not unify
          Solutions.verifyAll(goal, kb, expected7, 0);
 

@@ -97,7 +97,7 @@ public class TestCompare {
       System.out.print("Test Compare: ");
 
       try {
-         goal = new Complex("test($W)");
+         goal = Make.goal("test($W)");
          String[] expected = { "passed", "passed", "failed",
                                "passed", "passed", "failed",
                                "passed", "passed", "failed",

@@ -64,7 +64,7 @@ public class TestErrorCheck {
 
          Global.maxErrors = 2;
          System.out.print("Test CheckError: ");
-         Complex goal = new Complex(test, PList.empty, x);
+         Complex goal = Make.goal(test, PList.empty, x);
          String[] expected = {"[Error 1]", "[Error 2, Error 1]"};
          Solutions.verifyAll(goal, kb, expected, 2);
 
