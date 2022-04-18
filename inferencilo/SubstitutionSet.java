@@ -23,8 +23,7 @@ import java.util.*;
 
 public class SubstitutionSet {
 
-//   private Unifiable[] bindings;
-   public Unifiable[] bindings;
+   private Unifiable[] bindings;
 
    /**
     * constructor
