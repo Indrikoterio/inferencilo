@@ -130,7 +130,9 @@ class ParseDemo {
 
       Variable X = Variable.inst("$X");  // placeholder variable
       try {
-         Complex goal = new Complex(ruleFunctor, inList, X);
+         // Must use Make.goal() to create a goal.
+         // new Complex() would cause errors.
+         Complex goal = Make.goal(ruleFunctor, inList, X);
          SolutionNode node = goal.getSolver(kb, new SubstitutionSet(), null);
          SubstitutionSet solution = node.nextSolution();
          if (solution != null) {
