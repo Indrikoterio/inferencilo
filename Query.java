@@ -30,6 +30,8 @@ import java.util.*;
 
 public class Query {
 
+   private static String previous;
+
    private static final String usage = "Inferencilo - 2021\n" +
                                        "Usage:\njava Query filename.inf";
 
@@ -57,46 +59,49 @@ public class Query {
 
       kb.addRules(rules);
 
-      try {
-
-         // Get goal from command line.
-         BufferedReader inReader =
-                 new BufferedReader(
-                     new InputStreamReader(System.in, "UTF-8"));
-
-         while (true) {
-
-            System.out.print("?- ");
-
-            String input = inReader.readLine();
-            if (input.length() == 0) break;
-            int len = input.length();
-            char c = input.charAt(len - 1);
-            if (c == '.') input = input.substring(0, len - 1);
-
-            try {
-               // Define goal and root of search space.
-               String strGoal = input;
-               Complex goal = new Complex(strGoal);
-               SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
-               while (true) {
-                  SubstitutionSet solution = root.nextSolution();
-                  if (solution == null) {
-                     System.out.println("No"); break;
-                  }
-                  String s = Solutions.toString(goal, solution);
-                  System.out.print(s);
-                  input = inReader.readLine();
-               } // while
-            } catch (TimeOverrunException tox) {
-               System.out.println("Time overrun.");
-            }
-
-         } // while loop
-
-      } catch (IOException iox) {
-         System.out.println("I/O error\n" + iox.toString());
+      Console cons = System.console();
+      if (cons == null) {
+         System.err.println("No console.");
+         System.exit(1);
       }
+
+      while (true) {
+
+         System.out.print("?- ");
+
+         String input = cons.readLine();
+         int len = input.length();
+         if (len == 0) break;
+
+         if (previous == null) {  // First time.
+            if (input.equals(".")) break;
+            previous = input;
+         }
+
+         if (input.equals(".")) { input = previous; }
+         else previous = input;
+
+         try {
+            // Define goal and root of search space.
+            String strGoal = input;
+            Complex goal = new Complex(strGoal);
+            SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+            while (true) {
+               SubstitutionSet solution = root.nextSolution();
+               if (solution == null) {
+                  System.out.println("No"); break;
+               }
+               String s = Solutions.toString(goal, solution);
+               System.out.print(s);
+               input = cons.readLine();
+               if (input.equals(".")) { input = previous; }
+               else if (input.length() > 0) previous = input;
+            } // while
+         } catch (TimeOverrunException tox) {
+            System.out.println("Time overrun.");
+         }
+
+      } // while loop
 
    } // main
 
