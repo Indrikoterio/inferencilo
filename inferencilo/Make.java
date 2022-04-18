@@ -43,6 +43,13 @@ import java.util.*;
 
 public class Make {
 
+   private static final int UNIFY = 1;  // Unify does unification
+   private static final int EQUAL = 2;  // ==  No unification. Simply compares.
+   private static final int GREATER_THAN = 3;
+   private static final int LESS_THAN = 4;
+   private static final int GREATER_THAN_OR_EQUAL = 5;
+   private static final int LESS_THAN_OR_EQUAL = 6;
+
    /**
     * term
     *
@@ -110,19 +117,17 @@ public class Make {
 
 
    /*
-    * specialIndexOf
+    * findInfix
     *
-    * This method returns the first index of the given character,
-    * but only if it is not within backticks or braces. If the
-    * code has:
-    *    print(`Is x > 7?`)
-    * ...then searching for '>' should return -1.
+    * findInfix() searches the given string for an infix (eg. <= > ==).
+    * If it finds one, it returns the index of the infix. For example,
+    *    $X < 6
+    * ...has a 'less than' infix at index 3.
     *
     * @param  string to search
-    * @param  character to match
     * @return index if found, or -1
     */
-   private static int specialIndexOf(String search, char match) {
+   private static int findInfix(String search) {
       int len = search.length();
       int i;
       for (i = 0; i < len; i++) {
@@ -144,10 +149,45 @@ public class Make {
                }
             } // for
          }
-         else if (c1 == match) return i;
+         else if (c1 == '<' || c1 == '>' || c1 == '=') {
+             return i;
+         }
       } // for
       return -1;
-   } // specialIndexOf
+   } // findInfix
+
+   /*
+    * identifyInfix
+    *
+    * identifyInfix() determines the kind of infix at the given index.
+    * For example, if the given string is "$X < 6" and the given index
+    * is 3, the method will return LESS_THAN.
+    *
+    * @param  string
+    * @param  index of infix
+    * @return type of infix
+    */
+   private static int identifyInfix(String str, int index) {
+      int length = str.length();
+      char c1 = str.charAt(index);
+      char c2 = ' ';
+      if (c1 == '<') {
+         if (index < length - 1) { c2 = str.charAt(index + 1); }
+         if (c2 == '=') return LESS_THAN_OR_EQUAL;
+         return LESS_THAN;
+      }
+      if (c1 == '>') {
+         if (index < length - 1) { c2 = str.charAt(index + 1); }
+         if (c2 == '=') return GREATER_THAN_OR_EQUAL;
+         return GREATER_THAN;
+      }
+      if (c1 == '=') {
+         if (index < length - 1) { c2 = str.charAt(index + 1); }
+         if (c2 == '=') return EQUAL;
+         return UNIFY;
+      }
+      return 0;
+   } // identifyInfix()
 
 
    /*
@@ -224,31 +264,29 @@ public class Make {
       }
 
       // Handle infixes: > <  >= <= ==
-      index = specialIndexOf(s, '>');
+      index = findInfix(s);
+      int typeOfInfix = 0;
+
       if (index > -1) {
-         if (index < len - 1 && s.charAt(index + 1) == '=') {
+         typeOfInfix = identifyInfix(s, index);
+         if (typeOfInfix == UNIFY) {
+            return new Unify(s);
+         } else if (typeOfInfix == EQUAL) {
+            List<String> lst = getTwoTerms(s, index, 2);
+            return new Equal(lst);
+         } else if (typeOfInfix == GREATER_THAN) {
+            List<String> lst = getTwoTerms(s, index, 1);
+            return new GreaterThan(lst);
+         } else if (typeOfInfix == LESS_THAN) {
+            List<String> lst = getTwoTerms(s, index, 1);
+            return new LessThan(lst);
+         } else if (typeOfInfix == GREATER_THAN_OR_EQUAL) {
             List<String> lst = getTwoTerms(s, index, 2);
             return new GreaterThanOrEqual(lst);
-         }
-         List<String> lst = getTwoTerms(s, index, 1);
-         return new GreaterThan(lst);
-      }
-      index = specialIndexOf(s, '<');
-      if (index > -1) {
-         if (index < len - 1 && s.charAt(index + 1) == '=') {
+         } else if (typeOfInfix == LESS_THAN_OR_EQUAL) {
             List<String> lst = getTwoTerms(s, index, 2);
             return new LessThanOrEqual(lst);
          }
-         List<String> lst = getTwoTerms(s, index, 1);
-         return new LessThan(lst);
-      }
-      index = specialIndexOf(s, '=');
-      if (index > -1) {
-         if (index < len - 1 && s.charAt(index + 1) == '=') {
-            List<String> lst = getTwoTerms(s, index, 2);
-            return new Equal(lst);
-         }
-         return new Unify(s);
       }
 
       // complex terms, built-in functions
