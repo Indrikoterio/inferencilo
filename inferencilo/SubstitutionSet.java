@@ -23,13 +23,14 @@ import java.util.*;
 
 public class SubstitutionSet {
 
-   private HashMap<Variable, Unifiable> bindings;
+//   private Unifiable[] bindings;
+   public Unifiable[] bindings;
 
    /**
     * constructor
     */
    public SubstitutionSet() { 
-      bindings = new HashMap<Variable, Unifiable>();
+      bindings = new Unifiable[20];
    }
 
    /**
@@ -38,7 +39,9 @@ public class SubstitutionSet {
     * @param  substitution set
     */
    public SubstitutionSet(SubstitutionSet ss) {
-      bindings = new HashMap<Variable, Unifiable>(ss.bindings);
+      int len = ss.bindings.length;
+      bindings = new Unifiable[len + 1];
+      System.arraycopy(ss.bindings, 0, bindings, 0, len);
    }
 
    /**
@@ -52,11 +55,21 @@ public class SubstitutionSet {
     * @throws AlreadyBoundException
     */
    public void add(Variable v, Unifiable e) throws AlreadyBoundException {
+      int id = v.id();
+      if (id == 0) { // This should not happen.
+         throw new InvalidVariableException(v.toString());
+      }
       if (isBound(v)) {
          throw new AlreadyBoundException();
       }
       else {
-         bindings.put(v, e);
+         int len = bindings.length;
+         if (id >= len) {
+            Unifiable[] newBindings = new Unifiable[id + 16];
+            System.arraycopy(bindings, 0, newBindings, 0, len);
+            bindings = newBindings;
+         }
+         bindings[id] = e;
       }
    }
 
@@ -67,7 +80,9 @@ public class SubstitutionSet {
     * @return  unifiable
     */
    public Unifiable getBinding(Variable v) {
-      return (Unifiable)bindings.get(v);
+      int id = v.id();
+      if (id >= bindings.length) return null;
+      return (Unifiable)bindings[id];
    }
 
    /**
@@ -80,7 +95,9 @@ public class SubstitutionSet {
     * @return  t/f
     */
    public boolean isBound(Variable v) {
-      return (bindings.get(v) != null);
+      int id = v.id();
+      if (id >= bindings.length) return false;
+      return (bindings[id] != null);
    }
 
 
@@ -99,7 +116,7 @@ public class SubstitutionSet {
       Variable  v = var;
       Unifiable u;
       while (true) {
-         u = (Unifiable)bindings.get(v);
+         u = (Unifiable)bindings[v.id()];
          if (u == null) return false;
          if (!(u instanceof Variable)) return true;  // Constant, Complex, PList
          v = (Variable)u;
@@ -120,7 +137,7 @@ public class SubstitutionSet {
       Variable  v = (Variable)term;
       Unifiable u;
       while (true) {
-         u = (Unifiable)bindings.get(v);
+         u = (Unifiable)bindings[v.id()];
          if (u == null) return v;
          if (!(u instanceof Variable)) return u;
          v = (Variable)u;
@@ -141,7 +158,7 @@ public class SubstitutionSet {
       Variable  v = var;
       Unifiable u;
       while (true) {
-         u = (Unifiable)bindings.get(v);
+         u = (Unifiable)bindings[v.id()];
          if (u == null) return null;
          if (!(u instanceof Variable)) return u;
          v = (Variable)u;
