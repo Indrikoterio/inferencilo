@@ -83,8 +83,8 @@ public class Query {
 
          try {
             // Define goal and root of search space.
-            String strGoal = input;
-            Complex goal = new Complex(strGoal);
+            // Please note: goals must be created with Make.goal().
+            Complex goal = Make.goal(input);
             SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
             while (true) {
                SubstitutionSet solution = root.nextSolution();
