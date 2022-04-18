@@ -34,7 +34,7 @@ import java.util.*;
 public class Variable implements Unifiable {
 
    private String name = null;
-   private static int nextId = 1;
+   private static int nextId = 0;
    private int id;
 
    private static HashMap<String, Variable> cache = new HashMap<>();
@@ -48,7 +48,7 @@ public class Variable implements Unifiable {
     * @param  name of variable
     */
    private Variable(String name) {
-      this.id = nextId++;
+      this.id = 0;
       this.name = name;
    }
 
@@ -85,7 +85,6 @@ public class Variable implements Unifiable {
       this.name = v.name();
    }
 
-
    /**
     * toString
     *
@@ -94,7 +93,10 @@ public class Variable implements Unifiable {
     *
     * @return  string representation
     */
-   public String toString() { return name + "_" + id; }
+   public String toString() {
+      if (id == 0) return name;
+      return name + "_" + id;
+   }
 
    /**
     * name
@@ -103,6 +105,25 @@ public class Variable implements Unifiable {
     */
    public String name() { return name; }
 
+
+   /**
+    * id
+    *
+    * @return  id of variable
+    */
+   int id() { return id; }
+
+   /**
+    * reset
+    *
+    * The size of the substitution set grows as the variable
+    * ID grows. (The variable ID is used to index into the
+    * substitution set.) If the variable ID is allowed to grow
+    * without limit, the substitution set will also grow without
+    * limit, which will greatly slow down the algorithm.
+    * Reset the variable ID before each search for a solution.
+    */
+   public static void reset() { nextId = 1; }
 
    /**
     * unify
