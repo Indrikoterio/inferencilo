@@ -37,8 +37,6 @@ public class Variable implements Unifiable {
    private static int nextId = 0;
    private int id;
 
-   private static HashMap<String, Variable> cache = new HashMap<>();
-
    /**
     * constructor
     *
@@ -51,26 +49,6 @@ public class Variable implements Unifiable {
       this.id = 0;
       this.name = name;
    }
-
-
-   /**
-    * inst
-    *
-    * Factory method to produce Variables, or fetch
-    * them from cache.
-    *
-    * @param  name of Variable
-    * @return Variable
-    */
-   public static Variable inst(String name) {
-      Variable v = cache.get(name);
-      if (v == null) {
-         v = new Variable(name);
-         cache.put(name, v);
-      }
-      return v;
-   }
-
 
    /*
     * copy constructor
@@ -172,47 +150,19 @@ public class Variable implements Unifiable {
       else return this;
    }
 
-
    /**
     * standardizeVariablesApart()
     *
     * Refer to Expression interface for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
       // Check if the expression already has a substitute variable.
-      Variable newVar = newVars.get(this);
+      Variable newVar = newVars.get(this.toString());
       if (newVar == null) {     // If not create one.
          newVar = new Variable(this);
-         newVars.put(this, newVar);
+         newVars.put(this.toString(), newVar);
       }
       return newVar;
    }  // standardizeVariablesApart
-
-
-   /**
-    * printCache
-    *
-    * This method displays entries in the variable cache.
-    * It's useful for debugging.
-    */
-   public static void printCache() {
-      System.out.println("---------- Variable Cache ----------");
-      for (String key : cache.keySet()) {
-         Variable v = cache.get(key);
-         System.out.println(v.toString());
-      }
-      System.out.println("------------------------------------");
-   } // printCache
-
-
-   /**
-    * cacheSize
-    *
-    * @param size of the cache
-    */
-   public static int cacheSize() {
-      return cache.size();
-   }
-
 
 }  // Variable
