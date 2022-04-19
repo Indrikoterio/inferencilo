@@ -38,7 +38,6 @@ public class Stats extends BuiltInPredicate {
    public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
 
       System.out.println("Constant cache size: " + Constant.cacheSize());
-      System.out.println("Variable cache size: " + Variable.cacheSize());
       return parentSolution;
 
    } // evaluate
@@ -47,7 +46,7 @@ public class Stats extends BuiltInPredicate {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);
