@@ -72,7 +72,7 @@ public class Make {
       // Return a variable.
       if (firstChar == '$' && len > 1) {
          if (s.charAt(1) == '_') return Anon.anon;
-         else return Variable.inst(s);
+         else return new Variable(s);
       }
 
       // If a string begins and ends with a backtick, everything
@@ -597,7 +597,7 @@ public class Make {
     */
    public static Complex goal(Unifiable... args) {
       Variable.reset();  // Always reset the variable ID.
-      HashMap<Variable, Variable> vars = new HashMap<Variable, Variable>();
+      HashMap<String, Variable> vars = new HashMap<String, Variable>();
       int n = args.length;
       Unifiable[] newArgs = new Unifiable[n];
       for (int i = 0; i < n; i++) {
