@@ -305,7 +305,7 @@ public class Complex implements Unifiable, Goal {
     * @param   hash table previously standardized variables
     * @return  expression with standardized variables
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
       Unifiable[] newTerms = new Unifiable[terms.length];
       // Create an array for new terms.
       for (int i = 0; i < length(); i++) {
