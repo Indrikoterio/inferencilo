@@ -555,7 +555,7 @@ public class PList implements Unifiable {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
       ArrayList<Unifiable> newTerms = new ArrayList<Unifiable>();
       PList thisList = this;
       boolean hasPipe = thisList.isTailVar();
