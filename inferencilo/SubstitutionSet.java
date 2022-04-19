@@ -164,7 +164,23 @@ public class SubstitutionSet {
       }
    }
 
-   public String toString() { return "Bindings: (" + bindings + ")"; }
+   /**
+    * toString()
+    *
+    * This method formats a list of bindings.
+    * It can be useful for debugging.
+    *
+    * @return  bindings (as string)
+    */
+   public String toString() {
+      StringBuilder sb = new StringBuilder("Bindings:\n");
+      int count = 0;
+      for (Unifiable u : bindings) {
+         sb.append(" " + count + "  " + u + "\n");
+         count++;
+      }
+      return sb.toString();
+   }
 
    /**
     * castConstant
