@@ -29,17 +29,17 @@ public class TestBuiltInPredicate {
 
    public static void main(String[] args) {
 
-      Variable X = Variable.inst("$X");
-      Variable Y = Variable.inst("$Y");
+      Variable X = new Variable("$X");
+      Variable Y = new Variable("$Y");
 
-      Variable H = Variable.inst("$H");
-      Variable T = Variable.inst("$T");
+      Variable H = new Variable("$H");
+      Variable T = new Variable("$T");
 
-      Variable In = Variable.inst("$In");
-      Variable In_err = Variable.inst("$InErr");
-      Variable Out = Variable.inst("$Out");
-      Variable Out_err = Variable.inst("$OutErr");
-      Variable Err2 = Variable.inst("$Err2");
+      Variable In = new Variable("$In");
+      Variable In_err = new Variable("$InErr");
+      Variable Out = new Variable("$Out");
+      Variable Out_err = new Variable("$OutErr");
+      Variable Err2 = new Variable("$Err2");
 
       Constant bip_test = new Constant("bip_test");
       Constant join_all = new Constant("join_all");

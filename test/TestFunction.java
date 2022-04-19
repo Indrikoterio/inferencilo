@@ -20,8 +20,8 @@ public class TestFunction {
 
    public static void main(String[] args) {
 
-      Variable Y      = Variable.inst("$Y");
-      Variable Word   = Variable.inst("$Word");
+      Variable Y      = new Variable("$Y");
+      Variable Word   = new Variable("$Word");
 
       Constant fix_cap = Constant.inst("fix_cap");
       Constant tokyo   = Constant.inst("tokyo");

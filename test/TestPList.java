@@ -33,9 +33,9 @@ public class TestPList {
             new Complex("goal2($H, $H2, $T)"),
             new Unify(
                jobs,
-               //new PList(Variable.inst("$H"),
-               //          Variable.inst("$H2"),
-               //          Variable.inst("$T"))
+               //new PList(new Variable("$H"),
+               //          new Variable("$H2"),
+               //          new Variable("$T"))
                PList.parse("[$H, $H2 | $T]")
             )
          ),
@@ -50,12 +50,12 @@ public class TestPList {
             new Unify(
                jobs,
                PList.parse("[$_ | $T]")
-               // new PList(Anon.anon, Variable.inst("$T"))
+               // new PList(Anon.anon, new Variable("$T"))
             )
          ),
          new Rule(
             new Complex("goal5($X)"),
-            new Unify(jobs4, Variable.inst("$X"))
+            new Unify(jobs4, new Variable("$X"))
          ),
          new Rule(
             new Complex("goal6($H, $T)"),

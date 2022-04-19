@@ -14,9 +14,9 @@ public class TestCompare {
 
    public static void main(String[] args) {
 
-      Variable X = Variable.inst("$X");
-      Variable Y = Variable.inst("$Y");
-      Variable Z = Variable.inst("$Z");
+      Variable X = new Variable("$X");
+      Variable Y = new Variable("$Y");
+      Variable Z = new Variable("$Z");
 
       Constant passed = new Constant("passed");
       Constant failed = new Constant("failed");

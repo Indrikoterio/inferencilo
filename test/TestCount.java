@@ -43,12 +43,12 @@ public class TestCount {
       PList p1 = new PList(false, green, blue);
       PList p2 = new PList(false, red, p1);
 
-      Variable c = Variable.inst("$Count");
+      Variable c = new Variable("$Count");
 
-      Variable tailVar = Variable.inst("$TailVar");
+      Variable tailVar = new Variable("$TailVar");
       PList p3 = new PList(false, one, two, three);
       PList p4 = new PList(true, red, green, blue, tailVar);
-      Variable newList = Variable.inst("$NewList");
+      Variable newList = new Variable("$NewList");
 
       kb = new KnowledgeBase(
          new Rule(new Complex("test_count($Count)"),
