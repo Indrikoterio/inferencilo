@@ -51,7 +51,7 @@ public class Anon implements Unifiable {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
       return this;
    }
 
