@@ -70,7 +70,7 @@ public class Unify extends Operator implements Goal {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
       Unifiable newTerm1 = (Unifiable)term1.standardizeVariablesApart(newVars);
       Unifiable newTerm2 = (Unifiable)term2.standardizeVariablesApart(newVars);
       return new Unify(newTerm1, newTerm2);
