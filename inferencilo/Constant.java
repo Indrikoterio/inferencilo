@@ -184,7 +184,7 @@ public class Constant implements Unifiable {
     * @param  prev - previously standardized variables (not used)
     * @return this constant
     */
-   public Expression standardizeVariablesApart(HashMap<Variable, Variable> prev) {
+   public Expression standardizeVariablesApart(HashMap<String, Variable> prev) {
       return this;
    }
 
