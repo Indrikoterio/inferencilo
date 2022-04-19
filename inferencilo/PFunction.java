@@ -174,7 +174,7 @@ public abstract class PFunction implements Unifiable {
     * @return  out argument
     */
    public Unifiable standardizeOne(Unifiable argument,
-                                      HashMap<Variable, Variable> newVars) {
+                                      HashMap<String, Variable> newVars) {
       if (argument instanceof Variable) {
          Variable arg = (Variable)argument;
          Unifiable newArgument = (Unifiable)arg.standardizeVariablesApart(newVars);
