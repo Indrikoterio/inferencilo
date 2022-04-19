@@ -128,7 +128,7 @@ class ParseDemo {
                                    PList inList,
                                    KnowledgeBase kb) {
 
-      Variable X = Variable.inst("$X");  // placeholder variable
+      Variable X = new Variable("$X");  // placeholder variable
       try {
          // Must use Make.goal() to create a goal.
          // new Complex() would cause errors.
@@ -384,10 +384,10 @@ class ParseDemo {
       Constant word = new Constant("word");
 
       // Define variables.
-      Variable H1 = Variable.inst("$H1");
-      Variable H2 = Variable.inst("$H2");
-      Variable T1 = Variable.inst("$T1");
-      Variable T2 = Variable.inst("$T2");
+      Variable H1 = new Variable("$H1");
+      Variable H2 = new Variable("$H2");
+      Variable T1 = new Variable("$T1");
+      Variable T2 = new Variable("$T2");
 
       /*
         words_to_pos/2 is a rule to convert a list of words into a list
