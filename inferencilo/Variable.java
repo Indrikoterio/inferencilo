@@ -47,7 +47,7 @@ public class Variable implements Unifiable {
     *
     * @param  name of variable
     */
-   private Variable(String name) {
+   public Variable(String name) {
       this.id = 0;
       this.name = name;
    }
