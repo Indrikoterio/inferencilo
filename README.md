@@ -25,7 +25,7 @@ Variables are defined by putting a dollar sign in front of the variable name:
 ```
  Constant mother = Constant.inst("mother");
  Constant Gina   = Constant.inst("Gina");
- Variable child  = Variable.inst("$Child");
+ Variable child  = new Variable("$Child");
  Complex  goal   = new Complex(mother, Gina, child);
 ```
 
