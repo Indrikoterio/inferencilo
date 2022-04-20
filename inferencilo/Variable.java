@@ -59,7 +59,8 @@ public class Variable implements Unifiable {
     * @param variable to copy
     */
    private Variable(Variable v) {
-      this.id = nextId++;
+      nextId++;
+      this.id = nextId;
       this.name = v.name();
    }
 
@@ -83,13 +84,25 @@ public class Variable implements Unifiable {
     */
    public String name() { return name; }
 
-
-   /**
+   /*
     * id
     *
     * @return  id of variable
     */
    int id() { return id; }
+
+   /**
+    * nextId
+    *
+    * Sets the variable ID to the nextId.
+    *
+    * @return this object
+    */
+   public Variable nextId() {
+      nextId++;
+      this.id = nextId;
+      return this;
+   }
 
    /**
     * reset
