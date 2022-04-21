@@ -72,3 +72,6 @@ java TestReadRules
 
 javac TestFilter.java
 java TestFilter
+
+javac TestMemoryLimit.java
+java TestMemoryLimit
