@@ -4,6 +4,7 @@ javac inferencilo/UnmatchedParenthesesException.java
 javac inferencilo/UnmatchedBracketsException.java
 javac inferencilo/InvalidExpressionException.java
 javac inferencilo/AlreadyBoundException.java
+javac inferencilo/MemoryLimitException.java
 javac inferencilo/ComplexSolutionNode.java
 javac inferencilo/AndSolutionNode.java
 javac inferencilo/ReadRules.java
