@@ -173,6 +173,9 @@ public class Variable implements Unifiable {
       Variable newVar = newVars.get(this.toString());
       if (newVar == null) {     // If not create one.
          newVar = new Variable(this);
+         if (newVar.id() > Global.maxVariables) {
+            throw new MemoryLimitException("Variable id: " + newVar.id());
+         }
          newVars.put(this.toString(), newVar);
       }
       return newVar;
