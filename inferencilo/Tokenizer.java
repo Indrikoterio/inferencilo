@@ -284,6 +284,7 @@ public class Tokenizer {
          }
          else if (type == TokenType.GROUP) {
             groupAndTokens(t);
+            groupOrTokens(t);
             andList.add(t);
          }
       } // for
@@ -313,17 +314,11 @@ public class Tokenizer {
       for (Token t : children) {
 
          TokenType type = t.type();
+         if (type == TokenType.SUBGOAL)  { orList.add(t); }
+         else if (type == TokenType.AND) { orList.add(t); }
+         else if (type == TokenType.GROUP) { orList.add(t); }
+         else if (type == TokenType.SEMICOLON) { } // Nothing to do.
 
-         if (type == TokenType.SUBGOAL || type == TokenType.AND) {
-            orList.add(t);
-         }
-         else if (type == TokenType.SEMICOLON) {
-            // Nothing to do.
-         }
-         else if (type == TokenType.GROUP) {
-            groupOrTokens(t);
-            orList.add(t);
-         }
       } // for
 
       int size = orList.size();
