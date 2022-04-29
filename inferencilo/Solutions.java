@@ -54,12 +54,14 @@ public class Solutions {
          int arity = goal.arity();
          StringBuilder sb = new StringBuilder();
          Complex result = (Complex)goal.replaceVariables(solution);
+         boolean first = true;
          for (int i = 0; i < arity; i++) {
             Unifiable term = goal.getTerm(i + 1);
             if (term instanceof Variable) {
-               if (i > 0) sb.append(", ");
+               if (!first) { sb.append(", "); }
                sb.append(((Variable)term).name() + " = " +
                               result.getTerm(i + 1).toString());
+               first = false;
             }
          }
          return sb.toString();
