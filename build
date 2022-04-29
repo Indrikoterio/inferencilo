@@ -8,4 +8,5 @@ javac inferencilo/MemoryLimitException.java
 javac inferencilo/ComplexSolutionNode.java
 javac inferencilo/AndSolutionNode.java
 javac inferencilo/ReadRules.java
+javac inferencilo/Solutions.java
 javac inferencilo/Make.java
