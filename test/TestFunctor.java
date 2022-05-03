@@ -1,7 +1,7 @@
 /**
  * TestFunctor
  *
- * Test the Functor function.
+ * Test the Functor built-in predicate.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -76,7 +76,6 @@ public class TestFunctor {
          System.out.println("TestFunctor: ------------- ERROR");
       }
       catch (TimeOverrunException tox) { }
-
 
       // A second test.
 
