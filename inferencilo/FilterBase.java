@@ -1,11 +1,13 @@
 /**
  * FilterBase
  *
- * This class is a parent class for filtering predicates
- * Include and Exclude.
+ * This class is a parent class for the built-in filtering predicates include()
+ * and exclude(). An input list of terms is filtered according to a filter goal.
+ * Please refer to Include.java and Exclude.java for more details.
  *
- * The first argument, a predicate name, must be a Constant,
- * which corresponds to a fact/rule with an arity of 1.
+ * The function evaluate() is defined here. Evaluate() calls passOrDiscard() in
+ * the subclass, in order to determine which terms should be included or removed
+ * from the output list.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -14,12 +16,10 @@
 package inferencilo;
 
 import java.util.*;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 
 public abstract class FilterBase extends BuiltInPredicate {
 
-   String filter;
+   Complex filter;  // This is a goal.
 
    /**
     * constructor
@@ -36,9 +36,12 @@ public abstract class FilterBase extends BuiltInPredicate {
       if (arguments.length < 3)
           throw new TooFewArgumentsException("in " + name);
 
-      filter = arguments[0].toString();
-      if (filter.length() < 1)
-          throw new InvalidArgumentException("first argument in " + name);
+      if (arguments[0] instanceof Complex) {
+         filter = (Complex)arguments[0];
+      }
+      else {
+         throw new InvalidArgumentException(name + " - first argument must be a goal.");
+      }
 
    } // FilterBase
 
@@ -65,9 +68,12 @@ public abstract class FilterBase extends BuiltInPredicate {
       if (arguments.length < 3)
           throw new TooFewArgumentsException("in " + name);
 
-      filter = arguments[0].toString();
-      if (filter.length() < 1)
-          throw new InvalidArgumentException("first argument in " + name);
+      if (arguments[0] instanceof Complex) {
+         filter = (Complex)arguments[0];
+      }
+      else {
+         throw new InvalidArgumentException(name + " - first argument must be a goal.");
+      }
 
    } // FilterBase
 
@@ -106,7 +112,7 @@ public abstract class FilterBase extends BuiltInPredicate {
                if (noBackTracking()) return null;
                if (!moreSolutions) return null;
                moreSolutions = false;
-               return evaluate(parentSolution, knowledge);
+               return evaluate(parentSolution);
             }
          };
 
@@ -118,45 +124,25 @@ public abstract class FilterBase extends BuiltInPredicate {
     *
     * Does the given pass the filter test?
     *
-    * @param  value
-    * @param  knowledge base
-    * @throws TimeOverrunException
+    * @param  term
+    * @param  solution set
     * @return true if value passes
     *
     */
-   abstract boolean passOrDiscard(Unifiable value, KnowledgeBase kb)
-                           throws TimeOverrunException;
-
-   /**
-    * evaluate
-    *
-    * This 'evaluate' it not used in Include. The one below it, which has
-    * a two parameters, is in use. This evaluate() is defined to override
-    * the abstract method definition in BuiltInPredicate.
-    *
-    * @param   substitution set of parent
-    * @return  new substitution set
-    */
-   public SubstitutionSet evaluate(SubstitutionSet ss) {
-      return null;
-   }
-
+   abstract boolean passOrDiscard(Unifiable term, SubstitutionSet ss);
 
    /**
     * evaluate the arguments
     *
-    * @param   Substitution Set
-    * @param   Knowledge Base
-    * @throws  TimeOverrunException
-    * @return  new Substitution Set
+    * @param  Substitution Set
+    * @return new Substitution Set
     */
-   SubstitutionSet evaluate(SubstitutionSet ss, KnowledgeBase kb)
-                            throws TimeOverrunException {
+   public SubstitutionSet evaluate(SubstitutionSet ss) {
 
       PList inList  = ss.castPList(arguments[1]);
       if (inList == null) return null;
 
-      List<Unifiable> out  = new ArrayList<Unifiable>();
+      List<Unifiable> out = new ArrayList<Unifiable>();
 
       PList pList = inList;
       int count = inList.recursiveCount(ss);
@@ -172,7 +158,7 @@ public abstract class FilterBase extends BuiltInPredicate {
             }
          }
          if (head == null) break;
-         if (passOrDiscard(ss.getGroundTerm(head), kb)) {
+         if (passOrDiscard(head, ss)) {
             out.add(head);
          }
          pList = pList.getTail();

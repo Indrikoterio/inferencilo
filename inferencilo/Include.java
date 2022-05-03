@@ -1,13 +1,16 @@
 /**
  * Include
  *
- * Include filters terms from an input list, according to the
- * filter predicate. It returns a new list. Eg.
+ * The built-in predicate 'Include' filters terms from an input list, according
+ * to a filter term. Its arguments are: filter, input list, output list. Eg.
  *
- * ..., include(filter_predicate_name, $InList, $OutList),...
+ * ...$InList = [male(Sheldon), female(Penny), female(Bernadette), male(Leonard)]
+ * ...include(male($_), $InList, $OutList),...
  *
- * The first argument, a predicate name, must be a Constant,
- * which corresponds to a fact/rule with an arity of 1.
+ * The filter term is a goal. Items in the input list which are unifiable
+ * with the goal will be written to the output list.
+ *
+ * The output list above will contain only males, [male(Sheldon), male(Leonard)]
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -28,7 +31,6 @@ public class Include extends FilterBase {
       super("Include", arguments);
    } // Include
 
-
    /**
     * constructor
     *
@@ -41,20 +43,17 @@ public class Include extends FilterBase {
    /*
     * passOrDiscard
     *
-    * Does the given pass the filter test?
+    * Does the given term pass the filter? In other words,
+    * can the given term unify with the filter goal?
     *
-    * @param  value
-    * @param  knowledge base
-    * @throws TimeOverrunException
-    * @return true if value passes
+    * @param  term
+    * @param  substitution set
+    * @return true if term passes
     *
     */
-   boolean passOrDiscard(Unifiable value, KnowledgeBase kb)
-                         throws TimeOverrunException {
-      Complex goal = new Complex(filter + "(" + value + ").");
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
-      SubstitutionSet solution = root.nextSolution();
-      if (solution != null) return true;
+   boolean passOrDiscard(Unifiable term, SubstitutionSet ss) {
+      SubstitutionSet newSS = filter.unify(term, ss);
+      if (newSS != null) return true;
       else return false;
    }
 

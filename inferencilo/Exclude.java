@@ -1,14 +1,16 @@
 /**
  * Exclude
  *
- * Exclude is the opposite of Include. It takes a list, and
- * creates a new list of arguments which are excluded by the
- * given filter predicate. Eg.
+ * The built-in predicate 'Exclude' filters terms from an input list, according
+ * to a filter term. Its arguments are: filter, input list, output list. Eg.
  *
- * ..., exclude(filter_predicate_name, $InList, $OutList),...
+ * ...$InList = [male(Sheldon), female(Penny), female(Bernadette), male(Leonard)]
+ * ...exclude(male($_), $InList, $OutList),...
  *
- * The first argument, a predicate name, must be a Constant,
- * which corresponds to a fact/rule with an arity of 1.
+ * The filter term is a goal. Items in the input list which are unifiable
+ * with the goal will NOT be written to the output list.
+ *
+ * The output list above will contain only females, [female(Penny), female(Bernadette)]
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -29,7 +31,6 @@ public class Exclude extends FilterBase {
       super("Exclude", arguments);
    } // Exclude
 
-
    /**
     * constructor
     *
@@ -42,20 +43,17 @@ public class Exclude extends FilterBase {
    /*
     * passOrDiscard
     *
-    * Does the given pass the filter test?
+    * Does the given term pass the filter? In other words,
+    * can the given term NOT unify with the filter goal?
     *
-    * @param  value
-    * @param  knowledge base
-    * @throws TimeOverrunException
-    * @return true if value passes
+    * @param  term
+    * @param  substitution set
+    * @return true if term passes
     *
     */
-   boolean passOrDiscard(Unifiable value, KnowledgeBase kb)
-                         throws TimeOverrunException {
-      Complex goal = new Complex(filter + "(" + value + ").");
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
-      SubstitutionSet solution = root.nextSolution();
-      if (solution == null) return true;
+   boolean passOrDiscard(Unifiable term, SubstitutionSet ss) {
+      SubstitutionSet newSS = filter.unify(term, ss);
+      if (newSS == null) return true;
       else return false;
    }
 
