@@ -83,9 +83,9 @@ public class Functor extends BuiltInPredicate {
    /**
     * evaluate
     *
-    * Determines the functor and arity of the first argument. Bind
+    * Determines the functor and arity of the first argument. Binds
     * the functor to the second argument, and the arity to the third
-    * argument, if there is one. Return the new substitution set,
+    * argument, if there is one. Returns the new substitution set,
     * or null for failure.
     *
     * @param  parentSolution
@@ -123,6 +123,7 @@ public class Functor extends BuiltInPredicate {
          }
          else {
             ss = term.unify(new Constant(functor), ss);
+            if (ss == null) return ss;
          }
       }
       if (arguments.length > 2) {
