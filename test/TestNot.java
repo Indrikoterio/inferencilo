@@ -9,12 +9,19 @@
  * mother($X, $Y) := female($X), parent($X, $Y).
  * father($X, $Y) := parent($X, $Y), not(female($X)).
  *
- * A second test.
+ * ?- father($X, Daniel)
+ *
+ *--------------------------
+ * A second and third test.
  *
  * friend(Penny).
  * friend(Sheldon).
  * friend(Leonard).
  * invite($X) :- friend($X), not($X = Sheldon).
+ * invite2($X) :- friend($X), not($X = Leonard).
+ *
+ * ?- invite($X)
+ * ?- invite2($X)
  *
  * @author  Klivo
  * @version 1.0
