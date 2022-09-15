@@ -83,11 +83,18 @@ public class ComplexSolutionNode extends SolutionNode {
       Rule rule;
 
       while (hasNextRule() == true) {
+
+         // The fallbackId saves the nextId, in case the next rule fails.
+         // Restoring this id to nextId will keep the substitution set small.
+         int fallbackId = Variable.getNextId();
+
          rule = nextRule();
          Complex head = rule.getHead();
          solution = head.unify((Unifiable)goal, getParentSolution());
 
-         if (solution != null) {
+         if (solution == null) {  // If it fails, restore Id.
+            Variable.setNextId(fallbackId);
+         } else { // Success.
             Goal body = rule.getBody();
             if (body == null) return solution;
             child = body.getSolver(getKnowledgeBase(), solution, this);
