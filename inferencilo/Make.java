@@ -124,13 +124,17 @@ public class Make {
     *    $X < 6
     * ...has a 'less than' infix at index 3.
     *
+    * Note: The infix must be preceded by a space. This is no good: $X<6
+    *
     * @param  string to search
     * @return index if found, or -1
     */
    private static int findInfix(String search) {
+
       int len = search.length();
-      int i;
-      for (i = 0; i < len; i++) {
+      char previous = '#';
+
+      for (int i = 0; i < len; i++) {
          char c1 = search.charAt(i);
          if (c1 == '`') {
             for (int j = i + 1; j < len; j++) {
@@ -149,11 +153,15 @@ public class Make {
                }
             } // for
          }
-         else if (c1 == '<' || c1 == '>' || c1 == '=') {
-             return i;
+         else if (previous == ' ') {
+             if (c1 == '<' || c1 == '>' || c1 == '=') return i;
          }
+         previous = c1;
+
       } // for
+
       return -1;
+
    } // findInfix
 
    /*
@@ -163,6 +171,8 @@ public class Make {
     * For example, if the given string is "$X < 6" and the given index
     * is 3, the method will return LESS_THAN.
     *
+    * Note: Infix must be followed by a space. This is bad: $X <6
+    *
     * @param  string
     * @param  index of infix
     * @return type of infix
@@ -170,23 +180,25 @@ public class Make {
    private static int identifyInfix(String str, int index) {
       int length = str.length();
       char c1 = str.charAt(index);
-      char c2 = ' ';
+      char c2 = '#';
+      char c3 = '#';
+      if (index < length - 1) { c2 = str.charAt(index + 1); }
+      if (index < length - 2) { c3 = str.charAt(index + 2); }
       if (c1 == '<') {
-         if (index < length - 1) { c2 = str.charAt(index + 1); }
-         if (c2 == '=') return LESS_THAN_OR_EQUAL;
-         return LESS_THAN;
+         if (c2 == '=' && c3 == ' ') return LESS_THAN_OR_EQUAL;
+         if (c2 == ' ') return LESS_THAN;
       }
-      if (c1 == '>') {
-         if (index < length - 1) { c2 = str.charAt(index + 1); }
-         if (c2 == '=') return GREATER_THAN_OR_EQUAL;
-         return GREATER_THAN;
+      else if (c1 == '>') {
+         if (c2 == '=' && c3 == ' ') return GREATER_THAN_OR_EQUAL;
+         if (c2 == ' ') return GREATER_THAN;
       }
-      if (c1 == '=') {
-         if (index < length - 1) { c2 = str.charAt(index + 1); }
-         if (c2 == '=') return EQUAL;
-         return UNIFY;
+      else if (c1 == '=') {
+         if (c2 == '=' && c3 == ' ') return EQUAL;
+         if (c2 == ' ') return UNIFY;
       }
+
       return 0;
+
    } // identifyInfix()
 
 
