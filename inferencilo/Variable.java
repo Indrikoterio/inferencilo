@@ -105,6 +105,20 @@ public class Variable implements Unifiable {
    }
 
    /**
+    * getNextId
+    * This is a getter. It simply returns the value of nextId.
+    * @return next ID
+    */
+   public static int getNextId() { return nextId; }
+
+   /**
+    * setNextId
+    * Sets the value of nextId.
+    * @param id
+    */
+   public static void setNextId(int id) { nextId = id; }
+
+   /**
     * reset
     *
     * The size of the substitution set grows as the variable
