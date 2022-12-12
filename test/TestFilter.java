@@ -28,7 +28,7 @@ public class TestFilter {
       Complex c5 = new Complex("female(Penny)");
       Complex c6 = new Complex("female(Bernadette)");
       Complex c7 = new Complex("female(Amy)");
-      PList people = new PList(false, c1, c2, c3, c4, c5, c6, c7);
+      SLinkedList people = new SLinkedList(false, c1, c2, c3, c4, c5, c6, c7);
 
       Complex list_wimmin = new Complex("list_wimmin($W)");
       Complex list_nerds  = new Complex("list_nerds($N)");

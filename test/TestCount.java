@@ -40,14 +40,14 @@ public class TestCount {
       Constant two   = new Constant("two");
       Constant three = new Constant("three");
 
-      PList p1 = new PList(false, green, blue);
-      PList p2 = new PList(false, red, p1);
+      SLinkedList p1 = new SLinkedList(false, green, blue);
+      SLinkedList p2 = new SLinkedList(false, red, p1);
 
       Variable c = new Variable("$Count");
 
       Variable tailVar = new Variable("$TailVar");
-      PList p3 = new PList(false, one, two, three);
-      PList p4 = new PList(true, red, green, blue, tailVar);
+      SLinkedList p3 = new SLinkedList(false, one, two, three);
+      SLinkedList p4 = new SLinkedList(true, red, green, blue, tailVar);
       Variable newList = new Variable("$NewList");
 
       kb = new KnowledgeBase(
@@ -72,7 +72,7 @@ public class TestCount {
          ),
          new Rule(new Complex("test_count($Count)"),
             new And(
-               new Unify(tailVar, PList.empty),
+               new Unify(tailVar, SLinkedList.empty),
                new Unify(newList, p4),
                new Count(newList, c)
             )

@@ -35,7 +35,7 @@ public class TestConjunctionList {
       String str1 = "[pronoun(We), verb(visited), ";
       String str2 = "noun(Canada), comma(\\,), noun(Italy), ";
       String str3 = "conjunction(and), noun(Germany)]";
-      PList sentence_in = PList.make(str1 + str2 + str3);
+      SLinkedList sentence_in = SLinkedList.make(str1 + str2 + str3);
 
       KnowledgeBase kb = new KnowledgeBase();
       ConjunctionList.makeRule(kb, collect_noun_list, "comma", "conjunction", "noun");
@@ -50,7 +50,7 @@ public class TestConjunctionList {
             scan_sentence(I2, I3)).
        */
 
-      rule = new Rule(new Complex(scan_sentence, In, new PList(true, ConjList, I3)),
+      rule = new Rule(new Complex(scan_sentence, In, new SLinkedList(true, ConjList, I3)),
                          new And(
                             new Complex(collect_noun_list, In, ConjList, I2),
                             new Complex(scan_sentence, I2, I3)
@@ -62,8 +62,8 @@ public class TestConjunctionList {
        scan_sentence([H | T1], [H | T2]) :- scan_sentence(T1, T2).
        */
 
-      rule = new Rule(new Complex(scan_sentence, new PList(true, H, T1),
-                                                 new PList(true, H, T2)),
+      rule = new Rule(new Complex(scan_sentence, new SLinkedList(true, H, T1),
+                                                 new SLinkedList(true, H, T2)),
                             new And(new Complex(scan_sentence, T1, T2))
                          );
 

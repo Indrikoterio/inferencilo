@@ -57,19 +57,19 @@ public class TestBuiltInPredicate {
             new Complex(join_all, In, Out, In_err, Out_err),
             new And(
                new Hyphenate(In, H, T, In_err, Err2),
-               new Complex(join_all, new PList(true, H, T), Out, Err2, Out_err)
+               new Complex(join_all, new SLinkedList(true, H, T), Out, Err2, Out_err)
             )
          ),
 
          new Rule(
-            new Complex(join_all, new PList(false, H), H, X, X)
+            new Complex(join_all, new SLinkedList(false, H), H, X, X)
          ),
 
          new Rule(
             new Complex(bip_test, Out, Out_err),
             new And(
-               new Unify(In, PList.parse("[sister, in, law]")),
-               new Unify(In_err, PList.parse("[first error]")),
+               new Unify(In, SLinkedList.parse("[sister, in, law]")),
+               new Unify(In_err, SLinkedList.parse("[first error]")),
                new Complex(join_all, In, Out, In_err, Out_err)
             )
          )

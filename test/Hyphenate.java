@@ -52,14 +52,14 @@ public class Hyphenate extends BuiltInPredicate {
     */
    public SubstitutionSet evaluate(SubstitutionSet ss) {
 
-      PList inList = ss.castPList(arguments[0]);
+      SLinkedList inList = ss.castSLinkedList(arguments[0]);
       if (inList == null) return null;
 
-      PList inErrors = ss.castPList(arguments[3]);
+      SLinkedList inErrors = ss.castSLinkedList(arguments[3]);
       if (inErrors == null) return null;
 
       Constant err = new Constant("another error");
-      Unifiable newErrorList = new PList(false, err, inErrors);  // Add an error.
+      Unifiable newErrorList = new SLinkedList(false, err, inErrors);  // Add an error.
 
       Unifiable[] terms = inList.flatten(2, ss);  // Get two terms
       if (terms == null) return null;
