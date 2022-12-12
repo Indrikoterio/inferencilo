@@ -34,8 +34,7 @@
  *
  *    ["They", "envy", "us", "."]
  *
- * Next it creates a Prolog-style linked list (PList), by calling
- * makeLinkedList():
+ * Next it creates a linked list (SLinkedList), by calling makeLinkedList():
  *
  *      [They, envy, us, .]
  *
@@ -125,7 +124,7 @@ class ParseDemo {
     * @param  knowledgeBase
     */
    private static void oneSolution(Constant ruleFunctor,
-                                   PList inList,
+                                   SLinkedList inList,
                                    KnowledgeBase kb) {
 
       Variable X = new Variable("$X");  // placeholder variable
@@ -137,7 +136,7 @@ class ParseDemo {
          SubstitutionSet solution = node.nextSolution();
          if (solution != null) {
             Complex result = (Complex)goal.replaceVariables(solution);
-            PList outList = (PList)result.getTerm(2);  // Get the out list.
+            SLinkedList outList = (SLinkedList)result.getTerm(2);  // Get the out list.
             System.out.print("\n");
          }
          else {
@@ -191,15 +190,15 @@ class ParseDemo {
     * @param  list of words
     * @return linked list of words
     */
-   private static PList makeLinkedList(List<String> words) {
+   private static SLinkedList makeLinkedList(List<String> words) {
 
-      // Put all the words into a Prolog-style linked list.
+      // Put all the words into a linked list.
       // First, create a list of Constant terms.
       List<Unifiable> terms = new ArrayList<Unifiable>();
       for (String word : words) { terms.add(new Constant(word)); }
 
       boolean hasPipe = false;
-      return new PList(hasPipe, terms);
+      return new SLinkedList(hasPipe, terms);
 
    } // makeLinkedList
 
@@ -214,10 +213,10 @@ class ParseDemo {
     * @param  knowledge base
     * @return word list (linked list)
     */
-   private static PList sentenceToFacts(String sentence, KnowledgeBase kb) {
+   private static SLinkedList sentenceToFacts(String sentence, KnowledgeBase kb) {
 
       List<String> words = sentenceToWords(sentence);
-      PList wordList = makeLinkedList(words);
+      SLinkedList wordList = makeLinkedList(words);
 
       // Load part of speech data.
       PartOfSpeech pos = PartOfSpeech.getPartOfSpeech();
@@ -400,8 +399,9 @@ class ParseDemo {
 
        */
 
-      Rule rule = new Rule(new Complex(words_to_pos, new PList(true, H1, T1),
-                                                     new PList(true, H2, T2)),
+      Rule rule = new Rule(new Complex(words_to_pos,
+                               new SLinkedList(true, H1, T1),
+                               new SLinkedList(true, H2, T2)),
                          new And(
                             new Complex(word, H1, H2),
                             new Complex(words_to_pos, T1, T2)
@@ -421,7 +421,7 @@ class ParseDemo {
 
       kb.addRule(rule);  // Add the rule to our knowledge base.
 
-      rule = new Rule(new Complex(words_to_pos, PList.empty, PList.empty));
+      rule = new Rule(new Complex(words_to_pos, SLinkedList.empty, SLinkedList.empty));
       // Alternative (simpler) rule definition:
       //rule = new Rule("words_to_pos([], [])");
       kb.addRule(rule);
