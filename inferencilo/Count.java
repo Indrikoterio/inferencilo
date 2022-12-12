@@ -1,7 +1,7 @@
 /**
  * Count
  *
- * This predicate returns the number of items in a list (PList).
+ * This predicate returns the number of items in a list (SLinkedList).
  * It doesn't actually count them. The count is stored in each item.
  *
  * @author  Cleve (Klivo) Lendon
@@ -58,9 +58,9 @@ public class Count extends BuiltInPredicate {
 
       // Get first argument.
       /* Nope - have to count.
-      PList pList = ss.castPList(arguments[0]);
-      if (pList == null) return null;
-      Constant count = new Constant("" + pList.count());
+      SLinkedList sList = ss.castSLinkedList(arguments[0]);
+      if (sList == null) return null;
+      Constant count = new Constant("" + sList.count());
       return arguments[1].unify(count, ss);
       */
 
@@ -85,12 +85,14 @@ public class Count extends BuiltInPredicate {
        */
 
       // Get first item.
-      PList pList = ss.castPList(arguments[0]);
-      if (pList == null) {
-        throw new InvalidOperandException("Count's first argument must be a PList.");
+      SLinkedList sList = ss.castSLinkedList(arguments[0]);
+      if (sList == null) {
+        throw new InvalidOperandException(
+                      "Count's first argument must be an SLinkedList."
+                  );
       }
 
-      int count = pList.recursiveCount(ss);
+      int count = sList.recursiveCount(ss);
       return arguments[1].unify(new Constant("" + count), ss);
 
    } // evaluate

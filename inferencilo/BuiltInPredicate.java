@@ -160,7 +160,7 @@ public abstract class BuiltInPredicate implements Goal {
     *
     * If the given term is a Constant, return its string value,
     * If the given term is a Complex term, return the string value of the first term.
-    * If it is a PList, iterate through the list to produce a readable string.
+    * If it is a SLinkedList, iterate through the list to produce a readable string.
     * (Commas should have no space in front.)
     *
     * @param   term
@@ -181,16 +181,16 @@ public abstract class BuiltInPredicate implements Goal {
          if (t.length() < 2) return "";
          return displayString(t.getTerm(1), ss);
       }
-      if (term instanceof PList) {
+      if (term instanceof SLinkedList) {
 
-         PList plist = (PList)term;
+         SLinkedList sList = (SLinkedList)term;
 
          StringBuilder sb = new StringBuilder("");
-         Unifiable head = plist.getHead();
+         Unifiable head = sList.getHead();
          if (head == null) return "";
          sb.append(displayString(head, ss));  // recursion
 
-         PList theTail = plist.getTail();
+         SLinkedList theTail = sList.getTail();
          while (theTail != null) {
             head = theTail.getHead();
             if (head == null) break;

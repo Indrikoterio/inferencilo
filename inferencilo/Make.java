@@ -56,7 +56,7 @@ public class Make {
     * A factory method to produce a unifiable term from a string.
     *
     * @param   string representing term, eg.: "noun", "$X", "[1, 2, 3]"
-    * @return  Unifiable object, Constant, Variable, PList etc.
+    * @return  Unifiable object, Constant, Variable, SLinkedList etc.
     * @throws  InvalidComplexTermException, InvalidListException
     */
    public static Unifiable term(String str) {
@@ -103,10 +103,10 @@ public class Make {
          else throw new InvalidComplexTermException(s);
       }  // Complex terms
 
-      // List (PList), eg:   [a, b, c]
+      // List (SLinkedList), eg:   [a, b, c]
       if (bracket1 >= 0) {
          if (bracket2 > bracket1) {
-            return PList.parse(s);
+            return SLinkedList.parse(s);
          }
          throw new InvalidListException(s);
       }  // List

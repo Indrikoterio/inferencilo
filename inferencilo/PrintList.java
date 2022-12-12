@@ -81,9 +81,9 @@ public class PrintList extends BuiltInPredicate {
     * @param  list
     * @param  substitution set
     */
-   private void showList(PList listo, SubstitutionSet ss) {
-      PList pList = listo;
-      Unifiable head = pList.getHead();
+   private void showList(SLinkedList listo, SubstitutionSet ss) {
+      SLinkedList sList = listo;
+      Unifiable head = sList.getHead();
       if (head == null) {
          System.out.print("");
       }
@@ -91,14 +91,14 @@ public class PrintList extends BuiltInPredicate {
          System.out.print(getGround(head, ss));
       }
       while (head != null) {
-         pList = pList.getTail();
-         head = pList.getHead();
-         if (pList.isTailVar() && head != Anon.anon) {
+         sList = sList.getTail();
+         head = sList.getHead();
+         if (sList.isTailVar() && head != Anon.anon) {
             Variable hVar  = (Variable)(head);
-            PList term = ss.castPList(hVar);
+            SLinkedList term = ss.castSLinkedList(hVar);
             if (term != null) {
-               pList = (PList)term;
-               head = pList.getHead();
+               sList = (SLinkedList)term;
+               head = sList.getHead();
             }
          }
          if (head == null) break;
@@ -121,7 +121,7 @@ public class PrintList extends BuiltInPredicate {
       if (arguments.length == 0) return parentSolution;
       for (Unifiable term : arguments) {
          Unifiable term2 = getGround(term, parentSolution);
-         if (term2 instanceof PList) showList((PList)term2, parentSolution);
+         if (term2 instanceof SLinkedList) showList((SLinkedList)term2, parentSolution);
       }
       return parentSolution;
 

@@ -10,8 +10,8 @@
  * solution (partial or final).
  *
  * This class also has methods to get the ground term of a
- * Variable, and cast it as a Constant, Complex term, or PList.
- * See castConstant(), castComplex(), castPList().
+ * Variable, and cast it as a Constant, Complex term, or SLinkedList.
+ * See castConstant(), castComplex(), castSLinkedList().
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
@@ -117,7 +117,7 @@ public class SubstitutionSet {
       while (true) {
          u = (Unifiable)bindings[v.id()];
          if (u == null) return false;
-         if (!(u instanceof Variable)) return true;  // Constant, Complex, PList
+         if (!(u instanceof Variable)) return true;  // Constant, Complex, SLinkedList
          v = (Variable)u;
       }
    }
@@ -225,26 +225,26 @@ public class SubstitutionSet {
 
 
    /**
-    * castPList
+    * castSLinkedList
     *
-    * If the given Unifiable is an instance of PList, cast it
-    * as PList and return it. If it is a Variable, get the term
-    * which it is bound to. If that term is a PList, cast it as
-    * a PList and return it. Otherwise return null.
+    * If the given Unifiable is an instance of SLinkedList, cast it
+    * as SLinkedList and return it. If it is a Variable, get the term
+    * which it is bound to. If that term is a SLinkedList, cast it as
+    * a SLinkedList and return it. Otherwise return null.
     *
     * @param  unifiable term
-    * @param  plist or null
+    * @param  linked list or null
     */
-   public PList castPList(Unifiable term) {
-      if (term instanceof PList) return (PList)term;
+   public SLinkedList castSLinkedList(Unifiable term) {
+      if (term instanceof SLinkedList) return (SLinkedList)term;
       Unifiable outTerm = null;
       if (term instanceof Variable) {
          outTerm = getGroundTermOrNull((Variable)term);
          if (outTerm == null) return null;
       }
-      if (outTerm instanceof PList) return (PList)outTerm;
+      if (outTerm instanceof SLinkedList) return (SLinkedList)outTerm;
       return null;
-   } // castPList()
+   } // castSLinkedList()
 
 } // SubstitutionSet
 

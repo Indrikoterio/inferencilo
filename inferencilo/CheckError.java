@@ -47,7 +47,7 @@ public class CheckError extends BuiltInPredicate {
 
       if (arguments.length < 3) return null;
 
-      PList errorList = parentSolution.castPList(getTerm(0));
+      SLinkedList errorList = parentSolution.castSLinkedList(getTerm(0));
       if (errorList == null) return null;
       if (errorList.count() >= Global.maxErrors) return null;
 
@@ -55,7 +55,7 @@ public class CheckError extends BuiltInPredicate {
       Constant newError = parentSolution.castConstant(getTerm(1));
       if (newError == null) return null;
 
-      PList newList = new PList(true, newError, errorList);
+      SLinkedList newList = new SLinkedList(true, newError, errorList);
       if (newList == null) return null;
 
       Unifiable outArgument = getTerm(2);

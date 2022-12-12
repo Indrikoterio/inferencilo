@@ -139,32 +139,32 @@ public abstract class FilterBase extends BuiltInPredicate {
     */
    public SubstitutionSet evaluate(SubstitutionSet ss) {
 
-      PList inList  = ss.castPList(arguments[1]);
+      SLinkedList inList  = ss.castSLinkedList(arguments[1]);
       if (inList == null) return null;
 
       List<Unifiable> out = new ArrayList<Unifiable>();
 
-      PList pList = inList;
+      SLinkedList sList = inList;
       int count = inList.recursiveCount(ss);
 
       for (int i = 0; i < count; i++) {
-         Unifiable head = pList.getHead();
-         if (pList.isTailVar() && head != Anon.anon) {
+         Unifiable head = sList.getHead();
+         if (sList.isTailVar() && head != Anon.anon) {
             Variable hVar  = (Variable)(head);
-            PList term = ss.castPList(hVar);
+            SLinkedList term = ss.castSLinkedList(hVar);
             if (term != null) {
-               pList = (PList)term;
-               head = pList.getHead();
+               sList = (SLinkedList)term;
+               head = sList.getHead();
             }
          }
          if (head == null) break;
          if (passOrDiscard(head, ss)) {
             out.add(head);
          }
-         pList = pList.getTail();
+         sList = sList.getTail();
       } // for
 
-      PList outList = new PList(false, out);
+      SLinkedList outList = new SLinkedList(false, out);
       return outList.unify(arguments[2], ss);
 
    } // evaluate()

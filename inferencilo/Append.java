@@ -2,14 +2,14 @@
  * Append
  *
  * This class implements a built-in predicate which appends terms to
- * make a PList. For example:
+ * make a list. For example:
  *
  *   $X = a, append($X, b, [c, d, e], [f, g], $OutList)
  *
  * The last argument, $OutList, is an output argument which will bind
  * to [a, b, c, d, e, f, g]
  *
- * Input arguments can be Constants, Variables, Complex terms, or PLists.
+ * Input arguments can be Constants, Variables, Complex terms, or SLinkedLists.
  *
  * There must be at least 2 arguments.
  *
@@ -62,8 +62,6 @@ public class Append extends BuiltInPredicate {
     */
    public SubstitutionSet evaluate(SubstitutionSet parentSolution) {
 
-      PList resultPList = null;
-
       if (arguments.length < 2) return null;
 
       List<Unifiable> argList = new ArrayList<Unifiable>();
@@ -96,24 +94,24 @@ public class Append extends BuiltInPredicate {
          else if (term instanceof Complex) {
             argList.add(term);
          }
-         else if (term instanceof PList) {
-            PList plist = (PList)term;
+         else if (term instanceof SLinkedList) {
+            SLinkedList sList = (SLinkedList)term;
             while (true) {
-               Unifiable head = plist.getHead();
+               Unifiable head = sList.getHead();
                if (head == null) break;
                argList.add(head);
-               plist = plist.getTail();
-               if (plist == null) break;
+               sList = sList.getTail();
+               if (sList == null) break;
             }
          }
       }
 
-      PList outPList = new PList(false, argList);
-      if (outPList == null) return null;
+      SLinkedList outSLinkedList = new SLinkedList(false, argList);
+      if (outSLinkedList == null) return null;
 
       Unifiable lastTerm = getTerm(arguments.length - 1);
 
-      return lastTerm.unify(outPList, parentSolution);
+      return lastTerm.unify(outSLinkedList, parentSolution);
 
    }  // evaluate()
 
