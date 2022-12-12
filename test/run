@@ -34,8 +34,8 @@ java TestFunctor
 javac TestErrorCheck.java
 java TestErrorCheck
 
-javac TestPList.java
-java TestPList
+javac TestList.java
+java TestList
 
 javac TestAppend.java
 java TestAppend
