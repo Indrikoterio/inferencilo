@@ -13,7 +13,7 @@
  * https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
  *
  * The program starts at main. The first thing it does is to create a
- * KnowledgeBase. Next it defines some Constants and Variables, and some
+ * KnowledgeBase. Next it defines some Constants and LogicVars, and some
  * Rules, which it adds to the KnowledgeBase.
  *
  * The static method ReadRules.fromFile(...) fetches additional rules
@@ -39,7 +39,7 @@
  *      [They, envy, us, .]
  *
  * Note: In Prolog, a word beginning with a capital letter is a variable.
- * This inference engine is different. 'They' is a Constant. Variables
+ * This inference engine is different. 'They' is a Constant. LogicVars
  * begin with a dollar sign.
  *
  * Finally, sentenceToFacts() creates a list of facts which identify
@@ -127,7 +127,7 @@ class ParseDemo {
                                    SLinkedList inList,
                                    KnowledgeBase kb) {
 
-      Variable X = new Variable("$X");  // placeholder variable
+      LogicVar X = new LogicVar("$X");  // placeholder variable
       try {
          // Must use Make.query() to create a query.
          // new Complex() would cause errors.
@@ -383,10 +383,10 @@ class ParseDemo {
       Constant word = new Constant("word");
 
       // Define variables.
-      Variable H1 = new Variable("$H1");
-      Variable H2 = new Variable("$H2");
-      Variable T1 = new Variable("$T1");
-      Variable T2 = new Variable("$T2");
+      LogicVar H1 = new LogicVar("$H1");
+      LogicVar H2 = new LogicVar("$H2");
+      LogicVar T1 = new LogicVar("$T1");
+      LogicVar T2 = new LogicVar("$T2");
 
       /*
         words_to_pos/2 is a rule to convert a list of words into a list
@@ -408,7 +408,7 @@ class ParseDemo {
                          )
                       );
 
-      // Note: The Constant, Variable and Rule definitions above can be
+      // Note: The Constant, LogicVar and Rule definitions above can be
       // replaced by a single line:
       // rule = new Rule("words_to_pos([$H1 | $T1], [$H2 | $T2]) :- " +
       //         "word($H1, $H2), words_to_pos($T1, $T2)");
