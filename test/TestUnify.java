@@ -31,7 +31,7 @@ public class TestUnify {
                   new Complex("job(programmer, $Z)"),
                   new Complex("job($Y, janitor)")
                ),
-               new Unify(new Variable("$W"), new Variable("$X")),
+               new Unify(new LogicVar("$W"), new LogicVar("$X")),
                new Complex("job($W)")
             )
          ),
@@ -39,9 +39,9 @@ public class TestUnify {
          new Rule(
             new Complex("second_test($Y)"),
             new And(
-               new Unify(new Variable("$X"), up),
-               new Unify(new Variable("$Y"), down),
-               new Unify(new Variable("$X"), new Variable("$Y"))
+               new Unify(new LogicVar("$X"), up),
+               new Unify(new LogicVar("$Y"), down),
+               new Unify(new LogicVar("$X"), new LogicVar("$Y"))
             )
          )
 

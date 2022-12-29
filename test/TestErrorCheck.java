@@ -14,12 +14,12 @@ public class TestErrorCheck {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
-      Variable x   = new Variable("$X");
-      Variable y   = new Variable("$Y");
-      Variable z   = new Variable("$Z");
+      LogicVar x   = new LogicVar("$X");
+      LogicVar y   = new LogicVar("$Y");
+      LogicVar z   = new LogicVar("$Z");
 
-      Variable inErr  = new Variable("$InErr");
-      Variable outErr = new Variable("$OutErr");
+      LogicVar inErr  = new LogicVar("$InErr");
+      LogicVar outErr = new LogicVar("$OutErr");
 
       Constant test = new Constant("test");
       Constant error1 = new Constant("Error 1");

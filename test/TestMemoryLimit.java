@@ -20,14 +20,14 @@ public class TestMemoryLimit {
    public static void main(String[] args) {
 
       int limit = Global.maxVariables;
-      Variable v = new Variable("$X");
+      LogicVar v = new LogicVar("$X");
 
       // Get a high variable ID.
       for (int i = 0; i < limit; i++) { v.nextId(); }
 
       try {
          // standardizeVariablesApart should throw an exception.
-         v = (Variable)v.standardizeVariablesApart(new HashMap<String, Variable>());
+         v = (LogicVar)v.standardizeVariablesApart(new HashMap<String, LogicVar>());
          System.err.println("TestMemoryLimit - Failed to throw exception.");
       } catch (MemoryLimitException mlx) {
          System.out.println("TestMemoryLimit ✓");

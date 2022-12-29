@@ -23,12 +23,12 @@ public class TestArithmetic {
 
    public static void main(String[] args) {
 
-      Variable X = new Variable("$X");
-      Variable Y = new Variable("$Y");
-      Variable A = new Variable("$A");
-      Variable B = new Variable("$B");
-      Variable C = new Variable("$C");
-      Variable Out = new Variable("$Out");
+      LogicVar X = new LogicVar("$X");
+      LogicVar Y = new LogicVar("$Y");
+      LogicVar A = new LogicVar("$A");
+      LogicVar B = new LogicVar("$B");
+      LogicVar C = new LogicVar("$C");
+      LogicVar Out = new LogicVar("$Out");
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("calculate($X, $Y, $Out)"),

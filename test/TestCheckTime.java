@@ -31,9 +31,9 @@ public class TestCheckTime {
       Constant b = new Constant("b");
       Constant c = new Constant("c");
 
-      Variable X = new Variable("$X");
-      Variable Y = new Variable("$Y");
-      Variable Z = new Variable("$Z");
+      LogicVar X = new LogicVar("$X");
+      LogicVar Y = new LogicVar("$Y");
+      LogicVar Z = new LogicVar("$Z");
 
       Constant fact = new Constant("fact");
       Constant doit = new Constant("doit");

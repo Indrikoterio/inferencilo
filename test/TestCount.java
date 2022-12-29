@@ -43,12 +43,12 @@ public class TestCount {
       SLinkedList p1 = new SLinkedList(false, green, blue);
       SLinkedList p2 = new SLinkedList(false, red, p1);
 
-      Variable c = new Variable("$Count");
+      LogicVar c = new LogicVar("$Count");
 
-      Variable tailVar = new Variable("$TailVar");
+      LogicVar tailVar = new LogicVar("$TailVar");
       SLinkedList p3 = new SLinkedList(false, one, two, three);
       SLinkedList p4 = new SLinkedList(true, red, green, blue, tailVar);
-      Variable newList = new Variable("$NewList");
+      LogicVar newList = new LogicVar("$NewList");
 
       kb = new KnowledgeBase(
          new Rule(new Complex("test_count($Count)"),

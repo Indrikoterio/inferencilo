@@ -15,12 +15,12 @@ public class TestJoin {
 
    public static void main(String[] args) {
 
-      Variable D1 = new Variable("$D1");
-      Variable D2 = new Variable("$D2");
-      Variable D3 = new Variable("$D3");
-      Variable D4 = new Variable("$D4");
-      Variable D5 = new Variable("$D5");
-      Variable Out = new Variable("$Out");
+      LogicVar D1 = new LogicVar("$D1");
+      LogicVar D2 = new LogicVar("$D2");
+      LogicVar D3 = new LogicVar("$D3");
+      LogicVar D4 = new LogicVar("$D4");
+      LogicVar D5 = new LogicVar("$D5");
+      LogicVar Out = new LogicVar("$Out");
 
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("would_you_like($Out)"),

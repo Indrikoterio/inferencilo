@@ -29,17 +29,17 @@ public class TestBuiltInPredicate {
 
    public static void main(String[] args) {
 
-      Variable X = new Variable("$X");
-      Variable Y = new Variable("$Y");
+      LogicVar X = new LogicVar("$X");
+      LogicVar Y = new LogicVar("$Y");
 
-      Variable H = new Variable("$H");
-      Variable T = new Variable("$T");
+      LogicVar H = new LogicVar("$H");
+      LogicVar T = new LogicVar("$T");
 
-      Variable In = new Variable("$In");
-      Variable In_err = new Variable("$InErr");
-      Variable Out = new Variable("$Out");
-      Variable Out_err = new Variable("$OutErr");
-      Variable Err2 = new Variable("$Err2");
+      LogicVar In = new LogicVar("$In");
+      LogicVar In_err = new LogicVar("$InErr");
+      LogicVar Out = new LogicVar("$Out");
+      LogicVar Out_err = new LogicVar("$OutErr");
+      LogicVar Err2 = new LogicVar("$Err2");
 
       Constant bip_test = new Constant("bip_test");
       Constant join_all = new Constant("join_all");

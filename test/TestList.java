@@ -33,9 +33,9 @@ public class TestList {
             new Complex("test2($H, $H2, $T)"),
             new Unify(
                jobs,
-               //new SLinkedList(new Variable("$H"),
-               //          new Variable("$H2"),
-               //          new Variable("$T"))
+               //new SLinkedList(new LogicVar("$H"),
+               //          new LogicVar("$H2"),
+               //          new LogicVar("$T"))
                SLinkedList.parse("[$H, $H2 | $T]")
             )
          ),
@@ -50,12 +50,12 @@ public class TestList {
             new Unify(
                jobs,
                SLinkedList.parse("[$_ | $T]")
-               // new SLinkedList(Anon.anon, new Variable("$T"))
+               // new SLinkedList(Anon.anon, new LogicVar("$T"))
             )
          ),
          new Rule(
             new Complex("test5($X)"),
-            new Unify(jobs4, new Variable("$X"))
+            new Unify(jobs4, new LogicVar("$X"))
          ),
          new Rule(
             new Complex("test6($H, $T)"),

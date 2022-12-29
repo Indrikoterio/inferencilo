@@ -20,9 +20,9 @@ public class TestAppend {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
-      Variable X   = new Variable("$X");
-      Variable Y   = new Variable("$Y");
-      Variable Out = new Variable("$Out");
+      LogicVar X   = new LogicVar("$X");
+      LogicVar Y   = new LogicVar("$Y");
+      LogicVar Out = new LogicVar("$Out");
       Constant test_append = new Constant("test_append");
       Constant orange = new Constant("orange");
 

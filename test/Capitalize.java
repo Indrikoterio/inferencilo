@@ -3,7 +3,7 @@
  *
  * This function capitalizes a word or name.
  *
- * It accepts one argument, a Constant or Variable bound to a Constant,
+ * It accepts one argument, a Constant or LogicVar bound to a Constant,
  * and returns a capitalized Constant. (tokyo becomes Tokyo.)
  *
  * Note: Unlike a predicate, which returns a substitution set (or null),
@@ -70,7 +70,7 @@ public class Capitalize extends PFunction {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);

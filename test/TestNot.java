@@ -62,7 +62,7 @@ public class TestNot {
             new Complex("invite($X)"),
             new And(
                new Complex("friend($X)"),
-               new Not(new Unify(new Variable("$X"), new Constant("Sheldon")))
+               new Not(new Unify(new LogicVar("$X"), new Constant("Sheldon")))
             )
          ),
 

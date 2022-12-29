@@ -18,8 +18,8 @@ public class TestFilter {
 
    public static void main(String[] args) {
 
-      Variable W = new Variable("$W");
-      Variable N = new Variable("$N");
+      LogicVar W = new LogicVar("$W");
+      LogicVar N = new LogicVar("$N");
 
       Complex c1 = new Complex("male(Sheldon)");
       Complex c2 = new Complex("male(Leonard)");

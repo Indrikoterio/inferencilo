@@ -14,9 +14,9 @@ public class TestCompare {
 
    public static void main(String[] args) {
 
-      Variable X = new Variable("$X");
-      Variable Y = new Variable("$Y");
-      Variable Z = new Variable("$Z");
+      LogicVar X = new LogicVar("$X");
+      LogicVar Y = new LogicVar("$Y");
+      LogicVar Z = new LogicVar("$Z");
 
       Constant passed = new Constant("passed");
       Constant failed = new Constant("failed");

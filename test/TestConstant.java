@@ -28,8 +28,8 @@ public class TestConstant {
    public static void main(String[] args) {
 
       // Set up the knowledge base.
-      Variable X   = new Variable("$X");
-      Variable Out = new Variable("$Out");
+      LogicVar X   = new LogicVar("$X");
+      LogicVar Out = new LogicVar("$Out");
 
       Constant test_constant    = new Constant("test_constant");
       Constant test_constant_bt = new Constant("test_constant_bt");

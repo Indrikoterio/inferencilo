@@ -13,8 +13,8 @@ public class TestPrint {
 
    public static void main(String[] args) {
 
-      Variable X = new Variable("$X");
-      Variable Y = new Variable("$Y");
+      LogicVar X = new LogicVar("$X");
+      LogicVar Y = new LogicVar("$Y");
       Constant P = new Constant("Persian");
 
       // Set up the knowledge base.
