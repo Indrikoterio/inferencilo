@@ -13,7 +13,7 @@
  *
  *     functor(boss(Zack, Stephen), $Func)
  *
- * Of course, the first argument would normally be a Variable, and
+ * Of course, the first argument would normally be a LogicVar, and
  * the second would be a Constant. The following goal will succeed.
  *
  *     $X = boss(Zack, Stephen), functor($X, boss)
@@ -138,7 +138,7 @@ public class Functor extends BuiltInPredicate {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);

@@ -82,7 +82,7 @@ public abstract class BuiltInPredicate implements Goal {
     * Standardize one argument.
     *
     * This method assists standardizeVariablesApart() in the subclass.
-    * If the argument is a Variable, this method will 'standardize' it.
+    * If the argument is a logic variable, this method will 'standardize' it.
     * (That is, substitute a new unique variable.)
     * If not, it just returns the argument as is.
     *
@@ -91,9 +91,9 @@ public abstract class BuiltInPredicate implements Goal {
     * @return  out argument
     */
    public Unifiable standardizeOne(Unifiable argument,
-                                      HashMap<String, Variable> newVars) {
-      if (argument instanceof Variable) {
-         Variable arg = (Variable)argument;
+                                      HashMap<String, LogicVar> newVars) {
+      if (argument instanceof LogicVar) {
+         LogicVar arg = (LogicVar)argument;
          Unifiable newArgument = (Unifiable)arg.standardizeVariablesApart(newVars);
          return newArgument;
       }
@@ -114,8 +114,8 @@ public abstract class BuiltInPredicate implements Goal {
          if (arg instanceof Constant || arg instanceof Complex) {
             return arg;
          }
-         else if (arg instanceof Variable) {
-            Variable var = (Variable)arg;
+         else if (arg instanceof LogicVar) {
+            LogicVar var = (LogicVar)arg;
             if (ss.isBound(var)) {
                Expression exp = var.replaceVariables(ss);
                return exp;
@@ -169,8 +169,8 @@ public abstract class BuiltInPredicate implements Goal {
     */
    public String displayString(Unifiable term, SubstitutionSet ss) {
 
-      if (term instanceof Variable) {
-         Unifiable t = ss.getGroundTermOrNull((Variable)term);
+      if (term instanceof LogicVar) {
+         Unifiable t = ss.getGroundTermOrNull((LogicVar)term);
          if (t == null) return "";
          return displayString(t, ss);
       }

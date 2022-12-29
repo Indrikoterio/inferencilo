@@ -49,9 +49,9 @@ public class NotSolutionNode extends SolutionNode {
          Unifiable[] terms = ((Complex)operand).getTerms();
 
          for (Unifiable term : terms) {
-            if (term instanceof Variable) {
-               if (!parentSolution.isGround((Variable)term)) {
-                  System.out.println("Not: Variable " + term.toString() + " is not grounded.");
+            if (term instanceof LogicVar) {
+               if (!parentSolution.isGround((LogicVar)term)) {
+                  System.out.println("Not: LogicVar " + term.toString() + " is not grounded.");
                }
             }
          }

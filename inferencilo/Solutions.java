@@ -57,9 +57,9 @@ public class Solutions {
          boolean first = true;
          for (int i = 0; i < arity; i++) {
             Unifiable term = goal.getTerm(i + 1);
-            if (term instanceof Variable) {
+            if (term instanceof LogicVar) {
                if (!first) { sb.append(", "); }
-               sb.append(((Variable)term).name() + " = " +
+               sb.append(((LogicVar)term).name() + " = " +
                               result.getTerm(i + 1).toString());
                first = false;
             }

@@ -56,7 +56,7 @@ public class Make {
     * A factory method to produce a unifiable term from a string.
     *
     * @param   string representing term, eg.: "noun", "$X", "[1, 2, 3]"
-    * @return  Unifiable object, Constant, Variable, SLinkedList etc.
+    * @return  Unifiable object, Constant, LogicVar, SLinkedList etc.
     * @throws  InvalidComplexTermException, InvalidListException
     */
    public static Unifiable term(String str) {
@@ -72,7 +72,7 @@ public class Make {
       // Return a variable.
       if (firstChar == '$' && len > 1) {
          if (s.charAt(1) == '_') return Anon.anon;
-         else return new Variable(s);
+         else return new LogicVar(s);
       }
 
       // If a string begins and ends with a backtick, everything
@@ -609,8 +609,8 @@ public class Make {
     * @return query as complex term
     */
    public static Complex query(Unifiable... args) {
-      Variable.reset();  // Always reset the variable ID.
-      HashMap<String, Variable> vars = new HashMap<String, Variable>();
+      LogicVar.reset();  // Always reset the variable ID.
+      HashMap<String, LogicVar> vars = new HashMap<String, LogicVar>();
       int n = args.length;
       Unifiable[] newArgs = new Unifiable[n];
       for (int i = 0; i < n; i++) {

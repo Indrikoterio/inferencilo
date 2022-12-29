@@ -275,7 +275,7 @@ public class Complex implements Unifiable, Goal {
          return newSS;
       }
 
-      else if (other instanceof Variable) return other.unify(this, ss);
+      else if (other instanceof LogicVar) return other.unify(this, ss);
       else if (other == Anon.anon) return ss;
       return null;
    }
@@ -283,7 +283,7 @@ public class Complex implements Unifiable, Goal {
    /**
     * replaceVariables
     *
-    * Replaces bound Variables with their Constants in order to
+    * Replaces bound LogicVars with their Constants in order to
     * display results.
     *
     * @param   substitution set
@@ -305,7 +305,7 @@ public class Complex implements Unifiable, Goal {
     * @param   hash table previously standardized variables
     * @return  expression with standardized variables
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newTerms = new Unifiable[terms.length];
       // Create an array for new terms.
       for (int i = 0; i < length(); i++) {

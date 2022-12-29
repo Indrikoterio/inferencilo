@@ -2,7 +2,7 @@
  * Expression
  *
  * This interface defines a predicate calculus expression.
- * It is the base of unifiable objects (Constants, Variables,
+ * It is the base of unifiable objects (Constants, LogicVars,
  * Complex terms) and goal objects (Complex terms and operators).
  *
  * The method standardizeVariablesApart() creates unique
@@ -10,7 +10,7 @@
  * a goal.
  *
  * The method replaceVariables() is called after a solution
- * is found. It replaces Variables with the Constants which
+ * is found. It replaces LogicVars with the Constants which
  * they are bound to, in order to display results.
  *
  * @author  Cleve (Klivo) Lendon
@@ -68,6 +68,6 @@ public interface Expression {
     * @param   hash table of standardized variables
     * @return  expression with standardized variables
     */
-   Expression standardizeVariablesApart(HashMap<String, Variable> newVars);
+   Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars);
 }
 

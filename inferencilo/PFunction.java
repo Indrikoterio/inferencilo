@@ -90,12 +90,12 @@ public abstract class PFunction implements Unifiable {
    public Unifiable[] bindAllArguments(SubstitutionSet ss) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
-         if (arguments[i] instanceof Variable) {
-            Variable varArg = (Variable)arguments[i];
+         if (arguments[i] instanceof LogicVar) {
+            LogicVar varArg = (LogicVar)arguments[i];
             if (ss.isBound(varArg)) {
                newArguments[i] = ss.getBinding(varArg);
             }
-            else return null;  // Variables must be bound. Fail.
+            else return null;  // LogicVars must be bound. Fail.
          }
          else {
             newArguments[i] = arguments[i];
@@ -127,7 +127,7 @@ public abstract class PFunction implements Unifiable {
    /**
     * replaceVariables
     *
-    * Replaces bound Variables with their Constants in order to
+    * Replaces bound logic variables with their Constants in order to
     * display results.
     *
     * @param   substitution set
@@ -139,8 +139,8 @@ public abstract class PFunction implements Unifiable {
          if (arg instanceof Constant || arg instanceof Complex) {
             return arg;
          }
-         else if (arg instanceof Variable) {
-            Variable vArg = (Variable)arg;
+         else if (arg instanceof LogicVar) {
+            LogicVar vArg = (LogicVar)arg;
             if (ss.isBound(vArg)) {
                Expression exp = vArg.replaceVariables(ss);
                return exp;
@@ -165,7 +165,7 @@ public abstract class PFunction implements Unifiable {
     * Standardize one argument. This method is copied from BuiltInPredicate.
     *
     * This method assists standardizeVariablesApart() in the subclass.
-    * If the argument is a Variable, this method will 'standardize' it.
+    * If the argument is a logic variable, this method will 'standardize' it.
     * (That is, substitute a new unique variable.)
     * If not, it just returns the argument as is.
     *
@@ -174,9 +174,9 @@ public abstract class PFunction implements Unifiable {
     * @return  out argument
     */
    public Unifiable standardizeOne(Unifiable argument,
-                                      HashMap<String, Variable> newVars) {
-      if (argument instanceof Variable) {
-         Variable arg = (Variable)argument;
+                                      HashMap<String, LogicVar> newVars) {
+      if (argument instanceof LogicVar) {
+         LogicVar arg = (LogicVar)argument;
          Unifiable newArgument = (Unifiable)arg.standardizeVariablesApart(newVars);
          return newArgument;
       }

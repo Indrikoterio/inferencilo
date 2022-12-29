@@ -9,7 +9,7 @@
  * The last argument, $OutList, is an output argument which will bind
  * to [a, b, c, d, e, f, g]
  *
- * Input arguments can be Constants, Variables, Complex terms, or SLinkedLists.
+ * Input arguments can be Constants, LogicVars, Complex terms, or SLinkedLists.
  *
  * There must be at least 2 arguments.
  *
@@ -71,9 +71,9 @@ public class Append extends BuiltInPredicate {
          Unifiable term = arguments[i];
 
          // Get ground term.
-         if (term instanceof Variable) {
-            if (parentSolution.isGround((Variable)term)) {
-               term = parentSolution.getGroundTerm((Variable)term);
+         if (term instanceof LogicVar) {
+            if (parentSolution.isGround((LogicVar)term)) {
+               term = parentSolution.getGroundTerm((LogicVar)term);
             }
             // Long explanation: In a list of words (and punctuation), some terms
             // are optional. For example, a modifier may consist of an adverb and
@@ -119,7 +119,7 @@ public class Append extends BuiltInPredicate {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);

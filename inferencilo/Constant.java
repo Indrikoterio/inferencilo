@@ -146,7 +146,7 @@ public class Constant implements Unifiable {
     */
    public SubstitutionSet unify(Unifiable other, SubstitutionSet ss) {
       if (this == other) return ss;
-      if (other instanceof Variable) return other.unify(this, ss);
+      if (other instanceof LogicVar) return other.unify(this, ss);
       if (other == Anon.anon) return ss;
       if (!(other instanceof Constant)) return null;
       String strThis = value;
@@ -184,7 +184,7 @@ public class Constant implements Unifiable {
     * @param  prev - previously standardized variables (not used)
     * @return this constant
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> prev) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> prev) {
       return this;
    }
 

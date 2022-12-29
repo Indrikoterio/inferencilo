@@ -65,7 +65,7 @@ public class CheckTime implements Goal {
     * Refer to class Expression for full comments.
     * Nothing to do here.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       return this;
    }
 

@@ -25,7 +25,7 @@
  * 1. SLinkedList list = new SLinkedList(false, a, b, c);   // a, b, and c are Constants
  * 2. SLinkedList list = SLinkedList.parse("[a, b, c]");    // Parse string.
  *
- * 3. SLinkedList list = new SLinkedList(true, a, b, c, X);   // X is a tail Variable
+ * 3. SLinkedList list = new SLinkedList(true, a, b, c, X);   // X is a tail variable
  * 4. SLinkedList list = SLinkedList.parse("[a, b, c | $X]"); // Parse string.
  *
  * For the constructor method, the first parameter must be true if
@@ -389,7 +389,7 @@ public class SLinkedList implements Unifiable {
          sList = sList.getTail();
          head = sList.getHead();
          if (sList.isTailVar() && head != Anon.anon) {
-            Variable hVar  = (Variable)(head);
+            LogicVar hVar  = (LogicVar)(head);
             SLinkedList term = ss.castSLinkedList(hVar);
             if (term != null) {
                sList = (SLinkedList)term;
@@ -426,7 +426,7 @@ public class SLinkedList implements Unifiable {
          if (sList == null) return null;
          Unifiable head = sList.getHead();
          if (sList.isTailVar() && head != Anon.anon) {
-            Variable hVar  = (Variable)(head);
+            LogicVar hVar  = (LogicVar)(head);
             SLinkedList term = ss.castSLinkedList(hVar);
             if (term != null) {
                sList = (SLinkedList)term;
@@ -446,7 +446,7 @@ public class SLinkedList implements Unifiable {
     * unify
     *
     * Unify is complicated for lists. If the last parameter is a
-    * Variable, it can unify with the tail of another list.
+    * LogicVar, it can unify with the tail of another list.
     *
     * @param  other unifiable
     * @param  substitution set
@@ -502,7 +502,7 @@ public class SLinkedList implements Unifiable {
 
          return null;
       }
-      else if (other instanceof Variable) return other.unify(this, ss);
+      else if (other instanceof LogicVar) return other.unify(this, ss);
       return null;
    }
 
@@ -554,7 +554,7 @@ public class SLinkedList implements Unifiable {
     *
     * Refer to class Expression for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       ArrayList<Unifiable> newTerms = new ArrayList<Unifiable>();
       SLinkedList thisList = this;
       boolean hasPipe = thisList.isTailVar();

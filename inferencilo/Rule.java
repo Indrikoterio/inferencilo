@@ -160,7 +160,7 @@ public class Rule implements Expression {
     *
     * Refer to Expression interface for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
 
       Complex newHead = (Complex)head.standardizeVariablesApart(newVars);
       Goal newBody = null;

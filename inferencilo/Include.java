@@ -61,7 +61,7 @@ public class Include extends FilterBase {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);

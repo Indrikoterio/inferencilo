@@ -56,7 +56,7 @@ public class PrintList extends BuiltInPredicate {
    /*
     * getGround
     *
-    * If the term is a Variable, return its ground term.
+    * If the term is a LogicVar, return its ground term.
     * Else, return the term unchanged.
     *
     * @param  term
@@ -64,9 +64,9 @@ public class PrintList extends BuiltInPredicate {
     * @return ground term
     */
    private Unifiable getGround(Unifiable term, SubstitutionSet ss) {
-      if (term instanceof Variable) {
-         if (ss.isGround((Variable)term)) {
-            return ss.getGroundTerm((Variable)term);
+      if (term instanceof LogicVar) {
+         if (ss.isGround((LogicVar)term)) {
+            return ss.getGroundTerm((LogicVar)term);
          }
       }
       return term;
@@ -94,7 +94,7 @@ public class PrintList extends BuiltInPredicate {
          sList = sList.getTail();
          head = sList.getHead();
          if (sList.isTailVar() && head != Anon.anon) {
-            Variable hVar  = (Variable)(head);
+            LogicVar hVar  = (LogicVar)(head);
             SLinkedList term = ss.castSLinkedList(hVar);
             if (term != null) {
                sList = (SLinkedList)term;
@@ -131,7 +131,7 @@ public class PrintList extends BuiltInPredicate {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);

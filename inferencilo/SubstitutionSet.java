@@ -1,16 +1,18 @@
 /**
  * SubstitutionSet
  *
- * The substitution set is a dictionary (aka hashmap) of bindings
- * of logic Variables.
+ * The substitution set is an array of bindings of logic variables.
+ * Each logic variable has a unique ID, which is used as an index into
+ * the substitution set. If a binding exists, the indexed item is a
+ * unifiable term. If there is no binding, the indexed item is null.
  *
- * As the inference engine searches for a solution, it adds Variable
- * bindings to the SubstitutionSet. Because the SubstitutionSet
- * contains all Variable bindings, it can be thought of as the
- * solution (partial or final).
+ * As the inference engine searches for a solution, it adds logic
+ * variable bindings to the SubstitutionSet. Because the SubstitutionSet
+ * contains all variable bindings, it can be thought of as the solution
+ * (partial or final).
  *
- * This class also has methods to get the ground term of a
- * Variable, and cast it as a Constant, Complex term, or SLinkedList.
+ * This class also has methods to get the ground term of a logic
+ * variable, and cast it as a Constant, Complex term, or SLinkedList.
  * See castConstant(), castComplex(), castSLinkedList().
  *
  * @author  Cleve (Klivo) Lendon
@@ -29,7 +31,7 @@ public class SubstitutionSet {
     * constructor
     */
    public SubstitutionSet() { 
-      bindings = new Unifiable[20];
+      bindings = new Unifiable[10];
    }
 
    /**
@@ -49,11 +51,11 @@ public class SubstitutionSet {
     * Binds a variable to an expression.
     * The variable becomes the key the binding dictionary (hash).
     *
-    * @param  Variable
+    * @param  LogicVar
     * @param  Unifiable expression
     * @throws AlreadyBoundException
     */
-   public void add(Variable v, Unifiable e) throws AlreadyBoundException {
+   public void add(LogicVar v, Unifiable e) throws AlreadyBoundException {
       int id = v.id();
       if (id == 0) { // This should not happen.
          throw new InvalidVariableException(v.toString());
@@ -78,7 +80,7 @@ public class SubstitutionSet {
     * @param   variable
     * @return  unifiable
     */
-   public Unifiable getBinding(Variable v) {
+   public Unifiable getBinding(LogicVar v) {
       int id = v.id();
       if (id >= bindings.length) return null;
       return (Unifiable)bindings[id];
@@ -90,10 +92,10 @@ public class SubstitutionSet {
     * A logic variable is bound if there exists an entry
     * for it in the substitution set.
     *
-    * @param   variable
+    * @param   logic variable
     * @return  t/f
     */
-   public boolean isBound(Variable v) {
+   public boolean isBound(LogicVar v) {
       int id = v.id();
       if (id >= bindings.length) return false;
       return (bindings[id] != null);
@@ -105,41 +107,41 @@ public class SubstitutionSet {
     *
     * "Terms not containing variables are called Ground."
     *
-    * A variable is ground if it is ultimately bound to
-    * to something other than a variable.
+    * A logic variable is ground if it is ultimately bound
+    * to something other than a logic variable.
     *
-    * @param   variable
+    * @param   logic variable
     * @return  t/f
     */
-   public boolean isGround(Variable var) {
-      Variable  v = var;
+   public boolean isGround(LogicVar var) {
+      LogicVar  v = var;
       Unifiable u;
       while (true) {
          u = (Unifiable)bindings[v.id()];
          if (u == null) return false;
-         if (!(u instanceof Variable)) return true;  // Constant, Complex, SLinkedList
-         v = (Variable)u;
+         if (!(u instanceof LogicVar)) return true;  // Constant, Complex, SLinkedList
+         v = (LogicVar)u;
       }
    }
 
    /**
     * getGroundTerm
     *
-    * If a term is a grounded Variable, get the ground term.
+    * If a term is a grounded variable, get the ground term.
     * Otherwise, return the variable.
     *
     * @param   term
     * @return  ground term
     */
    public Unifiable getGroundTerm(Unifiable term) {
-      if (!(term instanceof Variable)) return term;
-      Variable  v = (Variable)term;
+      if (!(term instanceof LogicVar)) return term;
+      LogicVar  v = (LogicVar)term;
       Unifiable u;
       while (true) {
          u = (Unifiable)bindings[v.id()];
          if (u == null) return v;
-         if (!(u instanceof Variable)) return u;
-         v = (Variable)u;
+         if (!(u instanceof LogicVar)) return u;
+         v = (LogicVar)u;
       }
    }
 
@@ -147,20 +149,20 @@ public class SubstitutionSet {
    /**
     * getGroundTermOrNull
     *
-    * If a variable is grounded, get the ground term.
+    * If a logic variable is grounded, get the ground term.
     * Otherwise, return null.
     *
-    * @param   variable  (Known to be a variable.)
+    * @param   logic variable  (Known to be a logic variable.)
     * @return  ground term or null
     */
-   public Unifiable getGroundTermOrNull(Variable var) {
-      Variable  v = var;
+   public Unifiable getGroundTermOrNull(LogicVar var) {
+      LogicVar  v = var;
       Unifiable u;
       while (true) {
          u = (Unifiable)bindings[v.id()];
          if (u == null) return null;
-         if (!(u instanceof Variable)) return u;
-         v = (Variable)u;
+         if (!(u instanceof LogicVar)) return u;
+         v = (LogicVar)u;
       }
    }
 
@@ -194,8 +196,8 @@ public class SubstitutionSet {
    public Constant castConstant(Unifiable term) {
       if (term instanceof Constant) return (Constant)term;
       Unifiable outTerm = null;
-      if (term instanceof Variable) {
-         outTerm = getGroundTermOrNull((Variable)term);
+      if (term instanceof LogicVar) {
+         outTerm = getGroundTermOrNull((LogicVar)term);
          if (outTerm == null) return null;
       }
       if (outTerm instanceof Constant) return (Constant)outTerm;
@@ -215,8 +217,8 @@ public class SubstitutionSet {
    public Complex castComplex(Unifiable term) {
       if (term instanceof Complex) return (Complex)term;
       Unifiable outTerm = null;
-      if (term instanceof Variable) {
-         outTerm = getGroundTermOrNull((Variable)term);
+      if (term instanceof LogicVar) {
+         outTerm = getGroundTermOrNull((LogicVar)term);
          if (outTerm == null) return null;
       }
       if (outTerm instanceof Complex) return (Complex)outTerm;
@@ -228,7 +230,7 @@ public class SubstitutionSet {
     * castSLinkedList
     *
     * If the given Unifiable is an instance of SLinkedList, cast it
-    * as SLinkedList and return it. If it is a Variable, get the term
+    * as SLinkedList and return it. If it is a LogicVar, get the term
     * which it is bound to. If that term is a SLinkedList, cast it as
     * a SLinkedList and return it. Otherwise return null.
     *
@@ -238,8 +240,8 @@ public class SubstitutionSet {
    public SLinkedList castSLinkedList(Unifiable term) {
       if (term instanceof SLinkedList) return (SLinkedList)term;
       Unifiable outTerm = null;
-      if (term instanceof Variable) {
-         outTerm = getGroundTermOrNull((Variable)term);
+      if (term instanceof LogicVar) {
+         outTerm = getGroundTermOrNull((LogicVar)term);
          if (outTerm == null) return null;
       }
       if (outTerm instanceof SLinkedList) return (SLinkedList)outTerm;

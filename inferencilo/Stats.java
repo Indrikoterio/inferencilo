@@ -29,8 +29,7 @@ public class Stats extends BuiltInPredicate {
    /**
     * evaluate
     *
-    * Prints out some information, about the Constant and
-    * Variable caches.
+    * Prints out some information, about the Constant and LogicVar caches.
     *
     * @param  parentSolution
     * @return new solution
@@ -46,7 +45,7 @@ public class Stats extends BuiltInPredicate {
     * standardizeVariablesApart()
     * Refer to Expression.java for full comments.
     */
-   public Expression standardizeVariablesApart(HashMap<String, Variable> newVars) {
+   public Expression standardizeVariablesApart(HashMap<String, LogicVar> newVars) {
       Unifiable[] newArguments = new Unifiable[arguments.length];
       for (int i = 0; i < arguments.length; i++) {
          newArguments[i] = standardizeOne(arguments[i], newVars);
