@@ -19,19 +19,19 @@ public class Solutions {
    /**
     * solve
     *
-    * Find a solution for the given goal.
+    * Find a solution for the given query.
     *
-    * @param  goal
+    * @param  query
     * @param  kb - Knowledge Base
     * @return solution as strings
     * @throws TimeOverrunException
     */
-   public static String solve(Complex goal, KnowledgeBase kb)
+   public static String solve(Complex query, KnowledgeBase kb)
                               throws TimeOverrunException {
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+      SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = root.nextSolution();
       if (solution != null) {
-         Complex result = (Complex)goal.replaceVariables(solution);
+         Complex result = (Complex)query.replaceVariables(solution);
          return result.toString();
       }
       else {
@@ -45,18 +45,18 @@ public class Solutions {
     * Returns one solution, as a String.
     * Eg. $X = [a, b, c]
     *
-    * @param   goal (Complex)
+    * @param   query (Complex)
     * @param   solution (SubstitutionSet solution)
     * @return  solution string
     */
-   public static String toString(Complex goal, SubstitutionSet solution) {
+   public static String toString(Complex query, SubstitutionSet solution) {
       if (solution != null) {
-         int arity = goal.arity();
+         int arity = query.arity();
          StringBuilder sb = new StringBuilder();
-         Complex result = (Complex)goal.replaceVariables(solution);
+         Complex result = (Complex)query.replaceVariables(solution);
          boolean first = true;
          for (int i = 0; i < arity; i++) {
-            Unifiable term = goal.getTerm(i + 1);
+            Unifiable term = query.getTerm(i + 1);
             if (term instanceof LogicVar) {
                if (!first) { sb.append(", "); }
                sb.append(((LogicVar)term).name() + " = " +
@@ -64,7 +64,9 @@ public class Solutions {
                first = false;
             }
          }
-         return sb.toString();
+         String out = sb.toString();
+         if (out.length() == 0) return "True";
+         return out;
       }
       return "No";
    } // toString
@@ -73,20 +75,20 @@ public class Solutions {
    /**
     * solveAll
     *
-    * Try to find all solutions for the given goal.
+    * Try to find all solutions for the given query.
     *
-    * @param  goal
+    * @param  query
     * @param  kb  - Knowledge Base
-    * @return   solution as list of strings
+    * @return solution as list of strings
     * @throws TimeOverrunException
     */
-   public static ArrayList<String> solveAll(Complex goal, KnowledgeBase kb)
+   public static ArrayList<String> solveAll(Complex query, KnowledgeBase kb)
                                    throws TimeOverrunException{
       ArrayList<String> solutions = new ArrayList<String>();
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+      SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = root.nextSolution();
       while (solution != null) {
-         Complex result = (Complex)goal.replaceVariables(solution);
+         Complex result = (Complex)query.replaceVariables(solution);
          solutions.add(result.toString());
          solution = root.nextSolution();
       }
@@ -96,27 +98,28 @@ public class Solutions {
    /**
     * verifyAll
     *
-    * Finds all solutions for a given goal and verifies that the solutions
+    * Finds all solutions for a given query and verifies that the solutions
     * are as expected. Results are printed out.
     *
-    * About the argument index: It may be useful to look at only one of the
-    * arguments of the result. For example, if the original goal is
-    * mother(Liza, $X), and the resulting complex term is mother(Liza, Jocelyn),
-    * then we only really need to look at the second argument, Jocelyn.
-    * This can be extracted as so: result.getTerm(2). If an index of 0 is
-    * given, the expected result will be compared to the entire result term.
+    * About the argument index:
+    * It may be useful to look at only one of the arguments of the result.
+    * For example, if the original query were mother(Liza, $X), and the
+    * resulting complex term were mother(Liza, Jocelyn), then we would only
+    * really need to look at the second argument, Jocelyn. This can be
+    * extracted as so: result.getTerm(2). If an index of 0 is given, the
+    * expected result will be compared to the entire result term.
     *
-    * @param  goal
+    * @param  query
     * @param  kb  - Knowledge Base
     * @param  array of expected results
     * @param  argument index
     * @throws TimeOverrunException
     */
-   public static void verifyAll(Complex goal, KnowledgeBase kb,
+   public static void verifyAll(Complex query, KnowledgeBase kb,
                                 String[] expected, int index)
                                 throws TimeOverrunException {
 
-      SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+      SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
       SubstitutionSet solution = root.nextSolution();
       int count = 0;
 
@@ -128,7 +131,7 @@ public class Solutions {
 
       while (solution != null) {
 
-         Complex result = (Complex)goal.replaceVariables(solution);
+         Complex result = (Complex)query.replaceVariables(solution);
 
          String strResult;
 
@@ -150,7 +153,7 @@ public class Solutions {
          }
 
          if (!strResult.equals(expected[count])) {
-            System.err.print("verifyAll:  Unexpected!! goal: " + goal);
+            System.err.print("verifyAll:  Unexpected!! query: " + query);
             System.err.println("  result: " + strResult +
                                "    expected: " + expected[count]);
          }
