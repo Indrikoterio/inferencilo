@@ -65,7 +65,7 @@ public class Solutions {
             }
          }
          String out = sb.toString();
-         if (out.length() == 0) return "True";
+         if (out.length() == 0) return "True ";
          return out;
       }
       return "No";
