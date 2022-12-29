@@ -29,7 +29,7 @@
  * ... because the parentheses are interpreted by the parser as part
  * of a complex term. It causes a parsing error.
  *
- * Putting backticks arround the string solves the problem.
+ * Putting backticks around the string solves the problem.
  *
  *  $Name = `Cleve (Klivo) Lendon`.
  *
@@ -598,16 +598,17 @@ public class Make {
 
 
    /**
-    * goal
+    * query
     *
-    * A goal is the same as a complex term, but it is necessary to ensure
-    * that the global variable id is reset to 0 and that all variable ids
-    * are standardized, before querying the knowledgebase.
+    * A query is the same as a complex term (eg. father(Godwin, $Child).),
+    * but it is necessary to ensure that the global variable ID (nextId)
+    * is reset to 0 and that all variable IDs are standardized, before
+    * querying the knowledge base.
     *
-    * @param  arguments
-    * @return goal as complex term
+    * @param  unifiable arguments
+    * @return query as complex term
     */
-   public static Complex goal(Unifiable... args) {
+   public static Complex query(Unifiable... args) {
       Variable.reset();  // Always reset the variable ID.
       HashMap<String, Variable> vars = new HashMap<String, Variable>();
       int n = args.length;
@@ -616,21 +617,22 @@ public class Make {
          newArgs[i] = (Unifiable)args[i].standardizeVariablesApart(vars);
       }
       return new Complex(newArgs);
-   } // goal()
+   } // query()
 
    /**
-    * goal
+    * query
     *
-    * A goal is the same as a complex term, but it is necessary to ensure
-    * that the global variable id is reset to 0 and that all variable ids
-    * are recreated, before querying the knowledgebase.
+    * A query is the same as a complex term (eg. father(Godwin, $Child).),
+    * but it is necessary to ensure that the global variable ID (nextId)
+    * is reset to 0 and that all variable IDs are standardized, before
+    * querying the knowledge base.
     *
-    * @param  goal as string
-    * @return goal as complex term
+    * @param  query as string
+    * @return query as complex term
     */
-   public static Complex goal(String str) {
+   public static Complex query(String str) {
       Complex c = new Complex(str);
-      return Make.goal(c.getTerms());
-   }
+      return Make.query(c.getTerms());
+   } // query()
 
 } // Make
