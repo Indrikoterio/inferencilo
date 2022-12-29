@@ -1,5 +1,6 @@
 #!/bin/bash
 javac inferencilo/InvalidRuleException.java
+javac inferencilo/InvalidVariableException.java
 javac inferencilo/UnmatchedParenthesesException.java
 javac inferencilo/UnmatchedBracketsException.java
 javac inferencilo/InvalidExpressionException.java
