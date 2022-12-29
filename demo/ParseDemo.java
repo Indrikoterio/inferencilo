@@ -129,13 +129,13 @@ class ParseDemo {
 
       Variable X = new Variable("$X");  // placeholder variable
       try {
-         // Must use Make.goal() to create a goal.
+         // Must use Make.query() to create a query.
          // new Complex() would cause errors.
-         Complex goal = Make.goal(ruleFunctor, inList, X);
-         SolutionNode node = goal.getSolver(kb, new SubstitutionSet(), null);
+         Complex query = Make.query(ruleFunctor, inList, X);
+         SolutionNode node = query.getSolver(kb, new SubstitutionSet(), null);
          SubstitutionSet solution = node.nextSolution();
          if (solution != null) {
-            Complex result = (Complex)goal.replaceVariables(solution);
+            Complex result = (Complex)query.replaceVariables(solution);
             SLinkedList outList = (SLinkedList)result.getTerm(2);  // Get the out list.
             System.out.print("\n");
          }
