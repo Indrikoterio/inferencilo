@@ -31,14 +31,14 @@ public class TestOr {
       System.out.print("Test Or: ");
 
       try {
-         // Define goal and root of search space.
-         Complex goal = Make.goal("teacher($X)");
+         // Define query and root of search space.
+         Complex query = Make.query("teacher($X)");
          String[] expected = {
             "teacher(Apollonius)",
             "teacher(Aristoteles)",
             "teacher(Isocrates)"
          };
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
    }
 

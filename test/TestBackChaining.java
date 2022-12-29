@@ -38,12 +38,12 @@ public class TestBackChaining {
       System.out.print("Test Backchaining: ");
 
       try {
-         Complex goal = Make.goal("ancestor(Charles, $Y)");
+         Complex query = Make.query("ancestor(Charles, $Y)");
          String[] expected = {"ancestor(Charles, Tony)",
                               "ancestor(Charles, Maria)",
                               "ancestor(Charles, Bill)",
                               "ancestor(Charles, Audrey)"};
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
    }
 } // TestBackChaining

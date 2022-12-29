@@ -24,7 +24,7 @@ public class TestUnify {
          new Rule(new Complex("job(programmer)")),
          new Rule(new Complex("job(janitor)")),
          new Rule(
-            new Complex("unify_goal($X, $Y, $Z)"),
+            new Complex("unify_test($X, $Y, $Z)"),
             new And(
                new Unify(lawyer, lawyer),  // lawyer = lawyer
                new Unify(
@@ -37,7 +37,7 @@ public class TestUnify {
          ),
 
          new Rule(
-            new Complex("second_goal($Y)"),
+            new Complex("second_test($Y)"),
             new And(
                new Unify(new Variable("$X"), up),
                new Unify(new Variable("$Y"), down),
@@ -50,36 +50,36 @@ public class TestUnify {
       System.out.print("Test Unify success: ");
 
       /*
-      Prolog equivalent of unify_goal rule:
-          unify_goal(X, Y, Z) :- lawyer = lawyer,
+      Prolog equivalent of unify_test rule:
+          unify_test(X, Y, Z) :- lawyer = lawyer,
                                  job(programmer, Z) = job(Y, janitor),
                                  W = X,
                                  job(W).
 
-      Prolog equivalent of second_goal rule:
-           second_goal(Y) :- X = up, Y = down, X = Y.
-      This goal must fail.
+      Prolog equivalent of second_test rule:
+           second_test(Y) :- X = up, Y = down, X = Y.
+      This test must fail.
       */
 
       try {
-         Complex goal;
-         // Must use Make.goal() to create goals, to ensure
+         Complex query;
+         // Must use Make.query() to create queries, to ensure
          // that variables are standardized.
-         goal = Make.goal("unify_goal($X, $Y, $Z)");
-         String[] expected = {"unify_goal(lawyer, programmer, janitor)",
-                              "unify_goal(teacher, programmer, janitor)",
-                              "unify_goal(programmer, programmer, janitor)",
-                              "unify_goal(janitor, programmer, janitor)"};
-         Solutions.verifyAll(goal, kb, expected, 0);
+         query = Make.query("unify_test($X, $Y, $Z)");
+         String[] expected = {"unify_test(lawyer, programmer, janitor)",
+                              "unify_test(teacher, programmer, janitor)",
+                              "unify_test(programmer, programmer, janitor)",
+                              "unify_test(janitor, programmer, janitor)"};
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
       System.out.print("Test Unify failure: ");
 
       try {
-         Complex goal;
-         goal = Make.goal("second_goal($Y)");
+         Complex query;
+         query = Make.query("second_test($Y)");
          String[] expected = {};
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
    }

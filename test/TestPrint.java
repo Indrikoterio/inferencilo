@@ -38,19 +38,19 @@ public class TestPrint {
       System.out.println("Persian, king, [Cyrus, Cambysis, Darius]");
 
       try {
-         // Define goal and root of search space.
-         Complex goal = Make.goal("print_test");
+         // Define query and root of search space.
+         Complex query = Make.query("print_test");
          String[] expected = {"print_test"};
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
       System.out.println("Test Print 2 - should print:");
       System.out.println("Hello World, my name is Cleve.");
 
       try {
-         Complex goal = Make.goal("print_test2");
+         Complex query = Make.query("print_test2");
          String[] expected = {"print_test2"};
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
    }
 

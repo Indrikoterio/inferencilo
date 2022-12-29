@@ -32,13 +32,13 @@ public class TestFunction {
          )
       );
 
-      Complex goal, result;
+      Complex query, result;
 
       try {
          System.out.print("Test PFunction: ");
-         goal = Make.goal(fix_cap, tokyo, Word);
+         query = Make.query(fix_cap, tokyo, Word);
          String[] expected = { "Tokyo" };
-         Solutions.verifyAll(goal, kb, expected, 2);
+         Solutions.verifyAll(query, kb, expected, 2);
       }
       catch (TimeOverrunException tox) { }
 

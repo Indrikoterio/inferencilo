@@ -80,21 +80,21 @@ public class TestNot {
       System.out.print("Test Not: ");
 
       try {
-         Complex goal = Make.goal("father($X, Daniel)");
+         Complex query = Make.query("father($X, Daniel)");
          String[] expected = { "Richard" };
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
 
       try {
-         Complex goal = Make.goal("invite($X)");
+         Complex query = Make.query("invite($X)");
          String[] expected = { "Penny", "Leonard" };
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
 
       try {
-         Complex goal = Make.goal("invite2($X)");
+         Complex query = Make.query("invite2($X)");
          String[] expected = { "Penny", "Sheldon" };
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
    }
 

@@ -76,7 +76,7 @@ public class TestBuiltInPredicate {
 
       );
 
-      Complex goal, result;
+      Complex query, result;
       SubstitutionSet solution;
       SolutionNode root;
       int count;
@@ -84,14 +84,14 @@ public class TestBuiltInPredicate {
       try {
 
          System.out.print("Test Built-In Predicate, 5 arguments: ");
-         goal = Make.goal(bip_test, X, Y);
+         query = Make.query(bip_test, X, Y);
 
          String expected = "sister-in-law [another error, another error, first error]";
 
-         root = goal.getSolver(kb, new SubstitutionSet(), null);
+         root = query.getSolver(kb, new SubstitutionSet(), null);
          solution = root.nextSolution();
 
-         result = (Complex)goal.replaceVariables(solution);
+         result = (Complex)query.replaceVariables(solution);
          String r = result.getTerm(1) + " " + result.getTerm(2);
          if (r.equals(expected)) {
             System.out.print("✓");

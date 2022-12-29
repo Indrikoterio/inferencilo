@@ -23,9 +23,9 @@ public class TestReadRules {
       System.out.print("Test ReadRules: ");
 
       try {
-         Complex goal = Make.goal("grandfather($X, Skule)");
+         Complex query = Make.query("grandfather($X, Skule)");
          String[] expected = { "Godwin" };
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
 
    }

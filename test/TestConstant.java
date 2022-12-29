@@ -55,19 +55,19 @@ public class TestConstant {
 
       try {
          System.out.print("Test Constant: ");
-         // Must use Make.goal() to create goals,
+         // Must use Make.query() to create goals,
          // even though goals are Complex terms.
-         Complex goal = Make.goal(test_constant, X);
+         Complex query = Make.query(test_constant, X);
          String[] expected = {"red", "ok"};
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
 
       try {
          System.out.print("Test Constant (backticks): ");
-         Complex goal = Make.goal(test_constant_bt, X);
+         Complex query = Make.query(test_constant_bt, X);
          String[] expected = {"Let's see, if this works."};
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
 
@@ -79,5 +79,3 @@ public class TestConstant {
 
    }
 }  // TestConstant
-
-

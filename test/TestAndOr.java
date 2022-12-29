@@ -47,14 +47,14 @@ public class TestAndOr {
 
       try {
          // Define goal and root of search space.
-         // Must use Make.goal() to create goals.
-         Complex goal = Make.goal("relative($X, Marcus)");
+         // Must use Make.query() to create queries.
+         Complex query = Make.query("relative($X, Marcus)");
          String[] expected = {
             "relative(George, Marcus)",
             "relative(Frank, Marcus)",
             "relative(Maria, Marcus)"
          };
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
    }
 

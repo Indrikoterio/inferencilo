@@ -37,23 +37,23 @@ public class TestMake {
       System.out.print("Test Make: ");
 
       try {
-         // Define goal and root of search space.
-         Complex goal = Make.goal("relative($X, Marcus)");
+         // Define query and root of search space.
+         Complex query = Make.query("relative($X, Marcus)");
          String[] expected = {
             "relative(George, Marcus)",
             "relative(Frank, Marcus)",
             "relative(Maria, Marcus)"
          };
-         Solutions.verifyAll(goal, kb, expected, 0);
+         Solutions.verifyAll(query, kb, expected, 0);
       } catch (TimeOverrunException tox) { }
 
       System.out.print("Test Make2: ");
 
       try {
-         // Define goal and root of search space.
-         Complex goal = Make.goal("get_song($X)");
+         // Define query and root of search space.
+         Complex query = Make.query("get_song($X)");
          String[] expected = { "Cache ta joie", "Fade to Grey" };
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) { }
    }
 

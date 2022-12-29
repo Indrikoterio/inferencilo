@@ -90,21 +90,21 @@ public class TestCompare {
          )
       );
 
-      Complex goal, result;
+      Complex query, result;
       SubstitutionSet solution;
       SolutionNode root;
 
       System.out.print("Test Compare: ");
 
       try {
-         goal = Make.goal("test($W)");
+         query = Make.query("test($W)");
          String[] expected = { "passed", "passed", "failed",
                                "passed", "passed", "failed",
                                "passed", "passed", "failed",
                                "passed", "passed", "failed",
                                "passed", "failed"
                                 };
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
    }
 

@@ -64,17 +64,17 @@ public class TestErrorCheck {
 
          Global.maxErrors = 2;
          System.out.print("Test CheckError: ");
-         Complex goal = Make.goal(test, SLinkedList.empty, x);
+         Complex query = Make.query(test, SLinkedList.empty, x);
          String[] expected = {"[Error 1]", "[Error 2, Error 1]"};
-         Solutions.verifyAll(goal, kb, expected, 2);
+         Solutions.verifyAll(query, kb, expected, 2);
 
          /*
-         SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+         SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
          SubstitutionSet solution = root.nextSolution();
          Complex result;
          int count = 0;
          while (solution != null) {
-            result = (Complex)goal.replaceVariables(solution);
+            result = (Complex)query.replaceVariables(solution);
             System.out.println(result.getTerm(2));
             solution = root.nextSolution();
             count++; if (count > 10) break;  // for safety

@@ -35,11 +35,11 @@ public class TestFunctor {
 
       System.out.print("Test Functor: ");
 
-      Complex goal = Make.goal(get, X);
+      Complex query = Make.query(get, X);
 
       try {
          String[] expected = {"mouse", "cat"};
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
 
@@ -59,13 +59,13 @@ public class TestFunctor {
          )
       );
 
-      goal = Make.goal(check_arity, X, Y);
+      query = Make.query(check_arity, X, Y);
 
       try {
-         SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+         SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
          SubstitutionSet solution = root.nextSolution();
          if (solution != null) {
-            Complex result = (Complex)goal.replaceVariables(solution);
+            Complex result = (Complex)query.replaceVariables(solution);
             String functor = result.getTerm(1).toString();
             String arity = result.getTerm(2).toString();
             if (functor.equals("diamonds") && arity.equals("2")) {
@@ -111,9 +111,9 @@ public class TestFunctor {
 
       try {
          System.out.print("Test Functor/2: ");
-         goal = Make.goal(test_functor, X);
+         query = Make.query(test_functor, X);
          String[] expected5 = {"Success! #1", "Success! #2", "Success! #3"};
-         Solutions.verifyAll(goal, kb, expected5, 1);
+         Solutions.verifyAll(query, kb, expected5, 1);
 
       } catch (TimeOverrunException tox) { }
 

@@ -77,19 +77,19 @@ public class TestCheckTime {
       Global.startTime = System.nanoTime();
 
       try {
-         // Must use Make.goal() to create goals, not new Complex().
-         Complex goal = Make.goal("doit($_, Y)");
+         // Must use Make.query() to create goals, not new Complex().
+         Complex query = Make.query("doit($_, Y)");
          String[] expected = { "something" };
-         Solutions.verifyAll(goal, kb, expected, 2);
+         Solutions.verifyAll(query, kb, expected, 2);
       } catch (TimeOverrunException tox) {
          System.err.println("Time out. ✓");
       }
 
       Global.startTime = System.nanoTime();
       try {
-         Complex goal = Make.goal("doit($_, Y)");
+         Complex query = Make.query("doit($_, Y)");
          String[] expected = { "something" };
-         Solutions.verifyAll(goal, kb, expected, 2);
+         Solutions.verifyAll(query, kb, expected, 2);
       } catch (TimeOverrunException tox) {
          System.err.println("Time out 2. ✓");
       }

@@ -19,8 +19,8 @@
    cut_rule :- !, print("Test Cut: This text should print."), fail.
    cut_rule :- print("*** This should NOT print. ***").
    cut_rule("Two").
-   my_goal("One") :- cut_rule.
-   my_goal(X) :- cut_rule(X).
+   my_test("One") :- cut_rule.
+   my_test(X) :- cut_rule(X).
  *
  * Result is:
    "Test Cut: This text should print."
@@ -76,8 +76,8 @@ public class TestCut {
          new Rule("cut_rule :- !, print(Test Cut: This text should print.), fail."),
          new Rule("cut_rule :- print(*** This should NOT print. ***)."),
          new Rule("cut_rule(Two)."),
-         new Rule("my_goal(One) :- cut_rule()."),
-         new Rule("my_goal($X) :- cut_rule($X).")
+         new Rule("my_test(One) :- cut_rule()."),
+         new Rule("my_test($X) :- cut_rule($X).")
 
       );
 
@@ -85,15 +85,15 @@ public class TestCut {
 
       System.out.print("Test Cut: ");
 
-      Complex goal;
+      Complex query;
       try {
-         goal = Make.goal("priority_seating(John, $X)");
+         query = Make.query("priority_seating(John, $X)");
          String[] expected = {"Yes"};
-         Solutions.verifyAll(goal, kb, expected, 2);
+         Solutions.verifyAll(query, kb, expected, 2);
 
-         goal = Make.goal("my_goal($X)");
+         query = Make.query("my_test($X)");
          String[] expected2 = { "Two" };
-         Solutions.verifyAll(goal, kb, expected2, 1);
+         Solutions.verifyAll(query, kb, expected2, 1);
       } catch (TimeOverrunException tox) { }
 
    }

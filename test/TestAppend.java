@@ -45,9 +45,9 @@ public class TestAppend {
       System.out.print("Test Append: ");
 
       try {
-         Complex goal = Make.goal(test_append, X);
+         Complex query = Make.query(test_append, X);
          String[] expected = {"[red, orange, green, blue, purple]"};
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
 
@@ -57,9 +57,9 @@ public class TestAppend {
       kb.addRule(rule);
 
       try {
-         Complex goal = Make.goal("test_append2($Z)");
+         Complex query = Make.query("test_append2($Z)");
          String[] expected = {"[cherry, strawberry, blueberry, raspberry]"};
-         Solutions.verifyAll(goal, kb, expected, 1);
+         Solutions.verifyAll(query, kb, expected, 1);
       }
       catch (TimeOverrunException tox) { }
 
