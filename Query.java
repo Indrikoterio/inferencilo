@@ -82,16 +82,16 @@ public class Query {
          else previous = input;
 
          try {
-            // Define goal and root of search space.
-            // Please note: goals must be created with Make.goal().
-            Complex goal = Make.goal(input);
-            SolutionNode root = goal.getSolver(kb, new SubstitutionSet(), null);
+            // Define query and root of search space.
+            // Please note: queries must be created with Make.query().
+            Complex query = Make.query(input);
+            SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
             while (true) {
                SubstitutionSet solution = root.nextSolution();
                if (solution == null) {
                   System.out.println("No"); break;
                }
-               String s = Solutions.toString(goal, solution);
+               String s = Solutions.toString(query, solution);
                System.out.print(s);
                input = cons.readLine();
                if (input.equals(".")) { input = previous; }
