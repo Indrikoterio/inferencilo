@@ -203,16 +203,17 @@ public class SLinkedList implements Unifiable {
       Unifiable   term;
       boolean     hasPipe = false;
 
-      int bracket1 = str.indexOf("[");
-      int bracket2 = str.lastIndexOf("]");
+      String s = str.trim();
+      int bracket1 = s.indexOf("[");
+      int bracket2 = s.lastIndexOf("]");
 
       if (bracket1 == -1 || bracket2 < bracket1) {
-         System.out.println("Ooops. Invalid list: " + str);
+         System.out.println("Ooops. Invalid list: " + s);
          return null;
       }
 
-      String arguments = str.substring(bracket1 + 1, bracket2).trim();
-      int argLength = arguments.length();  // length of string
+      String arguments = s.substring(bracket1 + 1, bracket2).trim();
+      int argLength = arguments.length();
       SLinkedList list = empty;   // Start with empty list.
 
       // Check for empty list.
@@ -224,7 +225,7 @@ public class SLinkedList implements Unifiable {
          hasPipe = true;
          int indexOfComma = arguments.lastIndexOf(',');
          if (indexOfComma >= 0 && indexOfPipe < indexOfComma) {
-            System.out.println("Whoa! Commas after pipe: " + str);
+            System.out.println("Whoa! Commas after pipe: " + s);
             return null;
          }
       }
@@ -241,7 +242,7 @@ public class SLinkedList implements Unifiable {
          else if (ch == '[') squareDepth--;
          else if (ch == ')') roundDepth++;
          else if (ch == '(') roundDepth--;
-         else if (roundDepth == 0 && squareDepth == 0) {
+         if (roundDepth == 0 && squareDepth == 0) {
             if (ch == ',') {
                strTerm = arguments.substring(i + 1, endIndex);
                term = Make.term(strTerm);
