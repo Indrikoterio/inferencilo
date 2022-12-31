@@ -32,7 +32,7 @@ public class Query {
 
    private static String previous;
 
-   private static final String usage = "Inferencilo - 2021\n" +
+   private static final String usage = "Inferencilo - 2023\n" +
                                        "Usage:\njava Query filename.inf";
 
    /**
@@ -79,9 +79,18 @@ public class Query {
          }
 
          if (input.equals(".")) { input = previous; }
-         else previous = input;
+         else {
+            // First, validate the input.
+            String err = Complex.validate(input);
+            if (err.length() > 0) {  // If the input is invalid.
+               System.out.println(err);
+               continue;
+            }
+            previous = input;
+         }
 
          try {
+
             // Define query and root of search space.
             // Please note: queries must be created with Make.query().
             Complex query = Make.query(input);
