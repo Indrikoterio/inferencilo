@@ -1,0 +1,11 @@
+cd test
+echo ""
+echo "--------Run tests.--------"
+echo ""
+./run
+cd ../demo
+echo ""
+echo "---------Run demo.--------"
+echo ""
+./run
+cd ..
