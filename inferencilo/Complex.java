@@ -38,7 +38,7 @@ public class Complex implements Unifiable, Goal {
     */
    public Complex(Unifiable... args) throws InvalidFunctorException {
       if (!(args[0] instanceof Constant)) {
-         throw new InvalidFunctorException("Complex constructor 1 -" + args[0]);
+         throw new InvalidFunctorException("Complex constructor 1 - " + args[0]);
       }
       terms = args;
       functor = terms[0].toString();
@@ -98,23 +98,35 @@ public class Complex implements Unifiable, Goal {
    public Complex(String str) throws InvalidFunctorException,
                                      InvalidComplexTermException {
 
-      if (str == null) throw new InvalidFunctorException("Complex constructor 3 - null");
+      if (str == null) {
+         throw new InvalidComplexTermException("Complex constructor 3 - null");
+      }
+
       String s = str.trim();
-      if (s.length() < 1) throw new InvalidFunctorException("Complex constructor 3 - empty");
+      int strLength = s.length();
+      if (strLength < 1) {
+         throw new InvalidComplexTermException("Complex constructor 3 - empty");
+      }
+
       char first = s.charAt(0);
-      if (first == '$') throw new InvalidFunctorException("Complex constructor 3 - " + s);
+      if (!Character.isLetter(first)) {
+         throw new InvalidFunctorException("Complex constructor 3 - " + s);
+      }
 
       int parenthesis1 = s.indexOf('(');
       int parenthesis2 = s.lastIndexOf(')');
 
       // If there are no arguments. Eg.: rainy
       if (parenthesis1 == -1 && parenthesis2 == -1) {
+         // If last character is a period, remove it.
+         char last = s.charAt(strLength - 1);
+         if (last == '.') { s = s.substring(0, strLength - 1); }
          terms = new Unifiable[] { new Constant(s) };
          functor = s;
          return;
       }
 
-      if (parenthesis1 < 1 || parenthesis2 < parenthesis1) {
+      if (parenthesis1 == 0 || parenthesis2 < parenthesis1) {
          throw new InvalidComplexTermException(s);
       }
 
@@ -133,6 +145,62 @@ public class Complex implements Unifiable, Goal {
                   .toArray(Unifiable[]::new);
 
    } // constructor
+
+   /**
+    * validate
+    *
+    * Checks whether the given string represents a valid Complex term.
+    * Checks validity of parentheses and backticks.
+    *
+    * @param   complex term as string
+    * @return  Error message or empty string.
+    */
+   public static String validate(String str) {
+
+      if (str == null) { return "Null string."; }
+
+      String s = str.trim();
+      int strLength = s.length();
+      if (strLength < 1) { return "Empty string."; }
+
+      char first = s.charAt(0);
+      if (!Character.isLetter(first)) {
+         return "First character must be a letter.";
+      }
+
+      int left  = -1;
+      int right = -1;
+      int countLeft  = 0;
+      int countRight = 0;
+      int countBackticks = 0;
+
+      for (int i = 0; i < strLength; i++) {
+         char c1 = s.charAt(i);
+         if (c1 == '`') {
+            countBackticks++;
+            for (int j = i + 1; j < strLength; j++) {
+               int c2 = s.charAt(j);
+               if (c2 == '`') {
+                  countBackticks++;
+                  i = j;
+                  break;
+               }
+            }
+         } else if (c1 == '(') {
+            if (left == -1) { left = i; }
+            countLeft++;
+         } else if (c1 == ')') {
+            right = i;
+            countRight++;
+         }
+      } // for
+
+      if (countBackticks % 2 != 0) { return "Unbalanced backticks."; }
+      if (countLeft != countRight) { return "Unbalanced parentheses."; }
+
+      return "";
+   } // validate()
+
 
    /**
     * key
