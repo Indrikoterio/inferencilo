@@ -15,7 +15,6 @@ public class TimeSolutionNode extends SolutionNode {
 
    private SolutionNode solutionNode;
    private Goal operand;
-   private SubstitutionSet parentSolution;
 
    /**
     * constructor
@@ -31,7 +30,6 @@ public class TimeSolutionNode extends SolutionNode {
       super(goal, kb, parentSolution, parentNode);
       operand = goal.getOperand();
       solutionNode = operand.getSolver(kb, parentSolution, this);
-      this.parentSolution = parentSolution;
    }
 
    /**
@@ -42,7 +40,7 @@ public class TimeSolutionNode extends SolutionNode {
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
       if (noBackTracking()) { return null; }
-      if (parentSolution == null) return null;
+      if (getParentSolution() == null) return null;
 
       SubstitutionSet solution;
 
