@@ -14,7 +14,6 @@ public class OrSolutionNode extends SolutionNode {
    private SolutionNode headSolutionNode = null;
    private SolutionNode tailSolutionNode = null;
    private Operator operatorTail = null;
-   private SubstitutionSet parentSolution;
 
    /**
     * constructor
@@ -32,7 +31,6 @@ public class OrSolutionNode extends SolutionNode {
       headSolutionNode = goal.getFirstOperand().getSolver(kb, parentSolution, this);
       // The operator tail is the same as the original 'Or' minus the first goal.
       operatorTail = goal.getOperatorTail();
-      this.parentSolution = parentSolution;
    }
 
    /*
@@ -78,7 +76,8 @@ public class OrSolutionNode extends SolutionNode {
       else {
          // tailSolutionNode has to be a new OrSolutionNode.
          tailSolutionNode = operatorTail.getSolver(getKnowledgeBase(),
-                                                   parentSolution, this);
+                                                   getParentSolution(),
+                                                   this);
          SubstitutionSet tailSolution = tailSolutionNode.nextSolution();
          // System.out.println("Or tailSolution>>>>>>>>>> " + solution);
          return tailSolution;
