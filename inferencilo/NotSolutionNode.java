@@ -15,7 +15,7 @@ public class NotSolutionNode extends SolutionNode {
 
    private SolutionNode solutionNode;
    private Goal operand;
-   private SubstitutionSet parentSolution;
+   private boolean moreSolutions = true;
 
    /**
     * constructor
@@ -31,7 +31,6 @@ public class NotSolutionNode extends SolutionNode {
       super(goal, kb, parentSolution, parentNode);
       operand = goal.getOperand();
       solutionNode = operand.getSolver(kb, parentSolution, this);
-      this.parentSolution = parentSolution;
    }
 
    /**
@@ -42,7 +41,7 @@ public class NotSolutionNode extends SolutionNode {
    public SubstitutionSet nextSolution() throws TimeOverrunException {
 
       if (noBackTracking()) { return null; }
-      if (parentSolution == null) return null;
+      if (!moreSolutions) { return null; }
 
       if (operand instanceof Complex) {
 
@@ -50,8 +49,10 @@ public class NotSolutionNode extends SolutionNode {
 
          for (Unifiable term : terms) {
             if (term instanceof LogicVar) {
-               if (!parentSolution.isGround((LogicVar)term)) {
-                  System.out.println("Not: LogicVar " + term.toString() + " is not grounded.");
+               SubstitutionSet ps = getParentSolution();
+               if (!ps.isGround((LogicVar)term)) {
+                  System.out.println("Not: LogicVar " + term.toString() +
+                                     " is not grounded.");
                }
             }
          }
@@ -64,9 +65,8 @@ public class NotSolutionNode extends SolutionNode {
          return null;
       }
       else {
-         solution = parentSolution;
-         parentSolution = null;  // Is this right? Yes, it seems so.
-         return solution;
+         moreSolutions = false;
+         return getParentSolution();
       }
    }
 
