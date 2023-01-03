@@ -52,7 +52,7 @@ public class Tokenizer {
    }
 
    /*
-    * functorChar
+    * letterNumberHyphen
     *
     * Determines whether the given character is valid in a functor.
     * Eg.: functor_22($X, $Y)
@@ -60,7 +60,7 @@ public class Tokenizer {
     * @param character
     * @return t/f
     */
-   private boolean functorChar(char ch) {
+   private boolean letterNumberHyphen(char ch) {
       if (ch >= 'a' && ch <= 'z') return true;
       if (ch >= 'A' && ch <= 'Z') return true;
       if (ch >= '0' && ch <= '9') return true;
@@ -102,7 +102,7 @@ public class Tokenizer {
          if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
          char ch = s.charAt(i);
          if (ch == '(') {
-            if (functorChar(previous)) {
+            if (letterNumberHyphen(previous)) {
                stkParenth.push(COMPLEX);
             }
             else {
