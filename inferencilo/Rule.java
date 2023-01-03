@@ -1,9 +1,10 @@
 /**
  * Rule
  *
- * Defines a Prolog rule or fact. Eg:
- *    grandfather(G, C) :- father(G, A), father(A, C).   // Prolog rule, head :- body
- *    father(john, kaitlyn).                             // Prolog fact.
+ * Defines a rule or fact. Eg:
+ *
+ *  grandfather($G, $C) :- father($G, $P), parent($P, $C).  // A rule, head :- body
+ *  father(John, Kaitlyn).  // A fact.
  *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
