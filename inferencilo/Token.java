@@ -87,7 +87,6 @@ public class Token {
     * @return number of children
     */
    public int numberOfChildren() {
-      if (children == null) return 1;
       return children.size();
    }
 
