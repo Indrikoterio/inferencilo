@@ -75,7 +75,11 @@ public class ReadRules {
 
          if (c == '`') {
             int index = text.indexOf("`", i + 1);
-            if (index == -1) throw new UnmatchedBacktickException("ReadRules");
+            if (index == -1) {
+               String s = sb.toString();
+               if (s.length() > 50) s = s.substring(0, 50);
+               throw new UnmatchedBacktickException(s);
+            }
             else if (index == i + 1) {
                // Use a double backtick to output a single backtick.
                i++;
@@ -99,8 +103,14 @@ public class ReadRules {
       }  // for
 
       String last = sb.toString().trim();
-      if (roundDepth != 0) throw new UnmatchedParenthesesException("ReadRules");
-      if (squareDepth != 0) throw new UnmatchedBracketsException("ReadRules");
+      if (roundDepth != 0) {
+         if (last.length() > 50) last = last.substring(0, 50);
+         throw new UnmatchedParenthesesException(last);
+      }
+      if (squareDepth != 0) {
+         if (last.length() > 50) last = last.substring(0, 50);
+         throw new UnmatchedBracketsException(last);
+      }
       if (last.length() > 0) rules.add(last);
       return rules;
 
