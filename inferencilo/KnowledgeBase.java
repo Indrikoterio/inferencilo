@@ -56,8 +56,14 @@ public class KnowledgeBase {
     * @param fact as string, eg: "boss(Beth, Lily)"
     */
    public void addRule(String str) {
-      addRule(new Rule(str));
-   }
+      try {
+         Rule r = new Rule(str);
+         addRule(r);
+      } catch(FatalParsingException fpx) {
+        System.out.println(fpx.getMessage());
+        System.out.println(str);
+      }
+   } // addRule()
 
    /**
     * addFact
@@ -81,9 +87,15 @@ public class KnowledgeBase {
     */
    public void addRules(List<String> ruleList) {
       for (String str : ruleList) {
-         addRule(new Rule(str));
+         try {
+            Rule r = new Rule(str);
+            addRule(r);
+         } catch(FatalParsingException fpx) {
+           System.out.println(fpx.getMessage());
+           System.out.println(str);
+         }
       }
-   }
+   } // addRules()
 
 
    /**
