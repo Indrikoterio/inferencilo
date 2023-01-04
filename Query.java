@@ -54,10 +54,16 @@ public class Query {
 
       // Get knowledge.
       KnowledgeBase kb = new KnowledgeBase();
-      List<String> rules = ReadRules.fromFile(filename);
-      if (rules == null) return;
-
-      kb.addRules(rules);
+      try {
+         List<String> rules = ReadRules.fromFile(filename);
+         if (rules == null) return;
+         kb.addRules(rules);
+      } catch (UnmatchedBacktickException|
+               UnmatchedParenthesesException|
+               UnmatchedBracketsException x) {
+         System.out.println(x.getMessage());
+         return;
+      }
 
       Console cons = System.console();
       if (cons == null) {
