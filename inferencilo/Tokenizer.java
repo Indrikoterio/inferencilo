@@ -235,7 +235,7 @@ public class Tokenizer {
             Token t = groupTokens(tokens, index);
             newTokens.add(t);
             // Skip past tokens already processed.
-            index += t.size() + 1;  // +1 for right parenthesis
+            index += t.numberOfChildren() + 1;  // +1 for right parenthesis
          }
          else if (type == TokenType.RPAREN) {
             // Add all remaining tokens to the list.
@@ -381,7 +381,7 @@ public class Tokenizer {
       }
 
       if (type == TokenType.GROUP) {
-         if (token.size() != 1) {
+         if (token.numberOfChildren() != 1) {
             throw new FatalParsingException("Each GROUP should have 1 child.");
          }
          Token childToken = (Token)token.getChildren().get(0);
