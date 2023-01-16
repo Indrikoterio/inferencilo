@@ -82,7 +82,7 @@ public class ComplexSolutionNode extends SolutionNode {
       child = null;
       Rule rule;
 
-      while (hasNextRule() == true) {
+      while (hasNextRule()) {
 
          // The fallbackId saves the nextId, in case the next rule fails.
          // Restoring this id to nextId will keep the substitution set small.
@@ -101,7 +101,7 @@ public class ComplexSolutionNode extends SolutionNode {
             SubstitutionSet childSolution = child.nextSolution();
             if (childSolution != null) return childSolution;
          }
-      }
+      } // while
       return null;
    }
 
