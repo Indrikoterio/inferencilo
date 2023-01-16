@@ -20,7 +20,7 @@ import inferencilo.*;
 
 import java.util.HashMap;
 
-public class Capitalize extends PFunction {
+public class Capitalize extends SFunction {
 
    /**
     * constructor
