@@ -1,8 +1,8 @@
 /**
- * PFunction
+ * SFunction
  *
  * This class is a base class for Prolog-like functions. Subclasses
- * should override the 'evaluate' method. The class is called 'PFunction'
+ * should override the 'evaluate' method. The class is called 'SFunction'
  * to distinguish it from Java Functions.
  *
  * A function returns a Constant. It should be used with a unification
@@ -25,7 +25,7 @@ import java.util.HashMap;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public abstract class PFunction implements Unifiable {
+public abstract class SFunction implements Unifiable {
 
    // public for convenience of subclasses
    String functionName = null;
@@ -37,7 +37,7 @@ public abstract class PFunction implements Unifiable {
     * @param  function name
     * @param  array of unifiable arguments
     */
-   public PFunction(String functionName, Unifiable... arguments) {
+   public SFunction(String functionName, Unifiable... arguments) {
       this.functionName = functionName;
       this.arguments = arguments;
    }
@@ -48,7 +48,7 @@ public abstract class PFunction implements Unifiable {
     * @param  function name
     * @param  arguments as string
     */
-   public PFunction(String functionName, String strArgs) {
+   public SFunction(String functionName, String strArgs) {
 
       this.functionName = functionName;
 
@@ -146,11 +146,11 @@ public abstract class PFunction implements Unifiable {
                return exp;
             }
             else {
-               return new Constant("PFunction: This is very bad.");
+               return new Constant("SFunction: This is very bad.");
             } 
          }
          else {
-            return new Constant("PFunction: Got a problem.");
+            return new Constant("SFunction: Got a problem.");
          }
       }
       return null;
@@ -183,5 +183,5 @@ public abstract class PFunction implements Unifiable {
       return argument;
    }
 
-} // PFunction
+} // SFunction
 

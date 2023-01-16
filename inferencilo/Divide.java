@@ -16,7 +16,7 @@ package inferencilo;
 
 import java.util.HashMap;
 
-public class Divide extends PFunction {
+public class Divide extends SFunction {
 
    /**
     * constructor

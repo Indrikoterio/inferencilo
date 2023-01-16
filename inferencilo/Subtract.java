@@ -11,7 +11,7 @@ package inferencilo;
 
 import java.util.HashMap;
 
-public class Subtract extends PFunction {
+public class Subtract extends SFunction {
 
    /**
     * constructor

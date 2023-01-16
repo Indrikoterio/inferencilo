@@ -146,7 +146,7 @@ public class LogicVar implements Unifiable {
 
       // The unify method of a function evaluates the function,
       // so if the other expression is a function, call its unify method.
-      if (other instanceof PFunction) return other.unify(this, ss);
+      if (other instanceof SFunction) return other.unify(this, ss);
 
       if (ss.isBound(this)) {
          return ss.getBinding(this).unify(other, ss);

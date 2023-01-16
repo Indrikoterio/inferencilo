@@ -11,7 +11,7 @@ package inferencilo;
 
 import java.util.HashMap;
 
-public class Multiply extends PFunction {
+public class Multiply extends SFunction {
 
    /**
     * constructor

@@ -22,7 +22,7 @@ package inferencilo;
 
 import java.util.*;
 
-public class Join extends PFunction {
+public class Join extends SFunction {
 
    /**
     * constructor
