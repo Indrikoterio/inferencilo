@@ -29,7 +29,7 @@ public abstract class SolutionNode {
 
    Goal    goal = null;     // goal being solved
 
-   private int count;  // counts number of rules/facts
+   private int numberOfRules;  // number of rules/facts in knowledgebase
 
    /**
     * constructor
@@ -63,7 +63,7 @@ public abstract class SolutionNode {
    /**
     * nextRule
     *
-    * Fetches next rule from the database, with standardized variables.
+    * Fetches next rule from the knowledge base, with standardized variables.
     * Returns null (failure) if the goal has been exhausted.
     *
     * @return rule object
@@ -87,7 +87,7 @@ public abstract class SolutionNode {
     */
    boolean hasNextRule() {
       if (noBackTracking) return false;
-      return ruleNumber < count;
+      return ruleNumber < numberOfRules;
    }
 
    /*
@@ -140,10 +140,10 @@ public abstract class SolutionNode {
    /**
     * setRuleCount
     *
-    * @param count
+    * @param numberOfRules
     */
    public void setRuleCount(int c) {
-      count = c;
+      numberOfRules = c;
    }
 
 }  // SolutionNode
