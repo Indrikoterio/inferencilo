@@ -591,6 +591,8 @@ public class Make {
 
       if (functor.equals("add")) return new Add(arguments);
       if (functor.equals("subtract")) return new Subtract(arguments);
+      if (functor.equals("multiply")) return new Multiply(arguments);
+      if (functor.equals("divide")) return new Divide(arguments);
       if (functor.equals("join")) return new Join(arguments);
       return new Complex(functor, arguments);
 
