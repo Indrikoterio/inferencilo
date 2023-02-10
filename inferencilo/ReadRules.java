@@ -34,13 +34,13 @@ public class ReadRules {
     * @param  square bracket count
     * @throws FatalParsingException
     */
-   private static String error = "Unmatched bracket: ";
    private static void checkBrackets(int round, int square) {
+      String error = "";
       if (round != 0 || square != 0) {
-         if (round > 0) error += "(";
-         else if (round < 0) error += ")";
-         if (square > 0) error += "[";
-         else if (square < 0) error += "]";
+         if (round > 0) error = "Unmatched parenthesis: (";
+         else if (round < 0) error = "Unmatched parenthesis: )";
+         if (square > 0) error = "Unmatched bracket: [";
+         else if (square < 0) error = "Unmatched bracket: ]";
          throw new FatalParsingException(error);
       }
    } // checkBrackets
