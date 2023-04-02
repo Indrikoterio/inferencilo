@@ -53,6 +53,16 @@ public class AndSolutionNode extends SolutionNode {
    }
 
    /**
+    * setNoBackTracking
+    *
+    * Disables backtracking. This is used for the cut operator: !.
+    */
+   public void setNoBackTracking() {
+      super.setNoBackTracking();
+      headSolutionNode.setNoBackTracking();
+   }
+
+   /**
     * nextSolution
     *
     * Recursively call next solution on all subgoals.
