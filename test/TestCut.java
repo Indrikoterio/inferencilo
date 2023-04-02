@@ -22,6 +22,8 @@
    my_test("One") :- cut_rule.
    my_test(X) :- cut_rule(X).
  *
+ * The query is ?- my_test(X)
+ *
  * Result is:
    "Test Cut: This text should print."
    X = "Two"
