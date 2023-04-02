@@ -52,6 +52,16 @@ public class OrSolutionNode extends SolutionNode {
    }
 
    /**
+    * setNoBackTracking
+    *
+    * Disables backtracking. This is used for the cut operator: !.
+    */
+   public void setNoBackTracking() {
+      super.setNoBackTracking();
+      headSolutionNode.setNoBackTracking();
+   }
+
+   /**
     * nextSolution
     *
     * @return new substitution set
