@@ -25,13 +25,24 @@
  * The query is ?- my_test(X)
  *
  * Result is:
+
    "Test Cut: This text should print."
    X = "Two"
+
  *
  * Note: cut_rule/0 and cut_rule/1 are completely different rules.
  *
+ * Another test. Here is the Prolog version:
+
+   get_value(X) :- X = 1.
+   get_value(X) :- X = 2.
+   another_test(X) :- get_value(X), !, X == 2.
+
+ * When a Prolog interpreter is queried with 'another_test(X)', it returns
+ * no solutions. This inference engine must do the same.
+ *
  * @author  Klivo
- * @version 1.0
+ * @version 1.1
  */
 
 import java.util.*;
@@ -79,7 +90,12 @@ public class TestCut {
          new Rule("cut_rule :- print(*** This should NOT print. ***)."),
          new Rule("cut_rule(Two)."),
          new Rule("my_test(One) :- cut_rule()."),
-         new Rule("my_test($X) :- cut_rule($X).")
+         new Rule("my_test($X) :- cut_rule($X)."),
+
+         // Another important test.
+         new Rule("get_value($X) :- $X = 1."),
+         new Rule("get_value($X) :- $X = 2."),
+         new Rule("another_test($X) :- get_value($X), !, $X == 2.")
 
       );
 
@@ -96,6 +112,24 @@ public class TestCut {
          query = Make.query("my_test($X)");
          String[] expected2 = { "Two" };
          Solutions.verifyAll(query, kb, expected2, 1);
+
+         ArrayList<String> solutions = new ArrayList<String>();
+         query = Make.query("another_test($X)");
+         SolutionNode root = query.getSolver(kb, new SubstitutionSet(), null);
+         SubstitutionSet solution = root.nextSolution();
+         while (solution != null) {
+            Complex result = (Complex)query.replaceVariables(solution);
+            solutions.add(result.toString());
+            solution = root.nextSolution();
+         }
+
+         int count = solutions.size();
+         if (count == 0) { System.out.println("Test Cut: ✓"); }
+         else {
+            System.out.println("Test Cut: ERROR! Expected 0 results. Got " +
+                              count + ".");
+         }
+
       } catch (TimeOverrunException tox) { }
 
    }
