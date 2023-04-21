@@ -14,32 +14,29 @@
  * priority_seating($Name, No).
  *
  *----------------------------------------
- * Another cut test. In standard Prolog:
+ * Another cut test.
  *
-   cut_rule :- !, print("Test Cut: This text should print."), fail.
-   cut_rule :- print("*** This should NOT print. ***").
-   cut_rule("Two").
-   my_test("One") :- cut_rule.
-   my_test(X) :- cut_rule(X).
+ * cut_rule :- !, print("Test Cut: This text should print."), fail.
+ * cut_rule :- print("*** This should NOT print. ***").
+ * cut_rule("Two").
+ * my_test("One") :- cut_rule.
+ * my_test($X) :- cut_rule($X).
  *
- * The query is ?- my_test(X)
+ * The query is ?- my_test($X).
  *
- * Result is:
-
-   "Test Cut: This text should print."
-   X = "Two"
-
+ * The above prints out: "Test Cut: This text should print."
+ * It also returns an answer: $X = "Two"
  *
  * Note: cut_rule/0 and cut_rule/1 are completely different rules.
  *
- * Another test. Here is the Prolog version:
-
-   get_value(X) :- X = 1.
-   get_value(X) :- X = 2.
-   another_test(X) :- get_value(X), !, X == 2.
-
- * When a Prolog interpreter is queried with 'another_test(X)', it returns
- * no solutions. This inference engine must do the same.
+ * Another test.
+ *
+ * get_value($X) :- $X = 1.
+ * get_value($X) :- $X = 2.
+ * another_test($X) :- get_value($X), !, $X == 2.
+ *
+ * When the inference engine is queried with 'another_test(X)',
+ * it should returns no solutions.
  *
  * @author  Klivo
  * @version 1.1
@@ -127,10 +124,10 @@ public class TestCut {
          if (count == 0) { System.out.println("Test Cut: ✓"); }
          else {
             System.out.println("Test Cut: ERROR! Expected 0 results. Got " +
-                              count + ".");
+                                count + ".");
          }
 
       } catch (TimeOverrunException tox) { }
 
    }
-}
+} // TestCut
