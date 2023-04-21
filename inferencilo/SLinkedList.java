@@ -390,7 +390,7 @@ public class SLinkedList implements Unifiable {
          sList = sList.getTail();
          head = sList.getHead();
          if (sList.isTailVar() && head != Anon.anon) {
-            LogicVar hVar  = (LogicVar)(head);
+            LogicVar hVar = (LogicVar)(head);
             SLinkedList term = ss.castSLinkedList(hVar);
             if (term != null) {
                sList = (SLinkedList)term;
