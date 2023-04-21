@@ -16,6 +16,14 @@ public class TestBackChaining {
 
    public static void main(String[] args) {   // Set up the knowledge base.
 
+      // Facts and rules.
+      // parent(Bill, Audrey).
+      // parent(Maria, Bill).
+      // parent(Tony, Maria).
+      // parent(Charles, Tony).
+      // ancestor($X, $Y) :- parent($X, $Y).
+      // ancestor($X, $Y) :- parent($X, $Z), ancestor($Z, $Y).
+      //
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex("myfact")),
          new Rule("parent(Bill, Audrey)"),
