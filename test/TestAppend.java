@@ -51,7 +51,7 @@ public class TestAppend {
       }
       catch (TimeOverrunException tox) { }
 
-      // Now let's to parse the Append function.
+      // Now let's parse the Append function.
       Rule rule = new Rule("test_append2($Out) :- $X = raspberry, " +
               "append(cherry, [strawberry, blueberry], $X, $Out).");
       kb.addRule(rule);
