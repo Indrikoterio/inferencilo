@@ -35,7 +35,7 @@
  * get_value($X) :- $X = 2.
  * another_test($X) :- get_value($X), !, $X == 2.
  *
- * When the inference engine is queried with 'another_test(X)',
+ * When the inference engine is queried with 'another_test($X)',
  * it should returns no solutions.
  *
  * @author  Klivo
