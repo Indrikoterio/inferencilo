@@ -27,7 +27,7 @@ public class Tokenizer {
    // (prof(Thompson, 5849238); prof(Hamilton, 5849238)), $X = [$H, $T].
    private final static int NONE = 0;
    private final static int GROUP = 1;   // (...)
-   private final static int PLIST = 2;   // [...]
+   private final static int SLIST = 2;   // [...]
    private final static int COMPLEX = 3; // prof(...)
 
    /*
@@ -101,7 +101,7 @@ public class Tokenizer {
          top = NONE;
          if (stkParenth.size() > 0) top = (Integer)stkParenth.peek();
          char ch = s.charAt(i);
-         if (ch == '(') {
+         if (noEsc(ch, '(', previous)) {
             if (letterNumberHyphen(previous)) {
                stkParenth.push(COMPLEX);
             }
@@ -111,7 +111,7 @@ public class Tokenizer {
                startIndex = i + 1;
             }
          }
-         else if (ch == ')') {
+         else if (noEsc(ch, ')', previous)) {
             if (top == NONE) throw new UnmatchedParenthesesException("Tokenizer");
             top = (Integer)stkParenth.pop();
             if (top == GROUP) {
@@ -124,35 +124,43 @@ public class Tokenizer {
                throw new UnmatchedParenthesesException("Tokenizer");
             }
          }
-         else if (ch == '[') {
-            stkParenth.push(PLIST);
+         else if (noEsc(ch, '[', previous)) {
+            stkParenth.push(SLIST);
          }
-         else if (ch == ']') {
+         else if (noEsc(ch, ']', previous)) {
             if (top == NONE) throw new UnmatchedBracketsException("Tokenizer");
             top = (Integer)stkParenth.pop();
-            if (top != PLIST) {
+            if (top != SLIST) {
                throw new UnmatchedBracketsException("Tokenizer");
             }
          }
          else {
             // If not inside complex term or Prolog list...
-            if (top != COMPLEX && top != PLIST) {
+            if (top != COMPLEX && top != SLIST) {
                if (invalid.indexOf(ch) > -1)
                   throw new InvalidExpressionException("--> " + ch);
-               if (ch == '`') {  // Find the next backtick.
-                  int endIndex = s.indexOf("`", i + 1);
-                  if (endIndex != -1) i = endIndex;
-                  else i++;
+               if (noEsc(ch, '`', previous)) {  // Find the next backtick.
+                  int j = i + 1;
+                  char prev = '#';
+                  while (j < s.length()) {
+                     char ch2 = s.charAt(j);
+                     if (noEsc(ch2, '`', prev)) {
+                        i = j;
+                        break;
+                     }
+                     j++;
+                     prev = ch2;
+                  }
                }
                else
-               if (ch == ',') {
+               if (noEsc(ch, ',', previous)) {
                   String subgoal = s.substring(startIndex, i);
                   tokens.add(new Token(subgoal));
                   tokens.add(new Token(","));
                   startIndex = i + 1;
                }
                else
-               if (ch == ';') {
+               if (noEsc(ch, ';', previous)) {
                   String subgoal = s.substring(startIndex, i);
                   tokens.add(new Token(subgoal));
                   tokens.add(new Token(";"));
@@ -194,6 +202,22 @@ public class Tokenizer {
       return generateGoal(baseToken);
    }
 
+   /*
+    * noEsc
+    *
+    * Ensures that the character being checked matches the match
+    * character, and is not escaped by a backslash. (Eg. \, \[ )
+    *
+    * @param character to check
+    * @param match character
+    * @param previous character
+    * @return boolean - true if not escaped by backslash
+    */
+    boolean noEsc(char check, char match_char, char previous) {
+       if (previous == '\\') { return false; }
+       if (check != match_char) { return false; }
+       return true;
+    }
 
    /*
     * groupTokens
@@ -297,7 +321,6 @@ public class Tokenizer {
 
    } // groupAndTokens
 
-
    /*
     * groupOrTokens
     *
@@ -391,8 +414,6 @@ public class Tokenizer {
       return null;
 
    } // generateGoal()
-
-
 
    /**
     * showTokens
