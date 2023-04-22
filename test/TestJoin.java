@@ -56,7 +56,7 @@ public class TestJoin {
 
       try {
          Complex query = Make.query("would_you_like($X)");
-         String[] expected = { " coffee, tea or juice" };
+         String[] expected = { "coffee, tea or juice" };
          Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
 
