@@ -42,6 +42,24 @@ public class TestJoin {
          String[] expected = { "coffee, tea or juice" };
          Solutions.verifyAll(query, kb, expected, 1);
       } catch (TimeOverrunException tox) {}
+
+      // New test.
+      // Let the parser create a join function.
+
+      kb = new KnowledgeBase();
+      String str = "would_you_like($Out) :- $D1 = coffee, $D2 = \\,, " +
+                   "$D3 = tea, $D4 = or, $D5 = juice, " +
+                   "$Out = join($D1, $D2, $D3, $D4, $D5).";
+
+      Rule rule = new Rule(str);
+      kb.addRule(rule);
+
+      try {
+         Complex query = Make.query("would_you_like($X)");
+         String[] expected = { " coffee, tea or juice" };
+         Solutions.verifyAll(query, kb, expected, 1);
+      } catch (TimeOverrunException tox) {}
+
    }
 
 } // TestJoin
