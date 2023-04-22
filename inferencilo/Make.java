@@ -69,14 +69,18 @@ public class Make {
 
       char firstChar = s.charAt(0);
 
-      // Return a variable.
-      if (firstChar == '$' && len > 1) {
+      if (firstChar == '\\') {  // escaped character?
+         s = s.substring(1);
+      }
+      else
+      if (firstChar == '$' && len > 1) { // Return a variable.
          if (s.charAt(1) == '_') return Anon.anon;
          else return new LogicVar(s);
       }
 
       // If a string begins and ends with a backtick, everything
       // inside becomes a Constant.
+      else
       if (firstChar == '`' && len > 1) {
          int index = s.indexOf("`", 1);
          if (index == -1) throw new UnmatchedBacktickException("Make.term()");
