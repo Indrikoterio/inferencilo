@@ -69,8 +69,9 @@ public class Make {
 
       char firstChar = s.charAt(0);
 
-      if (firstChar == '\\') {  // escaped character?
+      if (firstChar == '\\' && len > 1) {  // escaped character?
          s = s.substring(1);
+         len = s.length();
       }
       else
       if (firstChar == '$' && len > 1) { // Return a variable.
