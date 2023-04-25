@@ -3,6 +3,27 @@
  *
  * Test the Functor built-in predicate.
  *
+ * Rules and queries:
+ *
+ *    get($Y) :- functor(mouse(mammal, rodent), $X), $X = $Y.
+ *    get($Y) :- $X = cat(mammal, carnivore), functor($X, $Y).
+ *    ?- get($X).
+ *
+ *-----------------------------------
+ *
+ *    check_arity($X, $Y) :- functor(diamonds(forever, a girl's best friend), $X, $Y).
+ *    ?- check_arity($X, $Y).
+ *
+ *-----------------------------------
+ *
+ *    test_functor($Y) :- $X = symptom(cold, sneezing), functor($X, symptom),
+ *                        $Y = `Success #1`.
+ *    test_functor($Y) :- $X = symptom(cold, sneezing), not(functor($X, symptoms)),
+ *                        $Y = `Success #2`.
+ *    test_functor($Y) :- $X = symptom(cold, sneezing), functor($X, symp*),
+ *                        $Y = `Success #3`.
+ *    ?- test_functor($X).
+ *
  * @author  Cleve (Klivo) Lendon
  * @version 1.0
  */
@@ -20,6 +41,7 @@ public class TestFunctor {
       Complex  animal  = new Complex("mouse(mammal, rodent)");
 
       // Instantiate 'get' rule.
+      // get($Y) :- functor(mouse(mammal, rodent), $X), $X = $Y.
       KnowledgeBase kb = new KnowledgeBase(
          new Rule(new Complex(get, Y),
             new And(
@@ -46,7 +68,7 @@ public class TestFunctor {
 
       //----------------------------------------------
       // Check to make sure we can get the arity also.
-      // check_arity(X, Y) := functor(diamonds(forever, a girl's...), X, Y).
+      // check_arity(X, Y) :- functor(diamonds(forever, a girl's best friend), X, Y).
 
       Complex mineral = new Complex("diamonds(forever, a girl's best friend)");
       Constant check_arity = new Constant("check_arity");
