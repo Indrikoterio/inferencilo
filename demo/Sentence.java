@@ -51,7 +51,7 @@ class Sentence {
    * @return true/false
    */
    private static boolean isAnApostrophe(char ch) {
-      if (ch == '\'' || ch == '\u2019' || ch == '\u02bc') return true;
+      if (ch == '\'' || ch == '\u02bc') return true;
       return false;
    }
 
