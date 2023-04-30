@@ -12,7 +12,6 @@ import java.util.*;
 
 class Sentence {
 
-   private static final int MAX_WORD_LENGTH = 30;
    private static final int MAX_WORDS_IN_SENTENCE = 120;
 
    /**
